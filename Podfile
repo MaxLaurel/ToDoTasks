@@ -7,4 +7,7 @@ target 'ToDoTasks' do
 
   # Pods for ToDoTasks
 pod 'IQKeyboardManagerSwift'
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
 end
