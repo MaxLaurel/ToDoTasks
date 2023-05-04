@@ -14,6 +14,8 @@
 		B5C9418829F2A800002F9AF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C9418729F2A800002F9AF3 /* Assets.xcassets */; };
 		B5C9418B29F2A800002F9AF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */; };
 		B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */; };
+		B5C941B529F33A3B002F9AF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */; };
+		B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		B5C9418A29F2A800002F9AF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5C9418C29F2A800002F9AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D32298015B7A17F71FD2C1AC /* Pods-ToDoTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTasks.release.xcconfig"; path = "Target Support Files/Pods-ToDoTasks/Pods-ToDoTasks.release.xcconfig"; sourceTree = "<group>"; };
 		E2D17BDC7AD196DFD4677DD3 /* Pods-ToDoTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTasks.debug.xcconfig"; path = "Target Support Files/Pods-ToDoTasks/Pods-ToDoTasks.debug.xcconfig"; sourceTree = "<group>"; };
 		EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,15 +84,33 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
-				B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */,
-				B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */,
-				B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */,
-				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
-				B5C9418729F2A800002F9AF3 /* Assets.xcassets */,
-				B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */,
-				B5C9418C29F2A800002F9AF3 /* Info.plist */,
+				B5C941B729F33E81002F9AF3 /* Controllers */,
 			);
 			path = ToDoTasks;
+			sourceTree = "<group>";
+		};
+		B5C941B729F33E81002F9AF3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */,
+				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
+				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
+				B5C941B829F33EB2002F9AF3 /* Support */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B5C941B829F33EB2002F9AF3 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */,
+				B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */,
+				B5C9418729F2A800002F9AF3 /* Assets.xcassets */,
+				B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */,
+				B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */,
+				B5C9418C29F2A800002F9AF3 /* Info.plist */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +159,9 @@
 				Base,
 			);
 			mainGroup = B5C9417229F2A7FE002F9AF3;
+			packageReferences = (
+				B5C941BB29F9802B002F9AF3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B5C9417C29F2A7FE002F9AF3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,6 +178,7 @@
 			files = (
 				B5C9418B29F2A800002F9AF3 /* LaunchScreen.storyboard in Resources */,
 				B5C9418829F2A800002F9AF3 /* Assets.xcassets in Resources */,
+				B5C941B529F33A3B002F9AF3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
+				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
 				B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */,
 				B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */,
 				B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */,
@@ -420,6 +447,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B5C941BB29F9802B002F9AF3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 9.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = B5C9417329F2A7FE002F9AF3 /* Project object */;
 }
