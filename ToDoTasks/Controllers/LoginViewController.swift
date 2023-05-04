@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     var mainLabel: UILabel = {
@@ -20,9 +21,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var errorLabel: UILabel = {
         var errorLabel = UILabel()
         errorLabel.text = "this user is not registered"
+        errorLabel.alpha = 0
         errorLabel.font = UIFont.systemFont(ofSize: 20)
         errorLabel.textColor = UIColor.red
-        errorLabel.isHidden = true
         return errorLabel
     }()
     
@@ -69,7 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.shadowOpacity = 0.3
         loginButton.layer.shadowRadius = 5
         loginButton.layer.shadowColor = UIColor.black.cgColor
-        loginButton.addTarget(self, action: #selector(goToTableViewAction), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(LoginAction), for: .touchUpInside)
         return loginButton
     }()
     
@@ -82,6 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         registerButton.tintColor = .white
         registerButton.backgroundColor = .clear
         registerButton.layer.cornerRadius = 5
+        registerButton.addTarget(self, action: #selector(goToRegisterViewController), for: .touchUpInside)
         return registerButton
     }()
     
@@ -153,8 +155,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(CommonStackView)
         
         constraints()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                let tableViewController = TaskViewController()
+                self.navigationController?.pushViewController(tableViewController, animated: true)
+            }
+        }
         
     }//end wiewDidLoad
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nameTextField.text = nil
+        passwordTextField.text = nil
+    }
     
     //    func ShowAndHideKeyboardMetods() {
     //        NotificationCenter.default.addObserver(self, selector: #selector(didShow), name: UIResponder.keyboardDidShowNotification, object: nil)
@@ -188,9 +201,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    @objc func goToTableViewAction() {
-        let tableViewController = TaskViewController()
-        self.navigationController?.pushViewController(tableViewController, animated: true)
+    func errorWithAnimation(text: String) {
+        errorLabel.text = text
+        
+        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
+            //self.errorLabel.text = "Error occured"
+            self.errorLabel.alpha = 1.0
+        } completion: { complete in
+            self.errorLabel.alpha = 0.0
+        }
+    }
+    
+    @objc func LoginAction() {
+        guard let name = nameTextField.text, let password = passwordTextField.text, name != "", password != "" else {
+            errorWithAnimation(text: "Password or login are empty!")
+            return
+        }
+        Auth.auth().signIn(withEmail: name, password: password) { (user, error) in
+            if user != nil {
+                let tableViewController = TaskViewController()
+                self.navigationController?.pushViewController(tableViewController, animated: true)
+                return
+            }
+            
+            if error != nil {
+                self.errorWithAnimation(text: "Email or password wrong!")
+                return
+            }
+            //self.errorWithAnimation(text: "There is no such user!")
+        }
+    }
+    
+    @objc func goToRegisterViewController() {
+        let registerVC = RegisterViewController()
+        self.navigationController?.pushViewController(registerVC, animated: true)
     }
 }
 

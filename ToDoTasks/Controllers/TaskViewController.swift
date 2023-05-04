@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
@@ -19,14 +20,30 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
+    
+//    private var barButtonItem: UINavigationItem = {
+//        var barButton = UIBarButt
+//
+//        return barButton
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTableView.delegate = self
         taskTableView.dataSource = self
         view.addSubview(taskTableView)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
+        
     }
-    
+    @objc func leftBarButtonItemTapped() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+        navigationController?.popToRootViewController(animated: true)
+        //navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
 extension TaskViewController {
     
