@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
         return errorLabel
     }()
     
-    var nameTextField: UITextField = {
+    var emailTextField: UITextField = {
         var nameTextField = UITextField()
         nameTextField.placeholder = "Email"
         nameTextField.borderStyle = .roundedRect
@@ -72,7 +72,7 @@ class RegisterViewController: UIViewController {
     lazy var stackView: UIStackView = {
         var stackView = UIStackView()
         //stackView.addArrangedSubview(errorLabel)
-        stackView.addArrangedSubview(nameTextField)
+        stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(passwordTextField)
        // stackView.addArrangedSubview(registerButton)
         stackView.axis = .vertical
@@ -86,7 +86,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
         view.addSubview(errorLabel)
-        view.addSubview(nameTextField)
+        view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(registerButton)
         view.addSubview(stackView)
@@ -104,12 +104,15 @@ class RegisterViewController: UIViewController {
         }
     }
     @objc func registerAction() {
-        guard let name = nameTextField.text, let password = passwordTextField.text, name != "", password != "" else {
-            self.errorWithAnimation(text: "Password or login are empty!")
+        guard let mail = emailTextField.text, let password = passwordTextField.text, mail != "", password != "" else {
+            errorWithAnimation(text: "Password or login are empty!")
             return
         }
         
-        Auth.auth().createUser(withEmail: name, password: password) { (user, error) in
+        guard mail.isValidated(validityType: .email), password.isValidated(validityType: .password) else { errorWithAnimation(text: "validation failed!")
+            return }
+        
+        Auth.auth().createUser(withEmail: mail, password: password) { (user, error) in
             if user != nil {
                 let tableViewController = TaskViewController()
                 self.navigationController?.pushViewController(tableViewController, animated: true)

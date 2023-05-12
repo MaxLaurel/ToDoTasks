@@ -27,18 +27,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return errorLabel
     }()
     
-    var nameTextField: UITextField = {
-        var nameTextField = UITextField()
-        nameTextField.placeholder = "Email"
-        nameTextField.borderStyle = .roundedRect
-        nameTextField.textColor = .black
-        nameTextField.font = UIFont.init(name: "Al Nile", size: 20)
-        nameTextField.textAlignment = .center
-        nameTextField.autocorrectionType = .no
-        nameTextField.returnKeyType = .done
-        nameTextField.clearButtonMode = .whileEditing
-        nameTextField.keyboardType = .emailAddress
-        return nameTextField
+    var emailTextField: UITextField = {
+        var emailTextField = UITextField()
+        emailTextField.placeholder = "Email"
+        emailTextField.borderStyle = .roundedRect
+        emailTextField.textColor = .black
+        emailTextField.font = UIFont.init(name: "Al Nile", size: 20)
+        emailTextField.textAlignment = .center
+        emailTextField.autocorrectionType = .no
+        emailTextField.returnKeyType = .done
+        emailTextField.clearButtonMode = .whileEditing
+        emailTextField.keyboardType = .emailAddress
+        return emailTextField
     }()
     
     var passwordTextField: UITextField = {
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     lazy var stackView2: UIStackView = {
         var stackView2 = UIStackView()
-        stackView2.addArrangedSubview(nameTextField)
+        stackView2.addArrangedSubview(emailTextField)
         stackView2.addArrangedSubview(passwordTextField)
         stackView2.axis = .vertical
         stackView2.alignment = .fill
@@ -136,7 +136,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         nameTextFieldGestureRecognizer()
-        nameTextField.delegate = self
+        emailTextField.delegate = self
         passwordTextField.delegate = self
         
         view.backgroundColor = .systemBlue
@@ -144,7 +144,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(errorLabel)
         view.addSubview(stackView)
         
-        view.addSubview(nameTextField)
+        view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(stackView2)
         
@@ -165,7 +165,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }//end wiewDidLoad
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nameTextField.text = nil
+        emailTextField.text = nil
         passwordTextField.text = nil
     }
     
@@ -187,7 +187,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this metod and add textfields to resign first responder
-        nameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true
     }
@@ -213,11 +213,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func LoginAction() {
-        guard let name = nameTextField.text, let password = passwordTextField.text, name != "", password != "" else {
+        guard let emailTextField = emailTextField.text, let password = passwordTextField.text, emailTextField != "", password != "" else {
             errorWithAnimation(text: "Password or login are empty!")
             return
         }
-        Auth.auth().signIn(withEmail: name, password: password) { (user, error) in
+      
+        Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
                 let tableViewController = TaskViewController()
                 self.navigationController?.pushViewController(tableViewController, animated: true)
@@ -231,6 +232,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //self.errorWithAnimation(text: "There is no such user!")
         }
     }
+
     
     @objc func goToRegisterViewController() {
         let registerVC = RegisterViewController()
