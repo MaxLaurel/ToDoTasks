@@ -124,6 +124,31 @@ class RegisterViewController: UIViewController {
             }
         }
     }
+    enum ValidityType {
+        case password
+        case email
+    }
+    
+    struct Regex {
+        var password = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,25}$"
+        var email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    }
+    
+    func isValidated(validityType: ValidityType) -> Bool {
+        
+        var regex = ""
+        
+        if validityType == .email {
+            let mailRegex = Regex()
+            regex = mailRegex.email
+        } else if validityType == .password {
+            let passwordRegex = Regex()
+            regex = passwordRegex.password
+        }
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: self)
+        
+    }
+
 }
 extension RegisterViewController {
     func constraints() {
