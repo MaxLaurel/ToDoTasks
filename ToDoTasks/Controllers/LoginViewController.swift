@@ -10,7 +10,7 @@ import Firebase
 
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    
+    print("made some code")
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
