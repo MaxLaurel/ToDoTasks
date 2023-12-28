@@ -164,7 +164,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         nameTextFieldGestureRecognizer()
-        GestureRecognizer()
+        //GestureRecognizer()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
