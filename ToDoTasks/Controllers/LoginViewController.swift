@@ -9,7 +9,10 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    var mainLabel: UILabel = {
+ //////////////////////
+    ///????????????????
+    ///myBranch//////
+    private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
         mainLabel.font = UIFont(name: "Al Nile", size: 100)
@@ -18,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return mainLabel
     }()
     
-    var errorLabel: UILabel = {
+    private var errorLabel: UILabel = {
         var errorLabel = UILabel()
         errorLabel.text = "this user is not registered"
         errorLabel.alpha = 0
@@ -27,7 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return errorLabel
     }()
     
-    var emailTextField: UITextField = {
+    private var emailTextField: UITextField = {
         var emailTextField = UITextField()
         emailTextField.placeholder = "Email"
         emailTextField.borderStyle = .roundedRect
@@ -41,7 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return emailTextField
     }()
     
-    var passwordTextField: UITextField = {
+    private var passwordTextField: UITextField = {
         var passwordTextField = UITextField()
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
@@ -55,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return passwordTextField
     }()
     
-    var loginButton: UIButton = {
+    private var loginButton: UIButton = {
         var loginButton = UIButton()
         loginButton.backgroundColor = .black
         loginButton.alpha = 0.3
@@ -74,20 +77,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return loginButton
     }()
     
-    var registerButton: UIButton = {
+    private var registerButton: UIButton = {
         var registerButton = UIButton()
-        registerButton.setTitle(" Register", for: .normal)
+        registerButton.setTitle(" Sign Up", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
-        registerButton.titleLabel?.font = .systemFont(ofSize: 27, weight: .light)
+        registerButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
         registerButton.setImage(UIImage(systemName: "person.crop.circle.fill.badge.plus"), for: .normal)
         registerButton.tintColor = .white
         registerButton.backgroundColor = .clear
         registerButton.layer.cornerRadius = 5
-        registerButton.addTarget(self, action: #selector(goToRegisterViewController), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(registerViewControllerAction), for: .touchUpInside)
         return registerButton
     }()
     
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         var stackView = UIStackView()
         stackView.addArrangedSubview(mainLabel)
         stackView.addArrangedSubview(errorLabel)
@@ -98,7 +101,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return stackView
     }()
     
-    lazy var stackView2: UIStackView = {
+    private lazy var stackView2: UIStackView = {
         var stackView2 = UIStackView()
         stackView2.addArrangedSubview(emailTextField)
         stackView2.addArrangedSubview(passwordTextField)
@@ -109,18 +112,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return stackView2
     }()
     
-    lazy var stackView3: UIStackView = {
+    private lazy var stackView3: UIStackView = {
         var stackView3 = UIStackView()
         stackView3.addArrangedSubview(loginButton)
         stackView3.addArrangedSubview(registerButton)
         stackView3.distribution = .fillEqually
-        stackView3.spacing = 10
+        stackView3.spacing = 5
         stackView3.axis = .vertical
         //stackView3.alignment = .fill
         return stackView3
     }()
     
-    lazy var CommonStackView: UIStackView = {
+    private lazy var CommonStackView: UIStackView = {
         var stackView4 = UIStackView()
         stackView4.addArrangedSubview(stackView)
         stackView4.addArrangedSubview(stackView2)
@@ -131,11 +134,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         stackView4.alignment = .center
         return stackView4
     }()
+    private var forgotPasswordButton: UIButton = {
+        var forgotPasswordButton = UIButton()
+        //forgotPasswordButton.backgroundColor = .black
+        //forgotPasswordButton.alpha = 0.3
+        forgotPasswordButton.layer.opacity = 0.5
+        forgotPasswordButton.setTitle("I forgot my password", for: .normal)
+        forgotPasswordButton.setTitleColor(.white, for: .normal)
+        //forgotPasswordButton.titleLabel?.font = .systemFont(ofSize: 20)
+        forgotPasswordButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        //forgotPasswordButton.setImage(UIImage(systemName: "arrow.forward.square"), for: .normal)
+        forgotPasswordButton.tintColor = .white
+        //forgotPasswordButton.layer.cornerRadius = 5
+        //forgotPasswordButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        //forgotPasswordButton.layer.shadowOpacity = 0.3
+        //forgotPasswordButton.layer.shadowRadius = 5
+        //forgotPasswordButton.layer.shadowColor = UIColor.black.cgColor
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordAction), for: .touchUpInside)
+        return forgotPasswordButton
+    }()
+    
+    private lazy var overlayView: UIView = {
+        var overlayView = UIButton()
+        overlayView.frame = view.bounds
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        return overlayView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nameTextFieldGestureRecognizer()
+        //GestureRecognizer()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -150,6 +180,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         view.addSubview(loginButton)
         view.addSubview(registerButton)
+        view.addSubview(forgotPasswordButton)
         view.addSubview(stackView3)
         
         view.addSubview(CommonStackView)
@@ -161,13 +192,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.navigationController?.pushViewController(tableViewController, animated: true)
             }
         }
-        
     }//end wiewDidLoad
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         emailTextField.text = nil
         passwordTextField.text = nil
     }
+    
     
     //    func ShowAndHideKeyboardMetods() {
     //        NotificationCenter.default.addObserver(self, selector: #selector(didShow), name: UIResponder.keyboardDidShowNotification, object: nil)
@@ -192,7 +224,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func nameTextFieldGestureRecognizer() {//force to close textfield when tap outside of it
+    private func nameTextFieldGestureRecognizer() {//force to close textfield when tap outside of it
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfTextfield))
         view.addGestureRecognizer(gestureRecognizer)
     }
@@ -200,8 +232,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func outOfTextfield() {//objc metod for nameTextFieldGestureRecognizer
         view.endEditing(true)
     }
+    private func GestureRecognizer() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfView))
+        view.addGestureRecognizer(gestureRecognizer)
+    }
     
-    func errorWithAnimation(text: String) {
+    @objc func outOfView() {
+        overlayView.removeFromSuperview()
+        view.endEditing(true)
+    }
+    
+    private func errorWithAnimation(text: String) {
         errorLabel.text = text
         
         UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
@@ -217,7 +258,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             errorWithAnimation(text: "Password or login are empty!")
             return
         }
-      
+        
         Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
                 let tableViewController = TaskViewController()
@@ -232,16 +273,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //self.errorWithAnimation(text: "There is no such user!")
         }
     }
-
     
-    @objc func goToRegisterViewController() {
+    
+    @objc func registerViewControllerAction() {
         let registerVC = RegisterViewController()
         self.navigationController?.pushViewController(registerVC, animated: true)
     }
+    
+    
+    @objc func forgotPasswordAction() {
+        let customVC = ForgotPasswordViewController()
+        customVC.loginViewController = self
+        present(customVC, animated: true, completion: nil)
+        
+        UIView.animate(withDuration: 1.0) {
+            self.view.alpha = 0.5
+        }
+    }
 }
-
 extension LoginViewController {
-    func constraints() {
+    private func constraints() {
+        
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         // stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         //stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
@@ -263,6 +316,12 @@ extension LoginViewController {
         CommonStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         //stackView4.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
         // stackView4.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        forgotPasswordButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //forgotPasswordButton.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        forgotPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
     }
 }
 
