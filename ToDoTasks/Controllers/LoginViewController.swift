@@ -10,7 +10,7 @@ import Firebase
 
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    print("made some code")
+ 
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
@@ -281,7 +281,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func forgotPasswordAction() {
-        var customVC = ForgotPasswordViewController()
+        let customVC = ForgotPasswordViewController()
         customVC.loginViewController = self
         present(customVC, animated: true, completion: nil)
         
