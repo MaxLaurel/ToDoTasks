@@ -55,7 +55,7 @@ class RegisterViewController: UIViewController {
         var registerButton = UIButton()
         registerButton.backgroundColor = .black
         registerButton.layer.opacity = 0.5
-        registerButton.setTitle(" register", for: .normal)
+        registerButton.setTitle(" Sign Up", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.titleLabel?.font = .systemFont(ofSize: 27)
         registerButton.setImage(UIImage(systemName: "person.badge.plus"), for: .normal)
