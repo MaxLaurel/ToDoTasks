@@ -11,8 +11,11 @@ import Firebase
 class LoginViewController: UIViewController, UITextFieldDelegate {
  //////////////////////
     ///????????????????
-    ///git feature/178//
-    ///want to push to main
+<<<<<<< HEAD
+    ///git feature/178
+=======
+    ///myBranch//////
+>>>>>>> 14f65050770b96386c745fd41767c3422191c7c3
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
