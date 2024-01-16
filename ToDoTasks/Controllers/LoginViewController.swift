@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-///Hey its a new trainee comm
+///Hey its a new trlkjnlknlnl
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
