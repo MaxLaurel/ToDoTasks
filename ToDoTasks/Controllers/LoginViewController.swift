@@ -9,15 +9,15 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-///Hey its a traineeCommit
+///Hey its a new trainee comm
     private var mainLabel: UILabel = {
-//        var mainLabel = UILabel()
-//        mainLabel.text = "ToDoTask"
-//        mainLabel.font = UIFont(name: "Al Nile", size: 100)
-//        mainLabel.font = UIFont.boldSystemFont(ofSize: 60)
-//        mainLabel.textColor = .white
-//        return mainLabel
-//    }()
+        var mainLabel = UILabel()
+        mainLabel.text = "ToDoTask"
+        mainLabel.font = UIFont(name: "Al Nile", size: 100)
+        mainLabel.font = UIFont.boldSystemFont(ofSize: 60)
+        mainLabel.textColor = .white
+        return mainLabel
+    }()
     
     private var errorLabel: UILabel = {
         var errorLabel = UILabel()
