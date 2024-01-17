@@ -9,14 +9,13 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-klklklggvgfffkkknknnnk
-    ;.;,
+    
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
         mainLabel.font = UIFont(name: "Al Nile", size: 100)
         mainLabel.font = UIFont.boldSystemFont(ofSize: 60)
-        mainLabel.textColor = .white
+        mainLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return mainLabel
     }()
     
@@ -25,7 +24,7 @@ klklklggvgfffkkknknnnk
         errorLabel.text = "this user is not registered"
         errorLabel.alpha = 0
         errorLabel.font = UIFont.systemFont(ofSize: 20)
-        errorLabel.textColor = UIColor.red
+        errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         return errorLabel
     }()
     
@@ -33,7 +32,7 @@ klklklggvgfffkkknknnnk
         var emailTextField = UITextField()
         emailTextField.placeholder = "Email"
         emailTextField.borderStyle = .roundedRect
-        emailTextField.textColor = .black
+        emailTextField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         emailTextField.font = UIFont.init(name: "Al Nile", size: 20)
         emailTextField.textAlignment = .center
         emailTextField.autocorrectionType = .no
@@ -47,7 +46,7 @@ klklklggvgfffkkknknnnk
         var passwordTextField = UITextField()
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
-        passwordTextField.textColor = .black
+        passwordTextField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         passwordTextField.font = UIFont.init(name: "Al Nile", size: 20)
         passwordTextField.textAlignment = .center
         passwordTextField.autocorrectionType = .no
@@ -59,14 +58,14 @@ klklklggvgfffkkknknnnk
     
     private var loginButton: UIButton = {
         var loginButton = UIButton()
-        loginButton.backgroundColor = .black
+        loginButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         loginButton.alpha = 0.3
         loginButton.layer.opacity = 0.5
         loginButton.setTitle(" log in", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.titleLabel?.font = .systemFont(ofSize: 27)
         loginButton.setImage(UIImage(systemName: "arrow.forward.square"), for: .normal)
-        loginButton.tintColor = .white
+        loginButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         loginButton.layer.cornerRadius = 5
         loginButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         loginButton.layer.shadowOpacity = 0.3
@@ -83,7 +82,7 @@ klklklggvgfffkkknknnnk
         registerButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
         registerButton.setImage(UIImage(systemName: "person.crop.circle.fill.badge.plus"), for: .normal)
         registerButton.tintColor = .white
-        registerButton.backgroundColor = .clear
+        registerButton.backgroundColor = .systemBlue
         registerButton.layer.cornerRadius = 5
         registerButton.addTarget(self, action: #selector(registerViewControllerAction), for: .touchUpInside)
         return registerButton
@@ -133,6 +132,7 @@ klklklggvgfffkkknknnnk
         stackView4.alignment = .center
         return stackView4
     }()
+    
     private var forgotPasswordButton: UIButton = {
         var forgotPasswordButton = UIButton()
         //forgotPasswordButton.backgroundColor = .black
@@ -143,7 +143,7 @@ klklklggvgfffkkknknnnk
         //forgotPasswordButton.titleLabel?.font = .systemFont(ofSize: 20)
         forgotPasswordButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         //forgotPasswordButton.setImage(UIImage(systemName: "arrow.forward.square"), for: .normal)
-        forgotPasswordButton.tintColor = .white
+        forgotPasswordButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //forgotPasswordButton.layer.cornerRadius = 5
         //forgotPasswordButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         //forgotPasswordButton.layer.shadowOpacity = 0.3
@@ -281,12 +281,14 @@ klklklggvgfffkkknknnnk
     
     
     @objc func forgotPasswordAction() {
-        let customVC = ForgotPasswordViewController()
-        customVC.loginViewController = self
-        present(customVC, animated: true, completion: nil)
-        
-        UIView.animate(withDuration: 1.0) {
-            self.view.alpha = 0.5
+        guard let emailTextfield = emailTextField.text, emailTextfield != "", emailTextfield.isValidated(validityType: .email) else {
+            errorWithAnimation(text: "Your email could be wrong")
+            return
+        }
+        Auth.auth().sendPasswordReset(withEmail: emailTextfield) { error in
+            if error == nil {
+                self.errorWithAnimation(text: "Information to reset was sent to your email")
+            }
         }
     }
 }
