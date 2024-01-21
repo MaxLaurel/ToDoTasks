@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     var errorLabel: UILabel = {
         var errorLabel = UILabel()
@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
         return errorLabel
     }()
     
-    var emailTextField: UITextField = {
+  var emailTextField: UITextField = {
         var nameTextField = UITextField()
         nameTextField.placeholder = "Email"
         nameTextField.borderStyle = .roundedRect
@@ -47,7 +47,7 @@ class RegisterViewController: UIViewController {
         passwordTextField.autocorrectionType = .no
         passwordTextField.keyboardType = .default
         passwordTextField.clearButtonMode = .whileEditing
-        passwordTextField.returnKeyType = .send
+        passwordTextField.returnKeyType = .done
         return passwordTextField
     }()
     
@@ -85,12 +85,32 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
+        
+        emailTextField.delegate = self//delegate for working textFieldShouldReturn (for done button)
+        passwordTextField.delegate = self//delegate for working textFieldShouldReturn (for done button)
+        
         view.addSubview(errorLabel)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(registerButton)
         view.addSubview(stackView)
-        constraints()
+        GestureRecognizer()
+        AddConstraints()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this metod and add textfields to resign first responder (Done will be working correctly)
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return true
+    }
+    private func GestureRecognizer() {//while tap out of textfields
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.outOfView))
+        view.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc func outOfView() {
+        //overlayView.removeFromSuperview()
+        view.endEditing(true)
     }
     
     func errorWithAnimation(text: String) {
@@ -103,6 +123,7 @@ class RegisterViewController: UIViewController {
             self.errorLabel.alpha = 0.0
         }
     }
+    
     @objc func registerAction() {
         guard let mail = emailTextField.text, let password = passwordTextField.text, mail != "", password != "" else {
             errorWithAnimation(text: "Password or login are empty!")
@@ -124,34 +145,10 @@ class RegisterViewController: UIViewController {
             }
         }
     }
-    enum ValidityType {
-        case password
-        case email
-    }
-    
-    struct Regex {
-        var password = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,25}$"
-        var email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-    }
-    
-    func isValidated(validityType: ValidityType) -> Bool {
-        
-        var regex = ""
-        
-        if validityType == .email {
-            let mailRegex = Regex()
-            regex = mailRegex.email
-        } else if validityType == .password {
-            let passwordRegex = Regex()
-            regex = passwordRegex.password
-        }
-        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: self)
-        
-    }
 
 }
 extension RegisterViewController {
-    func constraints() {
+    func AddConstraints() {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
