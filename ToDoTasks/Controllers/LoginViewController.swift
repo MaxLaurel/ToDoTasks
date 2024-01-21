@@ -152,19 +152,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordAction), for: .touchUpInside)
         return forgotPasswordButton
     }()
-    
-    private lazy var overlayView: UIView = {
-        var overlayView = UIButton()
-        overlayView.frame = view.bounds
-        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        return overlayView
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameTextFieldGestureRecognizer()
-        //GestureRecognizer()
+        GestureRecognizer()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -184,7 +176,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         view.addSubview(CommonStackView)
         
-        constraints()
+        addConstraints()
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 let tableViewController = TaskViewController()
@@ -198,7 +190,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.text = nil
         passwordTextField.text = nil
     }
-    
     
     //    func ShowAndHideKeyboardMetods() {
     //        NotificationCenter.default.addObserver(self, selector: #selector(didShow), name: UIResponder.keyboardDidShowNotification, object: nil)
@@ -223,21 +214,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    private func nameTextFieldGestureRecognizer() {//force to close textfield when tap outside of it
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfTextfield))
-        view.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    @objc func outOfTextfield() {//objc metod for nameTextFieldGestureRecognizer
-        view.endEditing(true)
-    }
     private func GestureRecognizer() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfView))
         view.addGestureRecognizer(gestureRecognizer)
     }
     
     @objc func outOfView() {
-        overlayView.removeFromSuperview()
         view.endEditing(true)
     }
     
@@ -293,7 +275,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 }
 extension LoginViewController {
-    private func constraints() {
+    private func addConstraints() {
         
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
