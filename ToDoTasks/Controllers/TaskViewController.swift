@@ -21,11 +21,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tableView
     }()
     
-//    private var barButtonItem: UINavigationItem = {
-//        var barButton = UIBarButt
-//
-//        return barButton
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +39,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.popToRootViewController(animated: true)
         //navigationController?.dismiss(animated: true, completion: nil)
     }
+    
 }
 extension TaskViewController {
     
