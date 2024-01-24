@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 struct Task {
     var taskName: String
     var description: String
-    var taskID: String
+    var taskID: String?
     
-    init(taskName: String, description: String, taskID: String) {
+    init(taskName: String, description: String, taskID: String?) {
         self.taskName = taskName
         self.description = description
         self.taskID = taskID
