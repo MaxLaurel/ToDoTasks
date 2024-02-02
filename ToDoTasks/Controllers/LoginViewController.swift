@@ -191,23 +191,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.text = nil
     }
     
-    //    func ShowAndHideKeyboardMetods() {
-    //        NotificationCenter.default.addObserver(self, selector: #selector(didShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-    //        NotificationCenter.default.addObserver(self, selector: #selector(didHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-    //    }
-    
-    //    @objc func didShow(notification: Notification) {
-    //           guard let userInfo = notification.userInfo else {return}
-    //           let userFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue//это словарь значение которого имеет тип any, но any нам не нужен, поэтому кастим до NSValue. и далее чтобы получить само значение заключаем в скобки весь userinfo и превращаем его в cgRectValue. То есть на выходу константа userFrame должна иметь тип cgRectValue чтобы взять у этого прямогульника высоту
-    //
-    //        (self.view as! UIScrollView).contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + userFrame.height)
-    //
-    //       }
-    
-    //    @objc func didHide(){
-    //        (self.view as! UIScrollView).contentSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)//здесь оставляем стандартную высоту скроллвью когда он клавиатура будет спрятана
-    //    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this metod and add textfields to resign first responder
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
