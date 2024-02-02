@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		563956B3049B1EA60EF231B5 /* Pods_ToDoTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */; };
+		B533A8752B5D74ED00448BBC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533A8742B5D74ED00448BBC /* Task.swift */; };
 		B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */; };
 		B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */; };
 		B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B533A8742B5D74ED00448BBC /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B533A8732B5D74A200448BBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B533A8742B5D74ED00448BBC /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B5C9417229F2A7FE002F9AF3 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
+				B533A8732B5D74A200448BBC /* Model */,
 				B5F7A30F2A0E2F1300EF0447 /* Extensions */,
 				B5C941B729F33E81002F9AF3 /* Controllers */,
 			);
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B533A8752B5D74ED00448BBC /* Task.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
 				B5F7A3132A13AFA600EF0447 /* ForgotPasswordViewController.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
