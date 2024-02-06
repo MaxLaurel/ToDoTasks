@@ -34,11 +34,16 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     private lazy var alertController: UIAlertController = {
-        let alertController = UIAlertController(title: "AddTask", message: nil, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "add", style: .default) { action in
+        let alertController = UIAlertController(title: "AddTask",
+                                                message: nil,
+                                                preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "add",
+                                     style: .default) { action in
             self.addTaskToDatabase()
         }
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "cancel",
+                                         style: .cancel,
+                                         handler: nil)
         
         alertController.addTextField { textfield in
             textfield.placeholder = "add name of your task"
@@ -55,6 +60,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
         taskTableView.delegate = self
         taskTableView.dataSource = self
         view.addSubview(taskTableView)
@@ -67,6 +73,8 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                                                             target: self,
                                                             action: #selector(rightBurButtonItemTapped))
         taskObserver()
+        taskTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+    
     }
     
     @objc func leftBarButtonItemTapped() {
@@ -97,9 +105,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     func taskObserver() {
-        self.tableViewTasks.removeAll()
+        tableViewTasks.removeAll()
         let taskReference = DataBaseRef.child("users").child(currentUser!).child("tasks")
-        taskReference.observe(DataEventType.value) { snapshot in
+        taskReference.observe(DataEventType.value) { [self] snapshot in
             for child in snapshot.children {
                 guard let childSnapshot = child as? DataSnapshot,
                       let dictValue = childSnapshot.value as? [String: Any],
@@ -109,11 +117,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let task = Task(taskName: title, description: description, taskID: taskID)
                 
-                if !self.tableViewTasks.contains(where: { $0.taskID == taskID }) {
-                    self.tableViewTasks.append(task)
+                if !tableViewTasks.contains(where: { $0.taskID == taskID }) {
+                    tableViewTasks.append(task)
                 }
                 
-                self.taskTableView.reloadData()
+                taskTableView.reloadData()
             }
             
             
@@ -127,9 +135,24 @@ extension TaskViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let task = tableViewTasks[indexPath.row].taskName
-        cell.textLabel?.text = task
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        let task = tableViewTasks[indexPath.row]
+        cell.taskTitleLabel.text = task.taskName
+        cell.descriptionTaskLabel.text = task.description
+        cell.configureConstraints()
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70.0
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //нужно написать логику удаления объектов из файрбэйз
+            tableViewTasks.remove(at: indexPath.row)
+        }
     }
 }
