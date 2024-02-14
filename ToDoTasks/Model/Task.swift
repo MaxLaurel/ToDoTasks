@@ -12,6 +12,7 @@ struct Task {
     var taskName: String
     var description: String
     var taskID: String?
+    var isCompleted = false
     
     init(taskName: String, description: String, taskID: String?) {
         self.taskName = taskName
