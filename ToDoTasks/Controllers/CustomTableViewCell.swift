@@ -19,6 +19,19 @@ class CustomTableViewCell: UITableViewCell {
         return descriptionTaskLabel
     }()
     
+   lazy var deleteButton: UIButton = {
+       let deleteButton = UIButton()
+        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
+        return deleteButton
+    }()
+    
+    var deleteButtonClouser: (() -> Void)?
+    
+    @objc func deleteButtonAction() {
+        deleteButtonClouser?()
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
          super.init(style: style, reuseIdentifier: reuseIdentifier)
          
@@ -41,10 +54,21 @@ class CustomTableViewCell: UITableViewCell {
         descriptionTaskLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
         descriptionTaskLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100).isActive = true
         descriptionTaskLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
+        
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+//        deleteButton.leadingAnchor.constraint(equalTo: descriptionTaskLabel.leadingAnchor, constant: )
+        deleteButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
+        deleteButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+
+        
     }
     
     func setSubviev() {
         addSubview(taskTitleLabel)
         addSubview(descriptionTaskLabel)
+        addSubview(deleteButton)
     }
 }
