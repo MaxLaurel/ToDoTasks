@@ -17,6 +17,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     let dataBaseRef = Database.database().reference()
     let currentUser = Auth.auth().currentUser?.uid
     var arrayOfTasks: [Task] = []
+
     
     
     
@@ -31,10 +32,12 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private lazy var alertController: UIAlertController = {
         let alertController = UIAlertController(title: "AddTask", message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        
         let okAction = UIAlertAction(title: "add", style: .default) { action in
             self.addTaskToDatabase()
         }
-        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         
         alertController.addTextField { textfield in
             textfield.placeholder = "add name of your task"
@@ -60,12 +63,45 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "AddTask", style: UIBarButtonItem.Style.plain, target: self, action: #selector(rightBurButtonItemTapped))
         
+        
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         taskTableView.addGestureRecognizer(longPressGestureRecognizer)
         
         taskObserver()
         
         taskTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func setAlertController(indexPath: IndexPath?) {
+        
+        let alertController = UIAlertController(title: "AddTask", message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        if let indexPath = indexPath {
+            let editAction = UIAlertAction(title: "edit", style: .default) { action in
+                //метод UpdateValue
+            }
+            alertController.addTextField { textfield in
+                textfield.placeholder = "edit name of your task"
+            }
+            alertController.addTextField { textfield in
+                textfield.placeholder = "edit description of your task"
+            }
+        } else {
+            let okAction = UIAlertAction(title: "add", style: .default) { action in
+                self.addTaskToDatabase()
+            }
+            alertController.addAction(okAction)
+            
+            alertController.addTextField { textfield in
+                textfield.placeholder = "add name of your task"
+            }
+            alertController.addTextField { textfield in
+                textfield.placeholder = "describe your task"
+            }
+        }
     }
     
     @objc func leftBarButtonItemTapped() {
@@ -79,7 +115,8 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func rightBurButtonItemTapped() {
-        present(alertController, animated: true, completion: nil)
+        setAlertController(indexPath: nil)
+        //present(alertController, animated: true, completion: nil)
     }
     
     func addTaskToDatabase() {
@@ -144,20 +181,26 @@ extension TaskViewController {
     //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     //        return true
     //    }
+    //MARK: конфигурация и экшены для свайпа справа
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: "Edit", handler: <#T##UIContextualAction.Handler#>)
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
-            let IndexTaskToRemove = arrayOfTasks[indexPath.row]
-            guard let currentUser = currentUser, let taskID = IndexTaskToRemove.taskID else { return }
-            let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (actiion, view, complition) in
+            
+            let task = self.arrayOfTasks[indexPath.row]
+            self.taskTableView.setEditing(true, animated: true)
+            guard let cell = self.taskTableView.cellForRow(at: indexPath) as? CustomTableViewCell else {return}
+            // let alert = self.alertController
+            cell.becomeFirstResponder()
+            self.setAlertController(indexPath: nil)
+            
+            //            guard let currentUser = self.currentUser, let task = task.taskID else {return}
+            //            let taskReference = self.dataBaseRef.child("users").child(currentUser).child("tasks").child(task).child("description")
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completion in
+            let IndexTaskToRemove = self.arrayOfTasks[indexPath.row]
+            guard let currentUser = self.currentUser, let taskID = IndexTaskToRemove.taskID else { return }
+            let taskReference = self.dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
             
             taskReference.removeValue { error, reference in
                 if error != nil {
@@ -166,10 +209,38 @@ extension TaskViewController {
                     self.arrayOfTasks.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 }
-                
             }
         }
+        deleteAction.image = UIImage(systemName: "trash.slash")
+        editAction.image = UIImage(systemName: "square.and.pencil")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
+    //MARK: эти методы уже не актуальны так как разработали кастомные экшены для свайпов
+    //    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    //        return .delete
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //
+    //        if editingStyle == .delete {
+    //            let IndexTaskToRemove = arrayOfTasks[indexPath.row]
+    //            guard let currentUser = currentUser, let taskID = IndexTaskToRemove.taskID else { return }
+    //            let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
+    //
+    //            taskReference.removeValue { error, reference in
+    //                if error != nil {
+    //                    print(error?.localizedDescription)
+    //                } else {
+    //                    self.arrayOfTasks.remove(at: indexPath.row)
+    //                    tableView.deleteRows(at: [indexPath], with: .fade)
+    //                }
+    //
+    //            }
+    //        }
+    //    }
     //MARK: по тапу на ячейку ставится/снимается галочка указывающая на выполнение задачи
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = arrayOfTasks[indexPath.row]
@@ -240,6 +311,7 @@ extension TaskViewController {
 extension TaskViewController: UIContextMenuInteractionDelegate {
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        
         
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let like = UIAction(title: "Like", image: UIImage(systemName: "hand.thumbsup")) { _ in
