@@ -12,43 +12,29 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate{
     
     let dataBaseRef = Database.database().reference()
     let currentUser = Auth.auth().currentUser?.uid
-    var tableViewTasks: [Task] = []
+    var arrayOfTasks: [Task] = []
+    
+    
     
     private lazy var taskTableView: UITableView = {
         var tableView = UITableView()
         tableView.frame = view.bounds
         tableView.separatorStyle = .singleLine
-        //tableView.separatorColor = .gray
-//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 1))
-//        footerView.backgroundColor = .clear
-//        tableView.tableFooterView = footerView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
     
-    private var rightBurButtonItem: UIBarButtonItem = {
-        var rightBurButtonItem = UIBarButtonItem(title: "AddTask",
-                                                 style: UIBarButtonItem.Style.plain ,
-                                                 target: self,
-                                                 action: #selector(rightBurButtonItemTapped))
-        return rightBurButtonItem
-    }()
     
     private lazy var alertController: UIAlertController = {
-        let alertController = UIAlertController(title: "AddTask",
-                                                message: nil,
-                                                preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "add",
-                                     style: .default) { action in
+        let alertController = UIAlertController(title: "AddTask", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "add", style: .default) { action in
             self.addTaskToDatabase()
         }
-        let cancelAction = UIAlertAction(title: "cancel",
-                                         style: .cancel,
-                                         handler: nil)
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         
         alertController.addTextField { textfield in
             textfield.placeholder = "add name of your task"
@@ -62,24 +48,24 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return alertController
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         taskTableView.delegate = self
         taskTableView.dataSource = self
-        view.addSubview(taskTableView)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign out",
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(leftBarButtonItemTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "AddTask",
-                                                            style: UIBarButtonItem.Style.plain,
-                                                            target: self,
-                                                            action: #selector(rightBurButtonItemTapped))
-        taskObserver()
-        taskTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        view.addSubview(taskTableView)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "AddTask", style: UIBarButtonItem.Style.plain, target: self, action: #selector(rightBurButtonItemTapped))
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        taskTableView.addGestureRecognizer(longPressGestureRecognizer)
+        
+        taskObserver()
+        
+        taskTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     @objc func leftBarButtonItemTapped() {
@@ -111,7 +97,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func taskObserver() {
-        tableViewTasks.removeAll()
+        arrayOfTasks.removeAll()
         let taskReference = dataBaseRef.child("users").child(currentUser!).child("tasks")
         taskReference.observe(DataEventType.value) { [self] snapshot in
             for child in snapshot.children {
@@ -123,38 +109,29 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let task = Task(taskName: title, description: description, taskID: taskID)
                 
-                if !tableViewTasks.contains(where: { $0.taskID == taskID }) {
-                    tableViewTasks.append(task)
+                if !arrayOfTasks.contains(where: { $0.taskID == taskID }) {
+                    arrayOfTasks.append(task)
                 }
                 
                 taskTableView.reloadData()
             }
         }
     }
-   
+    
 }
 extension TaskViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewTasks.count
+        return arrayOfTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        let task = tableViewTasks[indexPath.row]
+        let task = arrayOfTasks[indexPath.row]
+        //cell.task = task // Устанавливаем значение task для ячейки
         cell.taskTitleLabel.text = task.taskName
         cell.descriptionTaskLabel.text = task.description
-        
-//MARK: с этим клоужером ниже на удаление ячейки нужно разобраться
-//        cell.deleteButtonClouser = { [weak self] in
-//            guard let self = self else {return}
-//            guard let indexPathForCell = tableView.indexPath(for: cell) else {return}
-//            self.tableViewTasks.remove(at: indexPathForCell.row)
-//            tableView.deleteRows(at: [indexPathForCell], with: .fade)
-//            self.taskTableView.reloadData()
-       // }
         toggleCompletion(cell: cell, isCompleted: task.isCompleted)
-        
         cell.configureConstraints()
         return cell
     }
@@ -163,43 +140,56 @@ extension TaskViewController {
         70.0
     }
     
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
+    //MARK: метод снизуне понятно длячего нужно разобраться
+    //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    //        return true
+    //    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .normal, title: "Edit", handler: <#T##UIContextualAction.Handler#>)
+    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
-            //нужно написать логику удаления объектов из файрбэйз
-            //tableViewTasks.remove(at: indexPath.row)
-            let task = tableViewTasks[indexPath.row]
-            tableViewTasks.remove(at: indexPath.row)
+            let IndexTaskToRemove = arrayOfTasks[indexPath.row]
+            guard let currentUser = currentUser, let taskID = IndexTaskToRemove.taskID else { return }
+            let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
+            
+            taskReference.removeValue { error, reference in
+                if error != nil {
+                    print(error?.localizedDescription)
+                } else {
+                    self.arrayOfTasks.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+                
+            }
         }
     }
-    
+    //MARK: по тапу на ячейку ставится/снимается галочка указывающая на выполнение задачи
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let task = tableViewTasks[indexPath.row]
+        let task = arrayOfTasks[indexPath.row]
         let isCompleted = !task.isCompleted
-
+        
         guard let currentUser = currentUser, let taskId = task.taskID else { return }
-
+        
         let reference = dataBaseRef.child("users").child(currentUser).child("tasks").child(taskId)
-
+        
         reference.observeSingleEvent(of: .value) { snapshot in
             guard let taskDict = snapshot.value as? [String: Any],
                   let isCompletedValue = taskDict["isCompleted"] as? Bool else { return }
             let revertIsCompleted = !isCompletedValue
+            
             reference.updateChildValues(["isCompleted": revertIsCompleted]) { (error, _) in
                 if let error = error {
                     print("Error updating isCompleted: \(error.localizedDescription)")
                     return
                 }
-                // Update the model
-                self.tableViewTasks[indexPath.row].isCompleted = revertIsCompleted
-                // Reload only the selected row
+                self.arrayOfTasks[indexPath.row].isCompleted = revertIsCompleted
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
@@ -209,5 +199,69 @@ extension TaskViewController {
         cell.accessoryType = isCompleted ? .checkmark : .none
     }
     
+    //MARK: реализация долгого нажатия на ячейку
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            print("Long press recognized")
+            
+            let touchPoint = sender.location(in: taskTableView)
+            if let indexPath = taskTableView.indexPathForRow(at: touchPoint) {
+                //setupPopover(for: indexPath) - здесь вызываем поповер при длительном нажатии на ячейку
+                requestContextMenu(indexPath: indexPath) //вызываем контекстное меню при долгом нажатии на ячейку
+            }
+        }
+    }
+    func setupPopover(for indexPath: IndexPath) {
+        let popOver = PopoverViewController()
+        popOver.modalPresentationStyle = .popover
+        popOver.preferredContentSize = CGSize(width: 250, height: 150)
+        
+        guard let popOverVC = popOver.popoverPresentationController, let cell = taskTableView.cellForRow(at: indexPath) else {return}
+        
+        popOverVC.sourceView = cell
+        popOverVC.permittedArrowDirections = []
+        let screenWidth = UIScreen.main.bounds.width
+        let sourceRectX = screenWidth - 50
+        popOverVC.sourceRect = CGRect(x: sourceRectX, y: 100, width: 0, height: 0)
+        popOverVC.delegate = popOver
+        
+        present(popOver, animated: true, completion: nil)
+    }
+    
+    func requestContextMenu(indexPath: IndexPath) {
+        let contextMenu = UIContextMenuInteraction(delegate: self)
+        
+        guard let cell = taskTableView.cellForRow(at: indexPath ) else {return}
+        cell.addInteraction(contextMenu)
+        
+        
+    }
 }
+extension TaskViewController: UIContextMenuInteractionDelegate {
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let like = UIAction(title: "Like", image: UIImage(systemName: "hand.thumbsup")) { _ in
+                print("like")
+            }
+            
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.slash"), attributes: .destructive) { _ in
+                print("delete")
+            }
+            let recalculate = UIAction(title: "recalculate", image: UIImage(systemName: "plus.forwardslash.minus")) { _ in
+                print("recalkulated")
+            }
+            
+            let compensate = UIAction(title: "Compensate", image: UIImage(systemName: "tree.circle")) { _ in
+                print("compensated")
+            }
+            let menuForCompensate = UIMenu(title: "ways to compensate", options: .displayInline, children: [compensate])
+            
+            return UIMenu.init(title: "ContextMenu", children: [menuForCompensate, like, recalculate, delete ])
+        }
+        return configuration
+    }
+}
+
 
