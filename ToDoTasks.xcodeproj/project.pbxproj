@@ -10,6 +10,7 @@
 		563956B3049B1EA60EF231B5 /* Pods_ToDoTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */; };
 		B533A8752B5D74ED00448BBC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533A8742B5D74ED00448BBC /* Task.swift */; };
 		B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */; };
+		B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C42F22B81FB610065A547 /* PopoverViewController.swift */; };
 		B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */; };
 		B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */; };
 		B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		B533A8742B5D74ED00448BBC /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		B55C42F22B81FB610065A547 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
 				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
 				B5F7A3122A13AFA600EF0447 /* ForgotPasswordViewController.swift */,
+				B55C42F22B81FB610065A547 /* PopoverViewController.swift */,
 				B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */,
 				B5C941B829F33EB2002F9AF3 /* Support */,
 			);
@@ -261,6 +264,7 @@
 			files = (
 				B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */,
 				B533A8752B5D74ED00448BBC /* Task.swift in Sources */,
+				B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
 				B5F7A3132A13AFA600EF0447 /* ForgotPasswordViewController.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
