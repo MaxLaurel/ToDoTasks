@@ -10,6 +10,8 @@
 		563956B3049B1EA60EF231B5 /* Pods_ToDoTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */; };
 		B533A8752B5D74ED00448BBC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533A8742B5D74ED00448BBC /* Task.swift */; };
 		B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */; };
+		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
+		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
 		B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C42F22B81FB610065A547 /* PopoverViewController.swift */; };
 		B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */; };
 		B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */; };
@@ -20,12 +22,13 @@
 		B5C941B529F33A3B002F9AF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */; };
 		B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */; };
 		B5F7A3112A0E2F3C00EF0447 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A3102A0E2F3C00EF0447 /* Validation.swift */; };
-		B5F7A3132A13AFA600EF0447 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A3122A13AFA600EF0447 /* ForgotPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B533A8742B5D74ED00448BBC /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
+		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 		B55C42F22B81FB610065A547 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,7 +41,6 @@
 		B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B5F7A3102A0E2F3C00EF0447 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
-		B5F7A3122A13AFA600EF0447 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		D32298015B7A17F71FD2C1AC /* Pods-ToDoTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTasks.release.xcconfig"; path = "Target Support Files/Pods-ToDoTasks/Pods-ToDoTasks.release.xcconfig"; sourceTree = "<group>"; };
 		E2D17BDC7AD196DFD4677DD3 /* Pods-ToDoTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTasks.debug.xcconfig"; path = "Target Support Files/Pods-ToDoTasks/Pods-ToDoTasks.debug.xcconfig"; sourceTree = "<group>"; };
 		EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,9 +117,10 @@
 				B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */,
 				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
 				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
-				B5F7A3122A13AFA600EF0447 /* ForgotPasswordViewController.swift */,
 				B55C42F22B81FB610065A547 /* PopoverViewController.swift */,
 				B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */,
+				B55C27952B9C862A003A3DBA /* CalculationViewController.swift */,
+				B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */,
 				B5C941B829F33EB2002F9AF3 /* Support */,
 			);
 			path = Controllers;
@@ -263,10 +266,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */,
+				B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */,
 				B533A8752B5D74ED00448BBC /* Task.swift in Sources */,
 				B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
-				B5F7A3132A13AFA600EF0447 /* ForgotPasswordViewController.swift in Sources */,
+				B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
 				B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */,
 				B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */,
@@ -411,8 +415,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SHG8TR3AU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoTasks/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -425,8 +431,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MaxLaurel.ToDoTasks;
+				PRODUCT_BUNDLE_IDENTIFIER = MaxLaurel.ToDoTasks1uhu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -439,8 +446,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SHG8TR3AU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoTasks/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,8 +462,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MaxLaurel.ToDoTasks;
+				PRODUCT_BUNDLE_IDENTIFIER = MaxLaurel.ToDoTasks1uhu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
