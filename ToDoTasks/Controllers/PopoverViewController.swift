@@ -7,17 +7,15 @@
 
 import UIKit
 
-class PopoverViewController: UIViewController {
+class PopoverViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        
-    }
 
-}
-extension PopoverViewController: UIPopoverPresentationControllerDelegate {
+    }
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        .none
+        return UIModalPresentationStyle.none
     }
 }

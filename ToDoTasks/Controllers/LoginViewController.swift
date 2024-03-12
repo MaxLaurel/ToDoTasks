@@ -152,9 +152,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordAction), for: .touchUpInside)
         return forgotPasswordButton
     }()
+    
+//    lazy var tabBarViewController: UITabBarController = {
+//        
+//        let tabBarViewController = UITabBarController()
+//       // tabBarViewController.tabBar.isTranslucent = false
+//        
+//        let tableViewController = TaskViewController()
+//        let taskNavController = UINavigationController(rootViewController: tableViewController)
+//        
+////        let loginViewController = LoginViewController()
+////        let loginTabBarController = UINavigationController(rootViewController: loginViewController)
+//        
+//        let calculateViewController = CalculationViewController()
+//        let calculateNavBarController = UINavigationController(rootViewController: calculateViewController)
+//        
+//        tabBarViewController.viewControllers = [taskNavController, calculateNavBarController]
+//        tabBarViewController.selectedViewController = taskNavController
+//        
+//        taskNavController.tabBarItem = UITabBarItem(title: "tasks", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 0)
+//        taskNavController.tabBarItem.badgeValue = "\(tableViewController.arrayOfTasks.count)"
+//        taskNavController.tabBarItem.badgeColor = .systemGreen
+////        loginTabBarController.tabBarItem = UITabBarItem.init(title: "logOut", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 1)
+//        calculateNavBarController.tabBarItem = UITabBarItem(title: "calculate", image: UIImage(systemName: "arrow.forward.square"), tag: 2)
+//        
+//        tabBarViewController.tabBar.tintColor = UIColor(red: 0.7, green: 0.5, blue: 0.5, alpha: 1)
+//        tabBarViewController.tabBar.unselectedItemTintColor = UIColor(red: 0.5, green: 0.7, blue: 0.5, alpha: 1)
+//        tabBarViewController.tabBar.backgroundColor = UIColor(white: 1, alpha: 1)
+//        return tabBarViewController
+//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Login"
         
         GestureRecognizer()
         emailTextField.delegate = self
@@ -180,10 +211,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 let tableViewController = TaskViewController()
+//                self.navigationController?.pushViewController(self.tabBarViewController, animated: true)
                 self.navigationController?.pushViewController(tableViewController, animated: true)
             }
         }
-    }//end wiewDidLoad
+    }
+    //end wiewDidLoad
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -226,7 +259,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
                 let tableViewController = TaskViewController()
-                self.navigationController?.pushViewController(tableViewController, animated: true)
+               
+//                self.navigationController?.pushViewController(self.tabBarViewController, animated: true)
+              self.navigationController?.pushViewController(tableViewController, animated: true)
                 return
             }
             
