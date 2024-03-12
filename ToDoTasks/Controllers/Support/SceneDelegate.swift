@@ -13,48 +13,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-     
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
             window = UIWindow(windowScene: windowScene)
             let initialViewController = LoginViewController()
-        
-        
-        let tabBarViewController = UITabBarController()
-
-        //tabBarViewController.tabBar.isTranslucent = false
-        
-        let loginViewController = LoginViewController()
-        let loginTabBarController = UINavigationController(rootViewController: loginViewController)
-        //loginTabBarController.hidesBottomBarWhenPushed = true
-       // loginTabBarController.tabBarController?.tabBar.isHidden = true
-        
-
-        let tableViewController = TaskViewController()
-        let taskNavController = UINavigationController(rootViewController: tableViewController)
-
-        let calculateViewController = CalculationViewController()
-        let calculateNavBarController = UINavigationController(rootViewController: calculateViewController)
-
-        tabBarViewController.viewControllers = [loginTabBarController, taskNavController, calculateNavBarController]
-        tabBarViewController.selectedViewController = loginTabBarController
-       //tableViewController.tabBarController?.tabBar.isHidden = true
-        
-
-        taskNavController.tabBarItem = UITabBarItem(title: "tasks", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 0)
-        taskNavController.tabBarItem.badgeValue = "\(tableViewController.arrayOfTasks.count)"
-        taskNavController.tabBarItem.badgeColor = .systemGreen
-        
-        loginTabBarController.tabBarItem = UITabBarItem.init(title: "log In", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 1)
-        
-        calculateNavBarController.tabBarItem = UITabBarItem.init(title: "calculate", image: UIImage.init(systemName: "arrow.forward.square"), tag: 2)
-
-
-        tabBarViewController.tabBar.tintColor = UIColor.init(red: 0.7, green: 0.5, blue: 0.5, alpha: 1)
-        tabBarViewController.tabBar.unselectedItemTintColor = UIColor.init(red: 0.5, green: 0.7, blue: 0.5, alpha: 1)
-        tabBarViewController.tabBar.backgroundColor = UIColor.init(white: 1, alpha: 1)
-
-        
-            let navigationViewController = UINavigationController(rootViewController: tabBarViewController)
+            let navigationViewController = UINavigationController(rootViewController: initialViewController)
             window?.rootViewController = navigationViewController
             window?.makeKeyAndVisible()
     }
