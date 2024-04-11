@@ -19,6 +19,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     let currentUser = Auth.auth().currentUser?.uid
     var arrayOfTasks: [Task] = []
     var selectedIndexPath: IndexPath?
+    weak var taskViewControllerCoordinator: TaskViewControllerCoordinator?
     
     private lazy var taskTableView: UITableView = {
         var tableView = UITableView()
@@ -49,6 +50,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     lazy var leftBarButtonItem: UIBarButtonItem = {
         var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
         return leftBarButtonItem
+    }()
+    
+    lazy var accountBarButtonItem: UIBarButtonItem = {
+        var accountBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .done, target: self, action: #selector(accountBarButtonItemTapped))
+        return accountBarButtonItem
     }()
     
     lazy var rightBarButtonItem: UIBarButtonItem = {
@@ -84,9 +90,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         view.addSubview(taskTableView)
         
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        
+        navigationItem.setLeftBarButtonItems([leftBarButtonItem, accountBarButtonItem], animated: true)
         navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationController?.navigationBar.tintColor = .systemGreen
+        
+        
         
         taskTableView.addGestureRecognizer(longPressGestureRecognizer)
         
@@ -105,8 +113,13 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let loginVC = LoginViewController()
         print("gggggggggggg")
         navigationController?.popToRootViewController(animated: true)
-       // navigationController?.pushViewController(loginVC, animated: true)
-        
+    }
+    
+    @objc func accountBarButtonItemTapped() {
+        var accountViewController = UIViewController()
+        accountViewController.view.backgroundColor = .white
+        present(accountViewController, animated: true)
+        present(taskAlertController, animated: true, completion: nil)
     }
     
     @objc func rightBurButtonItemTapped() {

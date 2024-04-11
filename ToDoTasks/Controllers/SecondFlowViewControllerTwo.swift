@@ -11,8 +11,8 @@ class SecondFlowViewControllerTwo: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.title = "SecondFlowViewControllerTwo"
+        self.view.backgroundColor = .white
     }
     
 

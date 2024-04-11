@@ -7,23 +7,21 @@
 
 import UIKit
 
-class CoordinatorFactory: UIViewController {
+class CoordinatorFactory {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    func createAppCoordinator(navigationController: UINavigationController) -> AppCoordinator {
+        AppCoordinator(navigationController: navigationController)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func createLoginCoordinator(navigationController: UINavigationController) -> LoginViewControllerCoordinator {
+        LoginViewControllerCoordinator(navigationController: navigationController)
     }
-    */
-
+    
+    func createTabBarControllerCoordinator(navigationController: UIViewController) -> TabBarControllerCoordinator {
+        TabBarControllerCoordinator(navigationController: navigationController as! UINavigationController )
+    }
+    
+    func createCalculateCoordinator(navigationController: UINavigationController) -> CalculateControllerCoordinator {
+        CalculateControllerCoordinator(navigationController: navigationController)
+    }
 }

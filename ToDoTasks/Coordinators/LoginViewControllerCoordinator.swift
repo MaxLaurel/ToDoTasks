@@ -8,7 +8,10 @@
 import Foundation
 import UIKit
 
-class LoginViewControllerCoordinator: BaseCoordinator {
+class LoginViewControllerCoordinator: Coordinator {
+    
+    var coordinators: [Coordinator] = []
+    var moduleFactory = ModuleFactory()
     
     let navigationController: UINavigationController
     
@@ -16,8 +19,9 @@ class LoginViewControllerCoordinator: BaseCoordinator {
         self.navigationController = navigationController
     }
     
-    override func start() {
-        let loginViewController = LoginViewController()
+     func start() {
+       // let loginViewController = LoginViewController()
+        let loginViewController = moduleFactory.createLoginViewController()
         loginViewController.loginViewControllerCoordinator = self
         navigationController.pushViewController(loginViewController, animated: true)
     }

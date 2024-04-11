@@ -7,23 +7,32 @@
 
 import UIKit
 
-class CalculateControllerCoordinator: UIViewController {
+class CalculateControllerCoordinator: Coordinator {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var moduleFactoru = ModuleFactory()
+    var coordinators: [Coordinator] = []
+    
+    let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func start() {
+        print("111")
     }
-    */
-
+    
+//    func startCalculateFlow() {
+//        let flowCalculationController = moduleFactoru.createSecondFlowViewControllerOne()
+//        //let calculateController = CalculationViewController()
+//        flowCalculationController.calculateControllerCoordinator = self
+//        navigationController.pushViewController(flowCalculationController, animated: true)
+//    }
+    
+//    func startSecondFlow() {
+//        let secondFlowController = SecondFlowViewControllerOne()
+//        secondFlowController.calculateControllerCoordinator = self
+//        navigationController.pushViewController(secondFlowController, animated: true)
+//    }
 }
