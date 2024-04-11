@@ -9,6 +9,21 @@
 /* Begin PBXBuildFile section */
 		563956B3049B1EA60EF231B5 /* Pods_ToDoTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */; };
 		B533A8752B5D74ED00448BBC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533A8742B5D74ED00448BBC /* Task.swift */; };
+		B54A31142BB6FFF00000536A /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A31132BB6FFF00000536A /* ModuleFactory.swift */; };
+		B54A31162BB70B500000536A /* FlowCalculationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A31152BB70B500000536A /* FlowCalculationCoordinator.swift */; };
+		B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */; };
+		B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF22BA5F5A600044609 /* AppCoordinator.swift */; };
+		B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */; };
+		B550ECF72BA60CE900044609 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF62BA60CE900044609 /* TabBarController.swift */; };
+		B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */; };
+		B550ECFD2BADD71B00044609 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECFC2BADD71B00044609 /* main.swift */; };
+		B550ECFF2BAF6DDF00044609 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECFE2BAF6DDE00044609 /* InfoViewController.swift */; };
+		B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */; };
+		B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED022BB092DF00044609 /* CalculateControllerCoordinator.swift */; };
+		B550ED052BB09BC500044609 /* InfoViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED042BB09BC500044609 /* InfoViewController2.swift */; };
+		B550ED072BB0A3B600044609 /* SecondFlowViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED062BB0A3B600044609 /* SecondFlowViewControllerOne.swift */; };
+		B550ED092BB0A46B00044609 /* SecondFlowViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED082BB0A46B00044609 /* SecondFlowViewControllerTwo.swift */; };
+		B550ED0C2BB6E13A00044609 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED0B2BB6E13A00044609 /* CoordinatorFactory.swift */; };
 		B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */; };
 		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
 		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
@@ -26,6 +41,21 @@
 
 /* Begin PBXFileReference section */
 		B533A8742B5D74ED00448BBC /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B54A31132BB6FFF00000536A /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		B54A31152BB70B500000536A /* FlowCalculationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCalculationCoordinator.swift; sourceTree = "<group>"; };
+		B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolCoordinator.swift; sourceTree = "<group>"; };
+		B550ECF22BA5F5A600044609 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerCoordinator.swift; sourceTree = "<group>"; };
+		B550ECF62BA60CE900044609 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerCoordinator.swift; sourceTree = "<group>"; };
+		B550ECFC2BADD71B00044609 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B550ECFE2BAF6DDE00044609 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewControllerCoordinator.swift; sourceTree = "<group>"; };
+		B550ED022BB092DF00044609 /* CalculateControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateControllerCoordinator.swift; sourceTree = "<group>"; };
+		B550ED042BB09BC500044609 /* InfoViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController2.swift; sourceTree = "<group>"; };
+		B550ED062BB0A3B600044609 /* SecondFlowViewControllerOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFlowViewControllerOne.swift; sourceTree = "<group>"; };
+		B550ED082BB0A46B00044609 /* SecondFlowViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFlowViewControllerTwo.swift; sourceTree = "<group>"; };
+		B550ED0B2BB6E13A00044609 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
 		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +113,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B550ECED2BA5E11C00044609 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */,
+				B550ECF22BA5F5A600044609 /* AppCoordinator.swift */,
+				B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */,
+				B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */,
+				B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */,
+				B550ED022BB092DF00044609 /* CalculateControllerCoordinator.swift */,
+				B54A31152BB70B500000536A /* FlowCalculationCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		B550ED0A2BB6E0CB00044609 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				B550ED0B2BB6E13A00044609 /* CoordinatorFactory.swift */,
+				B54A31132BB6FFF00000536A /* ModuleFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		B5C9417229F2A7FE002F9AF3 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +157,8 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
+				B550ED0A2BB6E0CB00044609 /* Factories */,
+				B550ECED2BA5E11C00044609 /* Coordinators */,
 				B533A8732B5D74A200448BBC /* Model */,
 				B5F7A30F2A0E2F1300EF0447 /* Extensions */,
 				B5C941B729F33E81002F9AF3 /* Controllers */,
@@ -116,11 +171,16 @@
 			children = (
 				B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */,
 				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
+				B550ECF62BA60CE900044609 /* TabBarController.swift */,
 				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
-				B55C42F22B81FB610065A547 /* PopoverViewController.swift */,
 				B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */,
 				B55C27952B9C862A003A3DBA /* CalculationViewController.swift */,
 				B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */,
+				B55C42F22B81FB610065A547 /* PopoverViewController.swift */,
+				B550ECFE2BAF6DDE00044609 /* InfoViewController.swift */,
+				B550ED042BB09BC500044609 /* InfoViewController2.swift */,
+				B550ED062BB0A3B600044609 /* SecondFlowViewControllerOne.swift */,
+				B550ED082BB0A46B00044609 /* SecondFlowViewControllerTwo.swift */,
 				B5C941B829F33EB2002F9AF3 /* Support */,
 			);
 			path = Controllers;
@@ -135,6 +195,7 @@
 				B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */,
 				B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */,
 				B5C9418C29F2A800002F9AF3 /* Info.plist */,
+				B550ECFC2BADD71B00044609 /* main.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -265,14 +326,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B550ECFD2BADD71B00044609 /* main.swift in Sources */,
+				B550ECFF2BAF6DDF00044609 /* InfoViewController.swift in Sources */,
+				B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */,
+				B550ED092BB0A46B00044609 /* SecondFlowViewControllerTwo.swift in Sources */,
 				B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */,
 				B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */,
 				B533A8752B5D74ED00448BBC /* Task.swift in Sources */,
+				B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */,
 				B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */,
+				B550ED072BB0A3B600044609 /* SecondFlowViewControllerOne.swift in Sources */,
+				B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
+				B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */,
+				B550ECF72BA60CE900044609 /* TabBarController.swift in Sources */,
+				B550ED052BB09BC500044609 /* InfoViewController2.swift in Sources */,
+				B550ED0C2BB6E13A00044609 /* CoordinatorFactory.swift in Sources */,
 				B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */,
+				B54A31142BB6FFF00000536A /* ModuleFactory.swift in Sources */,
+				B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */,
+				B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
 				B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */,
+				B54A31162BB70B500000536A /* FlowCalculationCoordinator.swift in Sources */,
 				B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */,
 				B5F7A3112A0E2F3C00EF0447 /* Validation.swift in Sources */,
 				B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */,
