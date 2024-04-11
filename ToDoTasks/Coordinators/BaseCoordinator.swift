@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class BaseCoordinator: Coordinator {
+    var coordinators: [Coordinator] = []
+    
+    func start() {
+        fatalError("Child should implement function")
+    }
+}

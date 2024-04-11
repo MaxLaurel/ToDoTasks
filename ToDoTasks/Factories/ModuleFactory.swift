@@ -9,21 +9,19 @@ import UIKit
 
 class ModuleFactory: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    func createLoginViewController() -> LoginViewController {
+        return LoginViewController()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func createTabBarController() -> TabBarController {
+        return TabBarController()
     }
-    */
-
+    
+    func createSecondFlowViewControllerOne() -> SecondFlowViewControllerOne {
+        return SecondFlowViewControllerOne()
+    }
+    
+    func createSecondFlowViewControllerTwo() -> SecondFlowViewControllerTwo {
+        return SecondFlowViewControllerTwo()
+    }
 }

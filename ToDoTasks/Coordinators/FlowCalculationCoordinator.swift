@@ -7,23 +7,26 @@
 
 import UIKit
 
-class FlowCalculationCoordinator: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class FlowCalculationCoordinator: Coordinator {
+    var coordinators: [Coordinator] = []
+    
+    let moduleFactory = ModuleFactory()
+    
+    let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func start() {
+        startCalculationFlow()
     }
-    */
-
+    
+    func startCalculationFlow() {
+        let secondFlowViewControllerOne = moduleFactory.createSecondFlowViewControllerOne()
+        secondFlowViewControllerOne.calculateControllerCoordinator = self
+        navigationController.pushViewController(secondFlowViewControllerOne, animated: true)
+    }
+    
+    
 }
