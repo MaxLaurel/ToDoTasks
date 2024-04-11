@@ -61,9 +61,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         loginButton.alpha = 0.3
         loginButton.layer.opacity = 0.5
-        loginButton.setTitle(" log in", for: .normal)
+        loginButton.setTitle(" Log in", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
-        loginButton.titleLabel?.font = .systemFont(ofSize: 27)
+        loginButton.titleLabel?.font = .systemFont(ofSize: 25)
         loginButton.setImage(UIImage(systemName: "arrow.forward.square"), for: .normal)
         loginButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         loginButton.layer.cornerRadius = 5
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         var registerButton = UIButton()
         registerButton.setTitle(" Sign Up", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
-        registerButton.titleLabel?.font = .systemFont(ofSize: 24, weight: .light)
+        registerButton.titleLabel?.font = .systemFont(ofSize: 25, weight: .light)
         registerButton.setImage(UIImage(systemName: "person.crop.circle.fill.badge.plus"), for: .normal)
         registerButton.tintColor = .white
         registerButton.backgroundColor = .systemBlue
@@ -181,12 +181,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        tabBarViewController.tabBar.backgroundColor = UIColor(white: 1, alpha: 1)
 //        return tabBarViewController
 //    }()
+    
+  weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
+    weak var tabBarControllerCoordinator: TabBarControllerCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Login"
-        
+           
         GestureRecognizer()
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -208,13 +209,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(CommonStackView)
         
         addConstraints()
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                let tableViewController = TaskViewController()
+//        Auth.auth().addStateDidChangeListener { auth, user in
+//            if user != nil {
+//                let tableViewController = TaskViewController()
 //                self.navigationController?.pushViewController(self.tabBarViewController, animated: true)
-                self.navigationController?.pushViewController(tableViewController, animated: true)
-            }
-        }
+//                self.navigationController?.pushViewController(tableViewController, animated: true)
+//            }
+//        }
     }
     //end wiewDidLoad
     
@@ -258,10 +259,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
-                let tableViewController = TaskViewController()
+
+                let taskTabBarController = TabBarController()
+                taskTabBarController.taskTabBarControllerCoordinator?.start()
+                //self.tabBarControllerCoordinator?.start()
                
-//                self.navigationController?.pushViewController(self.tabBarViewController, animated: true)
-              self.navigationController?.pushViewController(tableViewController, animated: true)
+               
+                //self.navigationController?.pushViewController(taskTabBarController, animated: true)
                 return
             }
             
