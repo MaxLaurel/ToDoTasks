@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1320"
+   LastUpgradeVersion = "1500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD28B439BE8B17D9339D9B526F144347"
-               BuildableName = "FirebaseAppCheckInterop.framework"
+               BuildableName = "FirebaseAppCheckInterop"
                BlueprintName = "FirebaseAppCheckInterop"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseDatabase
+import Firebase
 
 struct Task {
     var taskName: String

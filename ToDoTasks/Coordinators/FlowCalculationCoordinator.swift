@@ -10,7 +10,7 @@ import UIKit
 class FlowCalculationCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     
-    let moduleFactory = ModuleFactory()
+    let viewControllerFactory = ViewControllerFactory()
     
     let navigationController: UINavigationController
     
@@ -23,7 +23,7 @@ class FlowCalculationCoordinator: Coordinator {
     }
     
     func startCalculationFlow() {
-        let secondFlowViewControllerOne = moduleFactory.createSecondFlowViewControllerOne()
+        let secondFlowViewControllerOne = viewControllerFactory.createSecondFlowViewControllerOne()
         secondFlowViewControllerOne.calculateControllerCoordinator = self
         navigationController.pushViewController(secondFlowViewControllerOne, animated: true)
     }

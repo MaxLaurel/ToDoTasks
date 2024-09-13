@@ -82,10 +82,10 @@ class CalculationViewController: UIViewController {
     //    }
     
     @objc func goToNext() {
-        let secondFlowCalculatorCoordunator = FlowCalculationCoordinator(navigationController: navController)
-        secondFlowCalculatorCoordunator.startCalculationFlow()
-        //        let secondFlowVC = SecondFlowViewControllerOne()
-        navigationController?.pushViewController(secondFlowCalculatorCoordunator, animated: true)
+//        let secondFlowCalculatorCoordunator = FlowCalculationCoordinator(navigationController: navController)
+//        secondFlowCalculatorCoordunator.startCalculationFlow()
+                let newsViewController = YouTubeNewsTableViewController()
+        navigationController?.pushViewController(newsViewController, animated: true)
     }
     
 }

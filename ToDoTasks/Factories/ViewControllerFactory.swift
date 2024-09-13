@@ -32,4 +32,9 @@ class ViewControllerFactory: UIViewController {
     func createSecondFlowViewControllerTwo() -> SecondFlowViewControllerTwo {
         return SecondFlowViewControllerTwo()
     }
+    
+    func createNewsViewController() -> YouTubeNewsTableViewController {
+        return YouTubeNewsTableViewController()
+        
+    }
 }

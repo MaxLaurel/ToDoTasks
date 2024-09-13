@@ -8,8 +8,8 @@
 import UIKit
 
 class CalculateControllerCoordinator: Coordinator {
-
-    var moduleFactoru = ModuleFactory()
+    
+    var viewControllerFactory = ViewControllerFactory()
     var coordinators: [Coordinator] = []
     
     let navigationController: UINavigationController
@@ -20,19 +20,8 @@ class CalculateControllerCoordinator: Coordinator {
     
     
     func start() {
-        print("111")
+        let calculationViewController = viewControllerFactory.createCalculateViewController()
+        calculationViewController.calculateControllerCoordinator = self
+        navigationController.pushViewController(calculationViewController, animated: true)
     }
-    
-//    func startCalculateFlow() {
-//        let flowCalculationController = moduleFactoru.createSecondFlowViewControllerOne()
-//        //let calculateController = CalculationViewController()
-//        flowCalculationController.calculateControllerCoordinator = self
-//        navigationController.pushViewController(flowCalculationController, animated: true)
-//    }
-    
-//    func startSecondFlow() {
-//        let secondFlowController = SecondFlowViewControllerOne()
-//        secondFlowController.calculateControllerCoordinator = self
-//        navigationController.pushViewController(secondFlowController, animated: true)
-//    }
 }

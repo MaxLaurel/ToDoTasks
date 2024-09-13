@@ -11,14 +11,16 @@ class TaskViewControllerCoordinator: Coordinator {
     
     var coordinators: [Coordinator] = []
 
-        let navigationController: UINavigationController
+    let navigationController: UINavigationController
+    
+    var viewControllerFactory = ViewControllerFactory()
         
         init(navigationController: UINavigationController) {
             self.navigationController = navigationController
         }
         
         func start() {
-            let taskViewController = TaskViewController()
+            let taskViewController = viewControllerFactory.createTaskViewController()
             taskViewController.taskViewControllerCoordinator = self
             navigationController.pushViewController(taskViewController, animated: true)
     }

@@ -261,11 +261,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if user != nil {
 
                 let taskTabBarController = TabBarController()
-                taskTabBarController.taskTabBarControllerCoordinator?.start()
+                taskTabBarController.tabBarControllerCoordinator?.start()
                 //self.tabBarControllerCoordinator?.start()
                
-               
-                //self.navigationController?.pushViewController(taskTabBarController, animated: true)
+//                self.navigationController?.pushViewController(taskTabBarController, animated: true)
                 return
             }
             

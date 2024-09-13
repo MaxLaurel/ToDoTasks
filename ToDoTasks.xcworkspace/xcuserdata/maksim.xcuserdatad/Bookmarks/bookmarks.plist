@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>ToDoTasks/ToDoTasks/Controllers/RegisterViewController.swift</string>
+					</dict>
+				</dict>
+				<key>type</key>
+				<string>DVTDocumentLocation</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>156</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>155</string>
+					<key>Timestamp</key>
+					<string>737833855.375177</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>ToDoTasks/ToDoTasks/Controllers/RegisterViewController.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        
+    }
+</string>
+				<key>trailing</key>
+				<string>
+extension RegisterViewController {
+    func AddConstraints() {
+</string>
+			</dict>
+			<key>title</key>
+			<string>нужно сделать полноценное описание ошибки типа "строка должна содержать 5 символов 1 спец знак..." </string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>156</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>155</string>
+					<key>Timestamp</key>
+					<string>737833855.375213</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>ToDoTasks/ToDoTasks/Controllers/RegisterViewController.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        
+    }
+</string>
+				<key>trailing</key>
+				<string>
+extension RegisterViewController {
+    func AddConstraints() {
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>ToDoTasks/ToDoTasks/Controllers/RegisterViewController.swift</string>
+					</dict>
+				</dict>
+				<key>type</key>
+				<string>DVTDocumentLocation</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>199</string>
+					<key>EndingLineNumber</key>
+					<string>132</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>130</string>
+					<key>Timestamp</key>
+					<string>738768025.81172</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>ToDoTasks/ToDoTasks/Controllers/RegisterViewController.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        guard mail.isValidated(validityType: .email) else {return errorWithAnimation(text: "Пожалуйста, введите действительный адрес электронной почты в формате example@example.com")}
+                
+        guard password.isValidated(validityType: .password) else { return errorWithAnimation(text: "Пароль должен содержать хотя бы одну букву, хотя бы одну цифру и быть длиной от 6 до 25 символов.")</string>
+				<key>leading</key>
+				<string>        }
+        
+</string>
+				<key>trailing</key>
+				<string>}
+        
+        // Проверяем существует ли email
+</string>
+			</dict>
+			<key>title</key>
+			<string>нужно расписать при каких условиях должна проходить валидация чтобы пользователь не путался что он ввел не так</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>15</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>14</string>
+					<key>Timestamp</key>
+					<string>740218748.998386</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>ToDoTasks/ToDoTasks/Service/Service2.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>//                if let jsonString = String(data: data, encoding: .utf8) {
+</string>
+				<key>leading</key>
+				<string>                completion(nil)
+            case .success(let data):
+</string>
+				<key>trailing</key>
+				<string>//                    print("JSON Response: \(jsonString)")
+//                }
+                do {
+</string>
+			</dict>
+			<key>title</key>
+			<string>Позволяет проверить приходят ли JSON данные до того как парсить их(печатает все в консоли)</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>

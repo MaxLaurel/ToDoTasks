@@ -9,7 +9,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 import FirebaseAuth
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
@@ -110,13 +110,12 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         } catch {
             print(error.localizedDescription)
         }
-        let loginVC = LoginViewController()
-        print("gggggggggggg")
+        //let loginVC = LoginViewController()
         navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func accountBarButtonItemTapped() {
-        var accountViewController = UIViewController()
+        let accountViewController = UIViewController()
         accountViewController.view.backgroundColor = .white
         present(accountViewController, animated: true)
         present(taskAlertController, animated: true, completion: nil)
@@ -230,7 +229,7 @@ extension TaskViewController {
             
             taskReference.removeValue { error, reference in
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error?.localizedDescription as Any)
                 } else {
                     self.arrayOfTasks.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
