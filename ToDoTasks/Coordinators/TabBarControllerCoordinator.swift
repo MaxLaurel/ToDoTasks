@@ -12,7 +12,7 @@ class TabBarControllerCoordinator: Coordinator {
     
     var coordinators: [Coordinator] = []
     
-    var moduleFactory = ModuleFactory()
+    var viewControllerFactory = ViewControllerFactory()
     
     let navigationController: UINavigationController
     
@@ -21,21 +21,8 @@ class TabBarControllerCoordinator: Coordinator {
     }
     
     func start() {
-        var taskTabBarController = TabBarController()
-        taskTabBarController = moduleFactory.createTabBarController()
-        taskTabBarController.taskTabBarControllerCoordinator = self
-        navigationController.pushViewController(taskTabBarController, animated: true)
+        let tabBarController = viewControllerFactory.createTabBarController()
+        tabBarController.tabBarControllerCoordinator = self
+        navigationController.pushViewController(tabBarController, animated: true)
     }
-    
-//     func startTaskViewController() {
-//        let taskViewControllerCoordinator = TaskViewControllerCoordinator(navigationController: navigationController)
-//         add(coordinator: taskViewControllerCoordinator)
-//         taskViewControllerCoordinator.start()
-//    }
-//    
-//    func startCalculateViewController() {
-//        let calculateControllerCoordinator = TabBarControllerCoordinator(navigationController: navigationController)
-//        add(coordinator: calculateControllerCoordinator)
-//        calculateControllerCoordinator.start()
-//    }
 }

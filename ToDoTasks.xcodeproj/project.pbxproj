@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		563956B3049B1EA60EF231B5 /* Pods_ToDoTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA69F23E10AAEDE700DE3C7D /* Pods_ToDoTasks.framework */; };
 		B533A8752B5D74ED00448BBC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533A8742B5D74ED00448BBC /* Task.swift */; };
-		B54A31142BB6FFF00000536A /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A31132BB6FFF00000536A /* ModuleFactory.swift */; };
+		B54A31142BB6FFF00000536A /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A31132BB6FFF00000536A /* ViewControllerFactory.swift */; };
 		B54A31162BB70B500000536A /* FlowCalculationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A31152BB70B500000536A /* FlowCalculationCoordinator.swift */; };
 		B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */; };
 		B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF22BA5F5A600044609 /* AppCoordinator.swift */; };
 		B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */; };
 		B550ECF72BA60CE900044609 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF62BA60CE900044609 /* TabBarController.swift */; };
 		B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */; };
-		B550ECFD2BADD71B00044609 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECFC2BADD71B00044609 /* main.swift */; };
 		B550ECFF2BAF6DDF00044609 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECFE2BAF6DDE00044609 /* InfoViewController.swift */; };
 		B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */; };
 		B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED022BB092DF00044609 /* CalculateControllerCoordinator.swift */; };
@@ -28,6 +27,20 @@
 		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
 		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
 		B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C42F22B81FB610065A547 /* PopoverViewController.swift */; };
+		B576FCEE2C85DD1300173253 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B576FCED2C85DD1300173253 /* SDWebImage */; };
+		B576FCF02C85DD1300173253 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B576FCEF2C85DD1300173253 /* SDWebImageMapKit */; };
+		B576FCF22C8A002B00173253 /* YouTubeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF12C8A002B00173253 /* YouTubeAPIClient.swift */; };
+		B576FCF42C8A100600173253 /* YouTubeAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */; };
+		B576FCF62C8B741F00173253 /* YouTubeAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF52C8B741E00173253 /* YouTubeAPIModel.swift */; };
+		B5B647D52C08B25D00743DBE /* NewsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */; };
+		B5B647DD2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */; };
+		B5B647E42C08EE7300743DBE /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647E32C08EE7300743DBE /* NewsModel.swift */; };
+		B5B647E72C08EF8800743DBE /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647E62C08EF8800743DBE /* Service.swift */; };
+		B5B647EA2C08FB1300743DBE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B5B647E92C08FB1300743DBE /* Alamofire */; };
+		B5B647EC2C12174800743DBE /* NewsTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EB2C12174800743DBE /* NewsTableViewCell2.swift */; };
+		B5B647EE2C123DB300743DBE /* NewsModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647ED2C123DB300743DBE /* NewsModel2.swift */; };
+		B5B647F02C132CF100743DBE /* Service2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EF2C132CF100743DBE /* Service2.swift */; };
+		B5B647F42C18A1D700743DBE /* YouTubeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647F32C18A1D700743DBE /* YouTubeNewsTableViewController.swift */; };
 		B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */; };
 		B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */; };
 		B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */; };
@@ -41,14 +54,13 @@
 
 /* Begin PBXFileReference section */
 		B533A8742B5D74ED00448BBC /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		B54A31132BB6FFF00000536A /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		B54A31132BB6FFF00000536A /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		B54A31152BB70B500000536A /* FlowCalculationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCalculationCoordinator.swift; sourceTree = "<group>"; };
 		B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolCoordinator.swift; sourceTree = "<group>"; };
 		B550ECF22BA5F5A600044609 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		B550ECF62BA60CE900044609 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerCoordinator.swift; sourceTree = "<group>"; };
-		B550ECFC2BADD71B00044609 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B550ECFE2BAF6DDE00044609 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		B550ED022BB092DF00044609 /* CalculateControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -60,6 +72,17 @@
 		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
 		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 		B55C42F22B81FB610065A547 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		B576FCF12C8A002B00173253 /* YouTubeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIClient.swift; sourceTree = "<group>"; };
+		B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIEndpoints.swift; sourceTree = "<group>"; };
+		B576FCF52C8B741E00173253 /* YouTubeAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIModel.swift; sourceTree = "<group>"; };
+		B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsControllerCoordinator.swift; sourceTree = "<group>"; };
+		B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerCellTableViewCell.swift; sourceTree = "<group>"; };
+		B5B647E32C08EE7300743DBE /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		B5B647E62C08EF8800743DBE /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B5B647EB2C12174800743DBE /* NewsTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell2.swift; sourceTree = "<group>"; };
+		B5B647ED2C123DB300743DBE /* NewsModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel2.swift; sourceTree = "<group>"; };
+		B5B647EF2C132CF100743DBE /* Service2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2.swift; sourceTree = "<group>"; };
+		B5B647F32C18A1D700743DBE /* YouTubeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeNewsTableViewController.swift; sourceTree = "<group>"; };
 		B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +104,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B576FCEE2C85DD1300173253 /* SDWebImage in Frameworks */,
 				563956B3049B1EA60EF231B5 /* Pods_ToDoTasks.framework in Frameworks */,
+				B576FCF02C85DD1300173253 /* SDWebImageMapKit in Frameworks */,
+				B5B647EA2C08FB1300743DBE /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				B533A8742B5D74ED00448BBC /* Task.swift */,
+				B5B647E32C08EE7300743DBE /* NewsModel.swift */,
+				B5B647ED2C123DB300743DBE /* NewsModel2.swift */,
+				B576FCF52C8B741E00173253 /* YouTubeAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +152,7 @@
 				B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */,
 				B550ED022BB092DF00044609 /* CalculateControllerCoordinator.swift */,
 				B54A31152BB70B500000536A /* FlowCalculationCoordinator.swift */,
+				B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -131,9 +161,31 @@
 			isa = PBXGroup;
 			children = (
 				B550ED0B2BB6E13A00044609 /* CoordinatorFactory.swift */,
-				B54A31132BB6FFF00000536A /* ModuleFactory.swift */,
+				B54A31132BB6FFF00000536A /* ViewControllerFactory.swift */,
 			);
 			path = Factories;
+			sourceTree = "<group>";
+		};
+		B576FCE92C1F11BE00173253 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				B5B647E62C08EF8800743DBE /* Service.swift */,
+				B5B647EF2C132CF100743DBE /* Service2.swift */,
+				B576FCF12C8A002B00173253 /* YouTubeAPIClient.swift */,
+				B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */,
+			);
+			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		B5B647DB2C08EBE900743DBE /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */,
+				B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */,
+				B5B647EB2C12174800743DBE /* NewsTableViewCell2.swift */,
+			);
+			name = cells;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B5C9417229F2A7FE002F9AF3 = {
@@ -142,6 +194,7 @@
 				B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */,
 				B5C9417C29F2A7FE002F9AF3 /* Products */,
 				4EA810F9BA7B2539A4F571F2 /* Pods */,
+				B5C941B829F33EB2002F9AF3 /* Support */,
 				36B748916D0381E42749DF2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +210,8 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
+				B576FCE92C1F11BE00173253 /* NetworkServices */,
+				B5B647DB2C08EBE900743DBE /* cells */,
 				B550ED0A2BB6E0CB00044609 /* Factories */,
 				B550ECED2BA5E11C00044609 /* Coordinators */,
 				B533A8732B5D74A200448BBC /* Model */,
@@ -173,7 +228,6 @@
 				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
 				B550ECF62BA60CE900044609 /* TabBarController.swift */,
 				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
-				B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */,
 				B55C27952B9C862A003A3DBA /* CalculationViewController.swift */,
 				B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */,
 				B55C42F22B81FB610065A547 /* PopoverViewController.swift */,
@@ -181,7 +235,7 @@
 				B550ED042BB09BC500044609 /* InfoViewController2.swift */,
 				B550ED062BB0A3B600044609 /* SecondFlowViewControllerOne.swift */,
 				B550ED082BB0A46B00044609 /* SecondFlowViewControllerTwo.swift */,
-				B5C941B829F33EB2002F9AF3 /* Support */,
+				B5B647F32C18A1D700743DBE /* YouTubeNewsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -195,7 +249,6 @@
 				B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */,
 				B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */,
 				B5C9418C29F2A800002F9AF3 /* Info.plist */,
-				B550ECFC2BADD71B00044609 /* main.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -226,6 +279,11 @@
 			dependencies = (
 			);
 			name = ToDoTasks;
+			packageProductDependencies = (
+				B5B647E92C08FB1300743DBE /* Alamofire */,
+				B576FCED2C85DD1300173253 /* SDWebImage */,
+				B576FCEF2C85DD1300173253 /* SDWebImageMapKit */,
+			);
 			productName = ToDoTasks;
 			productReference = B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */;
 			productType = "com.apple.product-type.application";
@@ -238,7 +296,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					B5C9417A29F2A7FE002F9AF3 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -256,6 +314,8 @@
 			mainGroup = B5C9417229F2A7FE002F9AF3;
 			packageReferences = (
 				B5C941BB29F9802B002F9AF3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B5B647E82C08FB1300743DBE /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B576FCEC2C85DD1300173253 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = B5C9417C29F2A7FE002F9AF3 /* Products */;
 			projectDirPath = "";
@@ -326,28 +386,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B550ECFD2BADD71B00044609 /* main.swift in Sources */,
 				B550ECFF2BAF6DDF00044609 /* InfoViewController.swift in Sources */,
+				B576FCF22C8A002B00173253 /* YouTubeAPIClient.swift in Sources */,
+				B5B647F42C18A1D700743DBE /* YouTubeNewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */,
 				B550ED092BB0A46B00044609 /* SecondFlowViewControllerTwo.swift in Sources */,
+				B5B647D52C08B25D00743DBE /* NewsControllerCoordinator.swift in Sources */,
 				B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */,
 				B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */,
+				B576FCF62C8B741F00173253 /* YouTubeAPIModel.swift in Sources */,
 				B533A8752B5D74ED00448BBC /* Task.swift in Sources */,
 				B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */,
+				B5B647EC2C12174800743DBE /* NewsTableViewCell2.swift in Sources */,
 				B55C42F32B81FB610065A547 /* PopoverViewController.swift in Sources */,
 				B550ED072BB0A3B600044609 /* SecondFlowViewControllerOne.swift in Sources */,
+				B5B647EE2C123DB300743DBE /* NewsModel2.swift in Sources */,
 				B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */,
+				B5B647DD2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
 				B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */,
 				B550ECF72BA60CE900044609 /* TabBarController.swift in Sources */,
 				B550ED052BB09BC500044609 /* InfoViewController2.swift in Sources */,
+				B5B647E72C08EF8800743DBE /* Service.swift in Sources */,
 				B550ED0C2BB6E13A00044609 /* CoordinatorFactory.swift in Sources */,
 				B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */,
-				B54A31142BB6FFF00000536A /* ModuleFactory.swift in Sources */,
+				B576FCF42C8A100600173253 /* YouTubeAPIEndpoints.swift in Sources */,
+				B54A31142BB6FFF00000536A /* ViewControllerFactory.swift in Sources */,
 				B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */,
 				B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */,
+				B5B647E42C08EE7300743DBE /* NewsModel.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
 				B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */,
+				B5B647F02C132CF100743DBE /* Service2.swift in Sources */,
 				B54A31162BB70B500000536A /* FlowCalculationCoordinator.swift in Sources */,
 				B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */,
 				B5F7A3112A0E2F3C00EF0447 /* Validation.swift in Sources */,
@@ -373,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -406,6 +477,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -420,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -434,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -467,6 +540,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -475,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -500,8 +574,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,8 +604,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -571,6 +643,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B576FCEC2C85DD1300173253 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.7;
+			};
+		};
+		B5B647E82C08FB1300743DBE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 		B5C941BB29F9802B002F9AF3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -580,6 +668,24 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B576FCED2C85DD1300173253 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B576FCEC2C85DD1300173253 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		B576FCEF2C85DD1300173253 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B576FCEC2C85DD1300173253 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		B5B647E92C08FB1300743DBE /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5B647E82C08FB1300743DBE /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B5C9417329F2A7FE002F9AF3 /* Project object */;
 }

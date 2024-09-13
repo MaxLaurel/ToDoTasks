@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 
-
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     var errorLabel: UILabel = {
@@ -21,7 +20,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return errorLabel
     }()
     
-  var emailTextField: UITextField = {
+    var emailTextField: UITextField = {
         var nameTextField = UITextField()
         nameTextField.placeholder = "Email"
         nameTextField.borderStyle = .roundedRect
@@ -74,7 +73,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         //stackView.addArrangedSubview(errorLabel)
         stackView.addArrangedSubview(emailTextField)
         stackView.addArrangedSubview(passwordTextField)
-       // stackView.addArrangedSubview(registerButton)
+        // stackView.addArrangedSubview(registerButton)
         stackView.axis = .vertical
         stackView.alignment = .fill
         //stackView.distribution = .fillEqually
@@ -109,7 +108,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func outOfView() {
-        //overlayView.removeFromSuperview()
         view.endEditing(true)
     }
     
@@ -130,23 +128,33 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard mail.isValidated(validityType: .email), password.isValidated(validityType: .password) else { errorWithAnimation(text: "validation failed!")
-            return }
+        guard mail.isValidated(validityType: .email) else {return errorWithAnimation(text: "Пожалуйста, введите действительный адрес электронной почты в формате example@example.com")}
+                
+        guard password.isValidated(validityType: .password) else { return errorWithAnimation(text: "Пароль должен содержать хотя бы одну букву, хотя бы одну цифру и быть длиной от 6 до 25 символов.")}
         
-        Auth.auth().createUser(withEmail: mail, password: password) { (user, error) in
-            if user != nil {
-                let tableViewController = TaskViewController()
-                self.navigationController?.pushViewController(tableViewController, animated: true)
-            }
+        // Проверяем существует ли email
+        Auth.auth().fetchSignInMethods(forEmail: mail) { (methods, error) in
             
-            if error != nil {
-                self.errorWithAnimation(text: "Some error occured!")
+            // Если методы входа существуют, значит email уже используется
+            if let methods = methods {
+                guard methods.isEmpty else {self.errorWithAnimation(text: "Email is already registered")
                 return
+                }
             }
         }
+        Auth.auth().createUser(withEmail: mail, password: password) { (user, error) in
+//            if error != nil {
+//                self.errorWithAnimation(text: "An error occurs when user's registration")
+//                return
+//            }
+//            if user != nil {
+//                self.errorWithAnimation(text: "User successfully registered")
+//            }
+        }
+        
     }
-
 }
+
 extension RegisterViewController {
     func AddConstraints() {
         

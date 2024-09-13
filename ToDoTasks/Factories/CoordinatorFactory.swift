@@ -17,11 +17,19 @@ class CoordinatorFactory {
         LoginViewControllerCoordinator(navigationController: navigationController)
     }
     
-    func createTabBarControllerCoordinator(navigationController: UIViewController) -> TabBarControllerCoordinator {
-        TabBarControllerCoordinator(navigationController: navigationController as! UINavigationController )
+    func createTabBarControllerCoordinator(navigationController: UINavigationController) -> TabBarControllerCoordinator {
+        TabBarControllerCoordinator(navigationController: navigationController)
+    }
+    
+    func createTaskCoordinator(navigationController: UINavigationController) -> TaskViewControllerCoordinator {
+        TaskViewControllerCoordinator(navigationController: navigationController)
     }
     
     func createCalculateCoordinator(navigationController: UINavigationController) -> CalculateControllerCoordinator {
         CalculateControllerCoordinator(navigationController: navigationController)
+    }
+    
+    func createNewsCoordinator(navigationController: UINavigationController) -> NewsControllerCoordinator {
+        NewsControllerCoordinator(navigationController: navigationController)
     }
 }

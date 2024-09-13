@@ -11,7 +11,7 @@ import UIKit
 class LoginViewControllerCoordinator: Coordinator {
     
     var coordinators: [Coordinator] = []
-    var moduleFactory = ModuleFactory()
+    var viewControllerFactory = ViewControllerFactory()
     
     let navigationController: UINavigationController
     
@@ -21,7 +21,7 @@ class LoginViewControllerCoordinator: Coordinator {
     
      func start() {
        // let loginViewController = LoginViewController()
-        let loginViewController = moduleFactory.createLoginViewController()
+        let loginViewController = viewControllerFactory.createLoginViewController()
         loginViewController.loginViewControllerCoordinator = self
         navigationController.pushViewController(loginViewController, animated: true)
     }

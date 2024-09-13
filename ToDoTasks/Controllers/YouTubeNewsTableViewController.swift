@@ -7,7 +7,7 @@ class YouTubeNewsTableViewController: UIViewController, UITableViewDelegate, UIT
     
     //let dataManager = Service2()
     let tableView = UITableView()
-    var articles = [Article]()
+    //var youTubeArticle = [Article]()
     var youTubeArticle = [YouTubeArticle]()
     
     override func viewDidLoad() {
@@ -22,8 +22,9 @@ class YouTubeNewsTableViewController: UIViewController, UITableViewDelegate, UIT
         
         tableView.register(NewsTableViewCell2.self, forCellReuseIdentifier: "NewsTableViewCell2")
         
-        // fetchData()
-        fetchDataFromNetworkService()
+        //fetchDataFromNetworkService()
+        getDataFromYouTubeAPI()
+    
     }
     
     func setConstraints() {
@@ -35,12 +36,12 @@ class YouTubeNewsTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+        return youTubeArticle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell2", for: indexPath) as! NewsTableViewCell2
-        let articleIndexPath = articles[indexPath.row]
+        let articleIndexPath = youTubeArticle[indexPath.row]
         cell.headerLabel.text = articleIndexPath.title
         cell.contentLabel.text = articleIndexPath.content
         cell.sourceLabel.text = articleIndexPath.author
@@ -61,7 +62,7 @@ class YouTubeNewsTableViewController: UIViewController, UITableViewDelegate, UIT
             case .success(let welcome):
                 // self превращаетс] в опциональный тип когда он weak а значит нужно извлечь опционал либо поставить ? Второй вопрос self здесь относится и к articles и к tableView третий вопрос если мы извлекаем опционал в case .success(let welcome) значит если код не попадет в этот блок то и опциорнал не извлечется?
                 guard let self = self else {return}
-                self.articles = welcome.articles
+                // self.youTubeArticle = welcome.articles
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -70,4 +71,14 @@ class YouTubeNewsTableViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
-}
+        func getDataFromYouTubeAPI() {
+            YouTubeAPIClient.shared.getVideoFromAPI { [weak self] articles in
+                guard let articles = articles else { return }
+                self?.youTubeArticle = articles
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
+
