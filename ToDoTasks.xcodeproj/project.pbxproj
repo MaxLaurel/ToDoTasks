@@ -33,9 +33,8 @@
 		B576FCF42C8A100600173253 /* YouTubeAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */; };
 		B576FCF62C8B741F00173253 /* YouTubeAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF52C8B741E00173253 /* YouTubeAPIModel.swift */; };
 		B5ABD5F62CA83DED00D34B8E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5F52CA83DED00D34B8E /* NetworkManager.swift */; };
-		B5ABD5F92CA853A400D34B8E /* RetryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5F82CA853A400D34B8E /* RetryConfig.swift */; };
+		B5ABD5F92CA853A400D34B8E /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */; };
 		B5ABD5FB2CA8599500D34B8E /* SessionConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FA2CA8599500D34B8E /* SessionConfiguration.swift */; };
-		B5ABD5FE2CA875EF00D34B8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FD2CA875EF00D34B8E /* NetworkError.swift */; };
 		B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */; };
 		B5B647D52C08B25D00743DBE /* NewsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */; };
 		B5B647DD2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */; };
@@ -81,9 +80,8 @@
 		B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIEndpoints.swift; sourceTree = "<group>"; };
 		B576FCF52C8B741E00173253 /* YouTubeAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIModel.swift; sourceTree = "<group>"; };
 		B5ABD5F52CA83DED00D34B8E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		B5ABD5F82CA853A400D34B8E /* RetryConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryConfig.swift; sourceTree = "<group>"; };
+		B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B5ABD5FA2CA8599500D34B8E /* SessionConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfiguration.swift; sourceTree = "<group>"; };
-		B5ABD5FD2CA875EF00D34B8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConfiguration.swift; sourceTree = "<group>"; };
 		B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsControllerCoordinator.swift; sourceTree = "<group>"; };
 		B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		B5ABD5F42CA83DAF00D34B8E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B5ABD5FC2CA875BA00D34B8E /* NetworkError */,
 				B5ABD5F52CA83DED00D34B8E /* NetworkManager.swift */,
 				B5ABD5F72CA8537A00D34B8E /* Configuration */,
 			);
@@ -200,19 +197,11 @@
 		B5ABD5F72CA8537A00D34B8E /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				B5ABD5F82CA853A400D34B8E /* RetryConfig.swift */,
+				B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */,
 				B5ABD5FA2CA8599500D34B8E /* SessionConfiguration.swift */,
 				B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		B5ABD5FC2CA875BA00D34B8E /* NetworkError */ = {
-			isa = PBXGroup;
-			children = (
-				B5ABD5FD2CA875EF00D34B8E /* NetworkError.swift */,
-			);
-			path = NetworkError;
 			sourceTree = "<group>";
 		};
 		B5B647DB2C08EBE900743DBE /* cells */ = {
@@ -429,12 +418,11 @@
 				B576FCF22C8A002B00173253 /* YouTubeAPIClient.swift in Sources */,
 				B5B647F42C18A1D700743DBE /* YouTubeNewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */,
-				B5ABD5F92CA853A400D34B8E /* RetryConfig.swift in Sources */,
+				B5ABD5F92CA853A400D34B8E /* ErrorHandler.swift in Sources */,
 				B550ED092BB0A46B00044609 /* SecondFlowViewControllerTwo.swift in Sources */,
 				B5B647D52C08B25D00743DBE /* NewsControllerCoordinator.swift in Sources */,
 				B55A71C32B727CFE005EB46D /* CustomTableViewCell.swift in Sources */,
 				B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */,
-				B5ABD5FE2CA875EF00D34B8E /* NetworkError.swift in Sources */,
 				B576FCF62C8B741F00173253 /* YouTubeAPIModel.swift in Sources */,
 				B533A8752B5D74ED00448BBC /* Task.swift in Sources */,
 				B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */,
