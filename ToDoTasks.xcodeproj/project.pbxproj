@@ -36,6 +36,7 @@
 		B5ABD5F92CA853A400D34B8E /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */; };
 		B5ABD5FB2CA8599500D34B8E /* SessionConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FA2CA8599500D34B8E /* SessionConfiguration.swift */; };
 		B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */; };
+		B5ABD6032CB308DE00D34B8E /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD6022CB308DE00D34B8E /* AlertPresenter.swift */; };
 		B5B647D52C08B25D00743DBE /* NewsControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */; };
 		B5B647DD2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */; };
 		B5B647E42C08EE7300743DBE /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647E32C08EE7300743DBE /* NewsModel.swift */; };
@@ -52,6 +53,7 @@
 		B5C9418B29F2A800002F9AF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */; };
 		B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */; };
 		B5C941B529F33A3B002F9AF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */; };
+		B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D799B72CB635DA00F9DF8D /* RetryConfiguration.swift */; };
 		B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */; };
 		B5F7A3112A0E2F3C00EF0447 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A3102A0E2F3C00EF0447 /* Validation.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,7 @@
 		B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		B5ABD5FA2CA8599500D34B8E /* SessionConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConfiguration.swift; sourceTree = "<group>"; };
 		B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConfiguration.swift; sourceTree = "<group>"; };
+		B5ABD6022CB308DE00D34B8E /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		B5B647D42C08B25D00743DBE /* NewsControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsControllerCoordinator.swift; sourceTree = "<group>"; };
 		B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerCellTableViewCell.swift; sourceTree = "<group>"; };
 		B5B647E32C08EE7300743DBE /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		B5C9418C29F2A800002F9AF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5D799B72CB635DA00F9DF8D /* RetryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryConfiguration.swift; sourceTree = "<group>"; };
 		B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B5F7A3102A0E2F3C00EF0447 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D32298015B7A17F71FD2C1AC /* Pods-ToDoTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoTasks.release.xcconfig"; path = "Target Support Files/Pods-ToDoTasks/Pods-ToDoTasks.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,8 +204,17 @@
 				B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */,
 				B5ABD5FA2CA8599500D34B8E /* SessionConfiguration.swift */,
 				B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */,
+				B5D799B72CB635DA00F9DF8D /* RetryConfiguration.swift */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		B5ABD6012CB3089700D34B8E /* AlertPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABD6022CB308DE00D34B8E /* AlertPresenter.swift */,
+			);
+			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
 		B5B647DB2C08EBE900743DBE /* cells */ = {
@@ -237,6 +250,7 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
+				B5ABD6012CB3089700D34B8E /* AlertPresenter */,
 				B5ABD5F42CA83DAF00D34B8E /* Network */,
 				B576FCE92C1F11BE00173253 /* NetworkServices */,
 				B5B647DB2C08EBE900743DBE /* cells */,
@@ -415,9 +429,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B550ECFF2BAF6DDF00044609 /* InfoViewController.swift in Sources */,
+				B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */,
 				B576FCF22C8A002B00173253 /* YouTubeAPIClient.swift in Sources */,
 				B5B647F42C18A1D700743DBE /* YouTubeNewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */,
+				B5ABD6032CB308DE00D34B8E /* AlertPresenter.swift in Sources */,
 				B5ABD5F92CA853A400D34B8E /* ErrorHandler.swift in Sources */,
 				B550ED092BB0A46B00044609 /* SecondFlowViewControllerTwo.swift in Sources */,
 				B5B647D52C08B25D00743DBE /* NewsControllerCoordinator.swift in Sources */,

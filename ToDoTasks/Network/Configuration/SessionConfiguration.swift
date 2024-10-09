@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol SessionConfiguration {
+protocol SessionConfigurable {
     var session: URLSession { get }
 }
 
-struct ForegroundSessionConfiguration: SessionConfiguration {
+private struct ForegroundSessionConfiguration: SessionConfigurable {
     var session: URLSession
     
-    init(session: URLSession) {
+   private init(session: URLSession) {
         let foregroundConfiguration = URLSessionConfiguration.default
         foregroundConfiguration.timeoutIntervalForRequest = 30
         foregroundConfiguration.requestCachePolicy = .useProtocolCachePolicy
@@ -23,7 +23,7 @@ struct ForegroundSessionConfiguration: SessionConfiguration {
     }
 }
 
-struct BackGroundConfiguration: SessionConfiguration {
+private struct BackGroundConfiguration: SessionConfigurable {
     var session: URLSession
     
     init() {

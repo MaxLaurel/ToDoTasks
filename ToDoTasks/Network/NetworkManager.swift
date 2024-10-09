@@ -9,22 +9,19 @@ import Foundation
 
 class NetworkManager {
 
-    func performRequest(configuration: SessionConfiguration, 
-                        requestEndpoint: EndpointConfigurable,
-                        retryPolicy: RetryConfig,
-                        errorHandler: ErrorHandler,
-                        completion: @escaping (Result<Data, Error>) -> Void) {
+    func performRequest(configuration: SessionConfigurable, requestEndpoint: EndpointConfigurable, retryPolicy: RetryPolicy, errorHandler: ErrorUsable, alertPresenter: AlertPresenter, completion: @escaping (Result<Data, Error>) -> Void) {
+        
+    func makeNetworkRequest() {
         do {
             let request = try requestEndpoint.returnRequest()
             configuration.session.dataTask(with: request) { data, response, error in
                 if let error = error as? URLError {
-                    errorHandler.handleNetworkError(error: error)
-                  
+                    errorHandler.handleNetworkError(error, alert: alertPresenter, retryPolicy: retryPolicy, networkRequest: makeNetworkRequest)
                 } else if let error = error {
                     completion(.failure(error))
                     
                 } else if let response = response as? HTTPURLResponse {
-                    errorHandler.handleHTTPResponse(response: response)
+                    errorHandler.handleHTTPResponse(response, alert: alertPresenter, retryPolicy: retryPolicy, networkRequest: makeNetworkRequest)
                     
                 } else if let data = data {
                     completion(.success(data))
@@ -34,6 +31,7 @@ class NetworkManager {
             print("need to handle Endpoint error")
         } catch {
             completion(.failure(error))
+        }
         }
     }
 }
