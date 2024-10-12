@@ -19,9 +19,10 @@ class TaskViewControllerCoordinator: Coordinator {
             self.navigationController = navigationController
         }
         
-        func start() {
-            let taskViewController = viewControllerFactory.createTaskViewController()
-            taskViewController.taskViewControllerCoordinator = self
+        func startInitialFlow() {
+            let taskViewController = viewControllerFactory.instantiate(type: .taskVC)
             navigationController.pushViewController(taskViewController, animated: true)
+            //let taskViewController = viewControllerFactory.createTaskViewController()
+            //taskViewController.taskViewControllerCoordinator = self
     }
 }

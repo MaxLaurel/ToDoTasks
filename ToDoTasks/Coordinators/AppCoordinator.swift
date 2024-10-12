@@ -19,7 +19,7 @@ class AppCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
+    func startInitialFlow() {
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 self.startTabBarControllerFlow()
@@ -30,13 +30,18 @@ class AppCoordinator: Coordinator {
     }
     
     private func startLoginFlow() {
-        let loginControllerCoordinator =  CoordinatorFactory().createLoginCoordinator(navigationController: navigationController)
+        let loginControllerCoordinator = LoginViewControllerCoordinator(navigationController: navigationController)
+        loginControllerCoordinator.startInitialFlow()
+        
+        //let loginControllerCoordinator =  CoordinatorFactory().createLoginCoordinator(navigationController: navigationController)
         //add(coordinator: loginControllerCoordinator)
-        loginControllerCoordinator.start()
+        
     }
     private func startTabBarControllerFlow() {
-        let tabBarControllerCoordinator = CoordinatorFactory().createTabBarControllerCoordinator(navigationController: navigationController)
+        let tabBarControllerCoordinator = TabBarControllerCoordinator(navigationController: navigationController)
         add(coordinator: tabBarControllerCoordinator)
-        tabBarControllerCoordinator.start()
+        tabBarControllerCoordinator.startInitialFlow()
+        
+        //let tabBarControllerCoordinator = CoordinatorFactory().createTabBarControllerCoordinator(navigationController: navigationController)
     }
 }

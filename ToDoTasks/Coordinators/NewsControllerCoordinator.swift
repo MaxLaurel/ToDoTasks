@@ -12,16 +12,17 @@ class NewsControllerCoordinator: Coordinator {
     
     var coordinators = [Coordinator]()
     var navigationController = UINavigationController()
-    let viewControllerFctory = ViewControllerFactory()
+    let viewControllerFactory = ViewControllerFactory()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    func start() {
-        let newsViewController = viewControllerFctory.createNewsViewController()
-        newsViewController.newsViewControllerCoordinator = self
+    func startInitialFlow() {
+        let newsViewController = viewControllerFactory.instantiate(type: .newsVC)
         navigationController.pushViewController(newsViewController, animated: true)
+        //        let newsViewController = viewControllerFactory.createNewsViewController()
+        //        newsViewController.newsViewControllerCoordinator = self
     }
     
   

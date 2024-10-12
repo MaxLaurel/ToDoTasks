@@ -19,9 +19,10 @@ class CalculateControllerCoordinator: Coordinator {
     }
     
     
-    func start() {
-        let calculationViewController = viewControllerFactory.createCalculateViewController()
-        calculationViewController.calculateControllerCoordinator = self
+    func startInitialFlow() {
+        let calculationViewController = viewControllerFactory.instantiate(type: .calculateVC)
         navigationController.pushViewController(calculationViewController, animated: true)
+//        let calculationViewController = viewControllerFactory.createCalculateViewController()
+//        calculationViewController.calculateControllerCoordinator = self
     }
 }

@@ -19,10 +19,10 @@ class LoginViewControllerCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-     func start() {
-       // let loginViewController = LoginViewController()
-        let loginViewController = viewControllerFactory.createLoginViewController()
-        loginViewController.loginViewControllerCoordinator = self
+     func startInitialFlow() {
+        //let loginViewController = viewControllerFactory.createLoginViewController()
+        //loginViewController.loginViewControllerCoordinator = self
+         let loginViewController = viewControllerFactory.instantiate(type: .loginVC)
         navigationController.pushViewController(loginViewController, animated: true)
     }
     

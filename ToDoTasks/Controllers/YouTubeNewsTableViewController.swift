@@ -23,6 +23,7 @@ class YouTubeNewsTableViewController: UIViewController, UITableViewDelegate, UIT
         tableView.register(NewsTableViewCell2.self, forCellReuseIdentifier: "NewsTableViewCell2")
         
         //fetchDataFromNetworkService()
+       
         getDataFromYouTubeAPI()
     
     }

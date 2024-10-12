@@ -11,7 +11,7 @@ protocol AlertPresenter {
     func showAlert(_ title: String, message: String)
 }
 
-class ErrorAlertPresenter: AlertPresenter {
+private class ErrorAlertPresenter: AlertPresenter {
     weak var viewController: UIViewController?
     
     init(viewController: UIViewController) {

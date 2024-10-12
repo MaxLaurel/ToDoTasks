@@ -18,7 +18,7 @@ class FlowCalculationCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
+    func startInitialFlow() {
         startCalculationFlow()
     }
     

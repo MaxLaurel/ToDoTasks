@@ -11,7 +11,7 @@ protocol Coordinator: AnyObject {
     
     var coordinators: [Coordinator] { get set }
     
-    func start()
+    func startInitialFlow()
 }
 
 extension Coordinator {

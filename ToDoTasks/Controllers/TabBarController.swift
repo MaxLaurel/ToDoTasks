@@ -37,19 +37,19 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let taskNavigationControllerCoordinator = TaskViewControllerCoordinator(navigationController: UINavigationController())
-        taskNavigationControllerCoordinator.start()
+        let taskViewControllerCoordinator = TaskViewControllerCoordinator(navigationController: UINavigationController())
+        taskViewControllerCoordinator.startInitialFlow()
         
         let calculateViewControllerCoordinator = CalculateControllerCoordinator(navigationController: UINavigationController())
-        calculateViewControllerCoordinator.start()
+        calculateViewControllerCoordinator.startInitialFlow()
         
         let newsViewControllerCoordinator = NewsControllerCoordinator(navigationController: UINavigationController())
-        newsViewControllerCoordinator.start()
+        newsViewControllerCoordinator.startInitialFlow()
         
-        self.viewControllers = [taskNavigationControllerCoordinator.navigationController, calculateViewControllerCoordinator.navigationController, newsViewControllerCoordinator.navigationController]
-        self.selectedViewController = taskNavigationControllerCoordinator.navigationController
+        self.viewControllers = [taskViewControllerCoordinator.navigationController, calculateViewControllerCoordinator.navigationController, newsViewControllerCoordinator.navigationController]
+        self.selectedViewController = taskViewControllerCoordinator.navigationController
         
-        taskNavigationControllerCoordinator.navigationController.tabBarItem = taskBarButtonItem
+        taskViewControllerCoordinator.navigationController.tabBarItem = taskBarButtonItem
         calculateViewControllerCoordinator.navigationController.tabBarItem = calculateBarButtonItem
         newsViewControllerCoordinator.navigationController.tabBarItem = newsBarButtonItem
         
@@ -57,11 +57,6 @@ class TabBarController: UITabBarController {
         self.tabBar.unselectedItemTintColor = UIColor(red: 0.5, green: 0.7, blue: 0.5, alpha: 1)
         //        taskNavController.tabBarItem.badgeValue = "\(tableViewController.arrayOfTasks.count)"
         //        taskNavController.tabBarItem.badgeColor = .systemGreen
-        
         //           loginTabBarController.tabBarItem = UITabBarItem.init(title: "log In", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 1)
-        
-        
-        //нужно подумать почему некорректно отображается
-        
     }
 }

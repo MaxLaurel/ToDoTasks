@@ -11,7 +11,7 @@ protocol RetryConfigurable {
     func handleRetry(networkRequest: @escaping () -> Void)
 }
 
-enum RetryPolicy: RetryConfigurable {
+ enum RetryPolicy: RetryConfigurable {
     
     case moderate
     case agressive

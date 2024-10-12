@@ -9,63 +9,21 @@ import UIKit
 import Firebase
 
 class CustomTableViewCell: UITableViewCell {
-    
 
-    var taskTitleLabel: UILabel = {
+    private var taskTitleLabel: UILabel = {
         var taskTitle = UILabel()
         return taskTitle
     }()
     
-    var descriptionTaskLabel: UILabel = {
+    private var descriptionTaskLabel: UILabel = {
         var descriptionTaskLabel = UILabel()
         return descriptionTaskLabel
     }()
     
-//    lazy var deleteButton: UIButton = {
-//        let deleteButton = UIButton()
-//        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-//        deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
-//        return deleteButton
-//    }()
-    
-//    @objc func deleteButtonAction(sender: UIButton) {
-//        guard let indexPath = findIndexPathForView(view: sender) else {
-//            return
-//        }
-//
-//        let taskToRemove = tableViewTasks[indexPath.row]
-//        guard let taskID = taskToRemove.taskID, let currentUser = currentUser else {
-//            return
-//        }
-//
-//        let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
-//        taskReference.removeValue { error, _ in
-//            if let error = error {
-//                print("Error removing task: \(error.localizedDescription)")
-//                return
-//            }
-//            self.tableViewTasks.remove(at: indexPath.row)
-//            self.taskTableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//    }
-
-    // Метод для нахождения IndexPath для конкретной ячейки (например, при нажатии на кнопку)
-//    private func findIndexPathForView(view: UIView) -> IndexPath? {
-//        var superView = view.superview
-//        while superView != nil {
-//            if let cell = superView as? UITableViewCell {
-//                return taskTableView.indexPath(for: cell)
-//            }
-//            superView = superView?.superview
-//        }
-//        return nil
-//    }
-
-
+    private var isCompleted: Bool = false
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setSubviev()
         configureConstraints()
     }
@@ -74,7 +32,7 @@ class CustomTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureConstraints() {
+    private func configureConstraints() {
         taskTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         taskTitleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         taskTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
@@ -85,21 +43,24 @@ class CustomTableViewCell: UITableViewCell {
         descriptionTaskLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
         descriptionTaskLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100).isActive = true
         descriptionTaskLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
-        
-//        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-//        deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-//        deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
-//    deleteButton.leadingAnchor.constraint(equalTo: descriptionTaskLabel.leadingAnchor, constant: )
-//        deleteButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//
-//        deleteButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
-//
-        
     }
-    
-    func setSubviev() {
+    private func setSubviev() {
         addSubview(taskTitleLabel)
         addSubview(descriptionTaskLabel)
-        //addSubview(deleteButton)
+    }
+    
+//    func addTapGestureRecognizerWithCheckMark() {
+//       let gesture = UITapGestureRecognizer(target: self, action: #selector(cellTapped))
+//       addGestureRecognizer(gesture)
+//    }
+//    
+//    @objc private func cellTapped() {
+//        isCompleted.toggle()
+//        accessoryType = isCompleted ? .checkmark : .none
+//    }
+
+    func configureCell(task: Task) {
+        taskTitleLabel.text = task.taskName
+        descriptionTaskLabel.text = task.description
     }
 }

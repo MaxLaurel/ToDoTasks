@@ -217,14 +217,14 @@
 			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
-		B5B647DB2C08EBE900743DBE /* cells */ = {
+		B5B647DB2C08EBE900743DBE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				B5B647DC2C08EC5000743DBE /* NewsViewControllerCellTableViewCell.swift */,
 				B55A71C22B727CFE005EB46D /* CustomTableViewCell.swift */,
 				B5B647EB2C12174800743DBE /* NewsTableViewCell2.swift */,
 			);
-			name = cells;
+			name = Cells;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -253,7 +253,7 @@
 				B5ABD6012CB3089700D34B8E /* AlertPresenter */,
 				B5ABD5F42CA83DAF00D34B8E /* Network */,
 				B576FCE92C1F11BE00173253 /* NetworkServices */,
-				B5B647DB2C08EBE900743DBE /* cells */,
+				B5B647DB2C08EBE900743DBE /* Cells */,
 				B550ED0A2BB6E0CB00044609 /* Factories */,
 				B550ECED2BA5E11C00044609 /* Coordinators */,
 				B533A8732B5D74A200448BBC /* Model */,

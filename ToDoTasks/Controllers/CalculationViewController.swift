@@ -19,12 +19,6 @@ class CalculationViewController: UIViewController {
         return leftBarButtonItem
     }()
     
-    lazy var rightBarButtonItem: UIBarButtonItem = {
-        var rightBarButtonItem = UIBarButtonItem(title: "info", style: .plain, target: self, action: #selector(goToNext))
-        return rightBarButtonItem
-    }()
-    
-    
     var calculatorImageView: UIImageView = {
         var calculatorImageView = UIImageView(image: UIImage(named: "calculator"))
         calculatorImageView.contentMode = .scaleAspectFit
@@ -33,37 +27,16 @@ class CalculationViewController: UIViewController {
         return calculatorImageView
     }()
     
-    lazy var nextFlowButton: UIButton = {
-        var nextFlowButton = UIButton()
-        nextFlowButton.setTitle("AnotherFlow", for: .normal)
-        nextFlowButton.setTitleColor(.green, for: .normal)
-        nextFlowButton.backgroundColor = .gray
-        nextFlowButton.titleLabel?.font = .systemFont(ofSize: 25)
-        nextFlowButton.tintColor = .blue
-        nextFlowButton.addTarget(self, action: #selector(goToNext), for: .touchUpInside)
-        return nextFlowButton
-    }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationItem.titleView = calculatorImageView
         //navigationItem.prompt = "some prompt"
         //navigationItem.title = "Calculation"
         navigationItem.title = "Calculation"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        view.addSubview(nextFlowButton)
-        
-        nextFlowButton.translatesAutoresizingMaskIntoConstraints = false
-        nextFlowButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nextFlowButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        nextFlowButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextFlowButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
     }
     
     @objc func leftBarButtonItemTapped() {
@@ -80,12 +53,7 @@ class CalculationViewController: UIViewController {
     //        vc.view?.backgroundColor = .white
     //        navigationController?.pushViewController(vc, animated: true)
     //    }
+    var dcswcds = UIView()
     
-    @objc func goToNext() {
-//        let secondFlowCalculatorCoordunator = FlowCalculationCoordinator(navigationController: navController)
-//        secondFlowCalculatorCoordunator.startCalculationFlow()
-                let newsViewController = YouTubeNewsTableViewController()
-        navigationController?.pushViewController(newsViewController, animated: true)
-    }
     
 }

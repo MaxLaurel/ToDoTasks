@@ -12,23 +12,22 @@ enum EndpointError: Error{
     case cannotCreateURLWithComponent
 }
 
-protocol EndpointConfigurable {
-    func returnRequest() throws -> URLRequest
+ protocol EndpointConfigurable {
+     func returnRequest() throws -> URLRequest
 }
 
-enum endpointType: EndpointConfigurable {
-    
+private enum endpointType: EndpointConfigurable {
     case getData
     case uploadData
     case uploadMultyPartData
     
-    private var baseURLPath: URL? {
+     var baseURLPath: URL? {
         guard let url = URL(string: "https://newsapi.org/v2/everything") else { return nil }
         return url
     }
     
     
-    private func createEndpointPath() throws -> URL {
+     func createEndpointPath() throws -> URL {
         guard var urlComponents = URLComponents(url: baseURLPath!, resolvingAgainstBaseURL: false) else { throw URLError(.badURL)}
         switch self {
         case .getData:
@@ -44,7 +43,7 @@ enum endpointType: EndpointConfigurable {
         return url
     }
     
-    private var header: [String: String] {
+     var header: [String: String] {
         let boundary = "/(UUID().uuidString)"
         var headers = [String: String]()
         
@@ -63,7 +62,7 @@ enum endpointType: EndpointConfigurable {
         return headers
     }
     
-    private var method: String {
+     var method: String {
         switch self {
         case .getData: return "GET"
         case .uploadData: return "POST"
@@ -89,7 +88,5 @@ enum endpointType: EndpointConfigurable {
         let urlRequest = URLRequest(url: endpointPath)
         return urlRequest
     }
-    
-  
 }
 

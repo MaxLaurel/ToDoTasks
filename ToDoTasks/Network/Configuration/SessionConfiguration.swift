@@ -14,7 +14,7 @@ protocol SessionConfigurable {
 private struct ForegroundSessionConfiguration: SessionConfigurable {
     var session: URLSession
     
-   private init(session: URLSession) {
+    init(session: URLSession) {
         let foregroundConfiguration = URLSessionConfiguration.default
         foregroundConfiguration.timeoutIntervalForRequest = 30
         foregroundConfiguration.requestCachePolicy = .useProtocolCachePolicy

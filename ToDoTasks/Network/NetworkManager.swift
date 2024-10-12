@@ -7,7 +7,16 @@
 
 import Foundation
 
-class NetworkManager {
+protocol NetworkRequestPerforming {
+    func performRequest(configuration: SessionConfigurable,
+                        requestEndpoint: EndpointConfigurable,
+                        retryPolicy: RetryPolicy,
+                        errorHandler: ErrorUsable,
+                        alertPresenter: AlertPresenter,
+                        completion: @escaping (Result<Data, Error>) -> Void)
+}
+
+private class NetworkManager: NetworkRequestPerforming {
 
     func performRequest(configuration: SessionConfigurable, requestEndpoint: EndpointConfigurable, retryPolicy: RetryPolicy, errorHandler: ErrorUsable, alertPresenter: AlertPresenter, completion: @escaping (Result<Data, Error>) -> Void) {
         

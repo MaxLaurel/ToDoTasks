@@ -94,10 +94,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationController?.navigationBar.tintColor = .systemGreen
         
-        
-        
         taskTableView.addGestureRecognizer(longPressGestureRecognizer)
-        
         taskObserver()
         
         taskTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -130,7 +127,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").childByAutoId()
         
-        let task = Task(taskName: nameTaskTextfield, description: descriptionTaskTextField, taskID: taskReference.key)
+        let task = Task(taskName: nameTaskTextfield, description: descriptionTaskTextField, taskID: taskReference.key ?? "")
         
         taskReference.setValue(["title": task.taskName, "description": task.description, "taskID": task.taskID, "isCompleted": task.isCompleted])
         
@@ -172,11 +169,12 @@ extension TaskViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         let task = arrayOfTasks[indexPath.row]
         //cell.task = task // Устанавливаем значение task для ячейки
-        cell.taskTitleLabel.text = task.taskName
-        cell.descriptionTaskLabel.text = task.description
+        //cell.taskTitleLabel.text = task.taskName
+       // cell.descriptionTaskLabel.text = task.description
         toggleCompletion(cell: cell, isCompleted: task.isCompleted)
         cell.addGestureRecognizer(longPressGestureRecognizer)
-        cell.configureConstraints()
+        cell.configureCell(task: task)
+        //cell.configureConstraints()
         return cell
     }
     
@@ -224,7 +222,8 @@ extension TaskViewController {
         
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completion in
             let IndexTaskToRemove = self.arrayOfTasks[indexPath.row]
-            guard let currentUser = self.currentUser, let taskID = IndexTaskToRemove.taskID else { return }
+            guard let currentUser = self.currentUser else { return }
+            guard let taskID = IndexTaskToRemove.taskID else { return }
             let taskReference = self.dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
             
             taskReference.removeValue { error, reference in

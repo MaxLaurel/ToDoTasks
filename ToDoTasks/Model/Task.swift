@@ -8,15 +8,16 @@
 import Foundation
 import Firebase
 
-struct Task {
+class Task {
     var taskName: String
     var description: String
     var taskID: String?
-    var isCompleted = false
-    
-    init(taskName: String, description: String, taskID: String?) {
+    var isCompleted: Bool  // Добавлено свойство isCompleted
+
+    init(taskName: String, description: String, taskID: String, isCompleted: Bool = false) {
         self.taskName = taskName
         self.description = description
         self.taskID = taskID
+        self.isCompleted = isCompleted
     }
 }

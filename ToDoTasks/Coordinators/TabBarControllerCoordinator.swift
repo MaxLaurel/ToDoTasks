@@ -20,9 +20,8 @@ class TabBarControllerCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
-        let tabBarController = viewControllerFactory.createTabBarController()
-        tabBarController.tabBarControllerCoordinator = self
+    func startInitialFlow() {
+        let tabBarController = viewControllerFactory.instantiate(type: .tabBarVC)
         navigationController.pushViewController(tabBarController, animated: true)
     }
 }
