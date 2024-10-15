@@ -14,9 +14,11 @@ class AppCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
     
     var navigationController: UINavigationController
+    let animationHandler: AnimationHandler
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, animationHandler: AnimationHandler) {
         self.navigationController = navigationController
+        self.animationHandler = animationHandler
     }
     
     func startInitialFlow() {

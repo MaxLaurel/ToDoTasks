@@ -46,14 +46,5 @@ class CalculationViewController: UIViewController {
             print(error.localizedDescription)
         }
         navigationController?.popToRootViewController(animated: true)
-    }
-    
-    //    @objc func rightBarButtonItemTapped() {
-    //        let vc = InfoViewController()
-    //        vc.view?.backgroundColor = .white
-    //        navigationController?.pushViewController(vc, animated: true)
-    //    }
-    var dcswcds = UIView()
-    
-    
+    } 
 }

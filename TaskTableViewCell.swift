@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class CustomTableViewCell: UITableViewCell {
+ class TaskTableViewCell: UITableViewCell {
 
     private var taskTitleLabel: UILabel = {
         var taskTitle = UILabel()
@@ -59,7 +59,7 @@ class CustomTableViewCell: UITableViewCell {
 //        accessoryType = isCompleted ? .checkmark : .none
 //    }
 
-    func configureCell(task: Task) {
+    func configureCell(task: TaskModel) {
         taskTitleLabel.text = task.taskName
         descriptionTaskLabel.text = task.description
     }

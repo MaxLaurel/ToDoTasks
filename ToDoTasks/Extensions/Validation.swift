@@ -9,17 +9,17 @@ import Foundation
 
 extension String {
     
-    enum ValidityType {
+enum ValidityType {
     case password
-        case email
+    case email
     }
     
-    struct Regex {
+    private struct Regex {
         static var password = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,25}$"
         static var email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     }
     
-    func isValidated(validityType: ValidityType) -> Bool {
+      func isValidated(validityType: ValidityType) -> Bool {
         var regex = ""
         
         if validityType == .email {

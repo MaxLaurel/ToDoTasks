@@ -8,13 +8,13 @@
 import Foundation
 import Firebase
 
-class Task {
+class TaskModel {
     var taskName: String
     var description: String
     var taskID: String?
     var isCompleted: Bool 
-
-    init(taskName: String, description: String, taskID: String, isCompleted: Bool = false) {
+    
+     init(taskName: String, description: String, taskID: String, isCompleted: Bool = false) {
         self.taskName = taskName
         self.description = description
         self.taskID = taskID

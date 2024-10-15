@@ -12,9 +12,6 @@
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            //view.backgroundColor = .red
-            
-
         }
         
         func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

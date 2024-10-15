@@ -17,7 +17,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let dataBaseRef = Database.database().reference()
     let currentUser = Auth.auth().currentUser?.uid
-    var arrayOfTasks: [Task] = []
+    var arrayOfTasks: [TaskModel] = []
     var selectedIndexPath: IndexPath?
     weak var taskViewControllerCoordinator: TaskViewControllerCoordinator?
     
@@ -97,7 +97,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         taskTableView.addGestureRecognizer(longPressGestureRecognizer)
         taskObserver()
         
-        taskTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
+        taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     
@@ -127,7 +127,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").childByAutoId()
         
-        let task = Task(taskName: nameTaskTextfield, description: descriptionTaskTextField, taskID: taskReference.key ?? "")
+        let task = TaskModel(taskName: nameTaskTextfield, description: descriptionTaskTextField, taskID: taskReference.key ?? "")
         
         taskReference.setValue(["title": task.taskName, "description": task.description, "taskID": task.taskID, "isCompleted": task.isCompleted])
         
@@ -147,7 +147,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                       let description = dictValue["description"] as? String,
                       let taskID = dictValue["taskID"] as? String else {return}
                 
-                let task = Task(taskName: title, description: description, taskID: taskID)
+                let task = TaskModel(taskName: title, description: description, taskID: taskID)
                 
                 if !arrayOfTasks.contains(where: { $0.taskID == taskID }) {
                     arrayOfTasks.append(task)
@@ -166,7 +166,7 @@ extension TaskViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskTableViewCell
         let task = arrayOfTasks[indexPath.row]
         //cell.task = task // Устанавливаем значение task для ячейки
         //cell.taskTitleLabel.text = task.taskName
@@ -317,7 +317,7 @@ extension TaskViewController {
         }
     }
     
-    func toggleCompletion(cell: CustomTableViewCell, isCompleted: Bool) {
+    func toggleCompletion(cell: TaskTableViewCell, isCompleted: Bool) {
         cell.accessoryType = isCompleted ? .checkmark : .none
     }
     

@@ -10,7 +10,18 @@ import Firebase
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
-    var errorLabel: UILabel = {
+    private var animationHandler: AnimationHandlerManagable?
+    
+    init(animationHandler: AnimationHandlerManagable) {
+        self.animationHandler = animationHandler
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var errorLabel: UILabel = {
         var errorLabel = UILabel()
         errorLabel.text = "this user is not registered"
         //errorLabel.contentMode = .center
@@ -20,7 +31,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return errorLabel
     }()
     
-    var emailTextField: UITextField = {
+    private var emailTextField: UITextField = {
         var nameTextField = UITextField()
         nameTextField.placeholder = "Email"
         nameTextField.borderStyle = .roundedRect
@@ -36,7 +47,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return nameTextField
     }()
     
-    var passwordTextField: UITextField = {
+    private var passwordTextField: UITextField = {
         var passwordTextField = UITextField()
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
@@ -50,7 +61,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return passwordTextField
     }()
     
-    var registerButton: UIButton = {
+    private var registerButton: UIButton = {
         var registerButton = UIButton()
         registerButton.backgroundColor = .black
         registerButton.layer.opacity = 0.5
@@ -68,7 +79,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return registerButton
     }()
     
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         var stackView = UIStackView()
         //stackView.addArrangedSubview(errorLabel)
         stackView.addArrangedSubview(emailTextField)
@@ -85,16 +96,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
         
-        emailTextField.delegate = self//delegate for working textFieldShouldReturn (for done button)
-        passwordTextField.delegate = self//delegate for working textFieldShouldReturn (for done button)
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
-        view.addSubview(errorLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(registerButton)
-        view.addSubview(stackView)
-        GestureRecognizer()
+        addSubViews()
+        addGestureRecognizer()
         AddConstraints()
+    }
+    
+    private func addSubViews() {
+        [stackView, errorLabel, registerButton].forEach { view.addSubview($0) }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this metod and add textfields to resign first responder (Done will be working correctly)
@@ -102,56 +113,48 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.resignFirstResponder()
         return true
     }
-    private func GestureRecognizer() {//while tap out of textfields
+    
+    private func addGestureRecognizer() {//while tap out of textfields
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.outOfView))
         view.addGestureRecognizer(gestureRecognizer)
     }
     
-    @objc func outOfView() {
+    @objc private func outOfView() {
         view.endEditing(true)
     }
     
-    func errorWithAnimation(text: String) {
-        errorLabel.text = text
-        
-        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
-            //self.errorLabel.text = "Error occured"
-            self.errorLabel.alpha = 1.0
-        } completion: { complete in
-            self.errorLabel.alpha = 0.0
-        }
-    }
-    
-    @objc func registerAction() {
+    @objc private func registerAction() {
         guard let mail = emailTextField.text, let password = passwordTextField.text, mail != "", password != "" else {
-            errorWithAnimation(text: "Password or login are empty!")
+            animationHandler?.showErrorWithAnimation(
+                with: "Password or login are empty!",
+                and: errorLabel)
+            return
+        }
+
+        guard mail.isValidated(validityType: .email) else {
+            animationHandler?.showErrorWithAnimation(
+                with: "Please enter a valid email address in the format example@example.com",
+                and: errorLabel)
+            return
+        }
+    
+        guard password.isValidated(validityType: .password) else {
+            animationHandler?.showErrorWithAnimation(
+                with: "The password must contain at least one letter, at least one number, and be between 6 and 25 characters long.",
+                and: errorLabel)
             return
         }
         
-        guard mail.isValidated(validityType: .email) else {return errorWithAnimation(text: "Пожалуйста, введите действительный адрес электронной почты в формате example@example.com")}
-                
-        guard password.isValidated(validityType: .password) else { return errorWithAnimation(text: "Пароль должен содержать хотя бы одну букву, хотя бы одну цифру и быть длиной от 6 до 25 символов.")}
-        
         // Проверяем существует ли email
         Auth.auth().fetchSignInMethods(forEmail: mail) { (methods, error) in
-            
             // Если методы входа существуют, значит email уже используется
             if let methods = methods {
-                guard methods.isEmpty else {self.errorWithAnimation(text: "Email is already registered")
-                return
+                guard methods.isEmpty else {self.animationHandler?.showErrorWithAnimation(with: "Email is already registered", and: self.errorLabel)
+                    return
                 }
             }
         }
-        Auth.auth().createUser(withEmail: mail, password: password) { (user, error) in
-//            if error != nil {
-//                self.errorWithAnimation(text: "An error occurs when user's registration")
-//                return
-//            }
-//            if user != nil {
-//                self.errorWithAnimation(text: "User successfully registered")
-//            }
-        }
-        
+        Auth.auth().createUser(withEmail: mail, password: password)
     }
 }
 

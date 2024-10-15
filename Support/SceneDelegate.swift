@@ -12,8 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
 
-    let appCoordinator = AppCoordinator(navigationController: UINavigationController())
-   // let appCoordinator = CoordinatorFactory().createAppCoordinator(navigationController: UINavigationController())
+    let animationHandler = AnimationHandler()
+    let appCoordinator = AppCoordinator(navigationController: UINavigationController(), animationHandler: AnimationHandler())
+ 
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         

@@ -17,48 +17,19 @@ protocol ViewControllerFactoryUsable {
      case tabBarVC
      case taskVC
      case calculateVC
-     case secondFlowVCone
-     case secondFlowVCTwo
      case newsVC
      }
 
      func instantiate(type: VCType) -> UIViewController {
+         let someAnimationHandler = AnimationHandler()
          switch type {
-         case .loginVC: return LoginViewController()
+         case .loginVC: return LoginViewController(animationHandler: someAnimationHandler)
          case .tabBarVC: return TabBarController()
          case .taskVC: return TaskViewController()
          case .calculateVC: return CalculationViewController()
-         case .secondFlowVCone: return SecondFlowViewControllerOne()
-         case .secondFlowVCTwo: return SecondFlowViewControllerTwo()
          case .newsVC: return YouTubeNewsTableViewController()
          }
      }
-    
-//    func createLoginViewController() -> LoginViewController {
-//        return LoginViewController()
-//    }
-//    
-//    func createTabBarController() -> TabBarController {
-//        return TabBarController()
-//    }
-    
-//    func createTaskViewController() -> TaskViewController {
-//        return TaskViewController()
-//    }
-    
-//    func createCalculateViewController() -> CalculationViewController {
-//        return CalculationViewController()
-//    }
-//     func createNewsViewController() -> YouTubeNewsTableViewController {
-//         return YouTubeNewsTableViewController()
-//     }
-    
-    func createSecondFlowViewControllerOne() -> SecondFlowViewControllerOne {
-        return SecondFlowViewControllerOne()
-    }
-    
-    func createSecondFlowViewControllerTwo() -> SecondFlowViewControllerTwo {
-        return SecondFlowViewControllerTwo()
-    }
+
     
 }

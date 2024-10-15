@@ -10,6 +10,17 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    let animationHandler: AnimationHandler?
+    
+    let someAnimationHandler = AnimationHandler()
+    init(animationHandler: AnimationHandler?) {
+        self.animationHandler = animationHandler
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
@@ -21,7 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private var errorLabel: UILabel = {
         var errorLabel = UILabel()
-        errorLabel.text = "this user is not registered"
+        //errorLabel.text = "this user is not registered"
         errorLabel.alpha = 0
         errorLabel.font = UIFont.systemFont(ofSize: 20)
         errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -153,71 +164,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return forgotPasswordButton
     }()
     
-//    lazy var tabBarViewController: UITabBarController = {
-//        
-//        let tabBarViewController = UITabBarController()
-//       // tabBarViewController.tabBar.isTranslucent = false
-//        
-//        let tableViewController = TaskViewController()
-//        let taskNavController = UINavigationController(rootViewController: tableViewController)
-//        
-////        let loginViewController = LoginViewController()
-////        let loginTabBarController = UINavigationController(rootViewController: loginViewController)
-//        
-//        let calculateViewController = CalculationViewController()
-//        let calculateNavBarController = UINavigationController(rootViewController: calculateViewController)
-//        
-//        tabBarViewController.viewControllers = [taskNavController, calculateNavBarController]
-//        tabBarViewController.selectedViewController = taskNavController
-//        
-//        taskNavController.tabBarItem = UITabBarItem(title: "tasks", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 0)
-//        taskNavController.tabBarItem.badgeValue = "\(tableViewController.arrayOfTasks.count)"
-//        taskNavController.tabBarItem.badgeColor = .systemGreen
-////        loginTabBarController.tabBarItem = UITabBarItem.init(title: "logOut", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 1)
-//        calculateNavBarController.tabBarItem = UITabBarItem(title: "calculate", image: UIImage(systemName: "arrow.forward.square"), tag: 2)
-//        
-//        tabBarViewController.tabBar.tintColor = UIColor(red: 0.7, green: 0.5, blue: 0.5, alpha: 1)
-//        tabBarViewController.tabBar.unselectedItemTintColor = UIColor(red: 0.5, green: 0.7, blue: 0.5, alpha: 1)
-//        tabBarViewController.tabBar.backgroundColor = UIColor(white: 1, alpha: 1)
-//        return tabBarViewController
-//    }()
+    weak private var loginViewControllerCoordinator: LoginViewControllerCoordinator?
     
-  weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
-    weak var tabBarControllerCoordinator: TabBarControllerCoordinator?
-
+   //private let animationHandler = AnimationHandler()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-           
-        GestureRecognizer()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
         view.backgroundColor = .systemBlue
-        view.addSubview(mainLabel)
-        view.addSubview(errorLabel)
-        view.addSubview(stackView)
-        
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(stackView2)
-        
-        view.addSubview(loginButton)
-        view.addSubview(registerButton)
-        view.addSubview(forgotPasswordButton)
-        view.addSubview(stackView3)
-        
-        view.addSubview(CommonStackView)
-        
+        addGestureRecognizer()
+        addSubvies()
         addConstraints()
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//            if user != nil {
-//                let tableViewController = TaskViewController()
-//                self.navigationController?.pushViewController(self.tabBarViewController, animated: true)
-//                self.navigationController?.pushViewController(tableViewController, animated: true)
-//            }
-//        }
     }
-    //end wiewDidLoad
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -231,101 +190,78 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    private func GestureRecognizer() {
+    private func addGestureRecognizer() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfView))
         view.addGestureRecognizer(gestureRecognizer)
     }
     
-    @objc func outOfView() {
+    @objc private func outOfView() {
         view.endEditing(true)
     }
     
-    private func errorWithAnimation(text: String) {
-        errorLabel.text = text
-        
-        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
-            //self.errorLabel.text = "Error occured"
-            self.errorLabel.alpha = 1.0
-        } completion: { complete in
-            self.errorLabel.alpha = 0.0
-        }
-    }
-    
-    @objc func LoginAction() {
+    @objc private func LoginAction() {
         guard let emailTextField = emailTextField.text, let password = passwordTextField.text, emailTextField != "", password != "" else {
-            errorWithAnimation(text: "Password or login are empty!")
+            
+            self.animationHandler?.showErrorWithAnimation(with: "Email or password are empty!", and: self.errorLabel)
             return
         }
         
         Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
-
                 let taskTabBarController = TabBarController()
                 taskTabBarController.tabBarControllerCoordinator?.startInitialFlow()
-                //self.tabBarControllerCoordinator?.start()
-               
-//                self.navigationController?.pushViewController(taskTabBarController, animated: true)
                 return
             }
-            
             if error != nil {
-                self.errorWithAnimation(text: "Email or password wrong!")
+                self.animationHandler?.showErrorWithAnimation(with: "Email or password wrong!", and: self.errorLabel)
                 return
             }
-            //self.errorWithAnimation(text: "There is no such user!")
         }
     }
     
-    
-    @objc func registerViewControllerAction() {
-        let registerVC = RegisterViewController()
+    @objc private func registerViewControllerAction() {
+        let registerVC = RegisterViewController(animationHandler: someAnimationHandler) 
         self.navigationController?.pushViewController(registerVC, animated: true)
     }
     
-    
     @objc func forgotPasswordAction() {
         guard let emailTextfield = emailTextField.text, emailTextfield != "", emailTextfield.isValidated(validityType: .email) else {
-            errorWithAnimation(text: "Your email could be wrong")
+            self.animationHandler?.showErrorWithAnimation(with: "Your email could be wrong", and: self.errorLabel)
             return
         }
+        
         Auth.auth().sendPasswordReset(withEmail: emailTextfield) { error in
             if error == nil {
-                self.errorWithAnimation(text: "Information to reset was sent to your email")
+                self.animationHandler?.showErrorWithAnimation(with: "Information to reset was sent to your email", and: self.errorLabel)
             }
         }
     }
+    
+    private func addSubvies() {
+        [forgotPasswordButton, CommonStackView].forEach {view.addSubview($0)}
+    }
 }
+
 extension LoginViewController {
     private func addConstraints() {
         
+        translatesAutoresizingMaskIntoConstraintsToFalse()
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        // stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        //stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
-        
-        stackView2.translatesAutoresizingMaskIntoConstraints = false
-        //stackView2.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         stackView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        //stackView2.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30).isActive = true
-        
-        stackView3.translatesAutoresizingMaskIntoConstraints = false
-        stackView3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        // stackView3.topAnchor.constraint(greaterThanOrEqualTo: stackView2.bottomAnchor, constant: 130).isActive = true
-        //stackView3.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+      
         stackView3.widthAnchor.constraint(equalToConstant: 200).isActive = true
         stackView3.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        CommonStackView.translatesAutoresizingMaskIntoConstraints = false
+//
         CommonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         CommonStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        //stackView4.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
-        // stackView4.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
         forgotPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+    }
+    
+    private func translatesAutoresizingMaskIntoConstraintsToFalse() {
+        [stackView, stackView2, stackView3, CommonStackView, forgotPasswordButton].forEach {$0.translatesAutoresizingMaskIntoConstraints = false }
     }
 }
 

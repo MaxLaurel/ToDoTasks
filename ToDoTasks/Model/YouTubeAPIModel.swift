@@ -8,14 +8,14 @@
 import Foundation
 
 // MARK: - YouTubeAPIModel
-struct YouTubeAPIModel: Codable {
+ struct YouTubeAPIModel: Codable {
     var status: String
     var totalResults: Int
     var articles: [YouTubeArticle]
 }
 
 // MARK: - Article
-struct YouTubeArticle: Codable {
+ struct YouTubeArticle: Codable {
     var source: Source
     var author: String?
     var title, description: String
@@ -26,7 +26,7 @@ struct YouTubeArticle: Codable {
 }
 
 // MARK: - Source
-struct Source: Codable {
+ struct Source: Codable {
     var id: String?
     var name: String
 }
