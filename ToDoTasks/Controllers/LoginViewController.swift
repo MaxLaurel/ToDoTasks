@@ -324,7 +324,7 @@ extension LoginViewController {
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
         forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //forgotPasswordButton.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        
         forgotPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
     }
 }
