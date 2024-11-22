@@ -140,3 +140,10 @@
 }
 
 @end
+<<<<<<< HEAD
+=======
+
+/// Stub used to force the linker to include the categories in this file.
+void FIRInclude_FIRInstallationsItem_RegisterInstallationAPI_Category(void) {
+}
+>>>>>>> tik_2-NetworkSession

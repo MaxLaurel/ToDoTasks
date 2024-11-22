@@ -183,7 +183,11 @@ static BOOL (^kFKeepPredicate)(id) = ^BOOL(NSNumber *pruneValue) {
         initWithForest:[self.pruneForest setTree:newSubtree atPath:path]];
 }
 
+<<<<<<< HEAD
 - (void)enumarateKeptNodesUsingBlock:(void (^)(FPath *))block {
+=======
+- (void)enumerateKeptNodesUsingBlock:(void (^)(FPath *))block {
+>>>>>>> tik_2-NetworkSession
     [self.pruneForest forEach:^(FPath *path, id value) {
       if (value != nil && ![value boolValue]) {
           block(path);

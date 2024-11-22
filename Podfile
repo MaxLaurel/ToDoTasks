@@ -10,4 +10,8 @@ pod 'IQKeyboardManagerSwift'
 pod 'Firebase/Database'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+<<<<<<< HEAD
+=======
+
+>>>>>>> tik_2-NetworkSession
 end

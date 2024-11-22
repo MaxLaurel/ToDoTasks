@@ -161,7 +161,11 @@ typedef void (^GTMSessionUploadFetcherCancellationHandler)(GTMSessionFetcher *_N
 //
 // Unlike other callbacks, since this is related specifically to the stopFetching flow it is not
 // cleared by stopFetching. It will instead clear itself after it is invoked or if the completion
+<<<<<<< HEAD
 // has occured before stopFetching is called.
+=======
+// has occurred before stopFetching is called.
+>>>>>>> tik_2-NetworkSession
 @property(atomic, copy, nullable) GTMSessionUploadFetcherCancellationHandler cancellationHandler;
 
 // Exposed for testing only.

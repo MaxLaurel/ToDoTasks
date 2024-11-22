@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Indicates whether it is running inside an extension or an app.
 + (BOOL)isAppExtension;
 
+<<<<<<< HEAD
 /// @return Returns @YES when is run on iOS version greater or equal to 7.0
 + (BOOL)isIOS7OrHigher DEPRECATED_MSG_ATTRIBUTE(
     "Always `YES` because only iOS 8 and higher supported. The method will be removed.");
@@ -53,6 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return YES if Swift runtime detected in the app.
 + (BOOL)hasSwiftRuntime __deprecated;
 
+=======
+>>>>>>> tik_2-NetworkSession
 /// @return An Apple platform. Possible values "ios", "tvos", "macos", "watchos", "maccatalyst", and
 /// "visionos".
 + (NSString *)applePlatform;

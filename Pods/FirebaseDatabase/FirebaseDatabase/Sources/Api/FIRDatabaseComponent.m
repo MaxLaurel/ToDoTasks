@@ -20,7 +20,11 @@
 #import "FirebaseDatabase/Sources/Core/FRepoManager.h"
 #import "FirebaseDatabase/Sources/FIRDatabaseConfig_Private.h"
 
+<<<<<<< HEAD
 #import "FirebaseAuth/Interop/FIRAuthInterop.h"
+=======
+#import "FirebaseAuth/Interop/Public/FirebaseAuthInterop/FIRAuthInterop.h"
+>>>>>>> tik_2-NetworkSession
 #import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 
 #import <FirebaseAppCheckInterop/FirebaseAppCheckInterop.h>
@@ -60,9 +64,12 @@ typedef NSMutableDictionary<NSString *, FIRDatabase *> FIRDatabaseDictionary;
 #pragma mark - FIRComponentRegistrant
 
 + (NSArray<FIRComponent *> *)componentsToRegister {
+<<<<<<< HEAD
     FIRDependency *authDep =
         [FIRDependency dependencyWithProtocol:@protocol(FIRAuthInterop)
                                    isRequired:NO];
+=======
+>>>>>>> tik_2-NetworkSession
     FIRComponentCreationBlock creationBlock =
         ^id _Nullable(FIRComponentContainer *container, BOOL *isCacheable) {
         *isCacheable = YES;
@@ -71,7 +78,10 @@ typedef NSMutableDictionary<NSString *, FIRDatabase *> FIRDatabaseDictionary;
     FIRComponent *databaseProvider =
         [FIRComponent componentWithProtocol:@protocol(FIRDatabaseProvider)
                         instantiationTiming:FIRInstantiationTimingLazy
+<<<<<<< HEAD
                                dependencies:@[ authDep ]
+=======
+>>>>>>> tik_2-NetworkSession
                               creationBlock:creationBlock];
     return @[ databaseProvider ];
 }

@@ -16,18 +16,24 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import "FIRAuthUIDelegate.h"
 
+=======
+>>>>>>> tik_2-NetworkSession
 @class FIRAuthCredential;
 
 NS_ASSUME_NONNULL_BEGIN
 
+<<<<<<< HEAD
 /**
     Utility type for constructing federated auth provider credentials.
  */
 NS_SWIFT_NAME(FederatedAuthProvider)
 @protocol FIRFederatedAuthProvider <NSObject>
 
+=======
+>>>>>>> tik_2-NetworkSession
 /** @typedef FIRAuthCredentialCallback
     @brief The type of block invoked when obtaining an auth credential.
     @param credential The credential obtained.
@@ -37,6 +43,7 @@ typedef void (^FIRAuthCredentialCallback)(FIRAuthCredential *_Nullable credentia
                                           NSError *_Nullable error)
     NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
+<<<<<<< HEAD
 /** @fn getCredentialWithUIDelegate:completion:
     @brief Used to obtain an auth credential via a mobile web flow.
         This method is available on iOS only.
@@ -58,4 +65,6 @@ typedef void (^FIRAuthCredentialCallback)(FIRAuthCredential *_Nullable credentia
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

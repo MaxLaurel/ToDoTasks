@@ -40,7 +40,11 @@
 }
 
 /**
+<<<<<<< HEAD
 * Early terminates if aciton returns YES.
+=======
+* Early terminates if action returns YES.
+>>>>>>> tik_2-NetworkSession
 * @return The first truthy value returned by action, or the last falsey value returned by action.
 */
 - (BOOL) inorderTraversal:(BOOL (^)(id key, id value))action {

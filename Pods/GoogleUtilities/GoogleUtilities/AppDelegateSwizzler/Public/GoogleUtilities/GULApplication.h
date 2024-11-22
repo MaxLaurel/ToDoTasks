@@ -16,7 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_TV || (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
 
 #import <UIKit/UIKit.h>
 

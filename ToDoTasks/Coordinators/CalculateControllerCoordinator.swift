@@ -19,9 +19,14 @@ class CalculateControllerCoordinator: Coordinator {
     }
     
     
+<<<<<<< HEAD
     func start() {
         let calculationViewController = viewControllerFactory.createCalculateViewController()
         calculationViewController.calculateControllerCoordinator = self
+=======
+    func startInitialFlow() {
+        let calculationViewController = viewControllerFactory.instantiate(type: .calculateVC)
+>>>>>>> tik_2-NetworkSession
         navigationController.pushViewController(calculationViewController, animated: true)
     }
 }

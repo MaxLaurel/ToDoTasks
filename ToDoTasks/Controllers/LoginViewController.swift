@@ -10,6 +10,19 @@ import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+<<<<<<< HEAD
+=======
+    let animationHandler: AnimationHandler
+
+    init(animationHandler: AnimationHandler) {
+        self.animationHandler = animationHandler
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+>>>>>>> tik_2-NetworkSession
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
@@ -21,7 +34,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private var errorLabel: UILabel = {
         var errorLabel = UILabel()
+<<<<<<< HEAD
         errorLabel.text = "this user is not registered"
+=======
+        //errorLabel.text = "this user is not registered"
+>>>>>>> tik_2-NetworkSession
         errorLabel.alpha = 0
         errorLabel.font = UIFont.systemFont(ofSize: 20)
         errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -56,7 +73,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return passwordTextField
     }()
     
+<<<<<<< HEAD
     private var loginButton: UIButton = {
+=======
+    private lazy var loginButton: UIButton = {
+>>>>>>> tik_2-NetworkSession
         var loginButton = UIButton()
         loginButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         loginButton.alpha = 0.3
@@ -75,7 +96,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return loginButton
     }()
     
+<<<<<<< HEAD
     private var registerButton: UIButton = {
+=======
+    private lazy var registerButton: UIButton = {
+>>>>>>> tik_2-NetworkSession
         var registerButton = UIButton()
         registerButton.setTitle(" Sign Up", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
@@ -133,7 +158,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return stackView4
     }()
     
+<<<<<<< HEAD
     private var forgotPasswordButton: UIButton = {
+=======
+    private lazy var forgotPasswordButton: UIButton = {
+>>>>>>> tik_2-NetworkSession
         var forgotPasswordButton = UIButton()
         //forgotPasswordButton.backgroundColor = .black
         //forgotPasswordButton.alpha = 0.3
@@ -153,6 +182,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return forgotPasswordButton
     }()
     
+<<<<<<< HEAD
 //    lazy var tabBarViewController: UITabBarController = {
 //        
 //        let tabBarViewController = UITabBarController()
@@ -218,6 +248,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        }
     }
     //end wiewDidLoad
+=======
+    weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
+    
+   //private let animationHandler = AnimationHandler()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        view.backgroundColor = .systemBlue
+        addGestureRecognizer()
+        addSubvies()
+        addConstraints()
+    }
+>>>>>>> tik_2-NetworkSession
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -231,11 +276,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+<<<<<<< HEAD
     private func GestureRecognizer() {
+=======
+    private func addGestureRecognizer() {
+>>>>>>> tik_2-NetworkSession
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfView))
         view.addGestureRecognizer(gestureRecognizer)
     }
     
+<<<<<<< HEAD
     @objc func outOfView() {
         view.endEditing(true)
     }
@@ -254,11 +304,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func LoginAction() {
         guard let emailTextField = emailTextField.text, let password = passwordTextField.text, emailTextField != "", password != "" else {
             errorWithAnimation(text: "Password or login are empty!")
+=======
+    @objc private func outOfView() {
+        view.endEditing(true)
+    }
+    
+    @objc private func LoginAction() {
+        guard let emailTextField = emailTextField.text, let password = passwordTextField.text, emailTextField != "", password != "" else {
+            
+            self.animationHandler.showErrorWithAnimation(with: "Email or password are empty!", and: self.errorLabel)
+>>>>>>> tik_2-NetworkSession
             return
         }
         
         Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
+<<<<<<< HEAD
 
                 let taskTabBarController = TabBarController()
                 taskTabBarController.tabBarControllerCoordinator?.start()
@@ -327,6 +388,68 @@ extension LoginViewController {
         //forgotPasswordButton.heightAnchor.constraint(equalToConstant: 170).isActive = true
         forgotPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
     }
+=======
+                let tabBarControllerCoordinator = TabBarControllerCoordinator()
+                tabBarControllerCoordinator.startInitialFlow()
+                return
+            }
+            if let error = error {
+                self.animationHandler.showErrorWithAnimation(with: "Email or password wrong!", and: self.errorLabel)
+                return
+            }
+        }
+    }
+    
+    @objc private func registerViewControllerAction() {
+        let registerVC = RegisterViewController(animationHandler: animationHandler)
+        self.navigationController?.pushViewController(registerVC, animated: true)
+    }
+    
+    @objc private func forgotPasswordAction() {
+        guard let emailTextfield = emailTextField.text, emailTextfield != "", emailTextfield.isValidated(validityType: .email) else {
+            self.animationHandler.showErrorWithAnimation(with: "Your email could be wrong", and: self.errorLabel)
+            return
+        }
+        
+        Auth.auth().sendPasswordReset(withEmail: emailTextfield) { error in
+            if error == nil {
+                self.animationHandler.showErrorWithAnimation(with: "Information to reset was sent to your email", and: self.errorLabel)
+            }
+        }
+    }
+    
+    private func addSubvies() {
+        [forgotPasswordButton, CommonStackView].forEach {view.addSubview($0)}
+    }
+    
+    deinit {
+            print("LoginViewController was deallocated")
+        }
+}
+
+extension LoginViewController {
+    private func addConstraints() {
+        
+        translatesAutoresizingMaskIntoConstraintsToFalse()
+        
+        stackView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
+      
+        stackView3.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        stackView3.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//
+        CommonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        CommonStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        forgotPasswordButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        forgotPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+    }
+    
+    private func translatesAutoresizingMaskIntoConstraintsToFalse() {
+        [stackView, stackView2, stackView3, CommonStackView, forgotPasswordButton].forEach {$0.translatesAutoresizingMaskIntoConstraints = false }
+    }
+    
+>>>>>>> tik_2-NetworkSession
 }
 
 

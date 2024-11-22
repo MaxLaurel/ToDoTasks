@@ -30,6 +30,7 @@ extern NSString *const FIRFacebookAuthProviderID NS_SWIFT_NAME(FacebookAuthProvi
  */
 extern NSString *const _Nonnull FIRFacebookAuthSignInMethod NS_SWIFT_NAME(FacebookAuthSignInMethod);
 
+<<<<<<< HEAD
 /** @class FIRFacebookAuthProvider
     @brief Utility class for constructing Facebook credentials.
  */
@@ -51,4 +52,6 @@ NS_SWIFT_NAME(FacebookAuthProvider)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

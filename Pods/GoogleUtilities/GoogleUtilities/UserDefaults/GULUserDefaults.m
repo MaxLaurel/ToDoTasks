@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
 
 @interface GULUserDefaults ()
 
+<<<<<<< HEAD
 /// Equivalent to the suite name for NSUserDefaults.
 @property(readonly) CFStringRef appNameRef;
 
@@ -43,6 +44,13 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
   // preferences.
   CFStringRef _appNameRef;
 }
+=======
+@property(nonatomic, readonly) NSUserDefaults *userDefaults;
+
+@end
+
+@implementation GULUserDefaults
+>>>>>>> tik_2-NetworkSession
 
 + (GULUserDefaults *)standardUserDefaults {
   static GULUserDefaults *standardUserDefaults;
@@ -63,15 +71,21 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
   NSString *name = [suiteName copy];
 
   if (self) {
+<<<<<<< HEAD
     // `kCFPreferencesCurrentApplication` maps to the same defaults database as
     // `[NSUserDefaults standardUserDefaults]`.
     _appNameRef =
         name.length ? (__bridge_retained CFStringRef)name : kCFPreferencesCurrentApplication;
+=======
+    _userDefaults = name.length ? [[NSUserDefaults alloc] initWithSuiteName:name]
+                                : [NSUserDefaults standardUserDefaults];
+>>>>>>> tik_2-NetworkSession
   }
 
   return self;
 }
 
+<<<<<<< HEAD
 - (void)dealloc {
   // If we're using a custom `_appNameRef` it needs to be released. If it's a constant, it shouldn't
   // need to be released since we don't own it.
@@ -93,11 +107,24 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
     return nil;
   }
   return (__bridge_transfer id)CFPreferencesCopyAppValue((__bridge CFStringRef)key, _appNameRef);
+=======
+- (nullable id)objectForKey:(NSString *)defaultName {
+  NSString *key = [defaultName copy];
+  if (![key isKindOfClass:[NSString class]] || !key.length) {
+    GULOSLogWarning(kGULLogSubsystem, @"<GoogleUtilities>", NO,
+                    [NSString stringWithFormat:kGULLogFormat, (long)GULUDMessageCodeInvalidKeyGet],
+                    @"Cannot get object for invalid user default key.");
+    return nil;
+  }
+
+  return [self.userDefaults objectForKey:key];
+>>>>>>> tik_2-NetworkSession
 }
 
 - (void)setObject:(nullable id)value forKey:(NSString *)defaultName {
   NSString *key = [defaultName copy];
   if (![key isKindOfClass:[NSString class]] || !key.length) {
+<<<<<<< HEAD
     GULLogWarning(kGULLogUserDefaultsService, NO,
                   [NSString stringWithFormat:kGULLogFormat, (long)GULUDMessageCodeInvalidKeySet],
                   @"Cannot set object for invalid user default key.");
@@ -106,6 +133,15 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
   if (!value) {
     CFPreferencesSetAppValue((__bridge CFStringRef)key, NULL, _appNameRef);
     [self synchronize];
+=======
+    GULOSLogWarning(kGULLogSubsystem, kGULLogUserDefaultsService, NO,
+                    [NSString stringWithFormat:kGULLogFormat, (long)GULUDMessageCodeInvalidKeySet],
+                    @"Cannot set object for invalid user default key.");
+    return;
+  }
+  if (!value) {
+    [self.userDefaults removeObjectForKey:key];
+>>>>>>> tik_2-NetworkSession
     return;
   }
   BOOL isAcceptableValue =
@@ -113,6 +149,7 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
       [value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]] ||
       [value isKindOfClass:[NSDate class]] || [value isKindOfClass:[NSData class]];
   if (!isAcceptableValue) {
+<<<<<<< HEAD
     GULLogWarning(kGULLogUserDefaultsService, NO,
                   [NSString stringWithFormat:kGULLogFormat, (long)GULUDMessageCodeInvalidObjectSet],
                   @"Cannot set invalid object to user defaults. Must be a string, number, array, "
@@ -123,6 +160,18 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
 
   CFPreferencesSetAppValue((__bridge CFStringRef)key, (__bridge CFStringRef)value, _appNameRef);
   [self synchronize];
+=======
+    GULOSLogWarning(
+        kGULLogSubsystem, kGULLogUserDefaultsService, NO,
+        [NSString stringWithFormat:kGULLogFormat, (long)GULUDMessageCodeInvalidObjectSet],
+        @"Cannot set invalid object to user defaults. Must be a string, number, array, "
+        @"dictionary, date, or data. Value: %@",
+        value);
+    return;
+  }
+
+  [self.userDefaults setObject:value forKey:key];
+>>>>>>> tik_2-NetworkSession
 }
 
 - (void)removeObjectForKey:(NSString *)key {
@@ -181,6 +230,7 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
   [self setObject:@(boolValue) forKey:defaultName];
 }
 
+<<<<<<< HEAD
 #pragma mark - Save data
 
 - (void)synchronize {
@@ -191,6 +241,8 @@ typedef NS_ENUM(NSInteger, GULUDMessageCode) {
   }
 }
 
+=======
+>>>>>>> tik_2-NetworkSession
 @end
 
 NS_ASSUME_NONNULL_END

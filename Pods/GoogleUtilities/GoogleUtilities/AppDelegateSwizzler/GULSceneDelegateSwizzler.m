@@ -108,6 +108,7 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
            @"SceneDelegateProxy interceptor does not conform to UIApplicationDelegate");
 
   if (!interceptor) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling000],
@@ -119,6 +120,21 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling001],
                 @"SceneDelegateProxy interceptor does not conform to UIApplicationDelegate");
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling000],
+        @"SceneDelegateProxy cannot add nil interceptor.");
+    return nil;
+  }
+  if (![interceptor conformsToProtocol:@protocol(UISceneDelegate)]) {
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling001],
+        @"SceneDelegateProxy interceptor does not conform to UIApplicationDelegate");
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
 
@@ -126,10 +142,18 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
   NSString *interceptorID =
       [NSString stringWithFormat:@"%@%p", kGULSceneDelegatePrefix, interceptor];
   if (!interceptorID.length) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling002],
                 @"SceneDelegateProxy cannot create Interceptor ID.");
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling002],
+        @"SceneDelegateProxy cannot create Interceptor ID.");
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
   GULSceneZeroingWeakContainer *weakObject = [[GULSceneZeroingWeakContainer alloc] init];
@@ -144,22 +168,40 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
            @"SceneDelegateProxy cannot unregister empty interceptor ID.");
 
   if (!interceptorID) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling003],
                 @"SceneDelegateProxy cannot unregister empty interceptor ID.");
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling003],
+        @"SceneDelegateProxy cannot unregister empty interceptor ID.");
+>>>>>>> tik_2-NetworkSession
     return;
   }
 
   GULSceneZeroingWeakContainer *weakContainer =
       [GULSceneDelegateSwizzler interceptors][interceptorID];
   if (!weakContainer.object) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling004],
                 @"SceneDelegateProxy cannot unregister interceptor that was not registered. "
                  "Interceptor ID %@",
                 interceptorID);
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling004],
+        @"SceneDelegateProxy cannot unregister interceptor that was not registered. "
+         "Interceptor ID %@",
+        interceptorID);
+>>>>>>> tik_2-NetworkSession
     return;
   }
 
@@ -247,8 +289,13 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
   IMP methodIMP = method_getImplementation(method);
   const char *types = method_getTypeEncoding(method);
   if (!class_addMethod(toClass, destinationSelector, methodIMP, types)) {
+<<<<<<< HEAD
     GULLogWarning(
         kGULLoggerSwizzler, NO,
+=======
+    GULOSLogWarning(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
         [NSString
             stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling009],
         @"Cannot copy method to destination selector %@ as it already exists",
@@ -285,8 +332,13 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
     GULSceneZeroingWeakContainer *interceptorContainer = obj;
     id interceptor = interceptorContainer.object;
     if (!interceptor) {
+<<<<<<< HEAD
       GULLogWarning(
           kGULLoggerSwizzler, NO,
+=======
+      GULOSLogWarning(
+          kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
           [NSString stringWithFormat:@"I-SWZ%06ld",
                                      (long)kGULSwizzlerMessageCodeSceneDelegateSwizzling010],
           @"SceneDelegateProxy cannot find interceptor with ID %@. Removing the interceptor.", key);
@@ -351,8 +403,13 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
       [NSString stringWithFormat:@"%@-%@", classNameWithPrefix, [NSUUID UUID].UUIDString];
 
   if (NSClassFromString(newClassName)) {
+<<<<<<< HEAD
     GULLogError(
         kGULLoggerSwizzler, NO,
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
         [NSString
             stringWithFormat:@"I-SWZ%06ld",
                              (long)
@@ -367,8 +424,13 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
   // size.
   Class sceneDelegateSubClass = objc_allocateClassPair(realClass, newClassName.UTF8String, 0);
   if (sceneDelegateSubClass == Nil) {
+<<<<<<< HEAD
     GULLogError(
         kGULLoggerSwizzler, NO,
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
         [NSString
             stringWithFormat:@"I-SWZ%06ld",
                              (long)
@@ -401,8 +463,13 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
   // cannot have more ivars/properties than its superclass since it will cause an offset in memory
   // that can lead to overwriting the isa of an object in the next frame.
   if (class_getInstanceSize(realClass) != class_getInstanceSize(sceneDelegateSubClass)) {
+<<<<<<< HEAD
     GULLogError(
         kGULLoggerSwizzler, NO,
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
         [NSString
             stringWithFormat:@"I-SWZ%06ld",
                              (long)
@@ -417,8 +484,13 @@ static NSString *const kGULSceneDelegatePrefix = @"GUL_";
   // Make the newly created class to be the subclass of the real Scene Delegate class.
   objc_registerClassPair(sceneDelegateSubClass);
   if (object_setClass(scene.delegate, sceneDelegateSubClass)) {
+<<<<<<< HEAD
     GULLogDebug(
         kGULLoggerSwizzler, NO,
+=======
+    GULOSLogDebug(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
         [NSString
             stringWithFormat:@"I-SWZ%06ld",
                              (long)

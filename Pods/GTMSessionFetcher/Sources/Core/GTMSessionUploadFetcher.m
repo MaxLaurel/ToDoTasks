@@ -790,7 +790,19 @@ NSString *const kGTMSessionFetcherUploadInitialBackoffStartedNotification =
     }
     if (offset > 0 || length < fullUploadLength) {
       NSRange range = NSMakeRange((NSUInteger)offset, (NSUInteger)length);
+<<<<<<< HEAD
       resultData = [mappedData subdataWithRange:range];
+=======
+      @try {
+        resultData = [mappedData subdataWithRange:range];
+      } @catch (NSException *exception) {
+        NSString *errorMessage = exception.description;
+        GTMSESSION_ASSERT_DEBUG(NO, @"%@", errorMessage);
+        response(nil, kGTMSessionUploadFetcherUnknownFileSize,
+                 [self uploadChunkUnavailableErrorWithDescription:errorMessage]);
+        return;
+      }
+>>>>>>> tik_2-NetworkSession
     } else {
       resultData = mappedData;
     }

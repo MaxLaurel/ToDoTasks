@@ -176,7 +176,11 @@
     return children;
 }
 
+<<<<<<< HEAD
 // TODO: change into enumarate method
+=======
+// TODO: change into enumerate method
+>>>>>>> tik_2-NetworkSession
 - (NSDictionary *)childCompoundWrites {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [self.writeTree.children

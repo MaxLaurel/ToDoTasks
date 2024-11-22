@@ -38,7 +38,11 @@ After the CI is green:
     <summary>Push to <b>SpecsStaging</b></summary>
 
     ```console
+<<<<<<< HEAD
     pod repo push --skip-tests staging GoogleUtilities.podspec
+=======
+    pod repo push --skip-tests --use-json staging GoogleUtilities.podspec
+>>>>>>> tik_2-NetworkSession
     ```
 
     If the command fails with `Unable to find the 'staging' repo.`, add the staging repo with:
@@ -51,7 +55,11 @@ After the CI is green:
     <summary>Push to <b>SpecsDev</b></summary>
 
     ```console
+<<<<<<< HEAD
     pod repo push --skip-tests dev GoogleUtilities.podspec
+=======
+    pod repo push --skip-tests --use-json dev GoogleUtilities.podspec
+>>>>>>> tik_2-NetworkSession
     ```
 
     If the command fails with `Unable to find the 'dev' repo.`, add the dev repo with:
@@ -89,7 +97,11 @@ The release process is as follows:
 
   It's recommended to point to the `GoogleUtilities.podspec` in `staging` to make sure the correct spec is being published.
   ```console
+<<<<<<< HEAD
   pod trunk push ~/.cocoapods/repos/staging/GoogleUtilities/{version}/GoogleUtilities.podspec
+=======
+  pod trunk push ~/.cocoapods/repos/staging/GoogleUtilities/{version}/GoogleUtilities.podspec.json
+>>>>>>> tik_2-NetworkSession
   ```
   *Note: In some cases, it may be acceptable to `pod trunk push` with the `--skip-tests` flag. Please double check with
   the maintainers before doing so.*

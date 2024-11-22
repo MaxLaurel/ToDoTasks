@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, GULNetworkType) {
 /// Collection of utilities to read network status information
 @interface GULNetworkInfo : NSObject
 
+<<<<<<< HEAD
 /// Returns the cellular mobile country code (mcc) if CoreTelephony is supported, otherwise nil
 + (NSString *_Nullable)getNetworkMobileCountryCode;
 
@@ -41,6 +42,8 @@ typedef NS_ENUM(NSInteger, GULNetworkType) {
  */
 + (NSString *_Nullable)formatMcc:(NSString *_Nullable)mcc andMNC:(NSString *_Nullable)mnc;
 
+=======
+>>>>>>> tik_2-NetworkSession
 /// Returns an enum indicating the network type. The enum values should be easily transferrable to
 /// the NetworkType value in android/play/playlog/proto/clientanalytics.proto. Right now this always
 /// returns None on platforms other than iOS. This should be updated in the future to return Wi-Fi

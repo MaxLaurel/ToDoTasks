@@ -16,6 +16,7 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import "FIRActionCodeSettings.h"
 #import "FIRAdditionalUserInfo.h"
 #import "FIRAuth.h"
@@ -23,6 +24,10 @@
 #import "FIRAuthDataResult.h"
 #import "FIRAuthErrors.h"
 #import "FIRAuthTokenResult.h"
+=======
+#import "FIRAuth.h"
+#import "FIRAuthErrors.h"
+>>>>>>> tik_2-NetworkSession
 #import "FIREmailAuthProvider.h"
 #import "FIRFacebookAuthProvider.h"
 #import "FIRFederatedAuthProvider.h"
@@ -30,6 +35,7 @@
 #import "FIRGitHubAuthProvider.h"
 #import "FIRGoogleAuthProvider.h"
 #import "FIRMultiFactor.h"
+<<<<<<< HEAD
 #import "FIRMultiFactorAssertion.h"
 #import "FIRMultiFactorInfo.h"
 #import "FIRMultiFactorResolver.h"
@@ -52,3 +58,8 @@
 #import "FIRTOTPMultiFactorAssertion.h"
 #import "FIRTOTPMultiFactorGenerator.h"
 #import "FIRTOTPSecret.h"
+=======
+#import "FIRPhoneAuthProvider.h"
+#import "FIRRecaptchaBridge.h"
+#import "FIRTwitterAuthProvider.h"
+>>>>>>> tik_2-NetworkSession

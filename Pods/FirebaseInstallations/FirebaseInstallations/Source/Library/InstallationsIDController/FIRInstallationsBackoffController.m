@@ -19,8 +19,13 @@
 static const NSTimeInterval k24Hours = 24 * 60 * 60;
 static const NSTimeInterval k30Minutes = 30 * 60;
 
+<<<<<<< HEAD
 /** The class represents `FIRInstallationsBackoffController` sate required to calculate next allowed
  request time. The properties of the class are intentionally immutable because changing them
+=======
+/** The class represents `FIRInstallationsBackoffController` state required to calculate next
+ allowed request time. The properties of the class are intentionally immutable because changing them
+>>>>>>> tik_2-NetworkSession
  separately leads to an inconsistent state. */
 @interface FIRInstallationsBackoffEventData : NSObject
 

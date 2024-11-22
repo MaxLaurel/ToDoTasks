@@ -16,6 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /// A mutable dictionary that provides atomic accessor and mutators.
 @interface GULMutableDictionary : NSObject
 
@@ -44,3 +49,8 @@
 - (NSDictionary *)dictionary;
 
 @end
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

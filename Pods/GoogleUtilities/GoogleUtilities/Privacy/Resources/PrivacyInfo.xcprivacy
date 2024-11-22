@@ -25,7 +25,10 @@
                         <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
                         <key>NSPrivacyAccessedAPITypeReasons</key>
                         <array>
+<<<<<<< HEAD
                                 <string>1C8F.1</string>
+=======
+>>>>>>> tik_2-NetworkSession
                                 <string>C56D.1</string>
                         </array>
                 </dict>

@@ -137,7 +137,11 @@ Alternatively, disable signing in each target:
 
 ### Adding a New Firebase Pod
 
+<<<<<<< HEAD
 Refer to [AddNewPod](AddNewPod.md) Markdown file for details.
+=======
+Refer to [AddNewPod](docs/AddNewPod.md) Markdown file for details.
+>>>>>>> tik_2-NetworkSession
 
 ### Managing Headers and Imports
 
@@ -153,7 +157,11 @@ GitHub Actions will verify that any code changes are done in a style-compliant
 way. Install `clang-format` and `mint`:
 
 ```console
+<<<<<<< HEAD
 brew install clang-format@18
+=======
+brew install clang-format@19
+>>>>>>> tik_2-NetworkSession
 brew install mint
 ```
 
@@ -235,6 +243,14 @@ at **Project Settings > Cloud Messaging > [Your Firebase App]**.
 The iOS Simulator cannot register for remote notifications and will not receive push notifications.
 To receive push notifications, follow the steps above and run the app on a physical device.
 
+<<<<<<< HEAD
+=======
+### Vertex AI for Firebase
+
+See the [Vertex AI for Firebase README](FirebaseVertexAI#development) for
+instructions about building and testing the SDK.
+
+>>>>>>> tik_2-NetworkSession
 ## Building with Firebase on Apple platforms
 
 Firebase provides official beta support for macOS, Catalyst, and tvOS. visionOS and watchOS

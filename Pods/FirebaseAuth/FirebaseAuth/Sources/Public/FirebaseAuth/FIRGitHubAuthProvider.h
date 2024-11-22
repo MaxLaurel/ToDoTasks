@@ -16,8 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 @class FIRAuthCredential;
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -30,6 +33,7 @@ extern NSString *const FIRGitHubAuthProviderID NS_SWIFT_NAME(GitHubAuthProviderI
  */
 extern NSString *const _Nonnull FIRGitHubAuthSignInMethod NS_SWIFT_NAME(GitHubAuthSignInMethod);
 
+<<<<<<< HEAD
 /** @class FIRGitHubAuthProvider
     @brief Utility class for constructing GitHub credentials.
  */
@@ -51,4 +55,6 @@ NS_SWIFT_NAME(GitHubAuthProvider)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

@@ -12,19 +12,26 @@ class CalculationViewController: UIViewController {
     
     weak var calculateControllerCoordinator: CalculateControllerCoordinator?
     
+<<<<<<< HEAD
     var navController = UINavigationController()
+=======
+    //var navController = UINavigationController()
+>>>>>>> tik_2-NetworkSession
     
     lazy var leftBarButtonItem: UIBarButtonItem = {
         var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
         return leftBarButtonItem
     }()
     
+<<<<<<< HEAD
     lazy var rightBarButtonItem: UIBarButtonItem = {
         var rightBarButtonItem = UIBarButtonItem(title: "info", style: .plain, target: self, action: #selector(goToNext))
         return rightBarButtonItem
     }()
     
     
+=======
+>>>>>>> tik_2-NetworkSession
     var calculatorImageView: UIImageView = {
         var calculatorImageView = UIImageView(image: UIImage(named: "calculator"))
         calculatorImageView.contentMode = .scaleAspectFit
@@ -33,6 +40,7 @@ class CalculationViewController: UIViewController {
         return calculatorImageView
     }()
     
+<<<<<<< HEAD
     lazy var nextFlowButton: UIButton = {
         var nextFlowButton = UIButton()
         nextFlowButton.setTitle("AnotherFlow", for: .normal)
@@ -45,17 +53,23 @@ class CalculationViewController: UIViewController {
     }()
     
     
+=======
+>>>>>>> tik_2-NetworkSession
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.leftBarButtonItem = leftBarButtonItem
+<<<<<<< HEAD
         navigationItem.rightBarButtonItem = rightBarButtonItem
+=======
+>>>>>>> tik_2-NetworkSession
         navigationItem.titleView = calculatorImageView
         //navigationItem.prompt = "some prompt"
         //navigationItem.title = "Calculation"
         navigationItem.title = "Calculation"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+<<<<<<< HEAD
         view.addSubview(nextFlowButton)
         
         nextFlowButton.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +78,8 @@ class CalculationViewController: UIViewController {
         nextFlowButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
         nextFlowButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
+=======
+>>>>>>> tik_2-NetworkSession
     }
     
     @objc func leftBarButtonItemTapped() {
@@ -74,6 +90,7 @@ class CalculationViewController: UIViewController {
         }
         navigationController?.popToRootViewController(animated: true)
     }
+<<<<<<< HEAD
     
     //    @objc func rightBarButtonItemTapped() {
     //        let vc = InfoViewController()
@@ -88,4 +105,9 @@ class CalculationViewController: UIViewController {
         navigationController?.pushViewController(newsViewController, animated: true)
     }
     
+=======
+    deinit {
+            print("CalculateViewController was deallocated")
+        }
+>>>>>>> tik_2-NetworkSession
 }

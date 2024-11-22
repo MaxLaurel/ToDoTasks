@@ -106,8 +106,11 @@ static NSString *const kGULDidRegisterForRemoteNotificationsSEL =
     @"application:didRegisterForRemoteNotificationsWithDeviceToken:";
 static NSString *const kGULDidFailToRegisterForRemoteNotificationsSEL =
     @"application:didFailToRegisterForRemoteNotificationsWithError:";
+<<<<<<< HEAD
 static NSString *const kGULDidReceiveRemoteNotificationSEL =
     @"application:didReceiveRemoteNotification:";
+=======
+>>>>>>> tik_2-NetworkSession
 static NSString *const kGULDidReceiveRemoteNotificationWithCompletionSEL =
     @"application:didReceiveRemoteNotification:fetchCompletionHandler:";
 
@@ -218,6 +221,7 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
            @"AppDelegateProxy interceptor does not conform to UIApplicationDelegate");
 
   if (!interceptor) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling000],
@@ -229,16 +233,36 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling001],
                 @"AppDelegateProxy interceptor does not conform to UIApplicationDelegate");
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling000],
+                  @"AppDelegateProxy cannot add nil interceptor.");
+    return nil;
+  }
+  if (![interceptor conformsToProtocol:@protocol(GULApplicationDelegate)]) {
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling001],
+                  @"AppDelegateProxy interceptor does not conform to UIApplicationDelegate");
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
 
   // The ID should be the same given the same interceptor object.
   NSString *interceptorID = [NSString stringWithFormat:@"%@%p", kGULAppDelegatePrefix, interceptor];
   if (!interceptorID.length) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling002],
                 @"AppDelegateProxy cannot create Interceptor ID.");
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling002],
+                  @"AppDelegateProxy cannot create Interceptor ID.");
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
   GULZeroingWeakContainer *weakObject = [[GULZeroingWeakContainer alloc] init];
@@ -253,21 +277,37 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
            @"AppDelegateProxy cannot unregister empty interceptor ID.");
 
   if (!interceptorID) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling003],
                 @"AppDelegateProxy cannot unregister empty interceptor ID.");
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling003],
+                  @"AppDelegateProxy cannot unregister empty interceptor ID.");
+>>>>>>> tik_2-NetworkSession
     return;
   }
 
   GULZeroingWeakContainer *weakContainer = [GULAppDelegateSwizzler interceptors][interceptorID];
   if (!weakContainer.object) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling004],
                 @"AppDelegateProxy cannot unregister interceptor that was not registered. "
                  "Interceptor ID %@",
                 interceptorID);
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling004],
+                  @"AppDelegateProxy cannot unregister interceptor that was not registered. "
+                   "Interceptor ID %@",
+                  interceptorID);
+>>>>>>> tik_2-NetworkSession
     return;
   }
 
@@ -345,12 +385,22 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
       [NSString stringWithFormat:@"%@-%@", classNameWithPrefix, [NSUUID UUID].UUIDString];
 
   if (NSClassFromString(newClassName)) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling005],
                 @"Cannot create a proxy for App Delegate. Subclass already exists. Original Class: "
                 @"%@, subclass: %@",
                 NSStringFromClass(realClass), newClassName);
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeAppDelegateSwizzling005],
+        @"Cannot create a proxy for App Delegate. Subclass already exists. Original Class: "
+        @"%@, subclass: %@",
+        NSStringFromClass(realClass), newClassName);
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
 
@@ -358,12 +408,22 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   // size.
   Class appDelegateSubClass = objc_allocateClassPair(realClass, newClassName.UTF8String, 0);
   if (appDelegateSubClass == Nil) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling006],
                 @"Cannot create a proxy for App Delegate. Subclass already exists. Original Class: "
                 @"%@, subclass: Nil",
                 NSStringFromClass(realClass));
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeAppDelegateSwizzling006],
+        @"Cannot create a proxy for App Delegate. Subclass already exists. Original Class: "
+        @"%@, subclass: Nil",
+        NSStringFromClass(realClass));
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
 
@@ -438,12 +498,22 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   // cannot have more ivars/properties than its superclass since it will cause an offset in memory
   // that can lead to overwriting the isa of an object in the next frame.
   if (class_getInstanceSize(realClass) != class_getInstanceSize(appDelegateSubClass)) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling007],
                 @"Cannot create subclass of App Delegate, because the created subclass is not the "
                 @"same size. %@",
                 NSStringFromClass(realClass));
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeAppDelegateSwizzling007],
+        @"Cannot create subclass of App Delegate, because the created subclass is not the "
+        @"same size. %@",
+        NSStringFromClass(realClass));
+>>>>>>> tik_2-NetworkSession
     NSAssert(NO, @"Classes must be the same size to swizzle isa");
     return nil;
   }
@@ -451,12 +521,21 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   // Make the newly created class to be the subclass of the real App Delegate class.
   objc_registerClassPair(appDelegateSubClass);
   if (object_setClass(appDelegate, appDelegateSubClass)) {
+<<<<<<< HEAD
     GULLogDebug(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling008],
                 @"Successfully created App Delegate Proxy automatically. To disable the "
                 @"proxy, set the flag %@ to NO (Boolean) in the Info.plist",
                 [GULAppDelegateSwizzler correctAppDelegateProxyKey]);
+=======
+    GULOSLogDebug(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling008],
+                  @"Successfully created App Delegate Proxy automatically. To disable the "
+                  @"proxy, set the flag %@ to NO (Boolean) in the Info.plist",
+                  [GULAppDelegateSwizzler correctAppDelegateProxyKey]);
+>>>>>>> tik_2-NetworkSession
   }
 
   return appDelegateSubClass;
@@ -499,6 +578,7 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
                               realClass:realClass
        storeDestinationImplementationTo:realImplementationsBySelector];
 
+<<<<<<< HEAD
   // For application:didReceiveRemoteNotification:
   SEL didReceiveRemoteNotificationSEL = NSSelectorFromString(kGULDidReceiveRemoteNotificationSEL);
   SEL didReceiveRemoteNotificationDonorSEL = @selector(application:
@@ -511,12 +591,15 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
                               realClass:realClass
        storeDestinationImplementationTo:realImplementationsBySelector];
 
+=======
+>>>>>>> tik_2-NetworkSession
   // For application:didReceiveRemoteNotification:fetchCompletionHandler:
 #if !TARGET_OS_WATCH && !TARGET_OS_OSX
   SEL didReceiveRemoteNotificationWithCompletionSEL =
       NSSelectorFromString(kGULDidReceiveRemoteNotificationWithCompletionSEL);
   SEL didReceiveRemoteNotificationWithCompletionDonorSEL =
       @selector(application:donor_didReceiveRemoteNotification:fetchCompletionHandler:);
+<<<<<<< HEAD
   if ([appDelegate respondsToSelector:didReceiveRemoteNotificationWithCompletionSEL]) {
     // Only add the application:didReceiveRemoteNotification:fetchCompletionHandler: method if
     // the original AppDelegate implements it.
@@ -531,6 +614,14 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
                                 realClass:realClass
          storeDestinationImplementationTo:realImplementationsBySelector];
   }
+=======
+  [self proxyDestinationSelector:didReceiveRemoteNotificationWithCompletionSEL
+      implementationsFromSourceSelector:didReceiveRemoteNotificationWithCompletionDonorSEL
+                              fromClass:[GULAppDelegateSwizzler class]
+                                toClass:appDelegateSubClass
+                              realClass:realClass
+       storeDestinationImplementationTo:realImplementationsBySelector];
+>>>>>>> tik_2-NetworkSession
 #endif  // !TARGET_OS_WATCH && !TARGET_OS_OSX
 }
 
@@ -626,11 +717,20 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   IMP methodIMP = method_getImplementation(method);
   const char *types = method_getTypeEncoding(method);
   if (!class_addMethod(toClass, destinationSelector, methodIMP, types)) {
+<<<<<<< HEAD
     GULLogWarning(kGULLoggerSwizzler, NO,
                   [NSString stringWithFormat:@"I-SWZ%06ld",
                                              (long)kGULSwizzlerMessageCodeAppDelegateSwizzling009],
                   @"Cannot copy method to destination selector %@ as it already exists",
                   NSStringFromSelector(destinationSelector));
+=======
+    GULOSLogWarning(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+        [NSString
+            stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeAppDelegateSwizzling009],
+        @"Cannot copy method to destination selector %@ as it already exists",
+        NSStringFromSelector(destinationSelector));
+>>>>>>> tik_2-NetworkSession
   }
 }
 
@@ -662,8 +762,13 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
     GULZeroingWeakContainer *interceptorContainer = obj;
     id interceptor = interceptorContainer.object;
     if (!interceptor) {
+<<<<<<< HEAD
       GULLogWarning(
           kGULLoggerSwizzler, NO,
+=======
+      GULOSLogWarning(
+          kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
           [NSString
               stringWithFormat:@"I-SWZ%06ld", (long)kGULSwizzlerMessageCodeAppDelegateSwizzling010],
           @"AppDelegateProxy cannot find interceptor with ID %@. Removing the interceptor.", key);
@@ -720,9 +825,13 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
 
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
 
+<<<<<<< HEAD
 // TODO(Xcode 15): When Xcode 15 is the minimum supported Xcode version,
 // it will be unnecessary to check if `TARGET_OS_VISION` is defined.
 #if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS
+>>>>>>> tik_2-NetworkSession
 
 - (BOOL)application:(GULApplication *)application
               openURL:(NSURL *)url
@@ -755,7 +864,11 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   return returnedValue;
 }
 
+<<<<<<< HEAD
 #endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
+=======
+#endif  // TARGET_OS_IOS
+>>>>>>> tik_2-NetworkSession
 
 #pragma mark - [Donor Methods] Network overridden handler methods
 
@@ -765,7 +878,11 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
 #pragma clang diagnostic ignored "-Wstrict-prototypes"
 - (void)application:(GULApplication *)application
     handleEventsForBackgroundURLSession:(NSString *)identifier
+<<<<<<< HEAD
                       completionHandler:(void (^)())completionHandler API_AVAILABLE(ios(7.0)) {
+=======
+                      completionHandler:(void (^)())completionHandler {
+>>>>>>> tik_2-NetworkSession
 #pragma clang diagnostic pop
   SEL methodSelector = @selector(application:
          handleEventsForBackgroundURLSession:completionHandler:);
@@ -954,6 +1071,7 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
 }
 #endif  // !TARGET_OS_WATCH && !TARGET_OS_OSX
 
+<<<<<<< HEAD
 - (void)application:(GULApplication *)application
     donor_didReceiveRemoteNotification:(NSDictionary *)userInfo {
   SEL methodSelector = NSSelectorFromString(kGULDidReceiveRemoteNotificationSEL);
@@ -983,6 +1101,8 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   }
 }
 
+=======
+>>>>>>> tik_2-NetworkSession
 + (nullable NSInvocation *)appDelegateInvocationForSelector:(SEL)selector {
   struct objc_method_description methodDescription =
       protocol_getMethodDescription(@protocol(GULApplicationDelegate), selector, NO, YES);
@@ -996,8 +1116,13 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
 
 + (void)proxyAppDelegate:(id<GULApplicationDelegate>)appDelegate {
   if (![appDelegate conformsToProtocol:@protocol(GULApplicationDelegate)]) {
+<<<<<<< HEAD
     GULLogNotice(
         kGULLoggerSwizzler, NO,
+=======
+    GULOSLogNotice(
+        kGULLogSubsystem, kGULLoggerSwizzler, NO,
+>>>>>>> tik_2-NetworkSession
         [NSString
             stringWithFormat:@"I-SWZ%06ld",
                              (long)kGULSwizzlerMessageCodeAppDelegateSwizzlingInvalidAppDelegate],
@@ -1009,20 +1134,36 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
   id<GULApplicationDelegate> originalDelegate = appDelegate;
   // Do not create a subclass if it is not enabled.
   if (![GULAppDelegateSwizzler isAppDelegateProxyEnabled]) {
+<<<<<<< HEAD
     GULLogNotice(kGULLoggerSwizzler, NO,
                  [NSString stringWithFormat:@"I-SWZ%06ld",
                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling011],
                  @"App Delegate Proxy is disabled. %@",
                  [GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]);
+=======
+    GULOSLogNotice(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                   [NSString stringWithFormat:@"I-SWZ%06ld",
+                                              (long)kGULSwizzlerMessageCodeAppDelegateSwizzling011],
+                   @"App Delegate Proxy is disabled. %@",
+                   [GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]);
+>>>>>>> tik_2-NetworkSession
     return;
   }
   // Do not accept nil delegate.
   if (!originalDelegate) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling012],
                 @"Cannot create App Delegate Proxy because App Delegate instance is nil. %@",
                 [GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]);
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling012],
+                  @"Cannot create App Delegate Proxy because App Delegate instance is nil. %@",
+                  [GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]);
+>>>>>>> tik_2-NetworkSession
     return;
   }
 
@@ -1031,11 +1172,19 @@ static dispatch_once_t sProxyAppDelegateRemoteNotificationOnceToken;
     gAppDelegateSubclass = [self createSubclassWithObject:originalDelegate];
     [self reassignAppDelegate];
   } @catch (NSException *exception) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerSwizzler, NO,
                 [NSString stringWithFormat:@"I-SWZ%06ld",
                                            (long)kGULSwizzlerMessageCodeAppDelegateSwizzling013],
                 @"Cannot create App Delegate Proxy. %@",
                 [GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]);
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerSwizzler, NO,
+                  [NSString stringWithFormat:@"I-SWZ%06ld",
+                                             (long)kGULSwizzlerMessageCodeAppDelegateSwizzling013],
+                  @"Cannot create App Delegate Proxy. %@",
+                  [GULAppDelegateSwizzler correctAlternativeWhenAppDelegateProxyNotCreated]);
+>>>>>>> tik_2-NetworkSession
     return;
   }
 }

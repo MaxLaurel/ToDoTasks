@@ -15,7 +15,10 @@
  */
 
 #import "FirebaseDatabase/Sources/Utilities/FStringUtilities.h"
+<<<<<<< HEAD
 #import "FirebaseDatabase/Sources/third_party/SocketRocket/NSData+SRB64Additions.h"
+=======
+>>>>>>> tik_2-NetworkSession
 #import <CommonCrypto/CommonDigest.h>
 
 @implementation FStringUtilities
@@ -32,7 +35,11 @@
     CC_SHA1(data.bytes, (unsigned int)data.length, digest);
     NSData *output = [[NSData alloc] initWithBytes:digest
                                             length:CC_SHA1_DIGEST_LENGTH];
+<<<<<<< HEAD
     return [FSRUtilities base64EncodedStringFromData:output];
+=======
+    return [output base64EncodedStringWithOptions:0];
+>>>>>>> tik_2-NetworkSession
 }
 
 + (NSString *)urlDecoded:(NSString *)url {

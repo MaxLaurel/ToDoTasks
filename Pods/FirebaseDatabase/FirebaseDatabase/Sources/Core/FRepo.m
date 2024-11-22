@@ -52,8 +52,12 @@
 #import "FirebaseDatabase/Sources/Utilities/Tuples/FTupleTransaction.h"
 #import <dlfcn.h>
 
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_TV ||                                           \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
 #import <UIKit/UIKit.h>
 #endif
 
@@ -814,10 +818,16 @@
     if (!self.config.persistenceEnabled)
         return;
 
+<<<<<<< HEAD
 // Targetted compilation is ONLY for testing. UIKit is weak-linked in actual
 // release build.
 #if TARGET_OS_IOS || TARGET_OS_TV ||                                           \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+// Targeted compilation is ONLY for testing. UIKit is weak-linked in actual
+// release build.
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
     // The idea is to wait until any outstanding sets get written to disk. Since
     // the sets might still be in our dispatch queue, we wait for the dispatch
     // queue to catch up and for persistence to catch up. This may be

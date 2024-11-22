@@ -23,7 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(AppCheckTokenHandlerInterop)
 typedef void (^FIRAppCheckTokenHandlerInterop)(id<FIRAppCheckTokenResultInterop> tokenResult);
 
+<<<<<<< HEAD
 NS_SWIFT_NAME(AppCheckInterop) @protocol FIRAppCheckInterop
+=======
+NS_SWIFT_NAME(AppCheckInterop) @protocol FIRAppCheckInterop<NSObject>
+>>>>>>> tik_2-NetworkSession
 
 /// Retrieve a cached or generate a new FAA Token. If forcingRefresh == YES always generates a new
 /// token and updates the cache.

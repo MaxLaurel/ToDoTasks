@@ -18,7 +18,11 @@
 
 #import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 
+<<<<<<< HEAD
 #import "FirebaseAuth/Interop/FIRAuthInterop.h"
+=======
+#import "FirebaseAuth/Interop/Public/FirebaseAuthInterop/FIRAuthInterop.h"
+>>>>>>> tik_2-NetworkSession
 
 #import "FirebaseDatabase/Sources/Api/Private/FIRDatabaseQuery_Private.h"
 #import "FirebaseDatabase/Sources/Utilities/FUtilities.h"

@@ -59,7 +59,11 @@ public struct ServerTimestamp: Codable, Equatable, Hashable {
 
   public func encode(to encoder: Encoder) throws {
     var container = encoder.singleValueContainer()
+<<<<<<< HEAD
     if let value = value {
+=======
+    if let value {
+>>>>>>> tik_2-NetworkSession
       let interval = value.timeIntervalSince1970
       try container.encode(Int(interval * 1000))
     } else {

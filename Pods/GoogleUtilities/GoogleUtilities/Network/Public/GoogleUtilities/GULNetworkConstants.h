@@ -16,6 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /// Error codes in Firebase Network error domain.
 /// Note: these error codes should never change. It would make it harder to decode the errors if
 /// we inadvertently altered any of these codes in a future SDK version.
@@ -69,3 +74,8 @@ extern const int kGULNetworkHTTPStatusCodeMovedTemporarily;
 extern const int kGULNetworkHTTPStatusCodeNotFound;
 extern const int kGULNetworkHTTPStatusCodeCannotAcceptTraffic;
 extern const int kGULNetworkHTTPStatusCodeUnavailable;
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

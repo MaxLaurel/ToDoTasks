@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "originHash" : "c35fa723f58f7830f5f66ddec2ee7dcdcc548df8c9c80104f2b5ae3a18991a7a",
+=======
+  "originHash" : "2e082ef2d76b76a42b97b149647f50787276e45b368249706ce14288effbbc96",
+>>>>>>> tik_2-NetworkSession
   "pins" : [
     {
       "identity" : "abseil-cpp-swiftpm",

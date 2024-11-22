@@ -16,8 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 @class FIRAuthCredential;
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -30,6 +33,7 @@ extern NSString *const FIRGoogleAuthProviderID NS_SWIFT_NAME(GoogleAuthProviderI
  */
 extern NSString *const _Nonnull FIRGoogleAuthSignInMethod NS_SWIFT_NAME(GoogleAuthSignInMethod);
 
+<<<<<<< HEAD
 /** @class FIRGoogleAuthProvider
     @brief Utility class for constructing Google Sign In credentials.
  */
@@ -53,4 +57,6 @@ NS_SWIFT_NAME(GoogleAuthProvider)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

@@ -36,7 +36,11 @@
 @property(nonatomic, strong) FCompoundWrite *visibleWrites;
 /**
  * A list of pending writes, regardless of visibility and shadowed-ness. Used to
+<<<<<<< HEAD
  * calcuate arbitrary sets of the changed data, such as hidden writes (from
+=======
+ * calculate arbitrary sets of the changed data, such as hidden writes (from
+>>>>>>> tik_2-NetworkSession
  * transactions) or changes with certain writes excluded (also used by
  * transactions). Contains FWriteRecords.
  */
@@ -46,7 +50,11 @@
 
 /**
  * FWriteTree tracks all pending user-initiated writes and has methods to
+<<<<<<< HEAD
  * calcuate the result of merging them with underlying server data (to create
+=======
+ * calculate the result of merging them with underlying server data (to create
+>>>>>>> tik_2-NetworkSession
  * "event cache" data). Pending writes are added with addOverwriteAtPath: and
  * addMergeAtPath: and removed with removeWriteId:.
  */

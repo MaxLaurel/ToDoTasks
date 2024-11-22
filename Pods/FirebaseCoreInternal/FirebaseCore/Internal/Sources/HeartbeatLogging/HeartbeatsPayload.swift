@@ -44,7 +44,11 @@ public protocol HTTPHeaderRepresentable {
 ///       ]
 ///     }
 ///
+<<<<<<< HEAD
 public struct HeartbeatsPayload: Codable {
+=======
+public struct HeartbeatsPayload: Codable, Sendable {
+>>>>>>> tik_2-NetworkSession
   /// The version of the payload. See go/firebase-apple-heartbeats for details regarding current
   /// version.
   static let version: Int = 2
@@ -93,12 +97,17 @@ extension HeartbeatsPayload: HTTPHeaderRepresentable {
     let encoder = JSONEncoder()
     encoder.dateEncodingStrategy = .formatted(Self.dateFormatter)
     #if DEBUG
+<<<<<<< HEAD
       // TODO: Remove the following #available check when FirebaseCore's minimum deployment target
       // is iOS 11+; all other supported platforms already meet the minimum for `.sortedKeys`.
       if #available(iOS 11, *) {
         // Sort keys in debug builds to simplify output comparisons in unit tests.
         encoder.outputFormatting = .sortedKeys
       }
+=======
+      // Sort keys in debug builds to simplify output comparisons in unit tests.
+      encoder.outputFormatting = .sortedKeys
+>>>>>>> tik_2-NetworkSession
     #endif // DEBUG
 
     guard let data = try? encoder.encode(self) else {

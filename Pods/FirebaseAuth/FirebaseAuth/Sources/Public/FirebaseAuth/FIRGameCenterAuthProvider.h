@@ -40,6 +40,7 @@ typedef void (^FIRGameCenterCredentialCallback)(FIRAuthCredential *_Nullable cre
                                                 NSError *_Nullable error)
     NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
+<<<<<<< HEAD
 /** @class FIRGameCenterAuthProvider
     @brief A concrete implementation of `AuthProvider` for Game Center Sign In. Not available on
            watchOS.
@@ -62,4 +63,6 @@ NS_SWIFT_NAME(GameCenterAuthProvider)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

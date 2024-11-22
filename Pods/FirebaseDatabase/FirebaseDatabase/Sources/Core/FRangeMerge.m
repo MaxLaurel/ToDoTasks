@@ -63,7 +63,11 @@
                      [currentPath contains:self.optInclusiveEnd];
     if (startComparison == NSOrderedDescending &&
         endComparison == NSOrderedAscending && !endInNode) {
+<<<<<<< HEAD
         // child is completly contained
+=======
+        // child is completely contained
+>>>>>>> tik_2-NetworkSession
         return updates;
     } else if (startComparison == NSOrderedDescending && endInNode &&
                [updates isLeafNode]) {

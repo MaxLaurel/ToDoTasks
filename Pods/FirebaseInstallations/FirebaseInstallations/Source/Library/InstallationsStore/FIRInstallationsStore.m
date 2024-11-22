@@ -60,9 +60,19 @@ NSString *const kFIRInstallationsStoreUserDefaultsID = @"com.firebase.FIRInstall
   NSString *itemID = [FIRInstallationsItem identifierWithAppID:appID appName:appName];
   return [self installationExistsForAppID:appID appName:appName]
       .then(^id(id result) {
+<<<<<<< HEAD
         return [self.secureStorage getObjectForKey:itemID
                                        objectClass:[FIRInstallationsStoredItem class]
                                        accessGroup:self.accessGroup];
+=======
+        return [FBLPromise
+            wrapObjectOrErrorCompletion:^(FBLPromiseObjectOrErrorCompletion _Nonnull handler) {
+              [self.secureStorage getObjectForKey:itemID
+                                      objectClass:[FIRInstallationsStoredItem class]
+                                      accessGroup:self.accessGroup
+                                completionHandler:handler];
+            }];
+>>>>>>> tik_2-NetworkSession
       })
       .then(^id(FIRInstallationsStoredItem *_Nullable storedItem) {
         if (storedItem == nil) {
@@ -81,16 +91,38 @@ NSString *const kFIRInstallationsStoreUserDefaultsID = @"com.firebase.FIRInstall
   NSString *identifier = [installationItem identifier];
 
   return
+<<<<<<< HEAD
       [self.secureStorage setObject:storedItem forKey:identifier accessGroup:self.accessGroup].then(
           ^id(id result) {
             return [self setInstallationExists:YES forItemWithIdentifier:identifier];
           });
+=======
+      [FBLPromise wrapObjectOrErrorCompletion:^(
+                      FBLPromiseObjectOrErrorCompletion _Nonnull handler) {
+        [self.secureStorage setObject:storedItem
+                               forKey:identifier
+                          accessGroup:self.accessGroup
+                    completionHandler:handler];
+      }].then(^id(id __unused unusedResult) {
+        return [self setInstallationExists:YES forItemWithIdentifier:identifier];
+      });
+>>>>>>> tik_2-NetworkSession
 }
 
 - (FBLPromise<NSNull *> *)removeInstallationForAppID:(NSString *)appID appName:(NSString *)appName {
   NSString *identifier = [FIRInstallationsItem identifierWithAppID:appID appName:appName];
+<<<<<<< HEAD
   return [self.secureStorage removeObjectForKey:identifier accessGroup:self.accessGroup].then(
       ^id(id result) {
+=======
+
+  return
+      [FBLPromise wrapErrorCompletion:^(FBLPromiseErrorCompletion _Nonnull handler) {
+        [self.secureStorage removeObjectForKey:identifier
+                                   accessGroup:self.accessGroup
+                             completionHandler:handler];
+      }].then(^id(id __unused result) {
+>>>>>>> tik_2-NetworkSession
         return [self setInstallationExists:NO forItemWithIdentifier:identifier];
       });
 }

@@ -85,7 +85,10 @@
             [NSString stringWithFormat:@"firebase:host:%@", self.host];
         GULUserDefaults *cache = [GULUserDefaults standardUserDefaults];
         [cache setObject:internalHost forKey:internalHostKey];
+<<<<<<< HEAD
         [cache synchronize];
+=======
+>>>>>>> tik_2-NetworkSession
     }
 }
 
@@ -97,7 +100,10 @@
         [NSString stringWithFormat:@"firebase:host:%@", self.host];
     GULUserDefaults *cache = [GULUserDefaults standardUserDefaults];
     [cache removeObjectForKey:internalHostKey];
+<<<<<<< HEAD
     [cache synchronize];
+=======
+>>>>>>> tik_2-NetworkSession
 }
 
 - (BOOL)isDemoHost {

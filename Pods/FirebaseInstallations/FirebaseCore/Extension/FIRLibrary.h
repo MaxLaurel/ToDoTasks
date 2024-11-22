@@ -32,11 +32,14 @@ NS_SWIFT_NAME(Library)
 /// FirebaseApp and participate in dependency resolution and injection.
 + (NSArray<FIRComponent *> *)componentsToRegister;
 
+<<<<<<< HEAD
 @optional
 /// Implement this method if the library needs notifications for lifecycle events. This method is
 /// called when the developer calls `FirebaseApp.configure()`.
 + (void)configureWithApp:(FIRApp *)app;
 
+=======
+>>>>>>> tik_2-NetworkSession
 @end
 
 NS_ASSUME_NONNULL_END

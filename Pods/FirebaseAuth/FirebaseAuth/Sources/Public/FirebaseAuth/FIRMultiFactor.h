@@ -16,10 +16,14 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import "FIRAuth.h"
 #import "FIRMultiFactorAssertion.h"
 #import "FIRMultiFactorInfo.h"
 #import "FIRMultiFactorSession.h"
+=======
+@class FIRMultiFactorSession;
+>>>>>>> tik_2-NetworkSession
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -48,6 +52,7 @@ extern NSString *const _Nonnull FIRPhoneMultiFactorID NS_SWIFT_NAME(PhoneMultiFa
 extern NSString *const _Nonnull FIRTOTPMultiFactorID NS_SWIFT_NAME(TOTPMultiFactorID)
     API_UNAVAILABLE(macos, tvos, watchos);
 
+<<<<<<< HEAD
 /** @class FIRMultiFactor
     @brief The interface defining the multi factor related properties and operations pertaining to a
         user.
@@ -94,4 +99,6 @@ NS_SWIFT_NAME(MultiFactor) API_UNAVAILABLE(macos, tvos, watchos) @interface FIRM
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

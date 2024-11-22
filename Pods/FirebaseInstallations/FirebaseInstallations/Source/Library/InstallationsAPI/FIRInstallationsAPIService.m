@@ -278,8 +278,12 @@ NS_ASSUME_NONNULL_END
                [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
              }
              // Heartbeat Header.
+<<<<<<< HEAD
              [request setValue:FIRHeaderValueFromHeartbeatsPayload(
                                    [self.heartbeatLogger flushHeartbeatsIntoPayload])
+=======
+             [request setValue:[self.heartbeatLogger headerValue]
+>>>>>>> tik_2-NetworkSession
                  forHTTPHeaderField:kFIRInstallationsHeartbeatKey];
 
              [additionalHeaders

@@ -19,6 +19,11 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /// Reachability Status
 typedef enum {
   kGULReachabilityUnknown,  ///< Have not yet checked or been notified whether host is reachable.
@@ -77,3 +82,8 @@ const NSString *GULReachabilityStatusString(GULReachabilityStatus status);
 - (void)stop;
 
 @end
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

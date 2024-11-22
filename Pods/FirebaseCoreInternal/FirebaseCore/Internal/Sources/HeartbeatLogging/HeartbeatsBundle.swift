@@ -45,7 +45,11 @@ struct HeartbeatsBundle: Codable, HeartbeatsPayloadConvertible {
 
   /// Designated initializer.
   /// - Parameters:
+<<<<<<< HEAD
   ///   - capacity: The heartbeat capacity of the inititialized collection.
+=======
+  ///   - capacity: The heartbeat capacity of the initialized collection.
+>>>>>>> tik_2-NetworkSession
   ///   - cache: A cache of time periods mapping to dates. Defaults to using static `cacheProvider`.
   init(capacity: Int,
        cache: [TimePeriod: Date] = cacheProvider()) {

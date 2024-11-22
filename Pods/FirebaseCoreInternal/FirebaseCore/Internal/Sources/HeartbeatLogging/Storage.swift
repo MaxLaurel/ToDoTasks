@@ -71,7 +71,11 @@ final class FileStorage: Storage {
   func write(_ data: Data?) throws {
     do {
       try createDirectories(in: url.deletingLastPathComponent())
+<<<<<<< HEAD
       if let data = data {
+=======
+      if let data {
+>>>>>>> tik_2-NetworkSession
         try data.write(to: url, options: .atomic)
       } else {
         let emptyData = Data()
@@ -136,7 +140,11 @@ final class UserDefaultsStorage: Storage {
   ///
   /// - Parameter data: The `Data?` to write to this object's associated defaults.
   func write(_ data: Data?) throws {
+<<<<<<< HEAD
     if let data = data {
+=======
+    if let data {
+>>>>>>> tik_2-NetworkSession
       defaults.set(data, forKey: key)
     } else {
       defaults.removeObject(forKey: key)

@@ -11,7 +11,11 @@ protocol Coordinator: AnyObject {
     
     var coordinators: [Coordinator] { get set }
     
+<<<<<<< HEAD
     func start()
+=======
+    func startInitialFlow()
+>>>>>>> tik_2-NetworkSession
 }
 
 extension Coordinator {

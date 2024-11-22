@@ -17,6 +17,7 @@
 #import "GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h"
 #import <Security/Security.h>
 
+<<<<<<< HEAD
 #if __has_include(<FBLPromises/FBLPromises.h>)
 #import <FBLPromises/FBLPromises.h>
 #else
@@ -25,6 +26,9 @@
 
 #import "GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h"
 #import "GoogleUtilities/Environment/Public/GoogleUtilities/GULSecureCoding.h"
+=======
+#import "GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h"
+>>>>>>> tik_2-NetworkSession
 
 @interface GULKeychainStorage ()
 @property(nonatomic, readonly) dispatch_queue_t keychainQueue;
@@ -57,6 +61,7 @@
 
 #pragma mark - Public
 
+<<<<<<< HEAD
 - (FBLPromise<id<NSSecureCoding>> *)getObjectForKey:(NSString *)key
                                         objectClass:(Class)objectClass
                                         accessGroup:(nullable NSString *)accessGroup {
@@ -121,10 +126,80 @@
 
         return [NSNull null];
       });
+=======
+- (void)getObjectForKey:(NSString *)key
+            objectClass:(Class)objectClass
+            accessGroup:(nullable NSString *)accessGroup
+      completionHandler:
+          (void (^)(id<NSSecureCoding> _Nullable obj, NSError *_Nullable error))completionHandler {
+  dispatch_async(self.inMemoryCacheQueue, ^{
+    // Return cached object or fail otherwise.
+    id object = [self.inMemoryCache objectForKey:key];
+    if (object) {
+      completionHandler(object, nil);
+    } else {
+      // Look for the object in the keychain.
+      [self getObjectFromKeychainForKey:key
+                            objectClass:objectClass
+                            accessGroup:accessGroup
+                      completionHandler:completionHandler];
+    }
+  });
+}
+
+- (void)setObject:(id<NSSecureCoding>)object
+               forKey:(NSString *)key
+          accessGroup:(nullable NSString *)accessGroup
+    completionHandler:
+        (void (^)(id<NSSecureCoding> _Nullable obj, NSError *_Nullable error))completionHandler {
+  dispatch_async(self.inMemoryCacheQueue, ^{
+    // Save to the in-memory cache first.
+    [self.inMemoryCache setObject:object forKey:[key copy]];
+
+    dispatch_async(self.keychainQueue, ^{
+      // Then store the object to the keychain.
+      NSDictionary *query = [self keychainQueryWithKey:key accessGroup:accessGroup];
+      NSError *error;
+      NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object
+                                                    requiringSecureCoding:YES
+                                                                    error:&error];
+      if (!encodedObject) {
+        completionHandler(nil, error);
+        return;
+      }
+
+      if (![GULKeychainUtils setItem:encodedObject withQuery:query error:&error]) {
+        completionHandler(nil, error);
+        return;
+      }
+
+      completionHandler(object, nil);
+    });
+  });
+}
+
+- (void)removeObjectForKey:(NSString *)key
+               accessGroup:(nullable NSString *)accessGroup
+         completionHandler:(void (^)(NSError *_Nullable error))completionHandler {
+  dispatch_async(self.inMemoryCacheQueue, ^{
+    [self.inMemoryCache removeObjectForKey:key];
+    dispatch_async(self.keychainQueue, ^{
+      NSDictionary *query = [self keychainQueryWithKey:key accessGroup:accessGroup];
+
+      NSError *error;
+      if (![GULKeychainUtils removeItemWithQuery:query error:&error]) {
+        completionHandler(error);
+      } else {
+        completionHandler(nil);
+      }
+    });
+  });
+>>>>>>> tik_2-NetworkSession
 }
 
 #pragma mark - Private
 
+<<<<<<< HEAD
 - (FBLPromise<id<NSSecureCoding>> *)getObjectFromKeychainForKey:(NSString *)key
                                                     objectClass:(Class)objectClass
                                                     accessGroup:(nullable NSString *)accessGroup {
@@ -159,6 +234,44 @@
                 }
                 return object;
               });
+=======
+- (void)getObjectFromKeychainForKey:(NSString *)key
+                        objectClass:(Class)objectClass
+                        accessGroup:(nullable NSString *)accessGroup
+                  completionHandler:(void (^)(id<NSSecureCoding> _Nullable obj,
+                                              NSError *_Nullable error))completionHandler {
+  // Look for the object in the keychain.
+  dispatch_async(self.keychainQueue, ^{
+    NSDictionary *query = [self keychainQueryWithKey:key accessGroup:accessGroup];
+    NSError *error;
+    NSData *encodedObject = [GULKeychainUtils getItemWithQuery:query error:&error];
+
+    if (error) {
+      completionHandler(nil, error);
+      return;
+    }
+    if (!encodedObject) {
+      completionHandler(nil, nil);
+      return;
+    }
+    id object = [NSKeyedUnarchiver unarchivedObjectOfClass:objectClass
+                                                  fromData:encodedObject
+                                                     error:&error];
+    if (error) {
+      completionHandler(nil, error);
+      return;
+    }
+
+    dispatch_async(self.inMemoryCacheQueue, ^{
+      // Save object to the in-memory cache if exists and return the object.
+      if (object) {
+        [self.inMemoryCache setObject:object forKey:[key copy]];
+      }
+
+      completionHandler(object, nil);
+    });
+  });
+>>>>>>> tik_2-NetworkSession
 }
 
 - (void)resetInMemoryCache {

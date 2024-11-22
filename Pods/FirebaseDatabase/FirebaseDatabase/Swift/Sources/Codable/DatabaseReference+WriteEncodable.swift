@@ -39,7 +39,11 @@ public extension DatabaseReference {
                               completion: ((Error?) -> Void)? =
                                 nil) throws {
     let encoded = try encoder.encode(value)
+<<<<<<< HEAD
     if let completion = completion {
+=======
+    if let completion {
+>>>>>>> tik_2-NetworkSession
       setValue(encoded, withCompletionBlock: { error, _ in completion(error) })
     } else {
       setValue(encoded)

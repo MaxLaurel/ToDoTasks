@@ -16,10 +16,14 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 @class FIRAuthCredential;
 
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+NS_ASSUME_NONNULL_BEGIN
+>>>>>>> tik_2-NetworkSession
 /**
     @brief A string constant identifying the email & password identity provider.
  */
@@ -39,6 +43,7 @@ extern NSString *const FIREmailPasswordAuthSignInMethod
     NS_SWIFT_NAME(EmailPasswordAuthSignInMethod);
 // clang-format on
 
+<<<<<<< HEAD
 /** @class FIREmailAuthProvider
     @brief A concrete implementation of `AuthProvider` for Email & Password Sign In.
  */
@@ -70,4 +75,6 @@ NS_SWIFT_NAME(EmailAuthProvider)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

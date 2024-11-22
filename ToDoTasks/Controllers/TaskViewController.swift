@@ -14,17 +14,25 @@ import FirebaseAuth
 
 class TaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
+<<<<<<< HEAD
     
     let dataBaseRef = Database.database().reference()
     let currentUser = Auth.auth().currentUser?.uid
     var arrayOfTasks: [Task] = []
     var selectedIndexPath: IndexPath?
+=======
+    private let dataBaseRef = Database.database().reference()
+    private let currentUser = Auth.auth().currentUser?.uid
+    private var arrayOfTasks: [TaskModel] = []
+    private var selectedIndexPath: IndexPath?
+>>>>>>> tik_2-NetworkSession
     weak var taskViewControllerCoordinator: TaskViewControllerCoordinator?
     
     private lazy var taskTableView: UITableView = {
         var tableView = UITableView()
         tableView.frame = view.bounds
         tableView.separatorStyle = .singleLine
+<<<<<<< HEAD
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
@@ -47,6 +55,11 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return taskAlertController
     }()
     
+=======
+        return tableView
+    }()
+    
+>>>>>>> tik_2-NetworkSession
     lazy var leftBarButtonItem: UIBarButtonItem = {
         var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
         return leftBarButtonItem
@@ -57,8 +70,13 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return accountBarButtonItem
     }()
     
+<<<<<<< HEAD
     lazy var rightBarButtonItem: UIBarButtonItem = {
         var rightBarButtonItem = UIBarButtonItem(title: "AddTask", style: .plain, target: self, action: #selector(rightBurButtonItemTapped))
+=======
+    lazy var addTaskButtonItem: UIBarButtonItem = {
+        var rightBarButtonItem = UIBarButtonItem(title: "AddTask", style: .plain, target: self, action: #selector(addTaskAction))
+>>>>>>> tik_2-NetworkSession
         return rightBarButtonItem
     }()
     
@@ -67,6 +85,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return longPressGestureRecognizer
     }()
     
+<<<<<<< HEAD
     //    lazy var recalculateViewController: PopoverRcalculateViewController = {
     //        var recalculateViewController = PopoverRcalculateViewController()
     //        recalculateViewController.modalPresentationStyle = .popover
@@ -82,6 +101,8 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     //
     //        return recalculateViewController
     //    }()
+=======
+>>>>>>> tik_2-NetworkSession
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,6 +112,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(taskTableView)
         
         navigationItem.setLeftBarButtonItems([leftBarButtonItem, accountBarButtonItem], animated: true)
+<<<<<<< HEAD
         navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationController?.navigationBar.tintColor = .systemGreen
         
@@ -112,12 +134,47 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         //let loginVC = LoginViewController()
         navigationController?.popToRootViewController(animated: true)
+=======
+        navigationItem.rightBarButtonItem = addTaskButtonItem
+        navigationController?.navigationBar.tintColor = .systemGreen
+        
+        taskTableView.addGestureRecognizer(longPressGestureRecognizer)
+        taskObserver()
+        
+        taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    @objc func leftBarButtonItemTapped() {
+        do {
+            try Auth.auth().signOut()
+            navigationController?.setViewControllers([], animated: false)
+            navigateToLoginViewController() // Переход на стартовый экран
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    private func navigateToLoginViewController() {
+        // Убедитесь, что у вас есть доступ к SceneDelegate
+        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate, let appcoordinator2 = sceneDelegate.appCoordinator {
+            sceneDelegate.window?.rootViewController = appcoordinator2.navigationController
+            sceneDelegate.window?.makeKeyAndVisible()
+            appcoordinator2.startInitialFlow()
+            
+            //            let navigationController = UINavigationController()
+            //            let appCoordinator = AppCoordinator(navigationController: navigationController, window:        sceneDelegate.window!)
+            //            sceneDelegate.window?.rootViewController = appCoordinator.navigationController
+            //            sceneDelegate.window?.makeKeyAndVisible()
+            //            appCoordinator.startLoginFlow()
+        }
+>>>>>>> tik_2-NetworkSession
     }
     
     @objc func accountBarButtonItemTapped() {
         let accountViewController = UIViewController()
         accountViewController.view.backgroundColor = .white
         present(accountViewController, animated: true)
+<<<<<<< HEAD
         present(taskAlertController, animated: true, completion: nil)
     }
     
@@ -137,6 +194,45 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         taskAlertController.textFields?.forEach({ textField in
             textField.text = ""
         })
+=======
+    }
+    
+        @objc func addTaskAction() {
+        
+        let taskAlertController = UIAlertController(title: "Task", message: nil, preferredStyle: .alert)
+        taskAlertController.addTextField { nameTextfield in
+            nameTextfield.placeholder = "add name of your task"
+        }
+        taskAlertController.addTextField { taskTextfield in
+            taskTextfield.placeholder = "describe your task"
+        }
+        let okAction = UIAlertAction(title: "add", style: .default) { action in
+            guard let nameTextfield = taskAlertController.textFields?[0], let taskTextfield = taskAlertController.textFields?[1] else {return}
+            guard let name = nameTextfield.text, let task = taskTextfield.text, !name.isEmpty, !task.isEmpty else {return}
+            
+            self.addTaskToDatabase(nameTaskTextfield: name, descriptionTaskTextField: task)
+        }
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        taskAlertController.addAction(okAction)
+        taskAlertController.addAction(cancelAction)
+        self.present(taskAlertController, animated: true)
+        
+    }
+    
+    func addTaskToDatabase(nameTaskTextfield: String, descriptionTaskTextField: String) {
+        guard nameTaskTextfield != "", descriptionTaskTextField != "" else {return}
+        guard let currentUser = currentUser else {return}
+        
+        let taskReference = dataBaseRef.child("users").child(currentUser).child("tasks").childByAutoId()
+        
+        let task = TaskModel(taskName: nameTaskTextfield, description: descriptionTaskTextField, taskID: taskReference.key ?? "")
+        
+        taskReference.setValue(["title": task.taskName, "description": task.description, "taskID": task.taskID, "isCompleted": task.isCompleted])
+        
+        //        alertPresenterData.textFields?.forEach({ textField in
+        //            textField.text = ""
+        //        })
+>>>>>>> tik_2-NetworkSession
     }
     
     func taskObserver() {
@@ -150,11 +246,16 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
                       let description = dictValue["description"] as? String,
                       let taskID = dictValue["taskID"] as? String else {return}
                 
+<<<<<<< HEAD
                 let task = Task(taskName: title, description: description, taskID: taskID)
+=======
+                let task = TaskModel(taskName: title, description: description, taskID: taskID)
+>>>>>>> tik_2-NetworkSession
                 
                 if !arrayOfTasks.contains(where: { $0.taskID == taskID }) {
                     arrayOfTasks.append(task)
                 }
+<<<<<<< HEAD
                 
                 taskTableView.reloadData()
             }
@@ -162,6 +263,19 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 }
+=======
+            }
+            taskTableView.reloadData()
+        }
+    }
+    deinit {
+        //taskTableView.removeGestureRecognizer(longPressGestureRecognizer)
+        dataBaseRef.removeAllObservers()
+        print("TaskViewController deinitialized")
+    }
+}
+    
+>>>>>>> tik_2-NetworkSession
 extension TaskViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,6 +283,7 @@ extension TaskViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+<<<<<<< HEAD
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         let task = arrayOfTasks[indexPath.row]
         //cell.task = task // Устанавливаем значение task для ячейки
@@ -177,6 +292,16 @@ extension TaskViewController {
         toggleCompletion(cell: cell, isCompleted: task.isCompleted)
         cell.addGestureRecognizer(longPressGestureRecognizer)
         cell.configureConstraints()
+=======
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskTableViewCell
+        let task = arrayOfTasks[indexPath.row]
+        //cell.task = task // Устанавливаем значение task для ячейки
+        //cell.taskTitleLabel.text = task.taskName
+        // cell.descriptionTaskLabel.text = task.description
+        toggleCompletion(cell: cell, isCompleted: task.isCompleted)
+        cell.configureCell(task: task)
+        //cell.configureConstraints()
+>>>>>>> tik_2-NetworkSession
         return cell
     }
     
@@ -194,7 +319,11 @@ extension TaskViewController {
         let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completion) in
             
             //let task = self?.arrayOfTasks[indexPath.row]
+<<<<<<< HEAD
             self?.taskTableView.setEditing(true, animated: true)
+=======
+           // self?.taskTableView.setEditing(true, animated: true)
+>>>>>>> tik_2-NetworkSession
             
             //            guard let cell = self?.taskTableView.cellForRow(at: indexPath) as? CustomTableViewCell else {return}
             
@@ -222,16 +351,28 @@ extension TaskViewController {
             self?.present(editAlertController, animated: true, completion: nil)
         }
         
+<<<<<<< HEAD
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, completion in
             let IndexTaskToRemove = self.arrayOfTasks[indexPath.row]
             guard let currentUser = self.currentUser, let taskID = IndexTaskToRemove.taskID else { return }
             let taskReference = self.dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID)
+=======
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, completion in
+            guard let IndexTaskToRemove = self?.arrayOfTasks[indexPath.row] else {return}
+            guard let currentUser = self?.currentUser else { return }
+            guard let taskID = IndexTaskToRemove.taskID else { return }
+            guard let taskReference = self?.dataBaseRef.child("users").child(currentUser).child("tasks").child(taskID) else {return}
+>>>>>>> tik_2-NetworkSession
             
             taskReference.removeValue { error, reference in
                 if error != nil {
                     print(error?.localizedDescription as Any)
                 } else {
+<<<<<<< HEAD
                     self.arrayOfTasks.remove(at: indexPath.row)
+=======
+                    self?.arrayOfTasks.remove(at: indexPath.row)
+>>>>>>> tik_2-NetworkSession
                     tableView.deleteRows(at: [indexPath], with: .fade)
                 }
             }
@@ -243,7 +384,10 @@ extension TaskViewController {
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> tik_2-NetworkSession
     //MARK: метод редактирует задачу в базе данных Firebase при нажатии на кнопку "edit"
     func updateValue(indexPath: IndexPath, title: String, description: String) {
         //guard indexPath == selectedIndexPath else { return }
@@ -271,6 +415,7 @@ extension TaskViewController {
         }
     }
     
+<<<<<<< HEAD
     
     //MARK: эти методы уже не актуальны так как разработали кастомные экшены для свайпов
     //    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -293,6 +438,8 @@ extension TaskViewController {
     //                }
     //            }
     //        }
+=======
+>>>>>>> tik_2-NetworkSession
     //MARK: по тапу на ячейку ставится/снимается галочка указывающая на выполнение задачи
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = arrayOfTasks[indexPath.row]
@@ -302,7 +449,11 @@ extension TaskViewController {
         
         let reference = dataBaseRef.child("users").child(currentUser).child("tasks").child(taskId)
         
+<<<<<<< HEAD
         reference.observeSingleEvent(of: .value) { snapshot in
+=======
+        reference.observeSingleEvent(of: .value) { [weak self] snapshot in
+>>>>>>> tik_2-NetworkSession
             guard let taskDict = snapshot.value as? [String: Any],
                   let isCompletedValue = taskDict["isCompleted"] as? Bool else { return }
             let revertIsCompleted = !isCompletedValue
@@ -312,13 +463,21 @@ extension TaskViewController {
                     print("Error updating isCompleted: \(error.localizedDescription)")
                     return
                 }
+<<<<<<< HEAD
                 self.arrayOfTasks[indexPath.row].isCompleted = revertIsCompleted
+=======
+                self?.arrayOfTasks[indexPath.row].isCompleted = revertIsCompleted
+>>>>>>> tik_2-NetworkSession
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
     }
     
+<<<<<<< HEAD
     func toggleCompletion(cell: CustomTableViewCell, isCompleted: Bool) {
+=======
+    func toggleCompletion(cell: TaskTableViewCell, isCompleted: Bool) {
+>>>>>>> tik_2-NetworkSession
         cell.accessoryType = isCompleted ? .checkmark : .none
     }
     
@@ -365,6 +524,7 @@ extension TaskViewController {
         popoverViewController.permittedArrowDirections = []
         popoverViewController.delegate = popOver
         popoverViewController.backgroundColor = .clear
+<<<<<<< HEAD
 //        
 //        let blurEffect = UIBlurEffect(style: .dark)
 //
@@ -372,14 +532,29 @@ extension TaskViewController {
 //        self.view.addSubview(blurEffectView)
 //        
 //        blurEffectView.effect = blurEffect
+=======
+        //
+        //        let blurEffect = UIBlurEffect(style: .dark)
+        //
+        //        let blurEffectView = UIVisualEffectView()
+        //        self.view.addSubview(blurEffectView)
+        //
+        //        blurEffectView.effect = blurEffect
+>>>>>>> tik_2-NetworkSession
         //            blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         //            blurEffectView.topAnchor.constraint(equalTo: self.taskTableView.topAnchor).isActive = true
         //            blurEffectView.bottomAnchor.constraint(equalTo: self.taskTableView.bottomAnchor).isActive = true
         //            blurEffectView.trailingAnchor.constraint(equalTo: self.taskTableView.trailingAnchor).isActive = true
         //            blurEffectView.leadingAnchor.constraint(equalTo:  self.taskTableView.leadingAnchor).isActive = true
+<<<<<<< HEAD
 //        blurEffectView.frame = self.view.bounds
 //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        
+=======
+        //        blurEffectView.frame = self.view.bounds
+        //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //
+>>>>>>> tik_2-NetworkSession
         present(popOver, animated: true)
     }
     
@@ -391,6 +566,10 @@ extension TaskViewController {
         
         
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> tik_2-NetworkSession
 }
 extension TaskViewController: UIContextMenuInteractionDelegate {
     

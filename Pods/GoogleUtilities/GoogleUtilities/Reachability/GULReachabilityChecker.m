@@ -64,10 +64,17 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
 - (void)setReachabilityApi:(const struct GULReachabilityApi *)reachabilityApi {
 #if !TARGET_OS_WATCH
   if (reachability_) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerReachability, NO,
                 [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode000],
                 @"Cannot change reachability API while reachability is running. "
                 @"Call stop first.");
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerReachability, NO,
+                  [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode000],
+                  @"Cannot change reachability API while reachability is running. "
+                  @"Call stop first.");
+>>>>>>> tik_2-NetworkSession
     return;
   }
   reachabilityApi_ = reachabilityApi;
@@ -89,9 +96,15 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
 - (void)setReachabilityDelegate:(id<GULReachabilityDelegate>)reachabilityDelegate {
   if (reachabilityDelegate &&
       (![(NSObject *)reachabilityDelegate conformsToProtocol:@protocol(GULReachabilityDelegate)])) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerReachability, NO,
                 [NSString stringWithFormat:@"I-NET%06ld", (long)kGULReachabilityMessageCode005],
                 @"Reachability delegate doesn't conform to Reachability protocol.");
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerReachability, NO,
+                  [NSString stringWithFormat:@"I-NET%06ld", (long)kGULReachabilityMessageCode005],
+                  @"Reachability delegate doesn't conform to Reachability protocol.");
+>>>>>>> tik_2-NetworkSession
     return;
   }
   reachabilityDelegate_ = reachabilityDelegate;
@@ -102,9 +115,15 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
   self = [super init];
 
   if (!host || !host.length) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerReachability, NO,
                 [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode001],
                 @"Invalid host specified");
+=======
+    GULOSLogError(kGULLogSubsystem, kGULLoggerReachability, NO,
+                  [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode001],
+                  @"Invalid host specified");
+>>>>>>> tik_2-NetworkSession
     return nil;
   }
   if (self) {
@@ -147,6 +166,7 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
       reachabilityApi_->releaseFn(reachability_);
       reachability_ = nil;
 
+<<<<<<< HEAD
       GULLogError(kGULLoggerReachability, NO,
                   [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode002],
                   @"Failed to start reachability handle");
@@ -156,6 +176,17 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
   GULLogDebug(kGULLoggerReachability, NO,
               [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode003],
               @"Monitoring the network status");
+=======
+      GULOSLogError(kGULLogSubsystem, kGULLoggerReachability, NO,
+                    [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode002],
+                    @"Failed to start reachability handle");
+      return NO;
+    }
+  }
+  GULOSLogDebug(kGULLogSubsystem, kGULLoggerReachability, NO,
+                [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode003],
+                @"Monitoring the network status");
+>>>>>>> tik_2-NetworkSession
   return YES;
 #endif
 }
@@ -180,7 +211,11 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
     // Reachable flag is set. Check further flags.
     if (!(flags & kSCNetworkReachabilityFlagsConnectionRequired)) {
 // Connection required flag is not set, so we have connectivity.
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_TV || (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
       status = (flags & kSCNetworkReachabilityFlagsIsWWAN) ? kGULReachabilityViaCellular
                                                            : kGULReachabilityViaWifi;
 #elif TARGET_OS_OSX
@@ -191,7 +226,11 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
                !(flags & kSCNetworkReachabilityFlagsInterventionRequired)) {
 // If the connection on demand or connection on traffic flag is set, and user intervention
 // is not required, we have connectivity.
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_TV || (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
       status = (flags & kSCNetworkReachabilityFlagsIsWWAN) ? kGULReachabilityViaCellular
                                                            : kGULReachabilityViaWifi;
 #elif TARGET_OS_OSX
@@ -214,10 +253,17 @@ static NSString *const kGULReachabilityDisconnectedStatus = @"Disconnected";
                                      : kGULReachabilityConnectedStatus;
     }
 
+<<<<<<< HEAD
     GULLogDebug(kGULLoggerReachability, NO,
                 [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode004],
                 @"Network status has changed. Code:%@, status:%@", @(status),
                 reachabilityStatusString);
+=======
+    GULOSLogDebug(kGULLogSubsystem, kGULLoggerReachability, NO,
+                  [NSString stringWithFormat:@"I-REA%06ld", (long)kGULReachabilityMessageCode004],
+                  @"Network status has changed. Code:%@, status:%@", @(status),
+                  reachabilityStatusString);
+>>>>>>> tik_2-NetworkSession
     reachabilityStatus_ = status;
     [reachabilityDelegate_ reachability:self statusChanged:reachabilityStatus_];
   }
