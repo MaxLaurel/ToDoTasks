@@ -11,19 +11,26 @@ import UIKit
 class LoginViewControllerCoordinator: Coordinator {
     
     var coordinators: [Coordinator] = []
-    var viewControllerFactory = ViewControllerFactory()
+    //var viewControllerFactory = ViewControllerFactory()
     var navigationController: UINavigationController
     var loginViewController: LoginViewController? // Храним экземпляр LoginViewController
+    let animationHandler: AnimationHandler?
+    let container: DINetworkContainer
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, animationHandler: AnimationHandler?, container: DINetworkContainer) {
         self.navigationController = navigationController
+        self.animationHandler = animationHandler
+        self.container = container
+
     }
     
     func startInitialFlow() {
         // Проверяем, если loginViewController уже создан
         if loginViewController == nil {
             // Инициализируем новый экземпляр и сохраняем его в свойстве класса
-            loginViewController = viewControllerFactory.instantiate(type: .loginVC) as? LoginViewController
+            guard let animationHanler = animationHandler else { return }
+            loginViewController = LoginViewController(animationHandler: animationHanler, container: container)
+            navigationController.pushViewController(loginViewController!, animated: true)
         }
         
         // Устанавливаем LoginViewController в стек навигации

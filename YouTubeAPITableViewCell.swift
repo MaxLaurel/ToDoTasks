@@ -31,19 +31,13 @@ class YouTubeAPITableViewCell: UITableViewCell {
         return sourceLabel
     }()
     
+    var imageLoadingTask: URLSessionDataTask?//в это свойство метод для загрузки картинок из сети будет возвращать задачу на загрузку, эта задача нужна PrepareForReuse для своевременной отмены задачи чтобы картинки не прыгали
+    
     private func setViews() {
         contentView.addSubview(newsImageView)
         contentView.addSubview(headerLabel)
         contentView.addSubview(contentLabel)
         contentView.addSubview(sourceLabel)
-        
-//        headerLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-//        contentLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-//        sourceLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-//
-//        headerLabel.setContentHuggingPriority(.required, for: .vertical)
-//        contentLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
-//        sourceLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -81,4 +75,14 @@ class YouTubeAPITableViewCell: UITableViewCell {
         sourceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         sourceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
     }
+    override func prepareForReuse() {//метод нужен чтобы подготовить ячейку перед реюзом
+          super.prepareForReuse()
+
+          // Сброс изображения на плейсхолдер
+          newsImageView.image = UIImage(named: "Placehold")
+
+          // Отмена текущей задачи загрузки изображения
+          imageLoadingTask?.cancel()
+          imageLoadingTask = nil
+      }
 }

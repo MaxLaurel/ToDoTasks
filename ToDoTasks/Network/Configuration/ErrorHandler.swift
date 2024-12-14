@@ -27,7 +27,6 @@ class ErrorHandler: ErrorUsable {
         case .notConnectedToInternet:
             //здесь будет отрабатывать waitsForConnectivity поэтому ретрай не нужен
            Log.error("notConnectedToInternet")
-            print()
             
         case .timedOut:
           Log.error("Timeout")
@@ -38,7 +37,6 @@ class ErrorHandler: ErrorUsable {
         case .networkConnectionLost:
             //здесь будет отрабатывать waitsForConnectivity поэтому ретрай не нужен
            Log.error("Network connection lost")
-            print()
             
         case .cannotFindHost:
            Log.error("Cannot find host. Please check the URL.")
@@ -121,7 +119,7 @@ class ErrorHandler: ErrorUsable {
             }
             
         default:
-          Log.error("Unknown error. Status code: \(response.statusCode)")
+          Log.error("Unknown HTTPURLResponse error. Status code: \(response.statusCode)")
             DispatchQueue.main.async {
                 retryPolicy.handleRetry()
                 self.showAlertError(title: "Network Error", message: "An unexpected network error occurred. Please try again", viewController: viewController)

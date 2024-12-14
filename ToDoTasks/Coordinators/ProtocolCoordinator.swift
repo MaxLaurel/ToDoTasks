@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol Coordinator: AnyObject {
+protocol Coordinator: AnyObject  {
     
     var coordinators: [Coordinator] { get set }
     
-    func startInitialFlow()
+    func startInitialFlow() 
 }
 
 extension Coordinator {

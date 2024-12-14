@@ -15,7 +15,18 @@ class TabBarController: UITabBarController {
     private var newsBarButtonItem: UITabBarItem? = {
         UITabBarItem(title: "news", image: UIImage(systemName: "newspaper.circle"), tag: 2)
     }()
-
+    
+    let container: DINetworkContainer
+    
+    init(container: DINetworkContainer) {
+        self.container = container
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupControllers()
@@ -31,7 +42,7 @@ class TabBarController: UITabBarController {
         calculateViewControllerCoordinator.startInitialFlow()
 
         let newsNavigationController = UINavigationController()
-        let newsViewControllerCoordinator = NewsControllerCoordinator(navigationController: newsNavigationController)
+        let newsViewControllerCoordinator = NewsControllerCoordinator(navigationController: newsNavigationController, container: container)
         newsViewControllerCoordinator.startInitialFlow()
 
         self.viewControllers = [taskNavigationController, calculateNavigationController, newsNavigationController]

@@ -4,12 +4,18 @@ import UIKit
 class TabBarControllerCoordinator: Coordinator {
     
     var coordinators: [Coordinator] = []
-    var viewControllerFactory = ViewControllerFactory()
+    //var viewControllerFactory = ViewControllerFactory()
+    let container: DINetworkContainer
+    
+    init(container: DINetworkContainer) {
+        self.container = container
+    }
     
     func startInitialFlow() {
         // Создаем экземпляр UITabBarController
-        guard let tabBarController = viewControllerFactory.instantiate(type: .tabBarVC) as? TabBarController else {return}
-        
+        let tabBarVC = TabBarController(container: container)
+        //SceneDelegate.window?.rootViewController = tabBarVC
+
         // Создаем координаторы для каждого таба
         let taskCoordinator = TaskViewControllerCoordinator(navigationController: UINavigationController())
         taskCoordinator.startInitialFlow()
@@ -17,11 +23,11 @@ class TabBarControllerCoordinator: Coordinator {
         let calculateCoordinator = CalculateControllerCoordinator(navigationController: UINavigationController())
         calculateCoordinator.startInitialFlow()
         
-        let newsCoordinator = NewsControllerCoordinator(navigationController: UINavigationController())
+        let newsCoordinator = NewsControllerCoordinator(navigationController: UINavigationController(), container: container)
         newsCoordinator.startInitialFlow()
 
         // Устанавливаем viewControllers для таб-бар-контроллера
-        tabBarController.viewControllers = [taskCoordinator.navigationController, calculateCoordinator.navigationController, newsCoordinator.navigationController]
+        tabBarVC.viewControllers = [taskCoordinator.navigationController, calculateCoordinator.navigationController, newsCoordinator.navigationController]
 
         // Добавляем координаторы в массив
 //        coordinators.append(taskCoordinator)

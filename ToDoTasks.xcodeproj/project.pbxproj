@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5157DEA2CF4D6B50059B910 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5157DE92CF4D6B50059B910 /* Environment.swift */; };
+		B5157DEC2CF7CFD30059B910 /* URLtoImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5157DEB2CF7CFD30059B910 /* URLtoImageFetcher.swift */; };
 		B533A8752B5D74ED00448BBC /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533A8742B5D74ED00448BBC /* TaskModel.swift */; };
 		B53A38622CD0EC7000C56643 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A38612CD0EC7000C56643 /* Decoder.swift */; };
 		B53A38662CDFC96B00C56643 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A38652CDFC96B00C56643 /* Encoder.swift */; };
@@ -23,9 +25,8 @@
 		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
 		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
 		B57222FD2CEBDC6100E57E4F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57222FC2CEBDC6100E57E4F /* Logger.swift */; };
-		B576FCF22C8A002B00173253 /* YouTubeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF12C8A002B00173253 /* YouTubeAPIClient.swift */; };
-		B576FCF42C8A100600173253 /* YouTubeAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */; };
 		B576FCF62C8B741F00173253 /* NewAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF52C8B741E00173253 /* NewAPIModel.swift */; };
+		B58D3DC12D0674FB00B86EDE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = B58D3DC02D0674FB00B86EDE /* Swinject */; };
 		B5913B9C2CBD8AA500F8764B /* AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */; };
 		B5A78F472CF243F500F7A3D8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B5A78F462CF243F500F7A3D8 /* FirebaseAuth */; };
 		B5A78F492CF243F500F7A3D8 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B5A78F482CF243F500F7A3D8 /* FirebaseAuthCombine-Community */; };
@@ -45,8 +46,9 @@
 		B5B647DD2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647DC2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift */; };
 		B5B647EC2C12174800743DBE /* YouTubeAPITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */; };
 		B5B647EE2C123DB300743DBE /* СтарыйNewsModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647ED2C123DB300743DBE /* СтарыйNewsModel2.swift */; };
-		B5B647F02C132CF100743DBE /* Service2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EF2C132CF100743DBE /* Service2.swift */; };
-		B5B647F42C18A1D700743DBE /* YouTubeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647F32C18A1D700743DBE /* YouTubeNewsTableViewController.swift */; };
+		B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */; };
+		B5BEBF612D06753F00BF7A72 /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = B5BEBF602D06753F00BF7A72 /* SwinjectAutoregistration */; };
+		B5BEBF632D068B8700BF7A72 /* NetworkManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */; };
 		B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */; };
 		B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */; };
 		B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5157DE92CF4D6B50059B910 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		B5157DEB2CF7CFD30059B910 /* URLtoImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLtoImageFetcher.swift; sourceTree = "<group>"; };
 		B533A8742B5D74ED00448BBC /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		B53A38612CD0EC7000C56643 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		B53A38652CDFC96B00C56643 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
@@ -76,8 +80,6 @@
 		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
 		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 		B57222FC2CEBDC6100E57E4F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		B576FCF12C8A002B00173253 /* YouTubeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIClient.swift; sourceTree = "<group>"; };
-		B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIEndpoints.swift; sourceTree = "<group>"; };
 		B576FCF52C8B741E00173253 /* NewAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAPIModel.swift; sourceTree = "<group>"; };
 		B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
 		B5ABD5F52CA83DED00D34B8E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -89,8 +91,8 @@
 		B5B647DC2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СтарыйNewsViewControllerCellTableViewCell.swift"; sourceTree = "<group>"; };
 		B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPITableViewCell.swift; sourceTree = "<group>"; };
 		B5B647ED2C123DB300743DBE /* СтарыйNewsModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СтарыйNewsModel2.swift"; sourceTree = "<group>"; };
-		B5B647EF2C132CF100743DBE /* Service2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service2.swift; sourceTree = "<group>"; };
-		B5B647F32C18A1D700743DBE /* YouTubeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeNewsTableViewController.swift; sourceTree = "<group>"; };
+		B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerDelegate.swift; sourceTree = "<group>"; };
 		B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BEBF612D06753F00BF7A72 /* SwinjectAutoregistration in Frameworks */,
 				B5A78F4F2CF243F500F7A3D8 /* FirebaseDatabase in Frameworks */,
 				B5A78F472CF243F500F7A3D8 /* FirebaseAuth in Frameworks */,
 				B5A78F4D2CF243F500F7A3D8 /* FirebaseCrashlytics in Frameworks */,
@@ -119,6 +122,7 @@
 				B5A78F492CF243F500F7A3D8 /* FirebaseAuthCombine-Community in Frameworks */,
 				B5A78F562CF2445300F7A3D8 /* SDWebImageMapKit in Frameworks */,
 				B5A78F512CF243F500F7A3D8 /* FirebaseFirestore in Frameworks */,
+				B58D3DC12D0674FB00B86EDE /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,17 +169,6 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
-		B576FCE92C1F11BE00173253 /* СтарыйNetworkServices */ = {
-			isa = PBXGroup;
-			children = (
-				B5B647EF2C132CF100743DBE /* Service2.swift */,
-				B576FCF12C8A002B00173253 /* YouTubeAPIClient.swift */,
-				B576FCF32C8A100600173253 /* YouTubeAPIEndpoints.swift */,
-			);
-			name = "СтарыйNetworkServices";
-			path = "СтарыйNetworkServices";
-			sourceTree = "<group>";
-		};
 		B5913B972CBD8A2400F8764B /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +180,9 @@
 		B5ABD5F42CA83DAF00D34B8E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B5157DEB2CF7CFD30059B910 /* URLtoImageFetcher.swift */,
 				B5ABD5F52CA83DED00D34B8E /* NetworkManager.swift */,
+				B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */,
 				B5ABD5F72CA8537A00D34B8E /* Configuration */,
 			);
 			path = Network;
@@ -249,7 +244,6 @@
 				B5913B972CBD8A2400F8764B /* Animation */,
 				B5ABD6012CB3089700D34B8E /* AlertPresenter */,
 				B5ABD5F42CA83DAF00D34B8E /* Network */,
-				B576FCE92C1F11BE00173253 /* СтарыйNetworkServices */,
 				B5B647DB2C08EBE900743DBE /* Cells */,
 				B550ED0A2BB6E0CB00044609 /* Factories */,
 				B550ECED2BA5E11C00044609 /* Coordinators */,
@@ -268,7 +262,7 @@
 				B550ECF62BA60CE900044609 /* TabBarController.swift */,
 				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
 				B55C27952B9C862A003A3DBA /* CalculationViewController.swift */,
-				B5B647F32C18A1D700743DBE /* YouTubeNewsTableViewController.swift */,
+				B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */,
 				B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */,
 			);
 			path = Controllers;
@@ -284,6 +278,7 @@
 				B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */,
 				B5C9418C29F2A800002F9AF3 /* Info.plist */,
 				B57222FC2CEBDC6100E57E4F /* Logger.swift */,
+				B5157DE92CF4D6B50059B910 /* Environment.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -322,6 +317,8 @@
 				B5A78F532CF2445300F7A3D8 /* SDWebImage */,
 				B5A78F552CF2445300F7A3D8 /* SDWebImageMapKit */,
 				B5A78F582CF2447D00F7A3D8 /* IQKeyboardManagerSwift */,
+				B58D3DC02D0674FB00B86EDE /* Swinject */,
+				B5BEBF602D06753F00BF7A72 /* SwinjectAutoregistration */,
 			);
 			productName = ToDoTasks;
 			productReference = B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */;
@@ -355,6 +352,8 @@
 				B5A78F452CF243F500F7A3D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B5A78F522CF2445300F7A3D8 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				B5A78F572CF2447D00F7A3D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				B58D3DBF2D0674FB00B86EDE /* XCRemoteSwiftPackageReference "Swinject" */,
+				B5BEBF5F2D06753F00BF7A72 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
 			);
 			productRefGroup = B5C9417C29F2A7FE002F9AF3 /* Products */;
 			projectDirPath = "";
@@ -384,8 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */,
-				B576FCF22C8A002B00173253 /* YouTubeAPIClient.swift in Sources */,
-				B5B647F42C18A1D700743DBE /* YouTubeNewsTableViewController.swift in Sources */,
+				B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateControllerCoordinator.swift in Sources */,
 				B53A386A2CDFE3A800C56643 /* DINetworkContainer.swift in Sources */,
 				B5ABD6032CB308DE00D34B8E /* AlertStrategyPresenter.swift in Sources */,
@@ -404,19 +402,20 @@
 				B5B647DD2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift in Sources */,
 				B57222FD2CEBDC6100E57E4F /* Logger.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
+				B5BEBF632D068B8700BF7A72 /* NetworkManagerDelegate.swift in Sources */,
 				B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */,
 				B5ABD5F62CA83DED00D34B8E /* NetworkManager.swift in Sources */,
 				B550ECF72BA60CE900044609 /* TabBarController.swift in Sources */,
 				B53A38622CD0EC7000C56643 /* Decoder.swift in Sources */,
 				B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */,
-				B576FCF42C8A100600173253 /* YouTubeAPIEndpoints.swift in Sources */,
 				B54A31142BB6FFF00000536A /* ViewControllerFactory.swift in Sources */,
+				B5157DEC2CF7CFD30059B910 /* URLtoImageFetcher.swift in Sources */,
 				B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */,
 				B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,
 				B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */,
-				B5B647F02C132CF100743DBE /* Service2.swift in Sources */,
 				B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */,
+				B5157DEA2CF4D6B50059B910 /* Environment.swift in Sources */,
 				B5F7A3112A0E2F3C00EF0447 /* Validation.swift in Sources */,
 				B5ABD5FB2CA8599500D34B8E /* SessionConfiguration.swift in Sources */,
 				B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */,
@@ -646,6 +645,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B58D3DBF2D0674FB00B86EDE /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 		B5A78F452CF243F500F7A3D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -670,9 +677,22 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		B5BEBF5F2D06753F00BF7A72 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/SwinjectAutoregistration";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B58D3DC02D0674FB00B86EDE /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B58D3DBF2D0674FB00B86EDE /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		B5A78F462CF243F500F7A3D8 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5A78F452CF243F500F7A3D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -717,6 +737,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B5A78F572CF2447D00F7A3D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		B5BEBF602D06753F00BF7A72 /* SwinjectAutoregistration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5BEBF5F2D06753F00BF7A72 /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
+			productName = SwinjectAutoregistration;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

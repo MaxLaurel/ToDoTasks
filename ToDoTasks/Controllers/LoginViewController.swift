@@ -12,14 +12,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let animationHandler: AnimationHandler
 
-    init(animationHandler: AnimationHandler) {
-        self.animationHandler = animationHandler
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
@@ -165,8 +157,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
     
-   //private let animationHandler = AnimationHandler()
+    let container: DINetworkContainer
+ 
+    init(animationHandler: AnimationHandler, container: DINetworkContainer) {
+        self.animationHandler = animationHandler
+        self.container = container
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
@@ -207,7 +208,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
             if user != nil {
-                let tabBarControllerCoordinator = TabBarControllerCoordinator()
+                let tabBarControllerCoordinator = TabBarControllerCoordinator(container: self.container)
                 tabBarControllerCoordinator.startInitialFlow()
                 return
             }

@@ -8,11 +8,6 @@
 import Foundation
 import UIKit
 
-enum EndpointError: Error {
-    case cannotCreateURLWithComponent
-    case cannotCreateBaseURL
-}
-
 protocol EndpointConfigurable {
     func returnRequest() throws -> URLRequest?
 }
@@ -44,28 +39,24 @@ enum EndpointType: EndpointConfigurable {
         switch self {
         case .getForegroundData:
             urlComponents.queryItems = [
-                URLQueryItem(name: "q", value: "tesla"),
-                URLQueryItem(name: "from", value: "2024-11-17"),
-                URLQueryItem(name: "sortBy", value: "popularity"),
-                URLQueryItem(name: "apiKey", value:  "23ed6969bd05413aa7680d0a492f26e9")]
+                URLQueryItem(name: "q", value: "Putin"),
+                URLQueryItem(name: "from", value: "2024-12-05"),
+                URLQueryItem(name: "sortBy", value: "popularity")]
         case .downloadBackgroundData:
             urlComponents.queryItems = [
                 URLQueryItem(name: "q", value: "tesla"),
                 URLQueryItem(name: "from", value: "2024-08-05"),
-                URLQueryItem(name: "sortBy", value: "publishedAt"),
-                URLQueryItem(name: "apiKey", value:  "23ed6969bd05413aa7680d0a492f26e9")]
+                URLQueryItem(name: "sortBy", value: "publishedAt")]
         case .uploadMultiPartData:
             urlComponents.queryItems = [
                 URLQueryItem(name: "q", value: "IT"),
                 URLQueryItem(name: "from", value: "2024-08-05"),
-                URLQueryItem(name: "sortBy", value: "publishedAt"),
-                URLQueryItem(name: "apiKey", value:  "23ed6969bd05413aa7680d0a492f26e9")]
+                URLQueryItem(name: "sortBy", value: "publishedAt")]
         case .getForegroundDataWithToken:
             urlComponents.queryItems = [
                 URLQueryItem(name: "q", value: "IT"),
                 URLQueryItem(name: "from", value: "2024-08-05"),
-                URLQueryItem(name: "sortBy", value: "publishedAt"),
-                URLQueryItem(name: "apiKey", value:  "23ed6969bd05413aa7680d0a492f26e9")]
+                URLQueryItem(name: "sortBy", value: "publishedAt")]
         }
         
         guard let url = urlComponents.url else {
@@ -77,17 +68,17 @@ enum EndpointType: EndpointConfigurable {
     var header: [String: String] {
         let boundary = "\(UUID().uuidString)"
         var headers = [String: String]()
+        headers["X-Environment"] = Environment.current.rawValue//указываем общий заголовок для всех типов запросов в котором говорим о том какое окружение "Debag" или "Release" включено. Сервер пришлет ответ в соответствии с запрошенным окружением (ответ с тестового или боевого сервера к примеру)
+        headers["Accept"] = "application/json"
+       headers["Authorization"] = "23ed6969bd05413aa7680d0a492f26e9"
         
         switch self {
-        case .getForegroundData:
-            headers["Accept"] = "application/json"
+        case .getForegroundData: break
             
         case .downloadBackgroundData:
             headers["Content-Type"] = "application/json"
-            headers["Accept"] = "application/json"
             
         case .uploadMultiPartData:
-            headers["Accept"] = "application/json"
             headers["Content-Type"] = "multipart/form-data; boundary=\(boundary)"
             
         case .getForegroundDataWithToken(let token):
@@ -175,3 +166,8 @@ extension EndpointType { //здесь организовано простран�
     static var imageKey = "SomeImage"
 }
 
+
+enum EndpointError: Error {
+    case cannotCreateURLWithComponent
+    case cannotCreateBaseURL
+}

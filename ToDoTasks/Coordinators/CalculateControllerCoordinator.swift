@@ -9,18 +9,19 @@ import UIKit
 
 class CalculateControllerCoordinator: Coordinator {
     
-    var viewControllerFactory = ViewControllerFactory()
+    //var viewControllerFactory = ViewControllerFactory()
     var coordinators: [Coordinator] = []
     
     let navigationController: UINavigationController
-    
+
+ 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     
     func startInitialFlow() {
-        let calculationViewController = viewControllerFactory.instantiate(type: .calculateVC)
+        let calculationViewController = CalculationViewController()
         navigationController.pushViewController(calculationViewController, animated: true)
     }
 }
