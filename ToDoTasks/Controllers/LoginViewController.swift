@@ -10,8 +10,12 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    let window: UIWindow
+    weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?//это делегат LoginViewControllerCoordinator для того чтобы дернуть его метод, и запустить координатор регистрации, который в свою очередь создаст RegisterViewController
     let animationHandler: AnimationHandler
-
+    let container: DIContainer
+    var onFinish: (() -> Void)?
+    
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
@@ -155,19 +159,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return forgotPasswordButton
     }()
     
-    weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
     
-    let container: DINetworkContainer
- 
-    init(animationHandler: AnimationHandler, container: DINetworkContainer) {
+    init(animationHandler: AnimationHandler, window: UIWindow, container: DIContainer) {
         self.animationHandler = animationHandler
         self.container = container
+        self.window = window
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
@@ -206,22 +209,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
+        Auth.auth().signIn(withEmail: emailTextField, password: password) { [weak self] (user, error) in
+            guard let self = self else { return }
+            
             if user != nil {
-                let tabBarControllerCoordinator = TabBarControllerCoordinator(container: self.container)
-                tabBarControllerCoordinator.startInitialFlow()
+                guard let navigationController = self.navigationController else {return}
+
+                 
+                 let tabBarControllerCoordinator = TabBarControllerCoordinator(window: window, navigationController: navigationController, taskViewControllerCoordinator: TaskViewControllerCoordinator(navigationController: UINavigationController()), calculatorViewControllerCoordinator: CalculateViewControllerCoordinator(navigationController: UINavigationController()), newsViewControllerCoordinator: NewsViewControllerCoordinator(navigationController: UINavigationController()))
+                
+                tabBarControllerCoordinator.start()
                 return
             }
             if let error = error {
                 self.animationHandler.showErrorWithAnimation(with: "Email or password wrong!", and: self.errorLabel)
-                return
             }
         }
     }
     
     @objc private func registerViewControllerAction() {
-        let registerVC = RegisterViewController(animationHandler: animationHandler)
-        self.navigationController?.pushViewController(registerVC, animated: true)
+        loginViewControllerCoordinator?.startRegisterViewControllerFlow()//вместо создания RegisterViewController напрямую или даже RegisterViewControllerСoordinatora, мы дергаем делегат loginViewControllerCoordinator, который создает RegisterViewControllerСoordinator сам
     }
     
     @objc private func forgotPasswordAction() {
@@ -240,10 +247,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func addSubvies() {
         [forgotPasswordButton, CommonStackView].forEach {view.addSubview($0)}
     }
-    
-    deinit {
-            print("LoginViewController was deallocated")
-        }
 }
 
 extension LoginViewController {
@@ -252,10 +255,10 @@ extension LoginViewController {
         translatesAutoresizingMaskIntoConstraintsToFalse()
         
         stackView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
-      
+        
         stackView3.widthAnchor.constraint(equalToConstant: 200).isActive = true
         stackView3.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//
+        
         CommonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         CommonStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
@@ -268,6 +271,15 @@ extension LoginViewController {
         [stackView, stackView2, stackView3, CommonStackView, forgotPasswordButton].forEach {$0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
+}
+
+extension LoginViewController {//это расширение для того чтобы можно было удалять координатор этого контроллера через родительский координатор
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if isMovingFromParent || isBeingDismissed { //когда вью уходит с экрана модально или удаляется из стека:
+            onFinish?() //срабатывает клоужер в который при создании LoginViewController был установлен метод где родительский координатор удаляет дочерний координатор их массива координаторов, таким образом убирается сильная ссылка на координатор
+        }
+    }
 }
 
 

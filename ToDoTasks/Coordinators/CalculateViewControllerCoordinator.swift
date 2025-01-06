@@ -7,20 +7,17 @@
 
 import UIKit
 
-class CalculateControllerCoordinator: Coordinator {
+final class CalculateViewControllerCoordinator: Coordinating {
     
-    //var viewControllerFactory = ViewControllerFactory()
-    var coordinators: [Coordinator] = []
+   // var coordinators: [Coordinator] = []
     
     let navigationController: UINavigationController
 
- 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    
-    func startInitialFlow() {
+    func start() {
         let calculationViewController = CalculationViewController()
         navigationController.pushViewController(calculationViewController, animated: true)
     }

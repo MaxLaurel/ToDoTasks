@@ -1,37 +1,50 @@
-import Foundation
 import UIKit
 
-class TabBarControllerCoordinator: Coordinator {
+final class TabBarControllerCoordinator: Coordinating {
+   
+    private let window: UIWindow
+    private var tabBarController: TabBarViewController?
+    let navigationController: UINavigationController
+    let taskViewControllerCoordinator: TaskViewControllerCoordinator
+    let calculatorViewControllerCoordinator: CalculateViewControllerCoordinator
+    let newsViewControllerCoordinator: NewsViewControllerCoordinator
     
-    var coordinators: [Coordinator] = []
-    //var viewControllerFactory = ViewControllerFactory()
-    let container: DINetworkContainer
     
-    init(container: DINetworkContainer) {
-        self.container = container
+    init(window: UIWindow, navigationController: UINavigationController, taskViewControllerCoordinator: TaskViewControllerCoordinator, calculatorViewControllerCoordinator: CalculateViewControllerCoordinator, newsViewControllerCoordinator: NewsViewControllerCoordinator) {
+        self.window = window
+        self.navigationController = navigationController
+        self.taskViewControllerCoordinator = taskViewControllerCoordinator
+        self.calculatorViewControllerCoordinator = calculatorViewControllerCoordinator
+        self.newsViewControllerCoordinator = newsViewControllerCoordinator
     }
     
-    func startInitialFlow() {
-        // Создаем экземпляр UITabBarController
-        let tabBarVC = TabBarController(container: container)
-        //SceneDelegate.window?.rootViewController = tabBarVC
-
-        // Создаем координаторы для каждого таба
-        let taskCoordinator = TaskViewControllerCoordinator(navigationController: UINavigationController())
-        taskCoordinator.startInitialFlow()
+    func start() {
         
-        let calculateCoordinator = CalculateControllerCoordinator(navigationController: UINavigationController())
-        calculateCoordinator.startInitialFlow()
+    }
+    
+    func startTabBarViewControllerFlow() {
+        let tabBarVC = TabBarViewController()
+        tabBarController = tabBarVC
         
-        let newsCoordinator = NewsControllerCoordinator(navigationController: UINavigationController(), container: container)
-        newsCoordinator.startInitialFlow()
-
-        // Устанавливаем viewControllers для таб-бар-контроллера
-        tabBarVC.viewControllers = [taskCoordinator.navigationController, calculateCoordinator.navigationController, newsCoordinator.navigationController]
-
-        // Добавляем координаторы в массив
-//        coordinators.append(taskCoordinator)
-//        coordinators.append(calculateCoordinator)
-//        coordinators.append(newsCoordinator)
+        let taskNavController = UINavigationController()
+        let calculateNavController = UINavigationController()
+        let newsNavController = UINavigationController()
+        
+        let taskCoordinator = TaskViewControllerCoordinator(navigationController: taskNavController)
+        let calculateCoordinator = CalculateViewControllerCoordinator(navigationController: calculateNavController)
+        let newsCoordinator = NewsViewControllerCoordinator(navigationController: newsNavController)
+        
+        taskCoordinator.start()
+        calculateCoordinator.start()
+        newsCoordinator.start()
+        
+        tabBarVC.setupTaskTab(with: taskNavController)
+        tabBarVC.setupCalculatorTab(with: calculateNavController)
+        tabBarVC.setupNewsTab(with: newsNavController)
+        
+        tabBarVC.setViewControllers([taskNavController, calculateNavController, newsNavController], animated: false)
+        
+        window.rootViewController = tabBarVC
+        window.makeKeyAndVisible()
     }
 }

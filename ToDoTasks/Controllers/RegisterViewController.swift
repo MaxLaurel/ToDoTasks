@@ -11,15 +11,7 @@ import FirebaseAuth
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     private var animationHandler: AnimationHandlerManagable
-    
-    init(animationHandler: AnimationHandlerManagable) {
-        self.animationHandler = animationHandler
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   weak var registerCoordinator: RegisterViewControllerCoordinator?
     
     private var errorLabel: UILabel = {
         var errorLabel = UILabel()
@@ -92,6 +84,26 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return stackView
     }()
     
+    private var backToLoginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Back to Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(backToLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    init(animationHandler: AnimationHandlerManagable, registerCoordinator: RegisterViewControllerCoordinator) {
+        self.animationHandler = animationHandler
+        self.registerCoordinator = registerCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
@@ -105,7 +117,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func addSubViews() {
-        [stackView, errorLabel, registerButton].forEach { view.addSubview($0) }
+        [stackView, errorLabel, registerButton, backToLoginButton].forEach { view.addSubview($0) }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this method and add textfields to resign first responder (Done will be working correctly)
@@ -121,6 +133,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func outOfView() {
         view.endEditing(true)
+    }
+    
+    @objc private func backToLogin() {
+        // Обращаемся к координатору для выполнения перехода назад
+        registerCoordinator?.navigateBackToLogin()
     }
     
     @objc private func registerAction() {
@@ -146,19 +163,20 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         // Проверяем существует ли email
-        Auth.auth().fetchSignInMethods(forEmail: mail) { (methods, error) in
+        Auth.auth().fetchSignInMethods(forEmail: mail) { [weak self] (methods, error) in
             // Если методы входа существуют, значит email уже используется
             if let methods = methods {
-                guard methods.isEmpty else {self.animationHandler.showErrorWithAnimation(with: "Email is already registered", and: self.errorLabel)
+                guard let errorLabel = self?.errorLabel else {return}
+                guard methods.isEmpty else {self?.animationHandler.showErrorWithAnimation(with: "Email is already registered", and: errorLabel)
                     return
                 }
             }
         }
-        Auth.auth().createUser(withEmail: mail, password: password)
+        Auth.auth().createUser(withEmail: mail, password: password) //MARK: создаем юзера после чего его состояние меняется, а значит будет вызван слушатель Auth.auth().addStateDidChangeListener, по логике которого зарегестрированный пользователь автоматически заходит на таббарвьюконтроллер. Именно поэтому RegisterViewController не вызывает таббарвьюконтроллер отсюда дополнительно, он открывается сам.
     }
     deinit {
-            print("RegisterViewController was deallocated")
-        }
+        print(" has been deinitialized")
+    }
 }
 
 extension RegisterViewController {
@@ -176,9 +194,13 @@ extension RegisterViewController {
         
         errorLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -20).isActive = true
         errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        backToLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        backToLoginButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20).isActive = true
     }
     
     private func addTranslateAutoresizingMaskIntoConstraintsFalse() {
-        [stackView, registerButton, errorLabel].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [stackView, registerButton, errorLabel, backToLoginButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
+    
 }

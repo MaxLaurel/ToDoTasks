@@ -3,11 +3,12 @@ import SDWebImage
 
 class NewsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    weak var newsViewControllerCoordinator: NewsControllerCoordinator?
+    //weak var newsViewControllerCoordinator: NewsControllerCoordinator?
     let tableView = UITableView()
     var youTubeArticle = [Article]()
     let networkManager: NetworkRequestPerforming
     let imageFetcher: URLtoImageFetcherProtocol
+    var onFinish: (() -> Void)?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -104,9 +105,13 @@ class NewsTableViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-    
-    deinit {
-        Log.info("YouTubeNewsViewController was deallocated")
-    }
 }
 
+extension NewsTableViewController {//это расширение для того чтобы можно было удалять координатор этого контроллера через родительский координатор
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if isMovingFromParent || isBeingDismissed { //когда вью уходит с экрана модально или удаляется из стека:
+            onFinish?() //координатор загружает реализацию клоужера сюда в вьюконтроллер// был установлен метод где родительский координатор удаляет дочерний координатор их массива координаторов, таким образом убирается сильная ссылка на координатор
+        }
+    }
+}

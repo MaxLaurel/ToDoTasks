@@ -10,9 +10,8 @@ import FirebaseAuth
 
 class CalculationViewController: UIViewController {
     
-    weak var calculateControllerCoordinator: CalculateControllerCoordinator?
-    
-    //var navController = UINavigationController()
+    weak var calculateControllerCoordinator: CalculateViewControllerCoordinator?
+    var onFinish: (() -> Void)?
     
     lazy var leftBarButtonItem: UIBarButtonItem = {
         var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
@@ -47,7 +46,4 @@ class CalculationViewController: UIViewController {
         }
         navigationController?.popToRootViewController(animated: true)
     }
-    deinit {
-            print("CalculateViewController was deallocated")
-        }
 }

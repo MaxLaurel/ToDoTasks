@@ -7,19 +7,26 @@
 
 import Foundation
 
-protocol Coordinator: AnyObject  {
-    
-    var coordinators: [Coordinator] { get set }
-    
-    func startInitialFlow() 
+protocol Coordinating: AnyObject  {
+    func start()
 }
 
-extension Coordinator {
-    func add(coordinator: Coordinator) {
-        coordinators.append(coordinator)
+protocol CoordinatingManager: Coordinating {
+    var childCoordinators: [Coordinating] { get set }
+    func addChildCoordinator(_ child: Coordinating)
+    func removeChildCoordinator(_ child: Coordinating?)
+    func start()
+}
+
+extension CoordinatingManager {
+    func addChildCoordinator(_ child: Coordinating) {
+        childCoordinators.append(child)
+        Log.info("Coordinator \(child) has been added. Coordinators include: \(child)")
     }
     
-    func remove(coordinator: Coordinator) {
-        coordinators = coordinators.filter { $0 !== coordinator} 
+    //MARK: в этом методе удаляем дочерний координатор из массива childCoordinators
+    func removeChildCoordinator(_ child: Coordinating?) {
+        childCoordinators = childCoordinators.filter { $0 !== child }
+        Log.info("Coordinator \(child) has been removed. Coordinators include: \(child)")
     }
 }

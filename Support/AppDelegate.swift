@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardManager.shared.keyboardDistance = 150
         FirebaseApp.configure()
-        
         return true
     }
 

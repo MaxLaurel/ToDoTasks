@@ -7,19 +7,17 @@
 
 import UIKit
 
-class TaskViewControllerCoordinator: Coordinator {
+final class TaskViewControllerCoordinator: Coordinating {
     
-    var coordinators: [Coordinator] = []
     let navigationController: UINavigationController
-    //var viewControllerFactory = ViewControllerFactory()
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    func startInitialFlow()  {
+    func start()  {
         let taskViewController = TaskViewController()
         navigationController.pushViewController(taskViewController, animated: true)
-
     }
+    
 }
