@@ -12,16 +12,18 @@ import FirebaseAuth
 class AppCoordinator: Coordinating, CoordinatingManager {
     
     var childCoordinators: [Coordinating] = []
-    private var window: UIWindow
-    private let animationHandler: AnimationHandler
+    var window: UIWindow
+    private let animationHandler: AnimationHandlerManagable
     private let container: DIContainer
-    private let loginViewControllerCoordinator: LoginViewControllerCoordinator?
+    private let loginViewControllerCoordinator: LoginViewControllerCoordinator
+    var tabBarControllerCoordinator: TabBarControllerCoordinator
     
-    init(window: UIWindow, container: DIContainer) {
+    init(window: UIWindow, tabBarControllerCoordinator: TabBarControllerCoordinator, loginViewControllerCoordinator: LoginViewControllerCoordinator, animationHandler: AnimationHandlerManagable) {
         self.window = window
-        self.animationHandler = AnimationHandler()
-        self.container = container
-        self.loginViewControllerCoordinator = container.resolveLoginViewControllerCoordinator(with: window, UINavigationController(), animationHandler)
+        self.container = DIContainer.shared
+        self.animationHandler = animationHandler
+        self.loginViewControllerCoordinator = loginViewControllerCoordinator
+        self.tabBarControllerCoordinator = tabBarControllerCoordinator
     }
     
     func start() {//MARK: это первый метод который запускается в SceneDelegate. C него начинается стек координаторов
@@ -37,23 +39,27 @@ class AppCoordinator: Coordinating, CoordinatingManager {
     }
     
      func startLoginFlow() {
-       // let navigationController = UINavigationController()
-//        let loginViewControllerCoordinator = DIContainer.shared.diContainer.resolve(LoginViewControllerCoordinator.self, arguments: window, navigationController, animationHandler)
-         
-        window.rootViewController = loginViewControllerCoordinator?.navigationController
+        window.rootViewController = loginViewControllerCoordinator.navigationController
         window.makeKeyAndVisible()
-        loginViewControllerCoordinator?.startLoginViewControllerFlow()
-        addChildCoordinator(loginViewControllerCoordinator!)
+        loginViewControllerCoordinator.startLoginViewControllerFlow()
+        addChildCoordinator(loginViewControllerCoordinator)
     }
     
-     func startTabBarControllerFlow() {
-        let navigationController = UINavigationController()
-//        let tabBarControllerCoordinator = DINetworkContainer.shared.container.resolve( TabBarControllerCoordinator.self, arguments: window, navigationController)
-         
-         let tabBarControllerCoordinator = TabBarControllerCoordinator(window: window, navigationController: navigationController, taskViewControllerCoordinator: TaskViewControllerCoordinator(navigationController: UINavigationController()), calculatorViewControllerCoordinator: CalculateViewControllerCoordinator(navigationController: UINavigationController()), newsViewControllerCoordinator: NewsViewControllerCoordinator(navigationController: UINavigationController()))
-
+    func startTabBarControllerFlow() {
         tabBarControllerCoordinator.startTabBarViewControllerFlow()
         addChildCoordinator(tabBarControllerCoordinator)
+    }
+    
+    
+    func resetApplicationState() {
+        // Удаляем всех дочерних координаторов
+        childCoordinators.forEach { coordinator in
+            (coordinator as? CoordinatingManager)?.removeAllChildCoordinators()
+        }
+        childCoordinators.removeAll()
+
+        // Переключаем на экран логина
+        startLoginFlow()
     }
 }
 

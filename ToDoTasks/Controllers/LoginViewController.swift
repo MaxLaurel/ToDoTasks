@@ -159,10 +159,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return forgotPasswordButton
     }()
     
-    
-    init(animationHandler: AnimationHandler, window: UIWindow, container: DIContainer) {
+    init(animationHandler: AnimationHandler, window: UIWindow) {
         self.animationHandler = animationHandler
-        self.container = container
+        self.container = DIContainer.shared
         self.window = window
         super.init(nibName: nil, bundle: nil)
     }
@@ -214,10 +213,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             if user != nil {
                 guard let navigationController = self.navigationController else {return}
-
-                 
-                 let tabBarControllerCoordinator = TabBarControllerCoordinator(window: window, navigationController: navigationController, taskViewControllerCoordinator: TaskViewControllerCoordinator(navigationController: UINavigationController()), calculatorViewControllerCoordinator: CalculateViewControllerCoordinator(navigationController: UINavigationController()), newsViewControllerCoordinator: NewsViewControllerCoordinator(navigationController: UINavigationController()))
-                
+                let tabBarControllerCoordinator = container.resolveTabBarControllerCoordinator(window: window, navigationController: navigationController)
                 tabBarControllerCoordinator.start()
                 return
             }

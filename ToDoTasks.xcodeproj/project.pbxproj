@@ -14,7 +14,6 @@
 		B53A38622CD0EC7000C56643 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A38612CD0EC7000C56643 /* Decoder.swift */; };
 		B53A38662CDFC96B00C56643 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A38652CDFC96B00C56643 /* Encoder.swift */; };
 		B53A386A2CDFE3A800C56643 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A38692CDFE3A800C56643 /* DIContainer.swift */; };
-		B54A31142BB6FFF00000536A /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54A31132BB6FFF00000536A /* ViewControllerFactory.swift */; };
 		B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */; };
 		B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF22BA5F5A600044609 /* AppCoordinator.swift */; };
 		B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */; };
@@ -26,7 +25,6 @@
 		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
 		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
 		B57222FD2CEBDC6100E57E4F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57222FC2CEBDC6100E57E4F /* Logger.swift */; };
-		B576FCF62C8B741F00173253 /* NewAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B576FCF52C8B741E00173253 /* NewAPIModel.swift */; };
 		B58D3DC12D0674FB00B86EDE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = B58D3DC02D0674FB00B86EDE /* Swinject */; };
 		B5913B9C2CBD8AA500F8764B /* AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */; };
 		B5A78F472CF243F500F7A3D8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B5A78F462CF243F500F7A3D8 /* FirebaseAuth */; };
@@ -44,12 +42,16 @@
 		B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */; };
 		B5ABD6032CB308DE00D34B8E /* AlertStrategyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD6022CB308DE00D34B8E /* AlertStrategyPresenter.swift */; };
 		B5B647D52C08B25D00743DBE /* NewsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */; };
-		B5B647DD2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647DC2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift */; };
 		B5B647EC2C12174800743DBE /* YouTubeAPITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */; };
-		B5B647EE2C123DB300743DBE /* СтарыйNewsModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647ED2C123DB300743DBE /* СтарыйNewsModel2.swift */; };
 		B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */; };
 		B5BEBF612D06753F00BF7A72 /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = B5BEBF602D06753F00BF7A72 /* SwinjectAutoregistration */; };
 		B5BEBF632D068B8700BF7A72 /* NetworkManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */; };
+		B5C52C982D43978A00565E06 /* NewAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C52C972D43978A00565E06 /* NewAPIModel.swift */; };
+		B5C52C9F2D43C72D00565E06 /* DIContainer+AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C52C9E2D43C72400565E06 /* DIContainer+AnimationHandler.swift */; };
+		B5C52CA12D43C7B000565E06 /* DIContainer+ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C52CA02D43C7B000565E06 /* DIContainer+ImageFetcher.swift */; };
+		B5C52CA52D43C9D000565E06 /* DIContainer+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C52CA42D43C9CD00565E06 /* DIContainer+Network.swift */; };
+		B5C52CA72D43CA1300565E06 /* DIContainer+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C52CA62D43CA1300565E06 /* DIContainer+Coordinator.swift */; };
+		B5C52CAB2D45275200565E06 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C52CAA2D45275200565E06 /* Observable.swift */; };
 		B5C9417F29F2A7FE002F9AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */; };
 		B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */; };
 		B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */; };
@@ -70,7 +72,6 @@
 		B53A38612CD0EC7000C56643 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		B53A38652CDFC96B00C56643 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		B53A38692CDFE3A800C56643 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
-		B54A31132BB6FFF00000536A /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolCoordinator.swift; sourceTree = "<group>"; };
 		B550ECF22BA5F5A600044609 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerCoordinator.swift; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
 		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 		B57222FC2CEBDC6100E57E4F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		B576FCF52C8B741E00173253 /* NewAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAPIModel.swift; sourceTree = "<group>"; };
 		B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
 		B5ABD5F52CA83DED00D34B8E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B5ABD5F82CA853A400D34B8E /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
@@ -90,11 +90,15 @@
 		B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConfiguration.swift; sourceTree = "<group>"; };
 		B5ABD6022CB308DE00D34B8E /* AlertStrategyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStrategyPresenter.swift; sourceTree = "<group>"; };
 		B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerCoordinator.swift; sourceTree = "<group>"; };
-		B5B647DC2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СтарыйNewsViewControllerCellTableViewCell.swift"; sourceTree = "<group>"; };
 		B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPITableViewCell.swift; sourceTree = "<group>"; };
-		B5B647ED2C123DB300743DBE /* СтарыйNewsModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СтарыйNewsModel2.swift"; sourceTree = "<group>"; };
 		B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerDelegate.swift; sourceTree = "<group>"; };
+		B5C52C972D43978A00565E06 /* NewAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAPIModel.swift; sourceTree = "<group>"; };
+		B5C52C9E2D43C72400565E06 /* DIContainer+AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+AnimationHandler.swift"; sourceTree = "<group>"; };
+		B5C52CA02D43C7B000565E06 /* DIContainer+ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ImageFetcher.swift"; sourceTree = "<group>"; };
+		B5C52CA42D43C9CD00565E06 /* DIContainer+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Network.swift"; sourceTree = "<group>"; };
+		B5C52CA62D43CA1300565E06 /* DIContainer+Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Coordinator.swift"; sourceTree = "<group>"; };
+		B5C52CAA2D45275200565E06 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		B5C9417B29F2A7FE002F9AF3 /* ToDoTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,8 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				B533A8742B5D74ED00448BBC /* TaskModel.swift */,
-				B5B647ED2C123DB300743DBE /* СтарыйNewsModel2.swift */,
-				B576FCF52C8B741E00173253 /* NewAPIModel.swift */,
+				B5C52C972D43978A00565E06 /* NewAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				B53A38692CDFE3A800C56643 /* DIContainer.swift */,
+				B5C52CA42D43C9CD00565E06 /* DIContainer+Network.swift */,
+				B5C52C9E2D43C72400565E06 /* DIContainer+AnimationHandler.swift */,
+				B5C52CA02D43C7B000565E06 /* DIContainer+ImageFetcher.swift */,
+				B5C52CA62D43CA1300565E06 /* DIContainer+Coordinator.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -162,14 +169,6 @@
 				B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */,
 			);
 			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		B550ED0A2BB6E0CB00044609 /* Factories */ = {
-			isa = PBXGroup;
-			children = (
-				B54A31132BB6FFF00000536A /* ViewControllerFactory.swift */,
-			);
-			path = Factories;
 			sourceTree = "<group>";
 		};
 		B5913B972CBD8A2400F8764B /* Animation */ = {
@@ -212,15 +211,13 @@
 			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
-		B5B647DB2C08EBE900743DBE /* Cells */ = {
+		B5C52C9B2D43997600565E06 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */,
-				B5B647DC2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift */,
 				B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */,
 			);
-			name = Cells;
-			path = ..;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B5C9417229F2A7FE002F9AF3 = {
@@ -229,6 +226,7 @@
 				B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */,
 				B5C9417C29F2A7FE002F9AF3 /* Products */,
 				B5C941B829F33EB2002F9AF3 /* Support */,
+				B5C52C9B2D43997600565E06 /* Cells */,
 			);
 			sourceTree = "<group>";
 		};
@@ -243,16 +241,14 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
-				B53A38682CDFE37400C56643 /* DIContainer */,
 				B5913B972CBD8A2400F8764B /* Animation */,
 				B5ABD6012CB3089700D34B8E /* AlertPresenter */,
 				B5ABD5F42CA83DAF00D34B8E /* Network */,
-				B5B647DB2C08EBE900743DBE /* Cells */,
-				B550ED0A2BB6E0CB00044609 /* Factories */,
 				B550ECED2BA5E11C00044609 /* Coordinators */,
 				B533A8732B5D74A200448BBC /* Model */,
 				B5F7A30F2A0E2F1300EF0447 /* Extensions */,
 				B5C941B729F33E81002F9AF3 /* Controllers */,
+				B53A38682CDFE37400C56643 /* DIContainer */,
 			);
 			path = ToDoTasks;
 			sourceTree = "<group>";
@@ -282,6 +278,7 @@
 				B5C9418C29F2A800002F9AF3 /* Info.plist */,
 				B57222FC2CEBDC6100E57E4F /* Logger.swift */,
 				B5157DE92CF4D6B50059B910 /* Environment.swift */,
+				B5C52CAA2D45275200565E06 /* Observable.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -386,24 +383,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */,
+				B5C52CA72D43CA1300565E06 /* DIContainer+Coordinator.swift in Sources */,
 				B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateViewControllerCoordinator.swift in Sources */,
 				B53A386A2CDFE3A800C56643 /* DIContainer.swift in Sources */,
 				B5ABD6032CB308DE00D34B8E /* AlertStrategyPresenter.swift in Sources */,
 				B5ABD5F92CA853A400D34B8E /* ErrorHandler.swift in Sources */,
+				B5C52CA12D43C7B000565E06 /* DIContainer+ImageFetcher.swift in Sources */,
 				B5913B9C2CBD8AA500F8764B /* AnimationHandler.swift in Sources */,
 				B5B647D52C08B25D00743DBE /* NewsViewControllerCoordinator.swift in Sources */,
 				B55A71C32B727CFE005EB46D /* TaskTableViewCell.swift in Sources */,
+				B5C52CAB2D45275200565E06 /* Observable.swift in Sources */,
 				B5137E322D147F2200537427 /* RegisterViewControllerCoordinator.swift in Sources */,
 				B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */,
-				B576FCF62C8B741F00173253 /* NewAPIModel.swift in Sources */,
 				B533A8752B5D74ED00448BBC /* TaskModel.swift in Sources */,
 				B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */,
 				B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */,
 				B5B647EC2C12174800743DBE /* YouTubeAPITableViewCell.swift in Sources */,
-				B5B647EE2C123DB300743DBE /* СтарыйNewsModel2.swift in Sources */,
+				B5C52C9F2D43C72D00565E06 /* DIContainer+AnimationHandler.swift in Sources */,
+				B5C52C982D43978A00565E06 /* NewAPIModel.swift in Sources */,
 				B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */,
-				B5B647DD2C08EC5000743DBE /* СтарыйNewsViewControllerCellTableViewCell.swift in Sources */,
 				B57222FD2CEBDC6100E57E4F /* Logger.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
 				B5BEBF632D068B8700BF7A72 /* NetworkManagerDelegate.swift in Sources */,
@@ -412,8 +411,8 @@
 				B550ECF72BA60CE900044609 /* TabBarViewController.swift in Sources */,
 				B53A38622CD0EC7000C56643 /* Decoder.swift in Sources */,
 				B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */,
-				B54A31142BB6FFF00000536A /* ViewControllerFactory.swift in Sources */,
 				B5157DEC2CF7CFD30059B910 /* URLtoImageFetcher.swift in Sources */,
+				B5C52CA52D43C9D000565E06 /* DIContainer+Network.swift in Sources */,
 				B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */,
 				B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */,
 				B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */,

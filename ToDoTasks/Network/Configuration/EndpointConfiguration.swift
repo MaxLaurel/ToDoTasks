@@ -16,8 +16,8 @@ protocol EndpointConfigurable {
 enum EndpointType: EndpointConfigurable {
     case getForegroundData
     case downloadBackgroundData
-    case uploadMultiPartData(image: UIImage, text: String)//нужно для мультипарт запроса
-    case getForegroundDataWithToken(token: String)
+    case uploadMultiPartData(image: UIImage?, text: String?)//нужно для мультипарт запроса
+    case getForegroundDataWithToken(token: String?)
     
     
     var baseURLPath: URL {//формируем базовый путь URL
@@ -39,8 +39,8 @@ enum EndpointType: EndpointConfigurable {
         switch self {
         case .getForegroundData:
             urlComponents.queryItems = [
-                URLQueryItem(name: "q", value: "Putin"),
-                URLQueryItem(name: "from", value: "2024-12-05"),
+                URLQueryItem(name: "q", value: "Trump"),
+                URLQueryItem(name: "from", value: "2025-01-01"),
                 URLQueryItem(name: "sortBy", value: "popularity")]
         case .downloadBackgroundData:
             urlComponents.queryItems = [
@@ -102,8 +102,8 @@ enum EndpointType: EndpointConfigurable {
             return nil
         case .uploadMultiPartData(let image, let text):
             let boundary = "/(UUID().uuidString)"
-            let text = ["serverKey": text]
-            let httpBody = createMultiPartBody(text: text, boundary: boundary, image: image, imageKey: EndpointType.imageKey)
+            let text = ["serverKey": text ?? ""]
+            let httpBody = createMultiPartBody(text: text, boundary: boundary, image: image!, imageKey: EndpointType.imageKey)
             return httpBody
         }
     }

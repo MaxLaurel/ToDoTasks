@@ -17,9 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+        guard let window = window else { return }
 //        appCoordinator = AppCoordinator(/*navigationController: UINavigationController(),*/ window: window!, container: container)//передаем контейнер в координатора
         
-        appCoordinator = container.resolveAppCoordinator(window: window!, container: container)
+        
+        appCoordinator = container.resolveAppCoordinator(window: window)
 //        window?.rootViewController = appCoordinator?.navigatioExtranController
 //        appCoordinator?.navigationController.setNavigationBarHidden(true, animated: false)
 //        window?.makeKeyAndVisible()

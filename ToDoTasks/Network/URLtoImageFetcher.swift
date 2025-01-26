@@ -53,14 +53,5 @@ class URLtoImageFetcher: URLtoImageFetcherProtocol {//это отдельный 
         task.resume()
         return task
     }
-    
-    //    func setImageWithGIFFromAsset(imageName: String, imageView: UIImageView) {
-    //        // Загружаем GIF как данные из ассетов
-    //        if let gifData = NSDataAsset(name: "SceletonNew")?.data {
-    //            if let gifImage = UIImage.animatedImage(with: [UIImage(data: gifData)!], duration: 1.0) {
-    //                imageView.image = gifImage
-    //            }
-    //        }
-    //    }
 }
 

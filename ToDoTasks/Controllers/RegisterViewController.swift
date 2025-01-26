@@ -174,9 +174,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         Auth.auth().createUser(withEmail: mail, password: password) //MARK: создаем юзера после чего его состояние меняется, а значит будет вызван слушатель Auth.auth().addStateDidChangeListener, по логике которого зарегестрированный пользователь автоматически заходит на таббарвьюконтроллер. Именно поэтому RegisterViewController не вызывает таббарвьюконтроллер отсюда дополнительно, он открывается сам.
     }
-    deinit {
-        print(" has been deinitialized")
-    }
 }
 
 extension RegisterViewController {

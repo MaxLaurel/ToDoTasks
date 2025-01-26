@@ -13,15 +13,15 @@ final class RegisterViewControllerCoordinator: NSObject, Coordinating, Coordinat
     var childCoordinators: [Coordinating] = []
    private var registerViewController: RegisterViewController?
     var navigationController: UINavigationController
-    private let animationHandler: AnimationHandler
+    private let animationHandler: AnimationHandlerManagable
     private let window: UIWindow
-    //let parentCoordinator: LoginViewControllerCoordinator
+    let tabBarControllerCoordinator: TabBarControllerCoordinator
     
-    init(animationHandler: AnimationHandler, navigationController: UINavigationController, window: UIWindow/*, parentCoordinator: LoginViewControllerCoordinator*/) {
+    init(animationHandler: AnimationHandlerManagable, navigationController: UINavigationController, window: UIWindow, tabBarControllerCoordinator: TabBarControllerCoordinator) {
         self.navigationController = navigationController
         self.animationHandler = animationHandler
         self.window = window
-        //self.parentCoordinator = parentCoordinator
+        self.tabBarControllerCoordinator = tabBarControllerCoordinator
     }
     
     func start() {
@@ -37,12 +37,10 @@ final class RegisterViewControllerCoordinator: NSObject, Coordinating, Coordinat
     
     //MARK: этот метод не вызываем при переходе из registerViewController в TabBarController потому-что файрбэйз делает это сам при смене состояния пользователя, но этот метод может пригодиться когда я съеду с файрбейза
     func startTabBarControllerFlow() {
-        let navigationController = UINavigationController()
-        let tabBarControllerCoordinator = DIContainer.shared.сontainer.resolve( TabBarControllerCoordinator.self, arguments: window, navigationController)
         
-        window.rootViewController = tabBarControllerCoordinator?.navigationController
-        tabBarControllerCoordinator?.start()
-        addChildCoordinator(tabBarControllerCoordinator!)
+        window.rootViewController = tabBarControllerCoordinator.navigationController
+        tabBarControllerCoordinator.start()
+        addChildCoordinator(tabBarControllerCoordinator)
     }
     
     func navigateBackToLogin() {

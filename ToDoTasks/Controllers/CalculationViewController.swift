@@ -13,10 +13,10 @@ class CalculationViewController: UIViewController {
     weak var calculateControllerCoordinator: CalculateViewControllerCoordinator?
     var onFinish: (() -> Void)?
     
-    lazy var leftBarButtonItem: UIBarButtonItem = {
-        var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
-        return leftBarButtonItem
-    }()
+//    lazy var leftBarButtonItem: UIBarButtonItem = {
+//        var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
+//        return leftBarButtonItem
+//    }()
     
     var calculatorImageView: UIImageView = {
         var calculatorImageView = UIImageView(image: UIImage(named: "calculator"))
@@ -29,7 +29,7 @@ class CalculationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.leftBarButtonItem = leftBarButtonItem
+        //navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.titleView = calculatorImageView
         //navigationItem.prompt = "some prompt"
         //navigationItem.title = "Calculation"
@@ -38,12 +38,12 @@ class CalculationViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
     }
     
-    @objc func leftBarButtonItemTapped() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
-        navigationController?.popToRootViewController(animated: true)
-    }
+//    @objc func leftBarButtonItemTapped() {
+//        do {
+//            try Auth.auth().signOut()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//        navigationController?.popToRootViewController(animated: true)
+//    }
 }

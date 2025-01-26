@@ -18,7 +18,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let currentUser = Auth.auth().currentUser?.uid
     private var arrayOfTasks: [TaskModel] = []
     private var selectedIndexPath: IndexPath?
-    weak var taskViewControllerCoordinator: TaskViewControllerCoordinator?
+    var taskViewControllerCoordinator: TaskViewControllerCoordinator
     var onFinish: (() -> Void)?
     
     private lazy var taskTableView: UITableView = {
@@ -28,9 +28,9 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tableView
     }()
     
-    lazy var leftBarButtonItem: UIBarButtonItem = {
-        var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
-        return leftBarButtonItem
+    lazy var signOutBarButtonItem: UIBarButtonItem = {
+        var signOutBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(signOutBarButtonItemTapped))
+        return signOutBarButtonItem
     }()
     
     lazy var accountBarButtonItem: UIBarButtonItem = {
@@ -48,6 +48,15 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         return longPressGestureRecognizer
     }()
     
+    init(taskViewControllerCoordinator: TaskViewControllerCoordinator) {
+        self.taskViewControllerCoordinator = taskViewControllerCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +65,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         view.addSubview(taskTableView)
         
-        navigationItem.setLeftBarButtonItems([leftBarButtonItem, accountBarButtonItem], animated: true)
+        navigationItem.setLeftBarButtonItems([signOutBarButtonItem, accountBarButtonItem], animated: true)
         navigationItem.rightBarButtonItem = addTaskButtonItem
         navigationController?.navigationBar.tintColor = .systemGreen
         
@@ -66,32 +75,10 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    @objc func leftBarButtonItemTapped() {
-        do {
-            try Auth.auth().signOut()
-            navigationController?.setViewControllers([], animated: false)
-            navigateToLoginViewController() // Переход на стартовый экран
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
+    @objc func signOutBarButtonItemTapped() {
+        taskViewControllerCoordinator.backToLoginViewController()
     }
     
-    private func navigateToLoginViewController() {
-        // Убедитесь, что у вас есть доступ к SceneDelegate
-        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
-           let appCoordinator = sceneDelegate.appCoordinator else {return}
-        appCoordinator.startLoginFlow()
-        
-//            sceneDelegate.window?.rootViewController = appcoordinator2.navigationController
-//            sceneDelegate.window?.makeKeyAndVisible()
-//            appcoordinator2.start()
-            
-            //            let navigationController = UINavigationController()
-            //            let appCoordinator = AppCoordinator(navigationController: navigationController, window:        sceneDelegate.window!)
-            //            sceneDelegate.window?.rootViewController = appCoordinator.navigationController
-            //            sceneDelegate.window?.makeKeyAndVisible()
-            //            appCoordinator.startLoginFlow()
-        }
     
     @objc func accountBarButtonItemTapped() {
         let accountViewController = UIViewController()
@@ -156,14 +143,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             taskTableView.reloadData()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if isMovingFromParent || isBeingDismissed { //когда вью уходит с экрана модально или удаляется из стека:
-            onFinish?() //координатор загружает реализацию клоужера сюда в вьюконтроллер// был установлен метод где родительский координатор удаляет дочерний координатор их массива координаторов, таким образом убирается сильная ссылка на координатор
-        }
-    }
 }
-    
     
     extension TaskViewController {
         

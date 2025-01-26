@@ -14,16 +14,15 @@ final class LoginViewControllerCoordinator: NSObject, CoordinatingManager {
    private let window: UIWindow
      var navigationController: UINavigationController
     private var loginViewController: LoginViewController?
-    private let animationHandler: AnimationHandler
-    //let registerViewControllerCoordinator: RegisterViewControllerCoordinator
-    private let container: DIContainer
+    private let animationHandler: AnimationHandlerManagable
+    let registerViewControllerCoordinator: RegisterViewControllerCoordinator
 
-    init(window: UIWindow, /*navigationController: UINavigationController,*/ animationHandler: AnimationHandler/*, registerViewControllerCoordinator: RegisterViewControllerCoordinator*/) {
+
+    init(window: UIWindow, animationHandler: AnimationHandlerManagable, registerViewControllerCoordinator: RegisterViewControllerCoordinator, navigationController: UINavigationController) {
         self.window = window
-        self.navigationController = UINavigationController()
+        self.navigationController = navigationController
         self.animationHandler = animationHandler
-       // self.registerViewControllerCoordinator = registerViewControllerCoordinator
-        self.container = DIContainer.shared
+        self.registerViewControllerCoordinator = registerViewControllerCoordinator
         super.init()
         //navigationController.delegate = self
     }
@@ -36,7 +35,7 @@ final class LoginViewControllerCoordinator: NSObject, CoordinatingManager {
         // Проверяем, если loginViewController уже создан
         if loginViewController == nil {
             // Инициализируем новый экземпляр и сохраняем его в свойстве класса
-            loginViewController = LoginViewController(animationHandler: animationHandler, window: window, container: container)
+            loginViewController = LoginViewController(animationHandler: animationHandler as! AnimationHandler, window: window)
             loginViewController?.loginViewControllerCoordinator = self
             navigationController.pushViewController(loginViewController!, animated: true)
             // Устанавливаем LoginViewController в стек навигации
@@ -46,7 +45,6 @@ final class LoginViewControllerCoordinator: NSObject, CoordinatingManager {
     }
     
     func startRegisterViewControllerFlow() {
-        let registerViewControllerCoordinator = RegisterViewControllerCoordinator(animationHandler: animationHandler, navigationController: self.navigationController, window: window)
         registerViewControllerCoordinator.startRegisterViewControllerFlow()
         addChildCoordinator(registerViewControllerCoordinator)
         }

@@ -1,50 +1,52 @@
 import UIKit
 
-final class TabBarControllerCoordinator: Coordinating {
-   
-    private let window: UIWindow
-    private var tabBarController: TabBarViewController?
+final class TabBarControllerCoordinator: Coordinating, CoordinatingManager {
+    
+    var childCoordinators: [Coordinating] = []
+    let window: UIWindow
+    private var tabBarViewController: TabBarViewController?
     let navigationController: UINavigationController
-    let taskViewControllerCoordinator: TaskViewControllerCoordinator
-    let calculatorViewControllerCoordinator: CalculateViewControllerCoordinator
-    let newsViewControllerCoordinator: NewsViewControllerCoordinator
+    var taskViewControllerCoordinator: TaskViewControllerCoordinator
+    var calculatorViewControllerCoordinator: CalculateViewControllerCoordinator
+    var newsViewControllerCoordinator: NewsViewControllerCoordinator
+    weak var appCoordinator: AppCoordinator?
     
-    
-    init(window: UIWindow, navigationController: UINavigationController, taskViewControllerCoordinator: TaskViewControllerCoordinator, calculatorViewControllerCoordinator: CalculateViewControllerCoordinator, newsViewControllerCoordinator: NewsViewControllerCoordinator) {
+    init(window: UIWindow, navigationController: UINavigationController, taskViewControllerCoordinator: TaskViewControllerCoordinator, calculatorViewControllerCoordinator: CalculateViewControllerCoordinator, newsViewControllerCoordinator: NewsViewControllerCoordinator/*appCoordinator: AppCoordinator*/ ) {
         self.window = window
         self.navigationController = navigationController
         self.taskViewControllerCoordinator = taskViewControllerCoordinator
         self.calculatorViewControllerCoordinator = calculatorViewControllerCoordinator
         self.newsViewControllerCoordinator = newsViewControllerCoordinator
-    }
+  }
     
     func start() {
         
     }
     
     func startTabBarViewControllerFlow() {
-        let tabBarVC = TabBarViewController()
-        tabBarController = tabBarVC
+        tabBarViewController = TabBarViewController()
+        guard let tabBarViewController else { return }
         
-        let taskNavController = UINavigationController()
-        let calculateNavController = UINavigationController()
-        let newsNavController = UINavigationController()
+        let coordinatorsToAdd: [Coordinating] = [taskViewControllerCoordinator, calculatorViewControllerCoordinator, newsViewControllerCoordinator]
+        coordinatorsToAdd.forEach {
+               addChildCoordinator($0)
+               print("Added coordinator: \($0)")
+               print("Current child coordinators: \(childCoordinators)")
+           }
+        coordinatorsToAdd.forEach {$0.start()}
+
+        tabBarViewController.setupTaskTab(with: taskViewControllerCoordinator.navigationController)
+        tabBarViewController.setupCalculatorTab(with: calculatorViewControllerCoordinator.navigationController)
+        tabBarViewController.setupNewsTab(with: newsViewControllerCoordinator.navigationController)
         
-        let taskCoordinator = TaskViewControllerCoordinator(navigationController: taskNavController)
-        let calculateCoordinator = CalculateViewControllerCoordinator(navigationController: calculateNavController)
-        let newsCoordinator = NewsViewControllerCoordinator(navigationController: newsNavController)
+        tabBarViewController.setViewControllers([
+            taskViewControllerCoordinator.navigationController,
+            calculatorViewControllerCoordinator.navigationController,
+            newsViewControllerCoordinator.navigationController],
+            animated: false)
         
-        taskCoordinator.start()
-        calculateCoordinator.start()
-        newsCoordinator.start()
-        
-        tabBarVC.setupTaskTab(with: taskNavController)
-        tabBarVC.setupCalculatorTab(with: calculateNavController)
-        tabBarVC.setupNewsTab(with: newsNavController)
-        
-        tabBarVC.setViewControllers([taskNavController, calculateNavController, newsNavController], animated: false)
-        
-        window.rootViewController = tabBarVC
+        window.rootViewController = tabBarViewController
         window.makeKeyAndVisible()
+        
     }
 }
