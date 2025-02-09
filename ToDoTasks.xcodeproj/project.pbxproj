@@ -21,6 +21,8 @@
 		B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */; };
 		B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */; };
 		B550ED032BB092DF00044609 /* CalculateViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED022BB092DF00044609 /* CalculateViewControllerCoordinator.swift */; };
+		B559C1542D4D633B00F03B62 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559C1532D4D633B00F03B62 /* AuthManager.swift */; };
+		B559C1582D4D79B800F03B62 /* NavigationStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */; };
 		B55A71C32B727CFE005EB46D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */; };
 		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
 		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
@@ -79,6 +81,8 @@
 		B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerCoordinator.swift; sourceTree = "<group>"; };
 		B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		B550ED022BB092DF00044609 /* CalculateViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewControllerCoordinator.swift; sourceTree = "<group>"; };
+		B559C1532D4D633B00F03B62 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackManager.swift; sourceTree = "<group>"; };
 		B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
 		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B52D8D382D58A0CF00B806A9 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		B533A8732B5D74A200448BBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +180,14 @@
 				B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		B559C1522D4D629900F03B62 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				B559C1532D4D633B00F03B62 /* AuthManager.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		B5913B972CBD8A2400F8764B /* Animation */ = {
@@ -223,6 +242,7 @@
 		B5C9417229F2A7FE002F9AF3 = {
 			isa = PBXGroup;
 			children = (
+				B52D8D382D58A0CF00B806A9 /* New Group */,
 				B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */,
 				B5C9417C29F2A7FE002F9AF3 /* Products */,
 				B5C941B829F33EB2002F9AF3 /* Support */,
@@ -241,6 +261,7 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
+				B559C1522D4D629900F03B62 /* New Group */,
 				B5913B972CBD8A2400F8764B /* Animation */,
 				B5ABD6012CB3089700D34B8E /* AlertPresenter */,
 				B5ABD5F42CA83DAF00D34B8E /* Network */,
@@ -270,6 +291,7 @@
 		B5C941B829F33EB2002F9AF3 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */,
 				B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */,
 				B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */,
 				B5C9418729F2A800002F9AF3 /* Assets.xcassets */,
@@ -383,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */,
+				B559C1542D4D633B00F03B62 /* AuthManager.swift in Sources */,
 				B5C52CA72D43CA1300565E06 /* DIContainer+Coordinator.swift in Sources */,
 				B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateViewControllerCoordinator.swift in Sources */,
@@ -423,6 +446,7 @@
 				B5ABD5FB2CA8599500D34B8E /* SessionConfiguration.swift in Sources */,
 				B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */,
 				B53A38662CDFC96B00C56643 /* Encoder.swift in Sources */,
+				B559C1582D4D79B800F03B62 /* NavigationStackManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

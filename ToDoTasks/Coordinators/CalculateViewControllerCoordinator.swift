@@ -7,10 +7,8 @@
 
 import UIKit
 
-final class CalculateViewControllerCoordinator: Coordinating {
-    
-   // var coordinators: [Coordinator] = []
-    
+final class CalculateViewControllerCoordinator: Coordinating, ChildCoordinating {
+    var childCoordinators = [ChildCoordinating]()
     let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {

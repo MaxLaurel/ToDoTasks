@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-final class RegisterViewControllerCoordinator: NSObject, Coordinating, CoordinatingManager {
+final class RegisterViewControllerCoordinator: NSObject, Coordinating, ChildCoordinating {
     
-    var childCoordinators: [Coordinating] = []
+    var childCoordinators: [ChildCoordinating] = []
    private var registerViewController: RegisterViewController?
     var navigationController: UINavigationController
     private let animationHandler: AnimationHandlerManagable

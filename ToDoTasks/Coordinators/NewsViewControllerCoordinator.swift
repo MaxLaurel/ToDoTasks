@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-final class NewsViewControllerCoordinator: Coordinating {
-    var coordinators = [Coordinating]()
+final class NewsViewControllerCoordinator: Coordinating, ChildCoordinating {
+    var childCoordinators = [ChildCoordinating]()
     let networkManager: NetworkRequestPerforming
     let imageFetcher: URLtoImageFetcherProtocol
     var navigationController: UINavigationController

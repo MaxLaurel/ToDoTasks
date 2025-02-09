@@ -19,7 +19,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var arrayOfTasks: [TaskModel] = []
     private var selectedIndexPath: IndexPath?
     var taskViewControllerCoordinator: TaskViewControllerCoordinator
-    var onFinish: (() -> Void)?
+   // var onFinish: (() -> Void)?
     
     private lazy var taskTableView: UITableView = {
         var tableView = UITableView()
@@ -117,16 +117,13 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         let task = TaskModel(taskName: nameTaskTextfield, description: descriptionTaskTextField, taskID: taskReference.key ?? "")
         
         taskReference.setValue(["title": task.taskName, "description": task.description, "taskID": task.taskID, "isCompleted": task.isCompleted])
-        
-        //        alertPresenterData.textFields?.forEach({ textField in
-        //            textField.text = ""
-        //        })
+
     }
     
     func taskObserver() {
         arrayOfTasks.removeAll()
         let taskReference = dataBaseRef.child("users").child(currentUser!).child("tasks")
-        taskReference.observe(DataEventType.value) { [self] snapshot in
+        taskReference.observe(DataEventType.value) { [ self] snapshot in
             for child in snapshot.children {
                 guard let childSnapshot = child as? DataSnapshot,
                       let dictValue = childSnapshot.value as? [String: Any],
@@ -142,6 +139,10 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             taskTableView.reloadData()
         }
+    }
+    
+    deinit {
+        Log.info("\(self) deinitialized")
     }
 }
     
@@ -167,11 +168,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             70.0
         }
         
-        //MARK: метод снизуне понятно длячего нужно разобраться
-        //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        //        return true
-        //    }
-        //MARK: конфигурация и экшены для свайпа справа
+        //MARK: - конфигурация и экшены для свайпа справа
         func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completion) in
@@ -227,6 +224,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             configuration.performsFirstActionWithFullSwipe = false
             return configuration
         }
+        
         //MARK: метод редактирует задачу в базе данных Firebase при нажатии на кнопку "edit"
         func updateValue(indexPath: IndexPath, title: String, description: String) {
             //guard indexPath == selectedIndexPath else { return }
@@ -298,23 +296,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        //        func setupPopover(for indexPath: IndexPath) {
-        //            let popOver = PopoverViewController()
-        //            popOver.modalPresentationStyle = .popover
-        //            popOver.preferredContentSize = CGSize(width: 250, height: 150)
-        //
-        //            guard let popOverVC = popOver.popoverPresentationController, let cell = taskTableView.cellForRow(at: indexPath) else {return}
-        //
-        //            popOverVC.sourceView = cell
-        //            popOverVC.permittedArrowDirections = []
-        //            let screenWidth = UIScreen.main.bounds.width
-        //            let sourceRectX = screenWidth - 50
-        //            popOverVC.sourceRect = CGRect(x: sourceRectX, y: 100, width: 0, height: 0)
-        //            popOverVC.delegate = popOver
-        //
-        //            present(popOver, animated: true, completion: nil)
-        //        }
-        
         func setupRecalculateViewControllerPopover() {
             let popOver = PopoverRcalculateViewController()
             popOver.modalPresentationStyle = .popover
@@ -326,21 +307,6 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             popoverViewController.permittedArrowDirections = []
             popoverViewController.delegate = popOver
             popoverViewController.backgroundColor = .clear
-            //
-            //        let blurEffect = UIBlurEffect(style: .dark)
-            //
-            //        let blurEffectView = UIVisualEffectView()
-            //        self.view.addSubview(blurEffectView)
-            //
-            //        blurEffectView.effect = blurEffect
-            //            blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-            //            blurEffectView.topAnchor.constraint(equalTo: self.taskTableView.topAnchor).isActive = true
-            //            blurEffectView.bottomAnchor.constraint(equalTo: self.taskTableView.bottomAnchor).isActive = true
-            //            blurEffectView.trailingAnchor.constraint(equalTo: self.taskTableView.trailingAnchor).isActive = true
-            //            blurEffectView.leadingAnchor.constraint(equalTo:  self.taskTableView.leadingAnchor).isActive = true
-            //        blurEffectView.frame = self.view.bounds
-            //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            //
             present(popOver, animated: true)
         }
         
@@ -349,11 +315,10 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             guard let cell = taskTableView.cellForRow(at: selectedIndexPath! ) else {return}
             cell.addInteraction(contextMenu)
-            
-            
         }
         
     }
+
     extension TaskViewController: UIContextMenuInteractionDelegate {
         
         func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {

@@ -8,10 +8,8 @@
 import UIKit
 import FirebaseAuth
 
-final class TaskViewControllerCoordinator: Coordinating, CoordinatingManager {
-    
-  // weak var parentDelegate: TabBarControllerCoordinator?
-    var childCoordinators: [any Coordinating] = []
+final class TaskViewControllerCoordinator: Coordinating, ChildCoordinating {
+    var childCoordinators: [ChildCoordinating] = []
     let navigationController: UINavigationController
     let window: UIWindow
     weak var appCoordinator: AppCoordinator? //нам нужен родительский координатор чтобы сбросить все координаторы приложения и разлогиниться
@@ -28,17 +26,23 @@ final class TaskViewControllerCoordinator: Coordinating, CoordinatingManager {
     }
     
     func backToLoginViewController() {
-        do {
-            guard let appCoordinator else {
-                Log.error( "No appCoordinator found")
-                return
-            }
-            appCoordinator.resetApplicationState()
-            try Auth.auth().signOut()
-            navigationController.setViewControllers([], animated: false)
-            Log.info("All child coordinators removed from \(self). Current child coordinators: \(childCoordinators)")
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        guard let appCoordinator else {
+            Log.error("No appCoordinator found")
+            return
         }
+        do {
+//            NavigationStackManager.shared.printAllNavigationStacks()
+            NavigationStackManager.shared.removeAllViewControllers()
+            appCoordinator.resetApplicationState()
+            navigationController.setViewControllers([], animated: false)
+            try Auth.auth().signOut()
+//            NavigationStackManager.shared.printAllNavigationStacks()
+        } catch {
+            Log.error("Error signing out: \(error.localizedDescription)")
+        }
+    }
+    
+    deinit {
+        Log.info("TaskViewControllerCoordinator deinitialized")
     }
 }

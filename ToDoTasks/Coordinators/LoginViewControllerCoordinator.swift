@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-final class LoginViewControllerCoordinator: NSObject, CoordinatingManager {
+final class LoginViewControllerCoordinator: NSObject, ChildCoordinating {
     
-    var childCoordinators: [Coordinating] = []
+    var childCoordinators: [ChildCoordinating] = []
    private let window: UIWindow
      var navigationController: UINavigationController
     private var loginViewController: LoginViewController?
