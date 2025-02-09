@@ -17,9 +17,12 @@
 #import <AvailabilityMacros.h>
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import "FIRAuthAPNSTokenType.h"
 #import "FIRAuthErrors.h"
 
+=======
+>>>>>>> tik_2-NetworkSession
 @class FIRActionCodeSettings;
 @class FIRApp;
 @class FIRAuth;
@@ -169,6 +172,7 @@ typedef void (^FIRApplyActionCodeCallback)(NSError *_Nullable error)
 typedef void (^FIRAuthVoidErrorCallback)(NSError *_Nullable)
     NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
+<<<<<<< HEAD
 /** @class FIRActionCodeInfo
     @brief Manages information regarding action codes.
  */
@@ -908,4 +912,6 @@ NS_SWIFT_NAME(Auth)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

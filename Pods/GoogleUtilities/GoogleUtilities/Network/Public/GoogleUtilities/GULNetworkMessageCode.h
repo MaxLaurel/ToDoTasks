@@ -16,6 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 // Make sure these codes do not overlap with any contained in the FIRAMessageCode enum.
 typedef NS_ENUM(NSInteger, GULNetworkMessageCode) {
   // GULNetwork.m
@@ -45,3 +50,8 @@ typedef NS_ENUM(NSInteger, GULNetworkMessageCode) {
   kGULNetworkMessageCodeURLSession018 = 901018,  // I-NET901018
   kGULNetworkMessageCodeURLSession019 = 901019,  // I-NET901019
 };
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

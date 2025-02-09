@@ -20,6 +20,11 @@ protocol HeartbeatStorageProtocol {
   func readAndWriteAsync(using transform: @escaping (HeartbeatsBundle?) -> HeartbeatsBundle?)
   func getAndSet(using transform: (HeartbeatsBundle?) -> HeartbeatsBundle?) throws
     -> HeartbeatsBundle?
+<<<<<<< HEAD
+=======
+  func getAndSetAsync(using transform: @escaping (HeartbeatsBundle?) -> HeartbeatsBundle?,
+                      completion: @escaping (Result<HeartbeatsBundle?, Error>) -> Void)
+>>>>>>> tik_2-NetworkSession
 }
 
 /// Thread-safe storage object designed for transforming heartbeat data that is persisted to disk.
@@ -37,7 +42,11 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
 
   /// Designated initializer.
   /// - Parameters:
+<<<<<<< HEAD
   ///   - id: A string identifer.
+=======
+  ///   - id: A string identifier.
+>>>>>>> tik_2-NetworkSession
   ///   - storage: The underlying storage container where heartbeat data is stored.
   init(id: String,
        storage: Storage) {
@@ -134,6 +143,30 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
     return heartbeatsBundle
   }
 
+<<<<<<< HEAD
+=======
+  /// Asynchronously gets the current heartbeat data from storage and resets the storage using the
+  /// given transform block.
+  /// - Parameters:
+  ///   - transform: An escaping block used to reset the currently stored heartbeat.
+  ///   - completion: An escaping block used to process the heartbeat data that
+  ///   was stored (before the `transform` was applied); otherwise, the error
+  ///   that occurred.
+  func getAndSetAsync(using transform: @escaping (HeartbeatsBundle?) -> HeartbeatsBundle?,
+                      completion: @escaping (Result<HeartbeatsBundle?, Error>) -> Void) {
+    queue.async {
+      do {
+        let oldHeartbeatsBundle = try? self.load(from: self.storage)
+        let newHeartbeatsBundle = transform(oldHeartbeatsBundle)
+        try self.save(newHeartbeatsBundle, to: self.storage)
+        completion(.success(oldHeartbeatsBundle))
+      } catch {
+        completion(.failure(error))
+      }
+    }
+  }
+
+>>>>>>> tik_2-NetworkSession
   /// Loads and decodes the stored heartbeats bundle from a given storage object.
   /// - Parameter storage: The storage container to read from.
   /// - Returns: The decoded `HeartbeatsBundle` loaded from storage; `nil` if storage is empty.
@@ -153,7 +186,11 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
   ///   - heartbeatsBundle: The heartbeats bundle to encode and save.
   ///   - storage: The storage container to write to.
   private func save(_ heartbeatsBundle: HeartbeatsBundle?, to storage: Storage) throws {
+<<<<<<< HEAD
     if let heartbeatsBundle = heartbeatsBundle {
+=======
+    if let heartbeatsBundle {
+>>>>>>> tik_2-NetworkSession
       let data = try heartbeatsBundle.encoded(using: encoder)
       try storage.write(data)
     } else {

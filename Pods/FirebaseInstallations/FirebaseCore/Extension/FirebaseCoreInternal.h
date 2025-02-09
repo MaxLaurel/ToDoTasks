@@ -18,8 +18,14 @@
 #import "FIRComponent.h"
 #import "FIRComponentContainer.h"
 #import "FIRComponentType.h"
+<<<<<<< HEAD
 #import "FIRDependency.h"
 #import "FIRHeartbeatLogger.h"
 #import "FIRLibrary.h"
 #import "FIRLogger.h"
 #import "FIROptionsInternal.h"
+=======
+#import "FIRHeartbeatLogger.h"
+#import "FIRLibrary.h"
+#import "FIRLogger.h"
+>>>>>>> tik_2-NetworkSession

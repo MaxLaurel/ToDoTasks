@@ -16,12 +16,15 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 @class FIRAuth;
 @class FIRMultiFactorSession;
 @class FIRPhoneAuthCredential;
 @class FIRPhoneMultiFactorInfo;
 @protocol FIRAuthUIDelegate;
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_BEGIN
 
 /** @var FIRPhoneAuthProviderID
@@ -50,6 +53,7 @@ typedef void (^FIRVerificationResultCallback)(NSString *_Nullable verificationID
     NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.")
         API_UNAVAILABLE(macos, tvos, watchos);
 
+<<<<<<< HEAD
 /** @class FIRPhoneAuthProvider
     @brief A concrete implementation of `AuthProvider` for phone auth providers.
         This class is available on iOS only.
@@ -144,4 +148,6 @@ NS_SWIFT_NAME(PhoneAuthProvider) API_UNAVAILABLE(macos, tvos, watchos)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

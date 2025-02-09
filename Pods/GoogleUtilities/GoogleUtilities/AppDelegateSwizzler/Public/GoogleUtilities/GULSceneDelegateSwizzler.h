@@ -17,11 +17,19 @@
 #import <Foundation/Foundation.h>
 #import <TargetConditionals.h>
 
+<<<<<<< HEAD
 #if !TARGET_OS_OSX
 #import <UIKit/UIKit.h>
 #endif  // !TARGET_OS_OSX
 
 #if ((TARGET_OS_IOS || TARGET_OS_TV) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= 130000))
+=======
+#if __has_include(<UIKit/UIKit.h>)
+#import <UIKit/UIKit.h>
+#endif
+
+#if TARGET_OS_IOS || TARGET_OS_TV
+>>>>>>> tik_2-NetworkSession
 #define UISCENE_SUPPORTED 1
 #endif
 

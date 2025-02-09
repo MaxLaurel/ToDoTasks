@@ -14,6 +14,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /// This is a copy of Google Toolbox for Mac library to avoid creating an extra framework.
 
 // NOTE: For 64bit, none of these apis handle input sizes >32bits, they will return nil when given
@@ -24,11 +29,19 @@
 
 /// Returns an data as the result of decompressing the payload of |data|.The data to decompress must
 /// be a gzipped payloads.
+<<<<<<< HEAD
 + (NSData *)gul_dataByInflatingGzippedData:(NSData *)data error:(NSError **)error;
 
 /// Returns an compressed data with the result of gzipping the payload of |data|. Uses the default
 /// compression level.
 + (NSData *)gul_dataByGzippingData:(NSData *)data error:(NSError **)error;
+=======
++ (nullable NSData *)gul_dataByInflatingGzippedData:(NSData *)data error:(NSError **)error;
+
+/// Returns an compressed data with the result of gzipping the payload of |data|. Uses the default
+/// compression level.
++ (nullable NSData *)gul_dataByGzippingData:(NSData *)data error:(NSError **)error;
+>>>>>>> tik_2-NetworkSession
 
 FOUNDATION_EXPORT NSString *const GULNSDataZlibErrorDomain;
 FOUNDATION_EXPORT NSString *const GULNSDataZlibErrorKey;           // NSNumber
@@ -47,3 +60,8 @@ typedef NS_ENUM(NSInteger, GULNSDataZlibError) {
 };
 
 @end
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

@@ -22,6 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The services used in the logger.
+<<<<<<< HEAD
+=======
+ *
+ * DEPRECATED; use NSString instead.
+>>>>>>> tik_2-NetworkSession
  */
 typedef NSString *const GULLoggerService;
 
@@ -29,6 +34,7 @@ typedef NSString *const GULLoggerService;
 extern "C" {
 #endif  // __cplusplus
 
+<<<<<<< HEAD
 /**
  * Initialize GULLogger.
  */
@@ -47,6 +53,18 @@ extern void GULLoggerEnableSTDERR(void);
 /**
  * Gets the current GULLoggerLevel.
  */
+=======
+/// Used for other GoogleUtilities logging.
+extern NSString *const kGULLogSubsystem;
+
+/// Initialize GULLogger.
+extern void GULLoggerInitialize(void);
+
+/// Override log level to Debug.
+void GULLoggerForceDebug(void);
+
+/// Gets the current `GULLoggerLevel`.
+>>>>>>> tik_2-NetworkSession
 extern GULLoggerLevel GULGetLoggerLevel(void);
 
 /**
@@ -81,6 +99,7 @@ extern void GULLoggerRegisterVersion(NSString *version);
  * (optional) variable arguments list obtained from calling va_start, used when message is a format
  *            string.
  */
+<<<<<<< HEAD
 extern void GULLogBasic(GULLoggerLevel level,
                         GULLoggerService service,
                         BOOL forceLog,
@@ -92,6 +111,20 @@ extern void GULLogBasic(GULLoggerLevel level,
                         va_list args_ptr
 #else
                         va_list _Nullable args_ptr
+=======
+extern void GULOSLogBasic(GULLoggerLevel level,
+                          NSString *subsystem,
+                          NSString *category,
+                          BOOL forceLog,
+                          NSString *messageCode,
+                          NSString *message,
+// On 64-bit simulators, va_list is not a pointer, so cannot be marked nullable
+// See: http://stackoverflow.com/q/29095469
+#if __LP64__ && TARGET_OS_SIMULATOR || TARGET_OS_OSX
+                          va_list args_ptr
+#else
+                          va_list _Nullable args_ptr
+>>>>>>> tik_2-NetworkSession
 #endif
 );
 
@@ -108,6 +141,7 @@ extern void GULLogBasic(GULLoggerLevel level,
  * Example usage:
  * GULLogError(kGULLoggerCore, @"I-COR000001", @"Configuration of %@ failed.", app.name);
  */
+<<<<<<< HEAD
 extern void GULLogError(GULLoggerService service,
                         BOOL force,
                         NSString *messageCode,
@@ -133,6 +167,38 @@ extern void GULLogDebug(GULLoggerService service,
                         NSString *messageCode,
                         NSString *message,
                         ...) NS_FORMAT_FUNCTION(4, 5);
+=======
+extern void GULOSLogError(NSString *subsystem,
+                          GULLoggerService category,
+                          BOOL force,
+                          NSString *messageCode,
+                          NSString *message,
+                          ...) NS_FORMAT_FUNCTION(5, 6);
+extern void GULOSLogWarning(NSString *subsystem,
+                            GULLoggerService category,
+                            BOOL force,
+                            NSString *messageCode,
+                            NSString *message,
+                            ...) NS_FORMAT_FUNCTION(5, 6);
+extern void GULOSLogNotice(NSString *subsystem,
+                           GULLoggerService category,
+                           BOOL force,
+                           NSString *messageCode,
+                           NSString *message,
+                           ...) NS_FORMAT_FUNCTION(5, 6);
+extern void GULOSLogInfo(NSString *subsystem,
+                         GULLoggerService category,
+                         BOOL force,
+                         NSString *messageCode,
+                         NSString *message,
+                         ...) NS_FORMAT_FUNCTION(5, 6);
+extern void GULOSLogDebug(NSString *subsystem,
+                          GULLoggerService category,
+                          BOOL force,
+                          NSString *messageCode,
+                          NSString *message,
+                          ...) NS_FORMAT_FUNCTION(5, 6);
+>>>>>>> tik_2-NetworkSession
 
 #ifdef __cplusplus
 }  // extern "C"
@@ -140,6 +206,7 @@ extern void GULLogDebug(GULLoggerService service,
 
 @interface GULLoggerWrapper : NSObject
 
+<<<<<<< HEAD
 /**
  * Objective-C wrapper for GULLogBasic to allow weak linking to GULLogger
  * (required) log level (one of the GULLoggerLevel enum values).
@@ -158,6 +225,27 @@ extern void GULLogDebug(GULLoggerService service,
             withCode:(NSString *)messageCode
          withMessage:(NSString *)message
             withArgs:(va_list)args;
+=======
+/// Objective-C wrapper for `GULOSLogBasic` to allow weak linking to `GULLogger`.
+///
+/// - Parameters:
+///   - level: The log level (one of the `GULLoggerLevel` enum values).
+///   - subsystem: An identifier for the subsystem performing logging, e.g., `com.example.logger`.
+///   - category: The category name within the `subsystem` to group related messages, e.g.,
+///     `[GoogleUtilities/Example]`.
+///   - messageCode: The message code starting with "I-" which means iOS, followed by a capitalized
+///     three-character service identifier and a six digit integer message ID that is unique within
+///     the service. An example of the message code is @"I-COR000001".
+///   - message: The message to log, which may be a format string.
+///   - arguments: The variable arguments list obtained from calling va_start, used when message is
+///     a format string; optional if `message` is not a format string.
++ (void)logWithLevel:(GULLoggerLevel)level
+           subsystem:(NSString *)subsystem
+            category:(NSString *)category
+         messageCode:(NSString *)messageCode
+             message:(NSString *)message
+           arguments:(va_list)args;
+>>>>>>> tik_2-NetworkSession
 
 @end
 

@@ -3,6 +3,7 @@
 //  https://github.com/hackiftekhar/IQKeyboardManager
 //  Copyright (c) 2013-24 Iftekhar Qurashi.
 //
+<<<<<<< HEAD
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -35,20 +36,56 @@ import QuartzCore
 
 /**
 Code-less drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView.
+=======
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+
+import UIKit
+
+/**
+Code-less drop-in universal library allows to prevent issues of keyboard sliding up and cover TextInputView.
+>>>>>>> tik_2-NetworkSession
  Neither need to write any code nor any setup required and much more.
 */
 @available(iOSApplicationExtension, unavailable)
 @MainActor
+<<<<<<< HEAD
 @objc public final class IQKeyboardManager: NSObject {
+=======
+@objcMembers public final class IQKeyboardManager: NSObject {
+>>>>>>> tik_2-NetworkSession
 
     /**
     Returns the default singleton instance.
     */
+<<<<<<< HEAD
     @objc public static let shared: IQKeyboardManager = .init()
+=======
+    @MainActor
+    public static let shared: IQKeyboardManager = .init()
+
+    internal var activeConfiguration: IQActiveConfiguration = .init()
+>>>>>>> tik_2-NetworkSession
 
     // MARK: UIKeyboard handling
 
     /**
+<<<<<<< HEAD
     Enable/disable managing distance between keyboard and textField.
      Default is YES(Enabled when class loads in `+(void)load` method).
     */
@@ -59,12 +96,29 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
             if enable, !oldValue {
                 // If keyboard is currently showing.
                 if activeConfiguration.keyboardInfo.keyboardShowing {
+=======
+    Enable/disable managing distance between keyboard and textInputView.
+     Default is YES(Enabled when class loads in `+(void)load` method).
+    */
+    public var enable: Bool = false {
+
+        didSet {
+            guard enable != oldValue else { return }
+            // If not enable, enable it.
+            if enable {
+                // If keyboard is currently showing.
+                if activeConfiguration.keyboardInfo.isVisible {
+>>>>>>> tik_2-NetworkSession
                     adjustPosition()
                 } else {
                     restorePosition()
                 }
                 showLog("Enabled")
+<<<<<<< HEAD
             } else if !enable, oldValue {   // If not disable, disable it.
+=======
+            } else {   // If not disable, disable it.
+>>>>>>> tik_2-NetworkSession
                 restorePosition()
                 showLog("Disabled")
             }
@@ -72,6 +126,7 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
     }
 
     /**
+<<<<<<< HEAD
     To set keyboard distance from textField. can't be less than zero. Default is 10.0.
     */
     @objc public var keyboardDistanceFromTextField: CGFloat = 10.0
@@ -157,12 +212,24 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
     */
     @objc public var playInputClicks: Bool = true
 
+=======
+    To set keyboard distance from textInputView. can't be less than zero. Default is 10.0.
+    */
+    public var keyboardDistance: CGFloat = 10.0
+
+    /*******************************************/
+
+>>>>>>> tik_2-NetworkSession
     // MARK: UIAnimation handling
 
     /**
     If YES, then calls 'setNeedsLayout' and 'layoutIfNeeded' on any frame update of to viewController's view.
     */
+<<<<<<< HEAD
     @objc public var layoutIfNeededOnUpdate: Bool = false
+=======
+    public var layoutIfNeededOnUpdate: Bool = false
+>>>>>>> tik_2-NetworkSession
 
     // MARK: Class Level disabling methods
 
@@ -170,7 +237,15 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
      Disable distance handling within the scope of disabled distance handling viewControllers classes.
      Within this scope, 'enabled' property is ignored. Class should be kind of UIViewController.
      */
+<<<<<<< HEAD
     @objc public var disabledDistanceHandlingClasses: [UIViewController.Type] = []
+=======
+    public var disabledDistanceHandlingClasses: [UIViewController.Type] = [
+        UITableViewController.self,
+        UIInputViewController.self,
+        UIAlertController.self
+    ]
+>>>>>>> tik_2-NetworkSession
 
     /**
      Enable distance handling within the scope of enabled distance handling viewControllers classes.
@@ -178,6 +253,7 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
      If same Class is added in disabledDistanceHandlingClasses list,
      then enabledDistanceHandlingClasses will be ignored.
      */
+<<<<<<< HEAD
     @objc public var enabledDistanceHandlingClasses: [UIViewController.Type] = []
 
     /**
@@ -224,16 +300,26 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
     /// For example while using YYTextView https://github.com/ibireme/YYText
 
    /**************************************************************************************/
+=======
+    public var enabledDistanceHandlingClasses: [UIViewController.Type] = []
+
+    /**************************************************************************************/
+>>>>>>> tik_2-NetworkSession
 
     // MARK: Initialization/De-initialization
 
     /*  Singleton Object Initialization. */
+<<<<<<< HEAD
     override init() {
+=======
+    private override init() {
+>>>>>>> tik_2-NetworkSession
 
         super.init()
 
         self.addActiveConfigurationObserver()
 
+<<<<<<< HEAD
         // Creating gesture for resignOnTouchOutside. (Enhancement ID: #14)
         resignFirstResponderGesture.isEnabled = resignOnTouchOutside
 
@@ -268,6 +354,10 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
                                              nextAction: #selector(self.nextAction(_:)),
                                              doneAction: #selector(self.doneAction(_:)))
         }
+=======
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
+>>>>>>> tik_2-NetworkSession
     }
 
     deinit {
@@ -277,17 +367,26 @@ Code-less drop-in universal library allows to prevent issues of keyboard sliding
 
     // MARK: Public Methods
 
+<<<<<<< HEAD
     /*  Refreshes textField/textView position if any external changes is explicitly made by user.   */
     @objc public func reloadLayoutIfNeeded() {
 
         guard privateIsEnabled(),
               activeConfiguration.keyboardInfo.keyboardShowing,
+=======
+    /*  Refreshes textInputView position if any external changes is explicitly made by user.   */
+    public func reloadLayoutIfNeeded() {
+
+        guard privateIsEnabled(),
+              activeConfiguration.keyboardInfo.isVisible,
+>>>>>>> tik_2-NetworkSession
               activeConfiguration.isReady else {
                 return
         }
         adjustPosition()
     }
 }
+<<<<<<< HEAD
 
 @available(iOSApplicationExtension, unavailable)
 extension IQKeyboardManager: UIGestureRecognizerDelegate {
@@ -329,3 +428,5 @@ extension IQKeyboardManager: UIGestureRecognizerDelegate {
     }
 
 }
+=======
+>>>>>>> tik_2-NetworkSession

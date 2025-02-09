@@ -18,6 +18,11 @@
 
 #import "GULNetworkMessageCode.h"
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /// The log levels used by GULNetworkLogger.
 typedef NS_ENUM(NSInteger, GULNetworkLogLevel) {
   kGULNetworkLogLevelError = 3,
@@ -47,3 +52,8 @@ typedef NS_ENUM(NSInteger, GULNetworkLogLevel) {
                         message:(NSString *)message;
 
 @end
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

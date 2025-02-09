@@ -13,7 +13,11 @@
   <key>CFBundlePackageType</key>
   <string>BNDL</string>
   <key>CFBundleShortVersionString</key>
+<<<<<<< HEAD
   <string>7.13.3</string>
+=======
+  <string>8.0.2</string>
+>>>>>>> tik_2-NetworkSession
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>

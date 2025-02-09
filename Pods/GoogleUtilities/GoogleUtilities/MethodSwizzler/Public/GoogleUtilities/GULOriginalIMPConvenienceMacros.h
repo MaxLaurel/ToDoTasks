@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD
+=======
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /**
  * GULOriginalIMPConvenienceMacros.h
  *
@@ -205,3 +212,8 @@
                     __typeof__(__arg7), __typeof__(__arg8), __typeof__(__arg9)))__originalIMP)(  \
       __receivingObject, __swizzledSEL, __arg1, __arg2, __arg3, __arg4, __arg5, __arg6, __arg7,  \
       __arg8, __arg9)
+<<<<<<< HEAD
+=======
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

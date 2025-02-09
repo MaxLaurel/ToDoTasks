@@ -34,11 +34,17 @@
 #import "FirebaseDatabase/Sources/Utilities/FUtilities.h"
 #import "FirebaseDatabase/Sources/Utilities/Tuples/FTupleCallbackStatus.h"
 #import "FirebaseDatabase/Sources/Utilities/Tuples/FTupleOnDisconnect.h"
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #else
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif // TARGET_OS_WATCH
+=======
+#if !TARGET_OS_WATCH
+#import <SystemConfiguration/SystemConfiguration.h>
+#endif // !TARGET_OS_WATCH
+>>>>>>> tik_2-NetworkSession
 #import <dlfcn.h>
 #import <netinet/in.h>
 
@@ -168,7 +174,10 @@ typedef enum {
                         retryExponent:kPersistentConnReconnectMultiplier
                          jitterFactor:0.7];
 
+<<<<<<< HEAD
         [self setupNotifications];
+=======
+>>>>>>> tik_2-NetworkSession
         // Make sure we don't actually connect until open is called
         [self interruptForReason:kFInterruptReasonWaitingForOpen];
     }
@@ -553,6 +562,7 @@ typedef enum {
     [self.realtime open];
 }
 
+<<<<<<< HEAD
 #if !TARGET_OS_WATCH
 static void reachabilityCallback(SCNetworkReachabilityRef ref,
                                  SCNetworkReachabilityFlags flags, void *info) {
@@ -624,6 +634,8 @@ static void reachabilityCallback(SCNetworkReachabilityRef ref,
 #endif // !TARGET_OS_WATCH
 }
 
+=======
+>>>>>>> tik_2-NetworkSession
 - (void)sendAuthAndRestoreStateAfterComplete:(BOOL)restoreStateAfterComplete {
     NSAssert([self connected], @"Must be connected to send auth");
     NSAssert(self.authToken != nil,
@@ -1256,8 +1268,12 @@ static void reachabilityCallback(SCNetworkReachabilityRef ref,
 - (void)sendConnectStats {
     NSMutableDictionary *stats = [NSMutableDictionary dictionary];
 
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_TV ||                                           \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
     if (self.config.persistenceEnabled) {
         stats[@"persistence.ios.enabled"] = @1;
     }

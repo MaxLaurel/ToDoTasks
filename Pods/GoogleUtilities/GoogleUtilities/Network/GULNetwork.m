@@ -90,11 +90,19 @@ static NSString *const kGULNetworkLogTag = @"Google/Utilities/Network";
                                             completionHandler:completionHandler];
 }
 
+<<<<<<< HEAD
 - (NSString *)postURL:(NSURL *)url
                    payload:(NSData *)payload
                      queue:(dispatch_queue_t)queue
     usingBackgroundSession:(BOOL)usingBackgroundSession
          completionHandler:(GULNetworkCompletionHandler)handler {
+=======
+- (nullable NSString *)postURL:(NSURL *)url
+                       payload:(NSData *)payload
+                         queue:(nullable dispatch_queue_t)queue
+        usingBackgroundSession:(BOOL)usingBackgroundSession
+             completionHandler:(GULNetworkCompletionHandler)handler {
+>>>>>>> tik_2-NetworkSession
   return [self postURL:url
                      headers:nil
                      payload:payload
@@ -103,12 +111,21 @@ static NSString *const kGULNetworkLogTag = @"Google/Utilities/Network";
            completionHandler:handler];
 }
 
+<<<<<<< HEAD
 - (NSString *)postURL:(NSURL *)url
                    headers:(NSDictionary *)headers
                    payload:(NSData *)payload
                      queue:(dispatch_queue_t)queue
     usingBackgroundSession:(BOOL)usingBackgroundSession
          completionHandler:(GULNetworkCompletionHandler)handler {
+=======
+- (nullable NSString *)postURL:(NSURL *)url
+                       headers:(nullable NSDictionary *)headers
+                       payload:(NSData *)payload
+                         queue:(nullable dispatch_queue_t)queue
+        usingBackgroundSession:(BOOL)usingBackgroundSession
+             completionHandler:(GULNetworkCompletionHandler)handler {
+>>>>>>> tik_2-NetworkSession
   if (!url.absoluteString.length) {
     [self handleErrorWithCode:GULErrorCodeNetworkInvalidURL queue:queue withHandler:handler];
     return nil;
@@ -189,11 +206,19 @@ static NSString *const kGULNetworkLogTag = @"Google/Utilities/Network";
   return requestID;
 }
 
+<<<<<<< HEAD
 - (NSString *)getURL:(NSURL *)url
                    headers:(NSDictionary *)headers
                      queue:(dispatch_queue_t)queue
     usingBackgroundSession:(BOOL)usingBackgroundSession
          completionHandler:(GULNetworkCompletionHandler)handler {
+=======
+- (nullable NSString *)getURL:(NSURL *)url
+                      headers:(nullable NSDictionary *)headers
+                        queue:(nullable dispatch_queue_t)queue
+       usingBackgroundSession:(BOOL)usingBackgroundSession
+            completionHandler:(GULNetworkCompletionHandler)handler {
+>>>>>>> tik_2-NetworkSession
   if (!url.absoluteString.length) {
     [self handleErrorWithCode:GULErrorCodeNetworkInvalidURL queue:queue withHandler:handler];
     return nil;
@@ -279,10 +304,18 @@ static NSString *const kGULNetworkLogTag = @"Google/Utilities/Network";
                                                                 messageCode:message:context:)] ||
       ![loggerDelegate respondsToSelector:@selector(GULNetwork_logWithLevel:
                                                                 messageCode:message:)]) {
+<<<<<<< HEAD
     GULLogError(kGULLoggerNetwork, NO,
                 [NSString stringWithFormat:@"I-NET%06ld", (long)kGULNetworkMessageCodeNetwork002],
                 @"Cannot set the network logger delegate: delegate does not conform to the network "
                  "logger protocol.");
+=======
+    GULOSLogError(
+        kGULLogSubsystem, kGULLoggerNetwork, NO,
+        [NSString stringWithFormat:@"I-NET%06ld", (long)kGULNetworkMessageCodeNetwork002],
+        @"Cannot set the network logger delegate: delegate does not conform to the network "
+         "logger protocol.");
+>>>>>>> tik_2-NetworkSession
     return;
   }
   _loggerDelegate = loggerDelegate;
@@ -329,9 +362,15 @@ static NSString *const kGULNetworkLogTag = @"Google/Utilities/Network";
       logLevel == kGULNetworkLogLevelWarning || logLevel == kGULNetworkLogLevelInfo) {
     NSString *formattedMessage = GULStringWithLogMessage(message, logLevel, contexts);
     NSLog(@"%@", formattedMessage);
+<<<<<<< HEAD
     GULLogBasic((GULLoggerLevel)logLevel, kGULLoggerNetwork, NO,
                 [NSString stringWithFormat:@"I-NET%06ld", (long)messageCode], formattedMessage,
                 NULL);
+=======
+    GULOSLogBasic((GULLoggerLevel)logLevel, kGULLogSubsystem, kGULLoggerNetwork, NO,
+                  [NSString stringWithFormat:@"I-NET%06ld", (long)messageCode], formattedMessage,
+                  NULL);
+>>>>>>> tik_2-NetworkSession
   }
 }
 

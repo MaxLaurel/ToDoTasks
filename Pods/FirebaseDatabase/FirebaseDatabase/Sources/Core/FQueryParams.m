@@ -295,7 +295,11 @@
         if (![viewFrom isEqualToString:kFQPViewFromLeft] &&
             ![viewFrom isEqualToString:kFQPViewFromRight]) {
             [NSException raise:NSInvalidArgumentException
+<<<<<<< HEAD
                         format:@"Unknown view from paramter: %@", viewFrom];
+=======
+                        format:@"Unknown view from parameter: %@", viewFrom];
+>>>>>>> tik_2-NetworkSession
         }
         params->_viewFrom = viewFrom;
     }

@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD
 // Targetted compilation is ONLY for testing. UIKit is weak-linked in actual
+=======
+// Targeted compilation is ONLY for testing. UIKit is weak-linked in actual
+>>>>>>> tik_2-NetworkSession
 // release build.
 
 #import <Foundation/Foundation.h>
@@ -26,6 +30,7 @@
 #import "FirebaseDatabase/Sources/Realtime/FWebSocketConnection.h"
 #import "FirebaseDatabase/Sources/Utilities/FStringUtilities.h"
 
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_TV ||                                           \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
 #import <UIKit/UIKit.h>
@@ -36,6 +41,19 @@
 #import <Network/Network.h>
 #import <WatchKit/WatchKit.h>
 #endif // TARGET_OS_WATCH
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+#import <UIKit/UIKit.h>
+
+#elif TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+
+#elif TARGET_OS_OSX
+#import <AppKit/NSApplication.h>
+#endif
+
+#import <Network/Network.h>
+>>>>>>> tik_2-NetworkSession
 
 static NSString *const kAppCheckTokenHeader = @"X-Firebase-AppCheck";
 static NSString *const kUserAgentHeader = @"User-Agent";
@@ -52,11 +70,17 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 - (void)onClosed;
 - (void)closeIfNeverConnected;
 
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
 @property(nonatomic, strong) NSURLSessionWebSocketTask *webSocketTask;
 #else
 @property(nonatomic, strong) FSRWebSocket *webSocket;
 #endif // TARGET_OS_WATCH
+=======
+@property(nonatomic, strong)
+    NSURLSessionWebSocketTask *webSocketTask API_AVAILABLE(
+        macos(10.15), ios(13.0), watchos(6.0), tvos(13.0));
+>>>>>>> tik_2-NetworkSession
 @property(nonatomic, strong) NSNumber *connectionId;
 @property(nonatomic, readwrite) int totalFrames;
 @property(nonatomic, readonly) BOOL buffering;
@@ -70,9 +94,12 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 @implementation FWebSocketConnection
 
 @synthesize delegate;
+<<<<<<< HEAD
 #if !TARGET_OS_WATCH
 @synthesize webSocket;
 #endif // !TARGET_OS_WATCH
+=======
+>>>>>>> tik_2-NetworkSession
 @synthesize connectionId;
 
 - (instancetype)initWith:(FRepoInfo *)repoInfo
@@ -100,6 +127,7 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
                                                      userAgent:userAgent
                                                    googleAppID:googleAppID
                                                  appCheckToken:appCheckToken];
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
         // Regular NSURLSession websocket.
         NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
@@ -135,6 +163,23 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
         [self.webSocket setDelegateDispatchQueue:queue];
         self.webSocket.delegate = self;
 #endif // TARGET_OS_WATCH
+=======
+
+        if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.1, tvOS 13.0,
+                       watchOS 6.0, *)) {
+            // Regular NSURLSession websocket.
+            NSOperationQueue *opQueue = [[NSOperationQueue alloc] init];
+            opQueue.underlyingQueue = queue;
+            NSURLSession *session = [NSURLSession
+                sessionWithConfiguration:[NSURLSessionConfiguration
+                                             defaultSessionConfiguration]
+                                delegate:self
+                           delegateQueue:opQueue];
+            NSURLSessionWebSocketTask *task =
+                [session webSocketTaskWithRequest:req];
+            self.webSocketTask = task;
+        }
+>>>>>>> tik_2-NetworkSession
     }
     return self;
 }
@@ -144,10 +189,16 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
     NSString *deviceName;
     BOOL hasUiDeviceClass = NO;
 
+<<<<<<< HEAD
 // Targetted compilation is ONLY for testing. UIKit is weak-linked in actual
 // release build.
 #if TARGET_OS_IOS || TARGET_OS_TV ||                                           \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+// Targeted compilation is ONLY for testing. UIKit is weak-linked in actual
+// release build.
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
     Class uiDeviceClass = NSClassFromString(@"UIDevice");
     if (uiDeviceClass) {
         systemVersion = [uiDeviceClass currentDevice].systemVersion;
@@ -195,6 +246,7 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
     assert(delegate);
     everConnected = NO;
     // TODO Assert url
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
     [self.webSocketTask resume];
     // We need to request data from the web socket in order for it to start
@@ -203,6 +255,15 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 #else
     [self.webSocket open];
 #endif // TARGET_OS_WATCH
+=======
+    if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.1, tvOS 13.0,
+                   watchOS 6.0, *)) {
+        [self.webSocketTask resume];
+        // We need to request data from the web socket in order for it to start
+        // sending data.
+        [self receiveWebSocketData];
+    }
+>>>>>>> tik_2-NetworkSession
     dispatch_time_t when = dispatch_time(
         DISPATCH_TIME_NOW, kWebsocketConnectTimeout * NSEC_PER_SEC);
     dispatch_after(when, self.dispatchQueue, ^{
@@ -214,6 +275,7 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
     FFLog(@"I-RDB083003", @"(wsc:%@) FWebSocketConnection is being closed.",
           self.connectionId);
     isClosed = YES;
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
     [self.webSocketTask
         cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure
@@ -221,6 +283,14 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 #else
     [self.webSocket close];
 #endif // TARGET_OS_WATCH
+=======
+    if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.1, tvOS 13.0,
+                   watchOS 6.0, *)) {
+        [self.webSocketTask
+            cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure
+                         reason:nil];
+    }
+>>>>>>> tik_2-NetworkSession
 }
 
 - (void)start {
@@ -322,25 +392,44 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 }
 
 #pragma mark -
+<<<<<<< HEAD
 #pragma mark URLSessionWebSocketDelegate watchOS implementation
 #if TARGET_OS_WATCH
 
 - (void)URLSession:(NSURLSession *)session
           webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
     didOpenWithProtocol:(NSString *)protocol {
+=======
+#pragma mark URLSessionWebSocketDelegate implementation
+
+- (void)URLSession:(NSURLSession *)session
+          webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
+    didOpenWithProtocol:(NSString *)protocol
+    API_AVAILABLE(macos(10.15), ios(13.0), watchos(6.0), tvos(13.0)) {
+>>>>>>> tik_2-NetworkSession
     [self webSocketDidOpen];
 }
 
 - (void)URLSession:(NSURLSession *)session
        webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
     didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
+<<<<<<< HEAD
               reason:(NSData *)reason {
+=======
+              reason:(NSData *)reason
+    API_AVAILABLE(macos(10.15), ios(13.0), watchos(6.0), tvos(13.0)) {
+>>>>>>> tik_2-NetworkSession
     FFLog(@"I-RDB083011", @"(wsc:%@) didCloseWithCode: %ld %@",
           self.connectionId, (long)closeCode, reason);
     [self onClosed];
 }
 
+<<<<<<< HEAD
 - (void)receiveWebSocketData {
+=======
+- (void)receiveWebSocketData API_AVAILABLE(macos(10.15), ios(13.0),
+                                           watchos(6.0), tvos(13.0)) {
+>>>>>>> tik_2-NetworkSession
     __weak __auto_type weakSelf = self;
     [self.webSocketTask receiveMessageWithCompletionHandler:^(
                             NSURLSessionWebSocketMessage *_Nullable message,
@@ -364,6 +453,7 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
     }];
 }
 
+<<<<<<< HEAD
 #else
 
 #pragma mark SRWebSocketDelegate implementation
@@ -389,6 +479,8 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 
 #endif // TARGET_OS_WATCH
 
+=======
+>>>>>>> tik_2-NetworkSession
 // Common to both SRWebSocketDelegate and URLSessionWebSocketDelegate.
 
 - (void)webSocketDidOpen {
@@ -413,6 +505,7 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 
 /** Sends a string through the open web socket. */
 - (void)sendStringToWebSocket:(NSString *)string {
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
     // Use built-in URLSessionWebSocket functionality.
     [self.webSocketTask sendMessage:[[NSURLSessionWebSocketMessage alloc]
@@ -428,6 +521,22 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
     // Use existing SocketRocket implementation.
     [self.webSocket send:string];
 #endif // TARGET_OS_WATCH
+=======
+    if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.1, tvOS 13.0,
+                   watchOS 6.0, *)) {
+        // Use built-in URLSessionWebSocket functionality.
+        [self.webSocketTask
+                  sendMessage:[[NSURLSessionWebSocketMessage alloc]
+                                  initWithString:string]
+            completionHandler:^(NSError *_Nullable error) {
+              if (error) {
+                  FFWarn(@"I-RDB083016", @"Error sending web socket data: %@.",
+                         error);
+                  return;
+              }
+            }];
+    }
+>>>>>>> tik_2-NetworkSession
 }
 
 /**
@@ -446,6 +555,7 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
     if (!everConnected) {
         FFLog(@"I-RDB083012", @"(wsc:%@) Websocket timed out on connect",
               self.connectionId);
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
         [self.webSocketTask
             cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNoStatusReceived
@@ -453,6 +563,15 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
 #else
         [self.webSocket close];
 #endif // TARGET_OS_WATCH
+=======
+        if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.1, tvOS 13.0,
+                       watchOS 6.0, *)) {
+            [self.webSocketTask
+                cancelWithCloseCode:
+                    NSURLSessionWebSocketCloseCodeNoStatusReceived
+                             reason:nil];
+        }
+>>>>>>> tik_2-NetworkSession
     }
 }
 
@@ -468,11 +587,18 @@ static NSString *const kGoogleAppIDHeader = @"X-Firebase-GMPID";
         FFLog(@"I-RDB083013", @"Websocket is closing itself");
         [self shutdown];
     }
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
     self.webSocketTask = nil;
 #else
     self.webSocket = nil;
 #endif // TARGET_OS_WATCH
+=======
+    if (@available(iOS 13.0, macOS 10.15, macCatalyst 13.1, tvOS 13.0,
+                   watchOS 6.0, *)) {
+        self.webSocketTask = nil;
+    }
+>>>>>>> tik_2-NetworkSession
     if (keepAlive.isValid) {
         [keepAlive invalidate];
     }

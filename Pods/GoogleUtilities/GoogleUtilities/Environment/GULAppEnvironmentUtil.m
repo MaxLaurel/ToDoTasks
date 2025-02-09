@@ -23,7 +23,11 @@
 
 #if TARGET_OS_IOS
 #import <UIKit/UIKit.h>
+<<<<<<< HEAD
 #endif
+=======
+#endif  // TARGET_OS_IOS
+>>>>>>> tik_2-NetworkSession
 
 @implementation GULAppEnvironmentUtil
 
@@ -167,7 +171,11 @@ static BOOL HasEmbeddedMobileProvision(void) {
     model = @"watchOS Simulator";
 #elif TARGET_OS_TV
     model = @"tvOS Simulator";
+<<<<<<< HEAD
 #elif defined(TARGET_OS_VISION) && TARGET_OS_VISION
+=======
+#elif TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
     model = @"visionOS Simulator";
 #elif TARGET_OS_IOS
     switch ([[UIDevice currentDevice] userInterfaceIdiom]) {
@@ -195,8 +203,12 @@ static BOOL HasEmbeddedMobileProvision(void) {
 + (NSString *)systemVersion {
 #if TARGET_OS_IOS
   return [UIDevice currentDevice].systemVersion;
+<<<<<<< HEAD
 #elif TARGET_OS_OSX || TARGET_OS_TV || TARGET_OS_WATCH || \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#elif TARGET_OS_OSX || TARGET_OS_TV || TARGET_OS_WATCH || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
   // Assemble the systemVersion, excluding the patch version if it's 0.
   NSOperatingSystemVersion osVersion = [NSProcessInfo processInfo].operatingSystemVersion;
   NSMutableString *versionString = [[NSMutableString alloc]
@@ -218,6 +230,7 @@ static BOOL HasEmbeddedMobileProvision(void) {
 #endif
 }
 
+<<<<<<< HEAD
 + (BOOL)isIOS7OrHigher {
   return YES;
 }
@@ -236,6 +249,8 @@ static BOOL HasEmbeddedMobileProvision(void) {
   return hasSwiftRuntime;
 }
 
+=======
+>>>>>>> tik_2-NetworkSession
 + (NSString *)applePlatform {
   NSString *applePlatform = @"unknown";
 
@@ -243,8 +258,12 @@ static BOOL HasEmbeddedMobileProvision(void) {
   // `true`, which means the condition list is order-sensitive.
 #if TARGET_OS_MACCATALYST
   applePlatform = @"maccatalyst";
+<<<<<<< HEAD
 #elif TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 #if defined(__IPHONE_14_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
+=======
+#elif TARGET_OS_IOS
+>>>>>>> tik_2-NetworkSession
   if (@available(iOS 14.0, *)) {
     // Early iOS 14 betas do not include isiOSAppOnMac (#6969)
     applePlatform = ([[NSProcessInfo processInfo] respondsToSelector:@selector(isiOSAppOnMac)] &&
@@ -254,17 +273,24 @@ static BOOL HasEmbeddedMobileProvision(void) {
   } else {
     applePlatform = @"ios";
   }
+<<<<<<< HEAD
 #else   // defined(__IPHONE_14_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
   applePlatform = @"ios";
 #endif  // defined(__IPHONE_14_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
 
+=======
+>>>>>>> tik_2-NetworkSession
 #elif TARGET_OS_TV
   applePlatform = @"tvos";
 #elif TARGET_OS_OSX
   applePlatform = @"macos";
 #elif TARGET_OS_WATCH
   applePlatform = @"watchos";
+<<<<<<< HEAD
 #elif defined(TARGET_OS_VISION) && TARGET_OS_VISION
+=======
+#elif TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
   applePlatform = @"visionos";
 #endif  // TARGET_OS_MACCATALYST
 

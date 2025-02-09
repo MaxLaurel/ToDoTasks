@@ -16,8 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 @class FIRAuthCredential;
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -29,6 +32,7 @@ extern NSString *const FIRTwitterAuthProviderID NS_SWIFT_NAME(TwitterAuthProvide
  */
 extern NSString *const _Nonnull FIRTwitterAuthSignInMethod NS_SWIFT_NAME(TwitterAuthSignInMethod);
 
+<<<<<<< HEAD
 /** @class FIRTwitterAuthProvider
     @brief Utility class for constructing Twitter credentials.
  */
@@ -51,4 +55,6 @@ NS_SWIFT_NAME(TwitterAuthProvider)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

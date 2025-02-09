@@ -17,6 +17,10 @@
 #import "FirebaseCore/Sources/FIRAnalyticsConfiguration.h"
 
 extern void FIRSetLoggerLevel(FIRLoggerLevel loggerLevel);
+<<<<<<< HEAD
+=======
+extern FIRLoggerLevel FIRGetLoggerLevel(void);
+>>>>>>> tik_2-NetworkSession
 
 @implementation FIRConfiguration
 
@@ -40,7 +44,19 @@ extern void FIRSetLoggerLevel(FIRLoggerLevel loggerLevel);
 - (void)setLoggerLevel:(FIRLoggerLevel)loggerLevel {
   NSAssert(loggerLevel <= FIRLoggerLevelMax && loggerLevel >= FIRLoggerLevelMin,
            @"Invalid logger level, %ld", (long)loggerLevel);
+<<<<<<< HEAD
   FIRSetLoggerLevel(loggerLevel);
+=======
+  @synchronized(self) {
+    FIRSetLoggerLevel(loggerLevel);
+  }
+}
+
+- (FIRLoggerLevel)loggerLevel {
+  @synchronized(self) {
+    return FIRGetLoggerLevel();
+  }
+>>>>>>> tik_2-NetworkSession
 }
 
 @end

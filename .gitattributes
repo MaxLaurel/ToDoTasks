@@ -1,0 +1,5 @@
+*.plist merge=union
+*.xcframework merge=union
+*.swiftsourceinfo merge=union
+*.swiftmodule merge=union
+

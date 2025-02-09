@@ -15,18 +15,25 @@
  */
 
 #import "FirebaseDatabase/Sources/Utilities/FUtilities.h"
+<<<<<<< HEAD
 #if !TARGET_OS_WATCH
 #import "FirebaseDatabase/Sources/third_party/SocketRocket/FSRWebSocket.h"
 #endif // !TARGET_OS_WATCH
+=======
+>>>>>>> tik_2-NetworkSession
 #import <Foundation/Foundation.h>
 
 @protocol FWebSocketDelegate;
 
+<<<<<<< HEAD
 #if !TARGET_OS_WATCH
 @interface FWebSocketConnection : NSObject <FSRWebSocketDelegate>
 #else
 @interface FWebSocketConnection : NSObject <NSURLSessionWebSocketDelegate>
 #endif // else !TARGET_OS_WATCH
+=======
+@interface FWebSocketConnection : NSObject <NSURLSessionWebSocketDelegate>
+>>>>>>> tik_2-NetworkSession
 
 @property(nonatomic, weak) id<FWebSocketDelegate> delegate;
 
@@ -41,6 +48,7 @@
 - (void)start;
 - (void)send:(NSDictionary *)dictionary;
 
+<<<<<<< HEAD
 // Ignore FSRWebSocketDelegate calls on watchOS.
 #if !TARGET_OS_WATCH
 - (void)webSocket:(FSRWebSocket *)webSocket didReceiveMessage:(id)message;
@@ -55,6 +63,8 @@
             wasClean:(BOOL)wasClean;
 #endif // !TARGET_OS_WATCH
 
+=======
+>>>>>>> tik_2-NetworkSession
 @end
 
 @protocol FWebSocketDelegate <NSObject>

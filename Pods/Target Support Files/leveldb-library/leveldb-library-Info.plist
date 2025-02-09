@@ -15,7 +15,11 @@
   <key>CFBundlePackageType</key>
   <string>FMWK</string>
   <key>CFBundleShortVersionString</key>
+<<<<<<< HEAD
   <string>1.22.5</string>
+=======
+  <string>1.22.6</string>
+>>>>>>> tik_2-NetworkSession
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>

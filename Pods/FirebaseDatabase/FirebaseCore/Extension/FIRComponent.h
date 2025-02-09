@@ -32,8 +32,11 @@ typedef _Nullable id (^FIRComponentCreationBlock)(FIRComponentContainer *contain
                                                   BOOL *isCacheable)
     NS_SWIFT_NAME(ComponentCreationBlock);
 
+<<<<<<< HEAD
 @class FIRDependency;
 
+=======
+>>>>>>> tik_2-NetworkSession
 /// Describes the timing of instantiation. Note: new components should default to lazy unless there
 /// is a strong reason to be eager.
 typedef NS_ENUM(NSInteger, FIRInstantiationTiming) {
@@ -52,9 +55,12 @@ NS_SWIFT_NAME(Component)
 /// The timing of instantiation.
 @property(nonatomic, readonly) FIRInstantiationTiming instantiationTiming;
 
+<<<<<<< HEAD
 /// An array of dependencies for the component.
 @property(nonatomic, copy, readonly) NSArray<FIRDependency *> *dependencies;
 
+=======
+>>>>>>> tik_2-NetworkSession
 /// A block to instantiate an instance of the component with the appropriate dependencies.
 @property(nonatomic, copy, readonly) FIRComponentCreationBlock creationBlock;
 
@@ -72,14 +78,22 @@ NS_SWIFT_NAME(init(_:creationBlock:));
 /// @param protocol - The protocol describing functionality provided by the component.
 /// @param instantiationTiming - When the component should be initialized. Use .lazy unless there's
 ///                              a good reason to be instantiated earlier.
+<<<<<<< HEAD
 /// @param dependencies - Any dependencies the `implementingClass` has, optional or required.
+=======
+>>>>>>> tik_2-NetworkSession
 /// @param creationBlock - A block to instantiate the component with a container, and if
 /// @return A component that can be registered with the component container.
 + (instancetype)componentWithProtocol:(Protocol *)protocol
                   instantiationTiming:(FIRInstantiationTiming)instantiationTiming
+<<<<<<< HEAD
                          dependencies:(NSArray<FIRDependency *> *)dependencies
                         creationBlock:(FIRComponentCreationBlock)creationBlock
 NS_SWIFT_NAME(init(_:instantiationTiming:dependencies:creationBlock:));
+=======
+                        creationBlock:(FIRComponentCreationBlock)creationBlock
+NS_SWIFT_NAME(init(_:instantiationTiming:creationBlock:));
+>>>>>>> tik_2-NetworkSession
 
 // clang-format on
 

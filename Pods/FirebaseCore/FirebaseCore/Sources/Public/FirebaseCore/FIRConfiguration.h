@@ -40,6 +40,12 @@ NS_SWIFT_NAME(FirebaseConfiguration)
  */
 - (void)setLoggerLevel:(FIRLoggerLevel)loggerLevel;
 
+<<<<<<< HEAD
+=======
+/// Returns the logging level for internal Firebase logging.
+- (FIRLoggerLevel)loggerLevel;
+
+>>>>>>> tik_2-NetworkSession
 @end
 
 NS_ASSUME_NONNULL_END

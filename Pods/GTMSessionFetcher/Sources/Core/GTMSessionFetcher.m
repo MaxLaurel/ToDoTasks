@@ -97,6 +97,7 @@ NS_ASSUME_NONNULL_END
 #define GTM_TARGET_SUPPORTS_APP_TRANSPORT_SECURITY 1
 #endif
 
+<<<<<<< HEAD
 #if ((defined(TARGET_OS_MACCATALYST) && TARGET_OS_MACCATALYST) ||                                 \
      (TARGET_OS_OSX && defined(__MAC_10_15) && __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_15) || \
      (TARGET_OS_IOS && defined(__IPHONE_13_0) &&                                                  \
@@ -131,6 +132,26 @@ NS_ASSUME_NONNULL_END
 #define GTM_SDK_REQUIRES_SECTRUSTEVALUATEWITHERROR 1
 #else
 #define GTM_SDK_REQUIRES_SECTRUSTEVALUATEWITHERROR 0
+=======
+#if TARGET_OS_IOS
+# if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_13_0
+#  define GTM_SDK_REQUIRES_TLSMINIMUMSUPPORTEDPROTOCOLVERSION 1
+# else
+#  define GTM_SDK_REQUIRES_TLSMINIMUMSUPPORTEDPROTOCOLVERSION 0
+# endif
+#else  // Not iOS
+# define GTM_SDK_REQUIRES_TLSMINIMUMSUPPORTEDPROTOCOLVERSION 1
+#endif
+
+#if TARGET_OS_IOS
+# if defined(__IPHONE_13_0) && __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_13_0
+#  define GTM_SDK_REQUIRES_SECTRUSTEVALUATEWITHERROR 1
+# else
+#  define GTM_SDK_REQUIRES_SECTRUSTEVALUATEWITHERROR 0
+# endif
+#else  // Not iOS
+# define GTM_SDK_REQUIRES_SECTRUSTEVALUATEWITHERROR 1
+>>>>>>> tik_2-NetworkSession
 #endif
 
 #if __has_attribute(swift_async)
@@ -984,14 +1005,22 @@ static GTMSessionFetcherTestBlock _Nullable gGlobalTestBlock;
 #if !GTM_ALLOW_INSECURE_REQUESTS
 #if GTM_SDK_REQUIRES_TLSMINIMUMSUPPORTEDPROTOCOLVERSION
     _configuration.TLSMinimumSupportedProtocolVersion = tls_protocol_version_TLSv12;
+<<<<<<< HEAD
 #elif GTM_SDK_SUPPORTS_TLSMINIMUMSUPPORTEDPROTOCOLVERSION
     if (@available(iOS 13, tvOS 13, macOS 10.15, *)) {
+=======
+#else
+    if (@available(iOS 13, *)) {
+>>>>>>> tik_2-NetworkSession
       _configuration.TLSMinimumSupportedProtocolVersion = tls_protocol_version_TLSv12;
     } else {
       _configuration.TLSMinimumSupportedProtocol = kTLSProtocol12;
     }
+<<<<<<< HEAD
 #else
     _configuration.TLSMinimumSupportedProtocol = kTLSProtocol12;
+=======
+>>>>>>> tik_2-NetworkSession
 #endif  // GTM_SDK_REQUIRES_TLSMINIMUMSUPPORTEDPROTOCOLVERSION
 #endif
   }  // !_configuration

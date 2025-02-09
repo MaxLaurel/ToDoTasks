@@ -12,12 +12,17 @@ class NewsControllerCoordinator: Coordinator {
     
     var coordinators = [Coordinator]()
     var navigationController = UINavigationController()
+<<<<<<< HEAD
     let viewControllerFctory = ViewControllerFactory()
+=======
+    let viewControllerFactory = ViewControllerFactory()
+>>>>>>> tik_2-NetworkSession
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
+<<<<<<< HEAD
     func start() {
         let newsViewController = viewControllerFctory.createNewsViewController()
         newsViewController.newsViewControllerCoordinator = self
@@ -25,4 +30,11 @@ class NewsControllerCoordinator: Coordinator {
     }
     
   
+=======
+    func startInitialFlow() {
+        let newsViewController = viewControllerFactory.instantiate(type: .newsVC)
+        navigationController.pushViewController(newsViewController, animated: true)
+  
+    }
+>>>>>>> tik_2-NetworkSession
 }

@@ -20,7 +20,10 @@
 #if __has_include("CoreTelephony/CTTelephonyNetworkInfo.h") && !TARGET_OS_MACCATALYST && \
                   !TARGET_OS_OSX && !TARGET_OS_TV && !TARGET_OS_WATCH
 #define TARGET_HAS_MOBILE_CONNECTIVITY
+<<<<<<< HEAD
 #import <CoreTelephony/CTCarrier.h>
+=======
+>>>>>>> tik_2-NetworkSession
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif
@@ -38,6 +41,7 @@
 }
 #endif
 
+<<<<<<< HEAD
 + (NSString *_Nullable)getNetworkMobileCountryCode {
 #ifdef TARGET_HAS_MOBILE_CONNECTIVITY
   CTTelephonyNetworkInfo *networkInfo = [GULNetworkInfo getNetworkInfo];
@@ -93,6 +97,8 @@
   return mccMnc;
 }
 
+=======
+>>>>>>> tik_2-NetworkSession
 + (GULNetworkType)getNetworkType {
   GULNetworkType networkType = GULNetworkTypeNone;
 
@@ -126,6 +132,7 @@
 + (NSString *)getNetworkRadioType {
 #ifdef TARGET_HAS_MOBILE_CONNECTIVITY
   CTTelephonyNetworkInfo *networkInfo = [GULNetworkInfo getNetworkInfo];
+<<<<<<< HEAD
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
   return networkInfo.currentRadioAccessTechnology;
@@ -133,6 +140,13 @@
 #else
   return @"";
 #endif
+=======
+  if (networkInfo.serviceCurrentRadioAccessTechnology.count) {
+    return networkInfo.serviceCurrentRadioAccessTechnology.allValues[0] ?: @"";
+  }
+#endif
+  return @"";
+>>>>>>> tik_2-NetworkSession
 }
 
 @end

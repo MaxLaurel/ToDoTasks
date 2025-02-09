@@ -13,5 +13,9 @@ Example/Auth contains a set of samples and tests that integrate with
 FirebaseAuth.
 
 The unit tests run without any additional configuration along with the rest of
+<<<<<<< HEAD
 Firebase. See [Tests/Sample/README.md](Tests/Sample/README.md) for
+=======
+Firebase. See [Tests/SampleSwift/README.md](Tests/SampleSwift/README.md) for
+>>>>>>> tik_2-NetworkSession
 information about setting up, running, and testing the samples.

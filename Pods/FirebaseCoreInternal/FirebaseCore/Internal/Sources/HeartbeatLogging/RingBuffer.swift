@@ -16,13 +16,21 @@ import Foundation
 
 /// A generic circular queue structure.
 struct RingBuffer<Element>: Sequence {
+<<<<<<< HEAD
   /// An array of heartbeats treated as a circular queue and intialized with a fixed capacity.
+=======
+  /// An array of heartbeats treated as a circular queue and initialized with a fixed capacity.
+>>>>>>> tik_2-NetworkSession
   private var circularQueue: [Element?]
   /// The current "tail" and insert point for the `circularQueue`.
   private var tailIndex: Array<Element?>.Index
 
   /// Error types for `RingBuffer` operations.
+<<<<<<< HEAD
   enum Error: LocalizedError {
+=======
+  enum Error: Swift.Error {
+>>>>>>> tik_2-NetworkSession
     case outOfBoundsPush(pushIndex: Array<Element?>.Index, endIndex: Array<Element?>.Index)
 
     var errorDescription: String {

@@ -15,6 +15,10 @@
 #import "FirebaseCore.h"
 #import "FIRLoggerLevel.h"
 #import "FIROptions.h"
+<<<<<<< HEAD
+=======
+#import "FIRTimestamp.h"
+>>>>>>> tik_2-NetworkSession
 #import "FIRVersion.h"
 
 FOUNDATION_EXPORT double FirebaseCoreVersionNumber;

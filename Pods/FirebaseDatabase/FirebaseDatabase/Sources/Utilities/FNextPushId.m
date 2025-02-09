@@ -205,7 +205,11 @@ static unichar const HIGH_SURROGATE_PAIR_END = 0xDBFF;
                             withString:@""];
         return next;
     }
+<<<<<<< HEAD
     // Replace the last character with its immedate predecessor, and fill the
+=======
+    // Replace the last character with its immediate predecessor, and fill the
+>>>>>>> tik_2-NetworkSession
     // suffix of the key with MAX_PUSH_CHAR. This is the lexicographically
     // largest possible key smaller than `key`.
     NSUInteger i = next.length - 1;

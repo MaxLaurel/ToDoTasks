@@ -90,7 +90,11 @@
  * 1. No writes are shadowing. Events should be raised, the snap to be applied
  * comes from the server data.
  *
+<<<<<<< HEAD
  * 2. Some writes are completly shadowing. No events to be raised.
+=======
+ * 2. Some writes are completely shadowing. No events to be raised.
+>>>>>>> tik_2-NetworkSession
  *
  * 3. Is partially shadowed. Events should be raised.
  *

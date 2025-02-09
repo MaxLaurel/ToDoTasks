@@ -18,6 +18,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+<<<<<<< HEAD
 /** @class FIRAuthErrors
     @remarks Error Codes common to all API Methods:
 
@@ -39,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(AuthErrors)
 @interface FIRAuthErrors
 
+=======
+>>>>>>> tik_2-NetworkSession
 /**
     @brief The Firebase Auth error domain.
  */
@@ -54,7 +57,11 @@ extern NSString *const FIRAuthErrorUserInfoNameKey NS_SWIFT_NAME(AuthErrorUserIn
           - `AuthErrorCodeAccountExistsWithDifferentCredential`
           - `AuthErrorCodeCredentialAlreadyInUse`
           - `AuthErrorCodeEmailAlreadyInUse`
+<<<<<<< HEAD
         may contain an `NSError.userInfo` dictinary object which contains this key. The value
+=======
+        may contain an `NSError.userInfo` dictionary object which contains this key. The value
+>>>>>>> tik_2-NetworkSession
         associated with this key is an NSString of the email address of the account that already
         exists.
  */
@@ -78,6 +85,7 @@ extern NSString *const FIRAuthErrorUserInfoMultiFactorResolverKey
     NS_SWIFT_NAME(AuthErrorUserInfoMultiFactorResolverKey);
 // clang-format on
 
+<<<<<<< HEAD
 /**
     @brief Error codes used by Firebase Auth.
  */
@@ -474,4 +482,6 @@ typedef NS_ERROR_ENUM(FIRAuthErrorDomain, FIRAuthErrorCode){
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

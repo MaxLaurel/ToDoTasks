@@ -131,7 +131,11 @@ static NSString *trackedQueryKeysKey(NSUInteger trackedQueryId, NSString *key) {
                    error);
         }
     } else if ([oldVersion isEqualToString:kFPersistenceVersion]) {
+<<<<<<< HEAD
         // Everythings fine no need for migration
+=======
+        // Everything's fine, no need for migration
+>>>>>>> tik_2-NetworkSession
     } else if ([oldVersion length] == 0) {
         FFWarn(@"I-RDB076036",
                @"Version file empty. Assuming database version 1.");
@@ -275,8 +279,12 @@ static NSString *trackedQueryKeysKey(NSUInteger trackedQueryId, NSString *key) {
 }
 
 + (NSString *)firebaseDir {
+<<<<<<< HEAD
 #if TARGET_OS_IOS || TARGET_OS_WATCH ||                                        \
     (defined(TARGET_OS_VISION) && TARGET_OS_VISION)
+=======
+#if TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_VISION
+>>>>>>> tik_2-NetworkSession
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(
         NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [dirPaths objectAtIndex:0];

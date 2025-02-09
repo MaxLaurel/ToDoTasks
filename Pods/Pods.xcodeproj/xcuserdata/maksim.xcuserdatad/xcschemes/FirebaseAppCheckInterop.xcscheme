@@ -15,7 +15,11 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DD28B439BE8B17D9339D9B526F144347"
+<<<<<<< HEAD
                BuildableName = "FirebaseAppCheckInterop"
+=======
+               BuildableName = "FirebaseAppCheckInterop.framework"
+>>>>>>> tik_2-NetworkSession
                BlueprintName = "FirebaseAppCheckInterop"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

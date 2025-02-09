@@ -3,6 +3,7 @@
 //  https://github.com/hackiftekhar/IQKeyboardManager
 //  Copyright (c) 2013-24 Iftekhar Qurashi.
 //
+<<<<<<< HEAD
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -20,27 +21,60 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+=======
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+>>>>>>> tik_2-NetworkSession
 
 import UIKit
 
 /** @abstract UITextView with placeholder support   */
 @available(iOSApplicationExtension, unavailable)
 @MainActor
+<<<<<<< HEAD
 @objc open class IQTextView: UITextView {
 
     @objc required public init?(coder aDecoder: NSCoder) {
+=======
+@objcMembers open class IQTextView: UITextView {
+
+    required public init?(coder aDecoder: NSCoder) {
+>>>>>>> tik_2-NetworkSession
         super.init(coder: aDecoder)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder),
                                                name: UITextView.textDidChangeNotification, object: self)
     }
 
+<<<<<<< HEAD
     @objc override public init(frame: CGRect, textContainer: NSTextContainer?) {
+=======
+    override public init(frame: CGRect, textContainer: NSTextContainer?) {
+>>>>>>> tik_2-NetworkSession
         super.init(frame: frame, textContainer: textContainer)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder),
                                                name: UITextView.textDidChangeNotification, object: self)
     }
 
+<<<<<<< HEAD
     @objc override open func awakeFromNib() {
+=======
+    override open func awakeFromNib() {
+>>>>>>> tik_2-NetworkSession
         super.awakeFromNib()
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder),
                                                name: UITextView.textDidChangeNotification, object: self)
@@ -117,7 +151,11 @@ import UIKit
         }
     }
 
+<<<<<<< HEAD
     @objc override open func layoutSubviews() {
+=======
+    override open func layoutSubviews() {
+>>>>>>> tik_2-NetworkSession
         super.layoutSubviews()
 
         placeholderLabel.frame = placeholderExpectedFrame
@@ -126,6 +164,7 @@ import UIKit
     @objc private func refreshPlaceholder() {
 
         let text: String = text ?? attributedText?.string ?? ""
+<<<<<<< HEAD
         if text.isEmpty {
             placeholderLabel.alpha = 1
         } else {
@@ -134,6 +173,12 @@ import UIKit
     }
 
     @objc override open var text: String! {
+=======
+        placeholderLabel.alpha = text.isEmpty ? 1 : 0
+    }
+
+    override open var text: String! {
+>>>>>>> tik_2-NetworkSession
 
         didSet {
             refreshPlaceholder()
@@ -147,25 +192,42 @@ import UIKit
         }
     }
 
+<<<<<<< HEAD
     @objc override open var font: UIFont? {
 
         didSet {
 
             if let unwrappedFont: UIFont = font {
                 placeholderLabel.font = unwrappedFont
+=======
+    override open var font: UIFont? {
+
+        didSet {
+
+            if let font: UIFont = font {
+                placeholderLabel.font = font
+>>>>>>> tik_2-NetworkSession
             } else {
                 placeholderLabel.font = UIFont.systemFont(ofSize: 12)
             }
         }
     }
 
+<<<<<<< HEAD
     @objc override open var textAlignment: NSTextAlignment {
+=======
+    override open var textAlignment: NSTextAlignment {
+>>>>>>> tik_2-NetworkSession
         didSet {
             placeholderLabel.textAlignment = textAlignment
         }
     }
 
+<<<<<<< HEAD
     @objc override weak open var delegate: UITextViewDelegate? {
+=======
+    override weak open var delegate: (any UITextViewDelegate)? {
+>>>>>>> tik_2-NetworkSession
 
         get {
             refreshPlaceholder()
@@ -177,7 +239,11 @@ import UIKit
         }
     }
 
+<<<<<<< HEAD
     @objc override open var intrinsicContentSize: CGSize {
+=======
+    override open var intrinsicContentSize: CGSize {
+>>>>>>> tik_2-NetworkSession
         guard !hasText else {
             return super.intrinsicContentSize
         }
@@ -188,6 +254,7 @@ import UIKit
 
         return newSize
     }
+<<<<<<< HEAD
     
     @objc override open func caretRect(for position: UITextPosition) -> CGRect {
         var originalRect = super.caretRect(for: position)
@@ -206,3 +273,27 @@ import UIKit
     } 
     
 }
+=======
+
+    override open func caretRect(for position: UITextPosition) -> CGRect {
+        var originalRect = super.caretRect(for: position)
+
+        // When placeholder is visible and text alignment is centered
+        guard placeholderLabel.alpha == 1 && self.textAlignment == .center else { return originalRect }
+
+        // Calculate the width of the placeholder text
+        let font = placeholderLabel.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        let textSize = placeholderLabel.text?.size(withAttributes: [.font: font]) ?? .zero
+        // Calculate the starting x position of the centered placeholder text
+        let centeredTextX = (self.bounds.size.width - textSize.width) / 2
+        // Update the caret position to match the starting x position of the centered text
+        originalRect.origin.x = centeredTextX
+
+        return originalRect
+    }
+}
+
+@available(iOSApplicationExtension, unavailable)
+@MainActor
+@objc extension IQTextView: IQPlaceholderable { }
+>>>>>>> tik_2-NetworkSession

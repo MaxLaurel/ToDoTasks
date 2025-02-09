@@ -16,11 +16,14 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import "FIRAuth.h"
 #import "FIRAuthDataResult.h"
 #import "FIRMultiFactor.h"
 #import "FIRUserInfo.h"
 
+=======
+>>>>>>> tik_2-NetworkSession
 @class FIRAuthTokenResult;
 @class FIRPhoneAuthCredential;
 @class FIRUserProfileChangeRequest;
@@ -73,6 +76,7 @@ typedef void (^FIRUserProfileChangeCallback)(NSError *_Nullable error)
 typedef void (^FIRSendEmailVerificationCallback)(NSError *_Nullable error)
     NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
+<<<<<<< HEAD
 /** @class FIRUser
     @brief Represents a user. Firebase Auth does not attempt to validate users
         when loading them from the keychain. Invalidated users (such as those
@@ -550,4 +554,6 @@ NS_SWIFT_NAME(UserProfileChangeRequest)
 
 @end
 
+=======
+>>>>>>> tik_2-NetworkSession
 NS_ASSUME_NONNULL_END

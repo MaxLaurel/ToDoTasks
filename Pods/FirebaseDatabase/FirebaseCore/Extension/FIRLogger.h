@@ -16,7 +16,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import <FirebaseCore/FIRLoggerLevel.h>
+=======
+typedef NS_ENUM(NSInteger, FIRLoggerLevel);
+>>>>>>> tik_2-NetworkSession
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,10 +29,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef NSString *const FIRLoggerService;
 
+<<<<<<< HEAD
 extern FIRLoggerService kFIRLoggerAnalytics;
 extern FIRLoggerService kFIRLoggerCrash;
 extern FIRLoggerService kFIRLoggerCore;
 extern FIRLoggerService kFIRLoggerRemoteConfig;
+=======
+extern NSString *const kFIRLoggerAnalytics;
+extern NSString *const kFIRLoggerCrash;
+extern NSString *const kFIRLoggerCore;
+extern NSString *const kFIRLoggerRemoteConfig;
+>>>>>>> tik_2-NetworkSession
 
 /**
  * The key used to store the logger's error count.
@@ -64,6 +75,14 @@ FIRLoggerLevel FIRGetLoggerLevel(void);
  */
 void FIRSetLoggerLevel(FIRLoggerLevel loggerLevel);
 
+<<<<<<< HEAD
+=======
+void FIRSetLoggerLevelNotice(void);
+void FIRSetLoggerLevelWarning(void);
+void FIRSetLoggerLevelError(void);
+void FIRSetLoggerLevelDebug(void);
+
+>>>>>>> tik_2-NetworkSession
 /**
  * Checks if the specified logger level is loggable given the current settings.
  * (required) log level (one of the FirebaseLoggerLevel enum values).
@@ -71,6 +90,14 @@ void FIRSetLoggerLevel(FIRLoggerLevel loggerLevel);
  */
 BOOL FIRIsLoggableLevel(FIRLoggerLevel loggerLevel, BOOL analyticsComponent);
 
+<<<<<<< HEAD
+=======
+BOOL FIRIsLoggableLevelNotice(void);
+BOOL FIRIsLoggableLevelWarning(void);
+BOOL FIRIsLoggableLevelError(void);
+BOOL FIRIsLoggableLevelDebug(void);
+
+>>>>>>> tik_2-NetworkSession
 /**
  * Logs a message to the Xcode console and the device log. If running from AppStore, will
  * not log any messages with a level higher than FirebaseLoggerLevelNotice to avoid log spamming.
@@ -85,7 +112,11 @@ BOOL FIRIsLoggableLevel(FIRLoggerLevel loggerLevel, BOOL analyticsComponent);
  *            string.
  */
 extern void FIRLogBasic(FIRLoggerLevel level,
+<<<<<<< HEAD
                         FIRLoggerService service,
+=======
+                        NSString *category,
+>>>>>>> tik_2-NetworkSession
                         NSString *messageCode,
                         NSString *message,
 // On 64-bit simulators, va_list is not a pointer, so cannot be marked nullable
@@ -110,6 +141,7 @@ extern void FIRLogBasic(FIRLoggerLevel level,
  * Example usage:
  * FirebaseLogError(kFirebaseLoggerCore, @"I-COR000001", @"Configuration of %@ failed.", app.name);
  */
+<<<<<<< HEAD
 extern void FIRLogError(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
     NS_FORMAT_FUNCTION(3, 4);
 extern void FIRLogWarning(FIRLoggerService service, NSString *messageCode, NSString *message, ...)
@@ -147,6 +179,53 @@ extern void FIRLogDebugSwift(FIRLoggerService service, NSString *messageCode, NS
  * @param message The message string.
  */
 extern void FIRLogWarningSwift(FIRLoggerService service, NSString *messageCode, NSString *message);
+=======
+extern void FIRLogError(NSString *category, NSString *messageCode, NSString *message, ...)
+    NS_FORMAT_FUNCTION(3, 4);
+extern void FIRLogWarning(NSString *category, NSString *messageCode, NSString *message, ...)
+    NS_FORMAT_FUNCTION(3, 4);
+extern void FIRLogNotice(NSString *category, NSString *messageCode, NSString *message, ...)
+    NS_FORMAT_FUNCTION(3, 4);
+extern void FIRLogInfo(NSString *category, NSString *messageCode, NSString *message, ...)
+    NS_FORMAT_FUNCTION(3, 4);
+extern void FIRLogDebug(NSString *category, NSString *messageCode, NSString *message, ...)
+    NS_FORMAT_FUNCTION(3, 4);
+
+/**
+ * This function is similar to the one above, except it takes a `va_list` instead of the listed
+ * variables.
+ *
+ * The following functions accept the following parameters in order: (required) service
+ * name of type FirebaseLoggerService.
+ *
+ * (required) message code starting from "I-" which means iOS,
+ *    followed by a capitalized three-character service identifier and a six digit integer message
+ *    ID that is unique within the service. An example of the message code is @"I-COR000001".
+ *    See go/firebase-log-proposal for details.
+ * (required) message string which can be a format string.
+ * (optional) A va_list
+ */
+extern void FIRLogBasicError(NSString *category,
+                             NSString *messageCode,
+                             NSString *message,
+                             va_list args_ptr);
+extern void FIRLogBasicWarning(NSString *category,
+                               NSString *messageCode,
+                               NSString *message,
+                               va_list args_ptr);
+extern void FIRLogBasicNotice(NSString *category,
+                              NSString *messageCode,
+                              NSString *message,
+                              va_list args_ptr);
+extern void FIRLogBasicInfo(NSString *category,
+                            NSString *messageCode,
+                            NSString *message,
+                            va_list args_ptr);
+extern void FIRLogBasicDebug(NSString *category,
+                             NSString *messageCode,
+                             NSString *message,
+                             va_list args_ptr);
+>>>>>>> tik_2-NetworkSession
 
 #ifdef __cplusplus
 }  // extern "C"
@@ -155,6 +234,7 @@ extern void FIRLogWarningSwift(FIRLoggerService service, NSString *messageCode, 
 NS_SWIFT_NAME(FirebaseLogger)
 @interface FIRLoggerWrapper : NSObject
 
+<<<<<<< HEAD
 /// Logs a given message at a given log level. This API is effectively a wrapper for the
 /// `FIRLogBasic` C API.
 ///
@@ -172,10 +252,13 @@ NS_SWIFT_NAME(FirebaseLogger)
          withMessage:(NSString *)message
             withArgs:(va_list)args;
 
+=======
+>>>>>>> tik_2-NetworkSession
 /// Logs a given message at a given log level.
 ///
 /// - Parameters:
 ///   - level: The log level to use (defined by `FirebaseLoggerLevel` enum values).
+<<<<<<< HEAD
 ///   - service: The service name of type `FirebaseLoggerService`.
 ///   - code: The mesage code. Starting with "I-" which means iOS, followed by a capitalized
 ///   three-character service identifier and a six digit integer message ID that is unique within
@@ -184,6 +267,15 @@ NS_SWIFT_NAME(FirebaseLogger)
 ///   - args: Arguments list obtained from calling `va_start`, used when message is a format string.
 + (void)logWithLevel:(FIRLoggerLevel)level
              service:(FIRLoggerService)service
+=======
+///   - category: The service name of type `FirebaseLoggerService`.
+///   - code: The message code. Starting with "I-" which means iOS, followed by a capitalized
+///   three-character service identifier and a six digit integer message ID that is unique within
+///   the service. An example of the message code is @"I-COR000001".
+///   - message: Formatted string to be used as the log's message.
++ (void)logWithLevel:(FIRLoggerLevel)level
+             service:(NSString *)category
+>>>>>>> tik_2-NetworkSession
                 code:(NSString *)code
              message:(NSString *)message
     __attribute__((__swift_name__("log(level:service:code:message:)")));

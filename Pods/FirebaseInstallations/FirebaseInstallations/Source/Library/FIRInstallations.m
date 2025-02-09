@@ -66,7 +66,10 @@ static const NSUInteger kExpectedAPIKeyLength = 39;
   FIRComponent *installationsProvider =
       [FIRComponent componentWithProtocol:@protocol(FIRInstallationsInstanceProvider)
                       instantiationTiming:FIRInstantiationTimingAlwaysEager
+<<<<<<< HEAD
                              dependencies:@[]
+=======
+>>>>>>> tik_2-NetworkSession
                             creationBlock:creationBlock];
   return @[ installationsProvider ];
 }
@@ -268,6 +271,21 @@ static const NSUInteger kExpectedAPIKeyLength = 39;
   return isCompatibleVersion;
 }
 
+<<<<<<< HEAD
+=======
+#pragma mark - Force Category Linking
+
+extern void FIRInclude_FIRInstallationsItem_RegisterInstallationAPI_Category(void);
+
+/// Does nothing when called, and not meant to be called.
+///
+/// This method forces the linker to include categories even if
+/// users do not include the '-ObjC' linker flag in their project.
++ (void)noop {
+  FIRInclude_FIRInstallationsItem_RegisterInstallationAPI_Category();
+}
+
+>>>>>>> tik_2-NetworkSession
 @end
 
 NS_ASSUME_NONNULL_END

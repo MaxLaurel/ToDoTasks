@@ -10,6 +10,7 @@
 #endif
 #endif
 
+<<<<<<< HEAD
 #import "FIRActionCodeSettings.h"
 #import "FIRAdditionalUserInfo.h"
 #import "FIRAuth.h"
@@ -20,6 +21,10 @@
 #import "FIRAuthSettings.h"
 #import "FIRAuthTokenResult.h"
 #import "FIRAuthUIDelegate.h"
+=======
+#import "FIRAuth.h"
+#import "FIRAuthErrors.h"
+>>>>>>> tik_2-NetworkSession
 #import "FirebaseAuth.h"
 #import "FIREmailAuthProvider.h"
 #import "FIRFacebookAuthProvider.h"
@@ -28,6 +33,7 @@
 #import "FIRGitHubAuthProvider.h"
 #import "FIRGoogleAuthProvider.h"
 #import "FIRMultiFactor.h"
+<<<<<<< HEAD
 #import "FIRMultiFactorAssertion.h"
 #import "FIRMultiFactorInfo.h"
 #import "FIRMultiFactorResolver.h"
@@ -46,6 +52,12 @@
 #import "FIRUser.h"
 #import "FIRUserInfo.h"
 #import "FIRUserMetadata.h"
+=======
+#import "FIRPhoneAuthProvider.h"
+#import "FIRRecaptchaBridge.h"
+#import "FIRTwitterAuthProvider.h"
+#import "FIRUser.h"
+>>>>>>> tik_2-NetworkSession
 
 FOUNDATION_EXPORT double FirebaseAuthVersionNumber;
 FOUNDATION_EXPORT const unsigned char FirebaseAuthVersionString[];

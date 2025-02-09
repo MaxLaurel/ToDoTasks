@@ -20,6 +20,11 @@
 #import "GULNetworkLoggerProtocol.h"
 #import "GULNetworkURLSession.h"
 
+<<<<<<< HEAD
+=======
+NS_ASSUME_NONNULL_BEGIN
+
+>>>>>>> tik_2-NetworkSession
 /// Delegate protocol for GULNetwork events.
 @protocol GULNetworkReachabilityDelegate
 
@@ -69,25 +74,43 @@
 /// Compresses and sends a POST request with the provided data to the URL. The session will be
 /// background session if usingBackgroundSession is YES. Otherwise, the POST session is default
 /// session. Returns a session ID or nil if an error occurs.
+<<<<<<< HEAD
 - (NSString *)postURL:(NSURL *)url
                    payload:(NSData *)payload
                      queue:(dispatch_queue_t)queue
     usingBackgroundSession:(BOOL)usingBackgroundSession
          completionHandler:(GULNetworkCompletionHandler)handler;
+=======
+- (nullable NSString *)postURL:(NSURL *)url
+                       payload:(NSData *)payload
+                         queue:(nullable dispatch_queue_t)queue
+        usingBackgroundSession:(BOOL)usingBackgroundSession
+             completionHandler:(GULNetworkCompletionHandler)handler;
+>>>>>>> tik_2-NetworkSession
 
 /// Compresses and sends a POST request with the provided headers and data to the URL. The session
 /// will be background session if usingBackgroundSession is YES. Otherwise, the POST session is
 /// default session. Returns a session ID or nil if an error occurs.
+<<<<<<< HEAD
 - (NSString *)postURL:(NSURL *)url
                    headers:(NSDictionary *)headers
                    payload:(NSData *)payload
                      queue:(dispatch_queue_t)queue
     usingBackgroundSession:(BOOL)usingBackgroundSession
          completionHandler:(GULNetworkCompletionHandler)handler;
+=======
+- (nullable NSString *)postURL:(NSURL *)url
+                       headers:(nullable NSDictionary *)headers
+                       payload:(NSData *)payload
+                         queue:(nullable dispatch_queue_t)queue
+        usingBackgroundSession:(BOOL)usingBackgroundSession
+             completionHandler:(GULNetworkCompletionHandler)handler;
+>>>>>>> tik_2-NetworkSession
 
 /// Sends a GET request with the provided data to the URL. The session will be background session
 /// if usingBackgroundSession is YES. Otherwise, the GET session is default session. Returns a
 /// session ID or nil if an error occurs.
+<<<<<<< HEAD
 - (NSString *)getURL:(NSURL *)url
                    headers:(NSDictionary *)headers
                      queue:(dispatch_queue_t)queue
@@ -95,3 +118,14 @@
          completionHandler:(GULNetworkCompletionHandler)handler;
 
 @end
+=======
+- (nullable NSString *)getURL:(NSURL *)url
+                      headers:(nullable NSDictionary *)headers
+                        queue:(nullable dispatch_queue_t)queue
+       usingBackgroundSession:(BOOL)usingBackgroundSession
+            completionHandler:(GULNetworkCompletionHandler)handler;
+
+@end
+
+NS_ASSUME_NONNULL_END
+>>>>>>> tik_2-NetworkSession

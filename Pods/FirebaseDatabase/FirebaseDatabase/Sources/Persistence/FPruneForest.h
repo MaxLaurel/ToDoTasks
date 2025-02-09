@@ -33,6 +33,10 @@
 - (FPruneForest *)keepAll:(NSSet *)children atPath:(FPath *)path;
 - (FPruneForest *)pruneAll:(NSSet *)children atPath:(FPath *)path;
 
+<<<<<<< HEAD
 - (void)enumarateKeptNodesUsingBlock:(void (^)(FPath *path))block;
+=======
+- (void)enumerateKeptNodesUsingBlock:(void (^)(FPath *path))block;
+>>>>>>> tik_2-NetworkSession
 
 @end
