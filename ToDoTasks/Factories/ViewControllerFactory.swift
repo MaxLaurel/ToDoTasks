@@ -1,9 +1,9 @@
-//
-//  ModuleFactory.swift
-//  ToDoTasks
-//
-//  Created by Максим on 29.03.2024.
-//
+
+  ModuleFactory.swift
+  ToDoTasks
+
+  Created by Максим on 29.03.2024.
+
 
 import UIKit
 
@@ -48,7 +48,6 @@ class ViewControllerFactory: ViewControllerFactoryUsable {
         case tabBarVC
         case taskVC
         case calculateVC
-        case newsVC
     }
     
     func instantiate(type: VCType) -> UIViewController {
@@ -59,7 +58,6 @@ class ViewControllerFactory: ViewControllerFactoryUsable {
         case .tabBarVC: return TabBarController()
         case .taskVC: return TaskViewController()
         case .calculateVC: return CalculationViewController()
-        case .newsVC: return YouTubeNewsTableViewController()
         }
 >>>>>>> tik_2-NetworkSession
     }

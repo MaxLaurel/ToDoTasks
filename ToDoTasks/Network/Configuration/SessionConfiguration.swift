@@ -23,8 +23,8 @@ enum SessionConfiguration: SessionConfigurable {
         foregroundConfiguration.waitsForConnectivity = true
         foregroundConfiguration.timeoutIntervalForRequest = 20
         foregroundConfiguration.allowsCellularAccess = true
-        let cache = URLCache(memoryCapacity: 1024 * 1024, diskCapacity: 1024 * 1024 * 10, directory: nil)
-        foregroundConfiguration.urlCache = cache
+        //let cache = URLCache(memoryCapacity: 1024 * 1024, diskCapacity: 1024 * 1024 * 10, directory: nil)
+        //foregroundConfiguration.urlCache = cache
        
         return URLSession(configuration: foregroundConfiguration)
     }

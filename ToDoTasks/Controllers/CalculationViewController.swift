@@ -6,32 +6,18 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 class CalculationViewController: UIViewController {
     
-    weak var calculateControllerCoordinator: CalculateControllerCoordinator?
+    weak var calculateControllerCoordinator: CalculateViewControllerCoordinator?
+    var onFinish: (() -> Void)?
     
-<<<<<<< HEAD
-    var navController = UINavigationController()
-=======
-    //var navController = UINavigationController()
->>>>>>> tik_2-NetworkSession
+//    lazy var leftBarButtonItem: UIBarButtonItem = {
+//        var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
+//        return leftBarButtonItem
+//    }()
     
-    lazy var leftBarButtonItem: UIBarButtonItem = {
-        var leftBarButtonItem = UIBarButtonItem(title: "Sign out", style: .plain, target: self, action: #selector(leftBarButtonItemTapped))
-        return leftBarButtonItem
-    }()
-    
-<<<<<<< HEAD
-    lazy var rightBarButtonItem: UIBarButtonItem = {
-        var rightBarButtonItem = UIBarButtonItem(title: "info", style: .plain, target: self, action: #selector(goToNext))
-        return rightBarButtonItem
-    }()
-    
-    
-=======
->>>>>>> tik_2-NetworkSession
     var calculatorImageView: UIImageView = {
         var calculatorImageView = UIImageView(image: UIImage(named: "calculator"))
         calculatorImageView.contentMode = .scaleAspectFit
@@ -40,74 +26,24 @@ class CalculationViewController: UIViewController {
         return calculatorImageView
     }()
     
-<<<<<<< HEAD
-    lazy var nextFlowButton: UIButton = {
-        var nextFlowButton = UIButton()
-        nextFlowButton.setTitle("AnotherFlow", for: .normal)
-        nextFlowButton.setTitleColor(.green, for: .normal)
-        nextFlowButton.backgroundColor = .gray
-        nextFlowButton.titleLabel?.font = .systemFont(ofSize: 25)
-        nextFlowButton.tintColor = .blue
-        nextFlowButton.addTarget(self, action: #selector(goToNext), for: .touchUpInside)
-        return nextFlowButton
-    }()
-    
-    
-=======
->>>>>>> tik_2-NetworkSession
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-<<<<<<< HEAD
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-=======
->>>>>>> tik_2-NetworkSession
+        //navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.titleView = calculatorImageView
         //navigationItem.prompt = "some prompt"
         //navigationItem.title = "Calculation"
         navigationItem.title = "Calculation"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-<<<<<<< HEAD
-        view.addSubview(nextFlowButton)
-        
-        nextFlowButton.translatesAutoresizingMaskIntoConstraints = false
-        nextFlowButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nextFlowButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        nextFlowButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextFlowButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-=======
->>>>>>> tik_2-NetworkSession
     }
     
-    @objc func leftBarButtonItemTapped() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
-        navigationController?.popToRootViewController(animated: true)
-    }
-<<<<<<< HEAD
-    
-    //    @objc func rightBarButtonItemTapped() {
-    //        let vc = InfoViewController()
-    //        vc.view?.backgroundColor = .white
-    //        navigationController?.pushViewController(vc, animated: true)
-    //    }
-    
-    @objc func goToNext() {
-//        let secondFlowCalculatorCoordunator = FlowCalculationCoordinator(navigationController: navController)
-//        secondFlowCalculatorCoordunator.startCalculationFlow()
-                let newsViewController = YouTubeNewsTableViewController()
-        navigationController?.pushViewController(newsViewController, animated: true)
-    }
-    
-=======
-    deinit {
-            print("CalculateViewController was deallocated")
-        }
->>>>>>> tik_2-NetworkSession
+//    @objc func leftBarButtonItemTapped() {
+//        do {
+//            try Auth.auth().signOut()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//        navigationController?.popToRootViewController(animated: true)
+//    }
 }

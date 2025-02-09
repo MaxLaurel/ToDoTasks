@@ -7,10 +7,11 @@
 import UIKit
 
 protocol AnimationHandlerManagable {
+    
 func showErrorWithAnimation(with errorText: String, and errorLabel: UILabel)
 }
 
-class AnimationHandler: AnimationHandlerManagable {
+ class AnimationHandler: AnimationHandlerManagable {
      func showErrorWithAnimation(with errorText: String, and errorLabel: UILabel) {
         errorLabel.text = errorText
         UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {

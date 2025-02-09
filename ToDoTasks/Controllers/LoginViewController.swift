@@ -6,23 +6,16 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-<<<<<<< HEAD
-=======
+    let window: UIWindow
+    weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?//это делегат LoginViewControllerCoordinator для того чтобы дернуть его метод, и запустить координатор регистрации, который в свою очередь создаст RegisterViewController
     let animationHandler: AnimationHandler
-
-    init(animationHandler: AnimationHandler) {
-        self.animationHandler = animationHandler
-        super.init(nibName: nil, bundle: nil)
-    }
+    let container: DIContainer
+    var onFinish: (() -> Void)?
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
->>>>>>> tik_2-NetworkSession
     private var mainLabel: UILabel = {
         var mainLabel = UILabel()
         mainLabel.text = "ToDoTask"
@@ -34,11 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private var errorLabel: UILabel = {
         var errorLabel = UILabel()
-<<<<<<< HEAD
-        errorLabel.text = "this user is not registered"
-=======
         //errorLabel.text = "this user is not registered"
->>>>>>> tik_2-NetworkSession
         errorLabel.alpha = 0
         errorLabel.font = UIFont.systemFont(ofSize: 20)
         errorLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
@@ -73,11 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return passwordTextField
     }()
     
-<<<<<<< HEAD
-    private var loginButton: UIButton = {
-=======
     private lazy var loginButton: UIButton = {
->>>>>>> tik_2-NetworkSession
         var loginButton = UIButton()
         loginButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         loginButton.alpha = 0.3
@@ -96,11 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return loginButton
     }()
     
-<<<<<<< HEAD
-    private var registerButton: UIButton = {
-=======
     private lazy var registerButton: UIButton = {
->>>>>>> tik_2-NetworkSession
         var registerButton = UIButton()
         registerButton.setTitle(" Sign Up", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
@@ -158,11 +139,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return stackView4
     }()
     
-<<<<<<< HEAD
-    private var forgotPasswordButton: UIButton = {
-=======
     private lazy var forgotPasswordButton: UIButton = {
->>>>>>> tik_2-NetworkSession
         var forgotPasswordButton = UIButton()
         //forgotPasswordButton.backgroundColor = .black
         //forgotPasswordButton.alpha = 0.3
@@ -182,76 +159,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return forgotPasswordButton
     }()
     
-<<<<<<< HEAD
-//    lazy var tabBarViewController: UITabBarController = {
-//        
-//        let tabBarViewController = UITabBarController()
-//       // tabBarViewController.tabBar.isTranslucent = false
-//        
-//        let tableViewController = TaskViewController()
-//        let taskNavController = UINavigationController(rootViewController: tableViewController)
-//        
-////        let loginViewController = LoginViewController()
-////        let loginTabBarController = UINavigationController(rootViewController: loginViewController)
-//        
-//        let calculateViewController = CalculationViewController()
-//        let calculateNavBarController = UINavigationController(rootViewController: calculateViewController)
-//        
-//        tabBarViewController.viewControllers = [taskNavController, calculateNavBarController]
-//        tabBarViewController.selectedViewController = taskNavController
-//        
-//        taskNavController.tabBarItem = UITabBarItem(title: "tasks", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 0)
-//        taskNavController.tabBarItem.badgeValue = "\(tableViewController.arrayOfTasks.count)"
-//        taskNavController.tabBarItem.badgeColor = .systemGreen
-////        loginTabBarController.tabBarItem = UITabBarItem.init(title: "logOut", image: UIImage(systemName: "person.crop.circle.fill.badge.plus"), tag: 1)
-//        calculateNavBarController.tabBarItem = UITabBarItem(title: "calculate", image: UIImage(systemName: "arrow.forward.square"), tag: 2)
-//        
-//        tabBarViewController.tabBar.tintColor = UIColor(red: 0.7, green: 0.5, blue: 0.5, alpha: 1)
-//        tabBarViewController.tabBar.unselectedItemTintColor = UIColor(red: 0.5, green: 0.7, blue: 0.5, alpha: 1)
-//        tabBarViewController.tabBar.backgroundColor = UIColor(white: 1, alpha: 1)
-//        return tabBarViewController
-//    }()
-    
-  weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
-    weak var tabBarControllerCoordinator: TabBarControllerCoordinator?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-           
-        GestureRecognizer()
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        
-        view.backgroundColor = .systemBlue
-        view.addSubview(mainLabel)
-        view.addSubview(errorLabel)
-        view.addSubview(stackView)
-        
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(stackView2)
-        
-        view.addSubview(loginButton)
-        view.addSubview(registerButton)
-        view.addSubview(forgotPasswordButton)
-        view.addSubview(stackView3)
-        
-        view.addSubview(CommonStackView)
-        
-        addConstraints()
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//            if user != nil {
-//                let tableViewController = TaskViewController()
-//                self.navigationController?.pushViewController(self.tabBarViewController, animated: true)
-//                self.navigationController?.pushViewController(tableViewController, animated: true)
-//            }
-//        }
+    init(animationHandler: AnimationHandler, window: UIWindow) {
+        self.animationHandler = animationHandler
+        self.container = DIContainer.shared
+        self.window = window
+        super.init(nibName: nil, bundle: nil)
     }
-    //end wiewDidLoad
-=======
-    weak var loginViewControllerCoordinator: LoginViewControllerCoordinator?
     
-   //private let animationHandler = AnimationHandler()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -262,7 +179,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         addSubvies()
         addConstraints()
     }
->>>>>>> tik_2-NetworkSession
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -276,35 +192,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-<<<<<<< HEAD
-    private func GestureRecognizer() {
-=======
     private func addGestureRecognizer() {
->>>>>>> tik_2-NetworkSession
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.outOfView))
         view.addGestureRecognizer(gestureRecognizer)
     }
     
-<<<<<<< HEAD
-    @objc func outOfView() {
-        view.endEditing(true)
-    }
-    
-    private func errorWithAnimation(text: String) {
-        errorLabel.text = text
-        
-        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut) {
-            //self.errorLabel.text = "Error occured"
-            self.errorLabel.alpha = 1.0
-        } completion: { complete in
-            self.errorLabel.alpha = 0.0
-        }
-    }
-    
-    @objc func LoginAction() {
-        guard let emailTextField = emailTextField.text, let password = passwordTextField.text, emailTextField != "", password != "" else {
-            errorWithAnimation(text: "Password or login are empty!")
-=======
     @objc private func outOfView() {
         view.endEditing(true)
     }
@@ -313,96 +205,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let emailTextField = emailTextField.text, let password = passwordTextField.text, emailTextField != "", password != "" else {
             
             self.animationHandler.showErrorWithAnimation(with: "Email or password are empty!", and: self.errorLabel)
->>>>>>> tik_2-NetworkSession
             return
         }
         
-        Auth.auth().signIn(withEmail: emailTextField, password: password) { (user, error) in
-            if user != nil {
-<<<<<<< HEAD
-
-                let taskTabBarController = TabBarController()
-                taskTabBarController.tabBarControllerCoordinator?.start()
-                //self.tabBarControllerCoordinator?.start()
-               
-//                self.navigationController?.pushViewController(taskTabBarController, animated: true)
-                return
-            }
+        Auth.auth().signIn(withEmail: emailTextField, password: password) { [weak self] (user, error) in
+            guard let self = self else { return }
             
-            if error != nil {
-                self.errorWithAnimation(text: "Email or password wrong!")
-                return
-            }
-            //self.errorWithAnimation(text: "There is no such user!")
-        }
-    }
-    
-    
-    @objc func registerViewControllerAction() {
-        let registerVC = RegisterViewController()
-        self.navigationController?.pushViewController(registerVC, animated: true)
-    }
-    
-    
-    @objc func forgotPasswordAction() {
-        guard let emailTextfield = emailTextField.text, emailTextfield != "", emailTextfield.isValidated(validityType: .email) else {
-            errorWithAnimation(text: "Your email could be wrong")
-            return
-        }
-        Auth.auth().sendPasswordReset(withEmail: emailTextfield) { error in
-            if error == nil {
-                self.errorWithAnimation(text: "Information to reset was sent to your email")
-            }
-        }
-    }
-}
-extension LoginViewController {
-    private func addConstraints() {
-        
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        // stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        //stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
-        
-        stackView2.translatesAutoresizingMaskIntoConstraints = false
-        //stackView2.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        stackView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        //stackView2.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30).isActive = true
-        
-        stackView3.translatesAutoresizingMaskIntoConstraints = false
-        stackView3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        // stackView3.topAnchor.constraint(greaterThanOrEqualTo: stackView2.bottomAnchor, constant: 130).isActive = true
-        //stackView3.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        stackView3.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        stackView3.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        CommonStackView.translatesAutoresizingMaskIntoConstraints = false
-        CommonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        CommonStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        //stackView4.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
-        // stackView4.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        
-        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotPasswordButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //forgotPasswordButton.heightAnchor.constraint(equalToConstant: 170).isActive = true
-        forgotPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-    }
-=======
-                let tabBarControllerCoordinator = TabBarControllerCoordinator()
-                tabBarControllerCoordinator.startInitialFlow()
+            if user != nil {
+                guard let navigationController = self.navigationController else {return}
+                let tabBarControllerCoordinator = container.resolveTabBarControllerCoordinator(window: window, navigationController: navigationController)
+                tabBarControllerCoordinator.start()
                 return
             }
             if let error = error {
                 self.animationHandler.showErrorWithAnimation(with: "Email or password wrong!", and: self.errorLabel)
-                return
             }
         }
     }
     
     @objc private func registerViewControllerAction() {
-        let registerVC = RegisterViewController(animationHandler: animationHandler)
-        self.navigationController?.pushViewController(registerVC, animated: true)
+        loginViewControllerCoordinator?.startRegisterViewControllerFlow()//вместо создания RegisterViewController напрямую или даже RegisterViewControllerСoordinatora, мы дергаем делегат loginViewControllerCoordinator, который создает RegisterViewControllerСoordinator сам
     }
     
     @objc private func forgotPasswordAction() {
@@ -421,10 +243,6 @@ extension LoginViewController {
     private func addSubvies() {
         [forgotPasswordButton, CommonStackView].forEach {view.addSubview($0)}
     }
-    
-    deinit {
-            print("LoginViewController was deallocated")
-        }
 }
 
 extension LoginViewController {
@@ -433,10 +251,10 @@ extension LoginViewController {
         translatesAutoresizingMaskIntoConstraintsToFalse()
         
         stackView2.widthAnchor.constraint(equalToConstant: 300).isActive = true
-      
+        
         stackView3.widthAnchor.constraint(equalToConstant: 200).isActive = true
         stackView3.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//
+        
         CommonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         CommonStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
@@ -449,7 +267,15 @@ extension LoginViewController {
         [stackView, stackView2, stackView3, CommonStackView, forgotPasswordButton].forEach {$0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
->>>>>>> tik_2-NetworkSession
+}
+
+extension LoginViewController {//это расширение для того чтобы можно было удалять координатор этого контроллера через родительский координатор
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if isMovingFromParent || isBeingDismissed { //когда вью уходит с экрана модально или удаляется из стека:
+            onFinish?() //срабатывает клоужер в который при создании LoginViewController был установлен метод где родительский координатор удаляет дочерний координатор их массива координаторов, таким образом убирается сильная ссылка на координатор
+        }
+    }
 }
 
 

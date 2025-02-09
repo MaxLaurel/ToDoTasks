@@ -5,73 +5,81 @@
 //  Created by Максим on 16.03.2024.
 //
 
-import Foundation
+
 import UIKit
-import Firebase
+import FirebaseAuth
+import Combine
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: Coordinating, ChildCoordinating {
     
-<<<<<<< HEAD
-    var coordinators: [Coordinator] = []
+    var childCoordinators: [ChildCoordinating] = []
+    var window: UIWindow
+    private let animationHandler: AnimationHandlerManagable
+    private let container: DIContainer
+    private let loginViewControllerCoordinator: LoginViewControllerCoordinator
+    var tabBarControllerCoordinator: TabBarControllerCoordinator
+    private var cancellables = Set<AnyCancellable>()
     
-    var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
-    func start() {
-=======
-   var coordinators: [Coordinator] = []
-   var navigationController: UINavigationController
-   private var window: UIWindow
-   var loginViewControllerCoordinator: LoginViewControllerCoordinator?  // Сохраняем координатор
-   var factory: ViewControllerFactory?
-
-    init(navigationController: UINavigationController, window: UIWindow) {
-        self.navigationController = navigationController
+    init(window: UIWindow, tabBarControllerCoordinator: TabBarControllerCoordinator, loginViewControllerCoordinator: LoginViewControllerCoordinator, animationHandler: AnimationHandlerManagable) {
         self.window = window
+        self.container = DIContainer.shared
+        self.animationHandler = animationHandler
+        self.loginViewControllerCoordinator = loginViewControllerCoordinator
+        self.tabBarControllerCoordinator = tabBarControllerCoordinator
     }
-
-    func startInitialFlow() {
->>>>>>> tik_2-NetworkSession
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                self.startTabBarControllerFlow()
-            } else {
-                self.startLoginFlow()
-            }
-        }
-    }
-<<<<<<< HEAD
     
-    private func startLoginFlow() {
-        let loginControllerCoordinator =  CoordinatorFactory().createLoginCoordinator(navigationController: navigationController)
-        //add(coordinator: loginControllerCoordinator)
-        loginControllerCoordinator.start()
+    //MARK: - это первый метод который запускается в SceneDelegate. C него начинается стек координаторов /далее идет метод-слушатель Firebase, который срабатывает каждый раз когда происходит смена состояния пользователя(например, регистрация, вход или выход из системы) автоматически
+    func start() {
+        //        Auth.auth().addStateDidChangeListener { _, user in
+        //            if user != nil {
+        //                self.startTabBarControllerFlow()//если юзер найден в системе срабат. этот метод и переходим на TabBar
+        //            } else {
+        //                self.startLoginFlow()//если не найден перекидывает на контроллер с логином
+        //            }
+        //        }
+        
+        //MARK: - новый метод с комбайном
+        AuthManager.shared.authenticationStatePublisher
+            .sink { [weak self] isAuthenticated in
+                if isAuthenticated {
+                    self?.startTabBarControllerFlow()
+                } else {
+                    self?.startLoginFlow()
+                }
+            }
+            .store(in: &cancellables)
+        
+        // Начинаем слушать изменения аутентификации
+        AuthManager.shared.addFirebaseListener()
     }
-    private func startTabBarControllerFlow() {
-        let tabBarControllerCoordinator = CoordinatorFactory().createTabBarControllerCoordinator(navigationController: navigationController)
-        add(coordinator: tabBarControllerCoordinator)
-        tabBarControllerCoordinator.start()
-    }
-}
-=======
-
+    
     func startLoginFlow() {
-        // Если координатор уже создан, используем его, иначе создаем новый
-        if loginViewControllerCoordinator == nil {
-            loginViewControllerCoordinator = LoginViewControllerCoordinator(navigationController: navigationController)
-        }
-        loginViewControllerCoordinator?.startInitialFlow()
+        window.rootViewController = loginViewControllerCoordinator.navigationController
+        window.makeKeyAndVisible()
+        loginViewControllerCoordinator.startLoginViewControllerFlow()
+        addChildCoordinator(loginViewControllerCoordinator)
     }
-
-    private func startTabBarControllerFlow() {
-        let tabBarControllerCoordinator = TabBarControllerCoordinator()
-        tabBarControllerCoordinator.startInitialFlow()
-        window.rootViewController = tabBarControllerCoordinator.viewControllerFactory.instantiate(type: .tabBarVC)
-        add(coordinator: tabBarControllerCoordinator)
+    
+    func startTabBarControllerFlow() {
+        tabBarControllerCoordinator.startTabBarViewControllerFlow()
+        addChildCoordinator(tabBarControllerCoordinator)
+    }
+    
+    
+    func resetApplicationState() {
+//        
+//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+//            for window in windowScene.windows {
+//                if let navController = window.rootViewController as? UINavigationController {
+//                    navController.setViewControllers([], animated: false)
+//                }
+//            }
+//        }
+        
+        childCoordinators.forEach { $0.removeAllChildCoordinators() }//рекурсивно проходим по всем координаторам чтобы удалить их
+        childCoordinators.removeAll()//после удаления подчищаем массив координаторов
+        startLoginFlow()
     }
 }
 
->>>>>>> tik_2-NetworkSession
+

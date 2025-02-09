@@ -65,3 +65,4 @@ enum Log {
     static func error(_ str: String, shouldLogContext: Bool = true, file: String = #file, function: String = #function, line: Int = #line) {}
     #endif
 }
+

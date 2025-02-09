@@ -7,23 +7,35 @@
 
 import Foundation
 
-protocol Coordinator: AnyObject {
-    
-    var coordinators: [Coordinator] { get set }
-    
-<<<<<<< HEAD
+protocol Coordinating: AnyObject  {
     func start()
-=======
-    func startInitialFlow()
->>>>>>> tik_2-NetworkSession
 }
 
-extension Coordinator {
-    func add(coordinator: Coordinator) {
-        coordinators.append(coordinator)
+protocol ChildCoordinating: AnyObject {
+    var childCoordinators: [ChildCoordinating] { get set }
+    func addChildCoordinator(_ child: ChildCoordinating)
+    func removeChildCoordinator(_ child: ChildCoordinating)
+    func removeAllChildCoordinators()
+}
+
+extension ChildCoordinating {
+     func addChildCoordinator(_ child: ChildCoordinating) {
+        childCoordinators.append(child)
+        Log.info("Coordinator \(child) has been added. Coordinators include: \(childCoordinators)")
     }
     
-    func remove(coordinator: Coordinator) {
-        coordinators = coordinators.filter { $0 !== coordinator} 
+    //MARK: в этом методе удаляем определенный дочерний координатор из массива childCoordinators
+     func removeChildCoordinator(_ child: ChildCoordinating) {
+        childCoordinators = childCoordinators.filter { $0 !== child }
+        Log.info("Coordinator \(child) has been removed. Coordinators include: \(childCoordinators)")
+    }
+    
+    //MARK: в этом методе удаляем всю цепочку дочерних координаторов
+     func removeAllChildCoordinators() {
+        childCoordinators.forEach { coordinator in
+                coordinator.removeAllChildCoordinators() // Рекурсивное удаление
+        }
+        childCoordinators.removeAll()
+        Log.info("All child coordinators removed from \(self). Current child coordinators: \(childCoordinators)")
     }
 }
