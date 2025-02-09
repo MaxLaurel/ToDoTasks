@@ -4,6 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+<<<<<<< HEAD
+		<key>ToDoTasks.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>29</integer>
+=======
 		<key>ToDoTasks DEBUG.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
@@ -23,6 +29,7 @@
 		<dict>
 			<key>primary</key>
 			<true/>
+>>>>>>> tik_2-NetworkSession
 		</dict>
 	</dict>
 </dict>

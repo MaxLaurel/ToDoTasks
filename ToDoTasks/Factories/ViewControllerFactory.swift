@@ -7,6 +7,37 @@
 
 import UIKit
 
+<<<<<<< HEAD
+class ViewControllerFactory: UIViewController {
+
+    func createLoginViewController() -> LoginViewController {
+        return LoginViewController()
+    }
+    
+    func createTabBarController() -> TabBarController {
+        return TabBarController()
+    }
+    
+    func createTaskViewController() -> TaskViewController {
+        return TaskViewController()
+    }
+    
+    func createCalculateViewController() -> CalculationViewController {
+        return CalculationViewController()
+    }
+    
+    func createSecondFlowViewControllerOne() -> SecondFlowViewControllerOne {
+        return SecondFlowViewControllerOne()
+    }
+    
+    func createSecondFlowViewControllerTwo() -> SecondFlowViewControllerTwo {
+        return SecondFlowViewControllerTwo()
+    }
+    
+    func createNewsViewController() -> YouTubeNewsTableViewController {
+        return YouTubeNewsTableViewController()
+        
+=======
 protocol ViewControllerFactoryUsable {
 }
 
@@ -28,5 +59,6 @@ class ViewControllerFactory: ViewControllerFactoryUsable {
         case .taskVC: return TaskViewController()
         case .calculateVC: return CalculationViewController()
         }
+>>>>>>> tik_2-NetworkSession
     }
 }
