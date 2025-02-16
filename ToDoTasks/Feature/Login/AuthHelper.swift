@@ -7,8 +7,8 @@
 import FirebaseAuth
 import Combine
 
-class AuthManager {
-    static let shared = AuthManager()
+class AuthHelper {
+    static let shared = AuthHelper()
     private var handle: AuthStateDidChangeListenerHandle?
     
     // Публикуем состояние аутентификации через PassthroughSubject

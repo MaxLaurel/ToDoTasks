@@ -1,6 +1,6 @@
 import UIKit
 
-class YouTubeAPITableViewCell: UITableViewCell {
+class NewsTableViewCell: UITableViewCell {
     
     let newsImageView: UIImageView = {
         let newsImage = UIImageView()

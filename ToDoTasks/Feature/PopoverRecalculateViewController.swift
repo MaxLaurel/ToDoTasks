@@ -8,7 +8,7 @@
 
     import UIKit
 
-    class PopoverRcalculateViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    class PopoverRecalculateViewController: UIViewController, UIPopoverPresentationControllerDelegate {
         
         var onFinish: (() -> Void)?
 

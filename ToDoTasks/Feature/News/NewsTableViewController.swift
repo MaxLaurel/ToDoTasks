@@ -30,7 +30,7 @@ class NewsTableViewController: UIViewController, UITableViewDelegate, UITableVie
         
         setConstraints()
         
-        tableView.register(YouTubeAPITableViewCell.self, forCellReuseIdentifier: "YouTubeAPITableViewCell")
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "YouTubeAPITableViewCell")
         
         getDataFromYouTubeAPI()
     }
@@ -40,7 +40,7 @@ class NewsTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "YouTubeAPITableViewCell", for: indexPath) as! YouTubeAPITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "YouTubeAPITableViewCell", for: indexPath) as! NewsTableViewCell
         
         let articleObject = youTubeArticle[indexPath.row]//берем каждый отдельный обьект массива по его индекс паф
         cell.headerLabel.text = articleObject.title

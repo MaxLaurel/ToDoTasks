@@ -21,10 +21,10 @@
 		B550ECF92BA6EE0F00044609 /* TabBarControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */; };
 		B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */; };
 		B550ED032BB092DF00044609 /* CalculateViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550ED022BB092DF00044609 /* CalculateViewControllerCoordinator.swift */; };
-		B559C1542D4D633B00F03B62 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559C1532D4D633B00F03B62 /* AuthManager.swift */; };
+		B559C1542D4D633B00F03B62 /* AuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559C1532D4D633B00F03B62 /* AuthHelper.swift */; };
 		B559C1582D4D79B800F03B62 /* NavigationStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */; };
 		B55A71C32B727CFE005EB46D /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */; };
-		B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */; };
+		B55C27922B9219A0003A3DBA /* PopoverRecalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27912B9219A0003A3DBA /* PopoverRecalculateViewController.swift */; };
 		B55C27962B9C862A003A3DBA /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C27952B9C862A003A3DBA /* CalculationViewController.swift */; };
 		B57222FD2CEBDC6100E57E4F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57222FC2CEBDC6100E57E4F /* Logger.swift */; };
 		B58D3DC12D0674FB00B86EDE /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = B58D3DC02D0674FB00B86EDE /* Swinject */; };
@@ -44,7 +44,7 @@
 		B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */; };
 		B5ABD6032CB308DE00D34B8E /* AlertStrategyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ABD6022CB308DE00D34B8E /* AlertStrategyPresenter.swift */; };
 		B5B647D52C08B25D00743DBE /* NewsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */; };
-		B5B647EC2C12174800743DBE /* YouTubeAPITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */; };
+		B5B647EC2C12174800743DBE /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647EB2C12174800743DBE /* NewsTableViewCell.swift */; };
 		B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */; };
 		B5BEBF612D06753F00BF7A72 /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = B5BEBF602D06753F00BF7A72 /* SwinjectAutoregistration */; };
 		B5BEBF632D068B8700BF7A72 /* NetworkManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */; };
@@ -62,6 +62,12 @@
 		B5C9419329F2AA0D002F9AF3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */; };
 		B5C941B529F33A3B002F9AF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */; };
 		B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D799B72CB635DA00F9DF8D /* RetryConfiguration.swift */; };
+		B5EBA4BB2D5C730300C0E165 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA4BA2D5C730300C0E165 /* LoginViewModel.swift */; };
+		B5EBA4C02D5C74D400C0E165 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA4BF2D5C74D400C0E165 /* TabBarViewModel.swift */; };
+		B5EBA4C22D5C753300C0E165 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA4C12D5C753300C0E165 /* RegisterViewModel.swift */; };
+		B5EBA4C52D5C765000C0E165 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA4C42D5C765000C0E165 /* TaskViewModel.swift */; };
+		B5EBA4CA2D5C76A000C0E165 /* CalculateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA4C92D5C76A000C0E165 /* CalculateViewModel.swift */; };
+		B5EBA4CD2D5C783C00C0E165 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA4CC2D5C783C00C0E165 /* NewsViewModel.swift */; };
 		B5F7A30D29FECCB900EF0447 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */; };
 		B5F7A3112A0E2F3C00EF0447 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F7A3102A0E2F3C00EF0447 /* Validation.swift */; };
 /* End PBXBuildFile section */
@@ -81,10 +87,10 @@
 		B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerCoordinator.swift; sourceTree = "<group>"; };
 		B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		B550ED022BB092DF00044609 /* CalculateViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewControllerCoordinator.swift; sourceTree = "<group>"; };
-		B559C1532D4D633B00F03B62 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		B559C1532D4D633B00F03B62 /* AuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHelper.swift; sourceTree = "<group>"; };
 		B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackManager.swift; sourceTree = "<group>"; };
 		B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRcalculateViewController.swift; sourceTree = "<group>"; };
+		B55C27912B9219A0003A3DBA /* PopoverRecalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRecalculateViewController.swift; sourceTree = "<group>"; };
 		B55C27952B9C862A003A3DBA /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 		B57222FC2CEBDC6100E57E4F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
@@ -94,7 +100,7 @@
 		B5ABD5FF2CA879D200D34B8E /* EndpointConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConfiguration.swift; sourceTree = "<group>"; };
 		B5ABD6022CB308DE00D34B8E /* AlertStrategyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertStrategyPresenter.swift; sourceTree = "<group>"; };
 		B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerCoordinator.swift; sourceTree = "<group>"; };
-		B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPITableViewCell.swift; sourceTree = "<group>"; };
+		B5B647EB2C12174800743DBE /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		B5BEBF622D068B8700BF7A72 /* NetworkManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerDelegate.swift; sourceTree = "<group>"; };
 		B5C52C972D43978A00565E06 /* NewAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAPIModel.swift; sourceTree = "<group>"; };
@@ -113,6 +119,12 @@
 		B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5D799B72CB635DA00F9DF8D /* RetryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryConfiguration.swift; sourceTree = "<group>"; };
+		B5EBA4BA2D5C730300C0E165 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B5EBA4BF2D5C74D400C0E165 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		B5EBA4C12D5C753300C0E165 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		B5EBA4C42D5C765000C0E165 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		B5EBA4C92D5C76A000C0E165 /* CalculateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewModel.swift; sourceTree = "<group>"; };
+		B5EBA4CC2D5C783C00C0E165 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B5F7A3102A0E2F3C00EF0447 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,13 +151,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B52D8D382D58A0CF00B806A9 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		B533A8732B5D74A200448BBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,35 +172,21 @@
 			path = DIContainer;
 			sourceTree = "<group>";
 		};
-		B550ECED2BA5E11C00044609 /* Coordinators */ = {
+		B550ECED2BA5E11C00044609 /* Coordinators+StackManager */ = {
 			isa = PBXGroup;
 			children = (
 				B550ECEE2BA5E1DD00044609 /* ProtocolCoordinator.swift */,
 				B550ECF22BA5F5A600044609 /* AppCoordinator.swift */,
-				B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */,
-				B5137E312D147F2200537427 /* RegisterViewControllerCoordinator.swift */,
-				B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */,
-				B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */,
-				B550ED022BB092DF00044609 /* CalculateViewControllerCoordinator.swift */,
-				B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */,
+				B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */,
 			);
-			path = Coordinators;
+			path = "Coordinators+StackManager";
 			sourceTree = "<group>";
 		};
-		B559C1522D4D629900F03B62 /* New Group */ = {
+		B559C1522D4D629900F03B62 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				B559C1532D4D633B00F03B62 /* AuthManager.swift */,
 			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		B5913B972CBD8A2400F8764B /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */,
-			);
-			path = Animation;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		B5ABD5F42CA83DAF00D34B8E /* Network */ = {
@@ -230,23 +221,11 @@
 			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
-		B5C52C9B2D43997600565E06 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */,
-				B5B647EB2C12174800743DBE /* YouTubeAPITableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		B5C9417229F2A7FE002F9AF3 = {
 			isa = PBXGroup;
 			children = (
-				B52D8D382D58A0CF00B806A9 /* New Group */,
 				B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */,
 				B5C9417C29F2A7FE002F9AF3 /* Products */,
-				B5C941B829F33EB2002F9AF3 /* Support */,
-				B5C52C9B2D43997600565E06 /* Cells */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,48 +240,127 @@
 		B5C9417D29F2A7FE002F9AF3 /* ToDoTasks */ = {
 			isa = PBXGroup;
 			children = (
-				B559C1522D4D629900F03B62 /* New Group */,
-				B5913B972CBD8A2400F8764B /* Animation */,
+				B5C941B829F33EB2002F9AF3 /* App */,
+				B5EBA4BC2D5C731800C0E165 /* Feature */,
+				B5EBA4CE2D5C789C00C0E165 /* Services */,
+				B550ECED2BA5E11C00044609 /* Coordinators+StackManager */,
+				B5EBA4CF2D5C7CC500C0E165 /* Resourses */,
+				B559C1522D4D629900F03B62 /* Firebase */,
 				B5ABD6012CB3089700D34B8E /* AlertPresenter */,
 				B5ABD5F42CA83DAF00D34B8E /* Network */,
-				B550ECED2BA5E11C00044609 /* Coordinators */,
 				B533A8732B5D74A200448BBC /* Model */,
 				B5F7A30F2A0E2F1300EF0447 /* Extensions */,
-				B5C941B729F33E81002F9AF3 /* Controllers */,
 				B53A38682CDFE37400C56643 /* DIContainer */,
 			);
 			path = ToDoTasks;
 			sourceTree = "<group>";
 		};
-		B5C941B729F33E81002F9AF3 /* Controllers */ = {
+		B5C941B829F33EB2002F9AF3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */,
+				B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */,
+				B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B5EBA4B92D5C726F00C0E165 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				B5C9418229F2A7FE002F9AF3 /* LoginViewController.swift */,
-				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
-				B550ECF62BA60CE900044609 /* TabBarViewController.swift */,
-				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
-				B55C27952B9C862A003A3DBA /* CalculationViewController.swift */,
-				B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */,
-				B55C27912B9219A0003A3DBA /* PopoverRcalculateViewController.swift */,
+				B550ECF42BA6024D00044609 /* LoginViewControllerCoordinator.swift */,
+				B5EBA4BA2D5C730300C0E165 /* LoginViewModel.swift */,
+				B559C1532D4D633B00F03B62 /* AuthHelper.swift */,
 			);
-			path = Controllers;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		B5C941B829F33EB2002F9AF3 /* Support */ = {
+		B5EBA4BC2D5C731800C0E165 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				B559C1572D4D79B800F03B62 /* NavigationStackManager.swift */,
-				B5C9418029F2A7FE002F9AF3 /* SceneDelegate.swift */,
-				B5C9417E29F2A7FE002F9AF3 /* AppDelegate.swift */,
-				B5C9418729F2A800002F9AF3 /* Assets.xcassets */,
-				B5C9418929F2A800002F9AF3 /* LaunchScreen.storyboard */,
-				B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */,
-				B5C9418C29F2A800002F9AF3 /* Info.plist */,
+				B5EBA4B92D5C726F00C0E165 /* Login */,
+				B5EBA4BD2D5C733200C0E165 /* Registration */,
+				B5EBA4CB2D5C77FE00C0E165 /* News */,
+				B5EBA4C62D5C765B00C0E165 /* Calculation */,
+				B5EBA4C32D5C756D00C0E165 /* Task */,
+				B5EBA4BE2D5C743B00C0E165 /* TabBar */,
+				B55C27912B9219A0003A3DBA /* PopoverRecalculateViewController.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		B5EBA4BD2D5C733200C0E165 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B5F7A30C29FECCB900EF0447 /* RegisterViewController.swift */,
+				B5137E312D147F2200537427 /* RegisterViewControllerCoordinator.swift */,
+				B5EBA4C12D5C753300C0E165 /* RegisterViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		B5EBA4BE2D5C743B00C0E165 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B550ECF62BA60CE900044609 /* TabBarViewController.swift */,
+				B550ECF82BA6EE0F00044609 /* TabBarControllerCoordinator.swift */,
+				B5EBA4BF2D5C74D400C0E165 /* TabBarViewModel.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		B5EBA4C32D5C756D00C0E165 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				B5C9419229F2AA0D002F9AF3 /* TaskViewController.swift */,
+				B5EBA4C42D5C765000C0E165 /* TaskViewModel.swift */,
+				B55A71C22B727CFE005EB46D /* TaskTableViewCell.swift */,
+				B550ED002BB038C900044609 /* TaskViewControllerCoordinator.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		B5EBA4C62D5C765B00C0E165 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				B55C27952B9C862A003A3DBA /* CalculationViewController.swift */,
+				B550ED022BB092DF00044609 /* CalculateViewControllerCoordinator.swift */,
+				B5EBA4C92D5C76A000C0E165 /* CalculateViewModel.swift */,
+			);
+			path = Calculation;
+			sourceTree = "<group>";
+		};
+		B5EBA4CB2D5C77FE00C0E165 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				B5B647F32C18A1D700743DBE /* NewsTableViewController.swift */,
+				B5EBA4CC2D5C783C00C0E165 /* NewsViewModel.swift */,
+				B5B647EB2C12174800743DBE /* NewsTableViewCell.swift */,
+				B5B647D42C08B25D00743DBE /* NewsViewControllerCoordinator.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		B5EBA4CE2D5C789C00C0E165 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5C52CAA2D45275200565E06 /* Observable.swift */,
 				B57222FC2CEBDC6100E57E4F /* Logger.swift */,
 				B5157DE92CF4D6B50059B910 /* Environment.swift */,
-				B5C52CAA2D45275200565E06 /* Observable.swift */,
+				B5913B9B2CBD8A8500F8764B /* AnimationHandler.swift */,
 			);
-			path = Support;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B5EBA4CF2D5C7CC500C0E165 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				B5C9418729F2A800002F9AF3 /* Assets.xcassets */,
+				B5C941B429F33A3B002F9AF3 /* GoogleService-Info.plist */,
+				B5C9418C29F2A800002F9AF3 /* Info.plist */,
+			);
+			path = Resourses;
 			sourceTree = "<group>";
 		};
 		B5F7A30F2A0E2F1300EF0447 /* Extensions */ = {
@@ -405,16 +463,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5D799B82CB635DA00F9DF8D /* RetryConfiguration.swift in Sources */,
-				B559C1542D4D633B00F03B62 /* AuthManager.swift in Sources */,
+				B559C1542D4D633B00F03B62 /* AuthHelper.swift in Sources */,
 				B5C52CA72D43CA1300565E06 /* DIContainer+Coordinator.swift in Sources */,
 				B5B647F42C18A1D700743DBE /* NewsTableViewController.swift in Sources */,
 				B550ED032BB092DF00044609 /* CalculateViewControllerCoordinator.swift in Sources */,
 				B53A386A2CDFE3A800C56643 /* DIContainer.swift in Sources */,
+				B5EBA4C52D5C765000C0E165 /* TaskViewModel.swift in Sources */,
 				B5ABD6032CB308DE00D34B8E /* AlertStrategyPresenter.swift in Sources */,
 				B5ABD5F92CA853A400D34B8E /* ErrorHandler.swift in Sources */,
 				B5C52CA12D43C7B000565E06 /* DIContainer+ImageFetcher.swift in Sources */,
 				B5913B9C2CBD8AA500F8764B /* AnimationHandler.swift in Sources */,
+				B5EBA4CD2D5C783C00C0E165 /* NewsViewModel.swift in Sources */,
+				B5EBA4C02D5C74D400C0E165 /* TabBarViewModel.swift in Sources */,
 				B5B647D52C08B25D00743DBE /* NewsViewControllerCoordinator.swift in Sources */,
+				B5EBA4CA2D5C76A000C0E165 /* CalculateViewModel.swift in Sources */,
 				B55A71C32B727CFE005EB46D /* TaskTableViewCell.swift in Sources */,
 				B5C52CAB2D45275200565E06 /* Observable.swift in Sources */,
 				B5137E322D147F2200537427 /* RegisterViewControllerCoordinator.swift in Sources */,
@@ -422,18 +484,19 @@
 				B533A8752B5D74ED00448BBC /* TaskModel.swift in Sources */,
 				B5ABD6002CA879D200D34B8E /* EndpointConfiguration.swift in Sources */,
 				B550ECF52BA6024D00044609 /* LoginViewControllerCoordinator.swift in Sources */,
-				B5B647EC2C12174800743DBE /* YouTubeAPITableViewCell.swift in Sources */,
+				B5B647EC2C12174800743DBE /* NewsTableViewCell.swift in Sources */,
 				B5C52C9F2D43C72D00565E06 /* DIContainer+AnimationHandler.swift in Sources */,
 				B5C52C982D43978A00565E06 /* NewAPIModel.swift in Sources */,
 				B550ED012BB038C900044609 /* TaskViewControllerCoordinator.swift in Sources */,
 				B57222FD2CEBDC6100E57E4F /* Logger.swift in Sources */,
 				B5C9418329F2A7FE002F9AF3 /* LoginViewController.swift in Sources */,
+				B5EBA4BB2D5C730300C0E165 /* LoginViewModel.swift in Sources */,
 				B5BEBF632D068B8700BF7A72 /* NetworkManagerDelegate.swift in Sources */,
 				B550ECF32BA5F5A600044609 /* AppCoordinator.swift in Sources */,
 				B5ABD5F62CA83DED00D34B8E /* NetworkManager.swift in Sources */,
 				B550ECF72BA60CE900044609 /* TabBarViewController.swift in Sources */,
 				B53A38622CD0EC7000C56643 /* Decoder.swift in Sources */,
-				B55C27922B9219A0003A3DBA /* PopoverRcalculateViewController.swift in Sources */,
+				B55C27922B9219A0003A3DBA /* PopoverRecalculateViewController.swift in Sources */,
 				B5157DEC2CF7CFD30059B910 /* URLtoImageFetcher.swift in Sources */,
 				B5C52CA52D43C9D000565E06 /* DIContainer+Network.swift in Sources */,
 				B550ECEF2BA5E1DD00044609 /* ProtocolCoordinator.swift in Sources */,
@@ -447,6 +510,7 @@
 				B5C9418129F2A7FE002F9AF3 /* SceneDelegate.swift in Sources */,
 				B53A38662CDFC96B00C56643 /* Encoder.swift in Sources */,
 				B559C1582D4D79B800F03B62 /* NavigationStackManager.swift in Sources */,
+				B5EBA4C22D5C753300C0E165 /* RegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

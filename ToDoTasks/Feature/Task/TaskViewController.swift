@@ -297,7 +297,7 @@ class TaskViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         func setupRecalculateViewControllerPopover() {
-            let popOver = PopoverRcalculateViewController()
+            let popOver = PopoverRecalculateViewController()
             popOver.modalPresentationStyle = .popover
             let popoverViewController = popOver.popoverPresentationController
             guard let popoverViewController = popoverViewController else {return }

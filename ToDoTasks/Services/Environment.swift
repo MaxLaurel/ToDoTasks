@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 enum Environment: String {
     case debug = "debug"
     case release = "release"

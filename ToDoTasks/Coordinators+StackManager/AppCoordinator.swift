@@ -39,7 +39,7 @@ class AppCoordinator: Coordinating, ChildCoordinating {
         //        }
         
         //MARK: - новый метод с комбайном
-        AuthManager.shared.authenticationStatePublisher
+        AuthHelper.shared.authenticationStatePublisher
             .sink { [weak self] isAuthenticated in
                 if isAuthenticated {
                     self?.startTabBarControllerFlow()
@@ -50,7 +50,7 @@ class AppCoordinator: Coordinating, ChildCoordinating {
             .store(in: &cancellables)
         
         // Начинаем слушать изменения аутентификации
-        AuthManager.shared.addFirebaseListener()
+        AuthHelper.shared.addFirebaseListener()
     }
     
     func startLoginFlow() {

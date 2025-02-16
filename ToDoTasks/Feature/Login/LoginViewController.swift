@@ -186,7 +186,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.text = nil
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this metod and add textfields to resign first responder
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {//you should add this method and add textfields to resign first responder
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         return true
